@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<!--  
+		表格的其他标签
+			1.表头标签：相当于一列中的小标题。th 替换td。
+			效果：文字加粗并且居中。
+
+			2.caption：整个表格的大标题。写在table标签下面，
+		
+		表格的结构标签：里面包的都是tr。
+			1.表格的头部：thead。
+			效果：文字的高度就是行高
+
+			2.表格的身体：tbody
+
+			3.表格的底部：tfoot
+	-->
+
+	<table border="1" cellspacing="0" width="300" hight="300">
+		<!-- 表格的大标题 -->
+		<caption><h3>老师的成绩单</h3></caption>
+		<!-- 表格的头 -->
+		<thead>	
+			<tr>
+				<th>姓名</th>
+				<th>成绩</th>
+				<th>评语</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>堂哥</td>
+				<!-- 保留 -->
+				<td rowspan="2">100分</td>
+				<td>优秀</td>
+			</tr>
+			<tr>
+				<td>小王</td>
+				<!-- 删除 -->
+				<!-- <td>100分</td> -->
+				<td>非常优秀</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td>总结</td>
+				<!-- 保留 -->
+				<td colspan="2">郎才女貌</td>
+				<!-- 删除 -->
+				<!-- <td>郎才女貌</td> -->
+			</tr>
+		</tfoot>
+	</table>
+
+	<hr>
+
+	<img src="13-表格的其他标签.png">
+</body>
+</html>
