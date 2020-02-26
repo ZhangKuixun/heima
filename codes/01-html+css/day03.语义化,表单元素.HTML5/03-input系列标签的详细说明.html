@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<!--  
+		文本框  text（默认值）
+
+		属性：
+			1.value：用户输入的数据
+				注意：如果提前在代码中设置好了value，设置的就是默认值
+
+			2.name：告诉后台发送过去的数据是什么意义。
+				后台接收到的数据：name的属性值=value的属性值。
+
+			3.maxlength：用户输入的最大数字。
+	-->
+	昵称：<input type="text" name="name" value="君君" maxlength="6"><br><br>
+
+
+	<!--  
+		密码框 password 密文输入
+		属性：
+			1.value：用户输入的内容
+				如果在代码中提前设置好了，value就是密码框的默认值
+
+			2.name：告诉后台发送的数据什么意义
+
+			3.maxlength：用户输入的最大字数
+	-->
+	密码：<input type="password" name="password" value="123456"><br><br>
+
+
+	<!--  
+		单选框 radio
+		属性：
+    		1.name：告诉后台发送的数据什么意义；
+         		分组：有相同name属性值的单选框为一组，只能有一个单选框被选中。
+			
+			2.value:用户选择的内容
+
+			3.checked：默认选中
+				注意：一组中只能设置一个默认选中
+	-->
+	性别：<input type="radio" name="sex" value="man" checked>男
+	      <input type="radio" name="sex" value="women">女<br><br>
+
+</body>
+</html>
