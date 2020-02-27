@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<!-- 
+		音频标签：audio
+		作用：播放音频的控件
+
+		属性：
+			1.src：音频的路径
+			2.controls：播放音频的控件
+			3.autoplay：自动播放（有兼容性问题）
+			4.loop：循环播放（有兼容性问题）
+
+		有兼容性处理：告诉用户你的浏览器版本太低（了解）
+	 -->
+	<audio src="10.mp3" controls autoplay loop></audio>
+
+	<br>
+
+	<!-- 有兼容性处理 -->
+	<audio controls>
+		<source src="10.mp3">
+		<a href="http://www.baidu.com">你的浏览版本过低</a>
+	</audio><br>
+
+	<!-- 
+		视频标签：video
+
+		属性：
+			1.src：视频的路径
+			2.controls：视频播放控件
+			3.autoplay：自动播放（有兼容性问题）
+			4.loop：循环播放（有兼容性问题）
+	 -->
+
+	<video src="10.mp4" controls></video>
+
+</body>
+</html>
