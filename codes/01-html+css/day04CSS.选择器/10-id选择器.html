@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		/*
+
+		id选择器：通过id的属性值找到页面中对应的标签设置样式
+		结构：
+			#id属性值 {
+				属性名: 属性名;
+			}
+
+		每一个标签上都有一个id属性
+
+		注意点：
+			1.id属性相当于身份证号码，在页面中是唯一的不可重复的。
+			2.一个标签只能有一个id属性
+			3.一个id选择器只能有一个标签
+			id选择器和标签的关系：一对一
+
+		*/
+		#red {
+			color: red;
+			font-size: 50px;
+		}
+		#green {
+			color: green;
+		}
+		#lowred {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<p id="red">红果果</p>
+	<p id="green">路泡泡</p>
+	<div id="red">想红</div>
+	<div id="lowred">想红</div>
+</body>
+</html>

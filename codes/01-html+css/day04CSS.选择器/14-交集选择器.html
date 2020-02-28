@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		/*
+		交集选择器：（既又原则）选择即满足选择器1又满足选择器2的标签，设置样式
+
+		结构：
+			选择器1选择器2 {
+				属性名: 属性值;
+			}
+
+		注意点：
+			1.交集选择器可以同时写多个选择器，选择器与选择器之间是紧挨着！！！
+			2.如果交集选择器中有标签选择器，标签选择器必须放在最前面！！！
+		*/
+		p.red {
+			color: red;
+		}
+		p.red#lovely {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="red">小姐姐</div>
+	<p>小哥哥</p>
+	<p class="red" id="lovely">小可爱</p>
+</body>
+</html>

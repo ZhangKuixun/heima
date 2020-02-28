@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+
+		/*
+		
+		类选择器：通过类名找到页面中所有带有这个类名的标签，给他们设置样式。
+
+		结构：
+			.类名 {
+				属性名: 属性值;
+			}
+
+		每个标签上都有class属性（类）
+		类名（class属性的属性值）
+
+		类名的取值规范：可以由数字、字母、下划线组成，不能以数字开头。
+
+		注意点：
+			1.一个标签上可以有多个类名，类名与类名直接以空格隔开！！！并且类名之间没有顺序之分！！！
+			2.一个类选择器可以同时选择多个标签。
+
+		标签与类选择器之间的关系：多对多
+		*/
+		.red {
+			color: red;
+		}
+		.yellow {
+			color: yellow;
+		}
+		.pink {
+			color: pink;
+		}
+		.big {
+			font-size: 50px;
+		}
+	</style>
+</head>
+<body>
+	<p class="red big">小红</p>
+	<p class="yellow">小黄</p>
+	<p class="pink">小粉</p>
+	<p class="red">想红</p>
+</body>
+</html>
