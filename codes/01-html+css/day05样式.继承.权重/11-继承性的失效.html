@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.father {
+			/*color: red;*/
+			/*font-size: 20px;*/
+
+			width: 400px;
+			height: 400px;
+			background-color: pink;
+		}
+		
+		.son {
+			width: 100px;
+			/*height: 100px;*/
+			background-color: blue;
+		}
+
+		/*
+		继承性失效的几种情况：
+		1.a标签的颜色不能继承！！（其实是继承下来了，但是被浏览器默认设置的样式给覆盖掉了！！）
+
+		2.h系列标签的字体大小也是不能通过继承的！！（其实是继承下来了，但是被浏览器默认设置的样式给覆盖了11）
+
+		3.div高度不能继承，宽度有默认继承父元素宽度的效果（其实是没有继承下来的，其实是它独占一行的效果）
+
+		4.如果标签自己有样式（自己设置的，浏览器设置），就不会问父元素要样式
+
+		5.以后写代码不要想着用继承就少写代码，该设置的代码一个别省（不要用css的继承性偷懒）
+		*/
+	</style>
+</head>
+<body>
+	<div class="father">
+		老父亲<br>
+		<a href="#">大儿子</a><br>
+		<h1>我是一个大人</h1><br>
+		<div class="son"></div>
+	</div>
+</body>
+</html>

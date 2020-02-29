@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		/*id选择器*/
+		/*#blue {
+			color: blue;
+		}*/
+		/*类先择器*/
+		/*.son {
+			color: green;
+		}*/
+		/*标签选择器*/
+		/*p {
+			color: pink !important;
+		}*/
+		/*通配符选择器*/
+		/** {
+			color: yellow;
+		}*/
+		/*继承*/
+		/*.father {
+			color: red;
+		}*/
+		/*
+		优先级：给一个标签设置样式，可以有多种方法，方法之间的优先级不同
+
+		优先级公式：
+			继承<通配符<标签选择器<类选择器<id选择器<行内选择器<!importent
+
+		!importent注意点：
+			1.!importent书写位置：写在属性值的后面，分号的前面。
+			2.!importent不能提升继承的优先级，继承优先级永远最底！！
+		*/
+	</style>
+</head>
+<body>
+	<div class="father">
+		<p class="son" id="blue" style="color: black;">我是一个P标签</p>
+	</div>
+</body>
+</html>
