@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div {
+			height: 400px;
+			width: 400px;
+			/*
+			背景颜色：background-color
+			取值：关键字、rgb、rgba、#
+			*/
+			background-color: pink;
+
+			/*
+			背景图片：background-image
+			url（背景图片的路径）
+
+			默认是平铺效果
+			*/
+			background-image: url(06.jpg);
+
+			/*
+			背景平铺：background-repeat
+			取值：
+				1.repeat：背景平铺
+				2.no-repeat：背景不平铺
+				3.repeat-x：沿着水平方向平铺（X轴）
+				4.repeat-y：沿着垂直方向平铺（y轴）
+			*/
+			background-repeat: no-repeat;
+
+			/*
+			背景位置：background-position
+			取值：
+				1.第一属性值：x轴方向的位置（水平方向）
+				2.第二属性值：y轴方向的位置（垂直方向）
+
+				取值情况：
+				1.关键字
+					水平方向：left、center、right
+					垂直方向：top、center、bottom
+				2.数字+px
+					每个div都有一个坐标系，原点在左上角，水平方向是x轴，垂直方向是y轴
+			*/
+			background-position: right bottom;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>
