@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.father {
+			width: 400px;
+			height: 400px;
+			background-color: pink;
+		}
+		.son {
+			height: 100px;
+			background-color: blue;
+			padding-left: 20px;
+			border-left: 20px solid #000;
+		}
+		/*
+		如果子盒子没有设置宽度，此时子盒子的宽度就是父盒子的宽度
+			如果此时设置padding-left，不会撑大盒子！！！，浏览器回值自动把多余的部分在内容中减去。
+
+		设置：
+			1.padding-left
+			2.padding-right
+			3.border-left
+			4.border-right
+			
+		都不会撑大盒子
+		*/
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>
