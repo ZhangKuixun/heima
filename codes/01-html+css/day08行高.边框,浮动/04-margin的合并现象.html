@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		.red {
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			margin-bottom: 20px;
+		}
+		.green {
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			margin-top: 10px;
+		}
+		/*
+		margin的合并现象：
+    		1.左右的margin：会叠加，最终两个盒子的距离是两个margin的和。
+    		2.上下的margin：会合并，最终两个盒子的距离是两个margin的最大值。
+    		
+    	解决：避免这样写。
+		*/
+	</style>
+</head>
+<body>
+	<div class="red"></div>
+	<div class="green"></div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 300px;
+			height: 300px;
+			background-color: pink;
+			/*line-height: 300px;*/
+			/*
+			行高作用：文字在标签中垂直居中！！！
+			概念：两行文字之间基线到基线的距离！！！
+			*/
+			/*
+			行高的单位
+			1.数字+px
+			2.em 1em=font-size
+				一般浏览器默认的字体大小就是16px;
+			*/
+			/*line-height: 2em;*/
+			/*
+			3.百分数
+				百分数*font-size=200%*16=32
+			*/
+			/*line-height: 200%;*/
+
+			/*
+			4.没有单位的数字（倍数）
+				倍数*font-size2*16=32
+			*/
+			/*line-height: 2;*/
+
+
+			/*
+			font的连写中有line-height这样的属性
+			font: style weight size/line-height family;
+			*/
+			/*
+			如果要同时设置line-height和font的连写
+			注意：
+				1.把line-height写在font连写的下面
+				2.把line-height写在font连写的里面
+			*/
+			/*font: italic 700 30px/300px "楷体";*/
+
+			font:italic 700 30px "楷体";
+			line-height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<div>我是内容</div>
+</body>
+</html>

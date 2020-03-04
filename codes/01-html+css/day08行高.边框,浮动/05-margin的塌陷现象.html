@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		.father {
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+			/*border-top: 1px solid #000;*/
+			/*overflow: hidden;*/
+			/*overflow: hidden;*/
+			/*float: left;*/
+			display: inline-block;
+		}
+		.son {
+			width: 60px;
+			height: 60px;
+			background-color: blue;
+			margin-top: 100px;
+		}
+		/*
+		margin的塌陷现象：（条件：嵌套  块级元素）
+		现象：互相嵌套的块级元素，给子盒子设置margin-top，父元素会一起往下移动！！！
+
+		如何解决margin的塌陷现象？
+			1.给父元素设置一个border-top
+				相当于给老父亲有一层钢板
+			2.给父元素设置一个padding-top
+				相当于给老父亲有一层泡沫
+			3.给父元素设置一个overflow:hidden;
+				触发BFC（块级格式化上下文）。出发了BFC的盒子，不会因为里面的元素影响自己的布局，相当于此时盒子变成了一个铁盒子！！
+			4.给父元素设置一个float:left;
+				触发BFC
+			5.转换为行内块元素
+			
+		*/
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>
