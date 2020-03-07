@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.one {
+			width: 1226px;
+			height: 600px;
+			background: url(images/one.jpg);
+			background-size: 1226px 600px;
+			margin: 0 auto;
+			position: relative;
+		}
+		.two {
+			width: 100%;
+			height: 100px;
+			background-color: rgba(0,0,0,0.7);
+			/*脱标了，不能继承父元素的宽度*/
+			position: absolute;
+			bottom: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div class="one">
+		<div class="two"></div>
+	</div>
+</body>
+</html>

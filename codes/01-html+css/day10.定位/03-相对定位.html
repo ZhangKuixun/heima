@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		div {
+			width: 200px;
+			height: 200px;
+		}
+		.red {
+			background-color: red;
+		}
+		.green {
+			background-color: green;
+			position: relative;
+			left: 100px;
+			top: 100px;
+
+			/*
+    注意点：
+        1.如果要让相对定位移动，配合方位属性一起使用。
+        2.相对于自己原来的位置进行移动。
+        3.占位置，没有脱标
+    应用：一般只会用在小范围的移动，用的最多的方式：子绝父相
+			*/
+		}
+		.blue {
+			background-color: blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="red"></div>
+	<div class="green"></div>
+	<div class="blue"></div>
+
+</body>
+</html>

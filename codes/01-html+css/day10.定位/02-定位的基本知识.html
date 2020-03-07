@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		div {
+			width: 200px;
+			height: 200px;
+		}
+		.red {
+			background-color: red;
+		}
+		.green {
+			background-color: green;
+
+			/*定位：position 需要配合方位属性一起用*/
+			position: absolute;
+			left: 100px;
+			top: 100px;
+
+			/*
+			水平方向：left  right
+			垂直方向：top  bottom
+			*/
+
+			/*
+			定位有哪几种方式：
+				1.静态定位：static-->在表中流中的元素默认就是静态定位（有争议）
+				2.相对定位：relative
+				3.绝对定位：absolute
+				4.固定定位：fixed
+			*/
+		}
+	</style>
+</head>
+<body>
+	<div class="red"></div>
+	<div class="green"></div>
+</body>
+</html>
