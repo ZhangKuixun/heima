@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		/*
+		双伪元素清楚法
+		作用：
+			1.清除浮动
+			2.解决margin的塌陷现象
+		*/
+		.clearfix::after,
+		.clearfix::before {
+			content: '';
+			/*块级元素 + 触发BFC*/
+			display: table;
+		}
+		.clearfix::after {
+			clear: both;
+		}
+		/*兼容性处理*/
+		.clearfix {
+			*zoom:1;
+		}
+
+
+		.father {
+			width:400px;
+			/*height: 400px;*/
+			background-color: pink;
+		}
+		.son {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			/*float: left;*/
+		}
+	</style>
+</head>
+<body>
+	<div class="father clearfix">
+		<div class="son"></div>
+	</div>
+</body>
+</html>

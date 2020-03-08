@@ -1,0 +1,100 @@
+/*样式初始化*/
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+ul {
+	list-style: none;
+}
+
+/*
+双伪元素清除法
+	1.清除浮动
+	2.margin的塌陷现象
+*/
+.clearfix::before,
+.clearfix::after {
+	content: '';
+	display: table;
+}
+.clearfix::after {
+	clear: both;
+}
+/*兼容性*/
+.clearfix {
+	*zoom:1;
+}
+.fl {
+	float: left;
+}
+.fr {
+	float: right;
+}
+
+/*版心*/
+.w {
+	width: 1226px;
+	margin: 0px auto;
+}
+
+/*----------------------------------top样式*/
+.top {
+	height: 40px;
+	background-color: #333333;
+}
+.top ul {
+	height: 40px;
+}
+.top ul li {
+	height: 40px;
+	float: left;
+	line-height: 40px;
+	font-size: 12px;
+	color: #40403b;
+}
+.top ul li .one {
+	padding-left: 0px;
+}
+.top ul li a {
+	color: #b0b0b0;
+	font-size: 12px;
+	padding: 0px 10px;
+}
+
+/*----------------------------------nav样式*/
+.nav {
+	height: 78px;
+	margin-top: 22px;
+}
+.nav .logo {
+	width: 55px;
+	height: 55px;
+	background: url(images/logo.jpg);
+	background-size: 55px 55px;
+}
+.nav .logoright {
+	width: 163px;
+	height: 66px;
+	background: url(images/logo-right.jpg);
+	margin-left: 13px;
+	background-size: 163px 66px;
+}
+.nav ul {
+	float: left;
+	padding-left: 16px;
+}
+.nav ul li {
+	float: left;
+	height: 56px;
+	line-height: 56px;
+}
+.nav ul li a {
+	color: #000000;
+	font-size: 16px;
+	padding-right: 26px;
+}
+
+/*----------------------------------banner样式*/
