@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		/*li:first-child {
+			color: red;
+		}*/
+		/*
+		查找过程：
+			1.先找到页面中所有的li
+			2.找到这些li的父元素
+			3.找到父元素的第一个子元素
+			4.判断第一个子元素是不是li
+				1.如果是li，加样式
+				2.不是li，不加样式
+		*/
+
+		/*li:last-child {
+			color: red;
+		}*/
+		/*
+		查找过程：
+			1.先找到页面中所有的li
+		    2.找到这些li的父元素
+		    3.找到父元素的第一个子元素
+		    4.判断第一个子元素是不是li
+		        1.如果是li，加样式
+		        2.不是li，不加样式
+		*/
+		/*li:nth-child(2n) {
+			color: red;
+		}*/
+		/*li:nth-child(2n-1) {
+			color: red;
+		}*/
+		li:nth-child(-n+12) {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<!-- <p>我是一个p标签</p> -->
+		<li>我是第1个li</li>
+		<li>我是第2个li</li>
+		<li>我是第3个li</li>
+		<li>我是第4个li</li>
+		<li>我是第5个li</li>
+		<li>我是第6个li</li>
+		<li>我是第7个li</li>
+		<li>我是第8个li</li>
+		<li>我是第9个li</li>
+		<li>我是第10个li</li>
+		<li>我是第11个li</li>
+		<li>我是第12个li</li>
+		<li>我是第13个li</li>
+		<li>我是第14个li</li>
+		<li>我是第15个li</li>
+		<li>我是第16个li</li>
+		<li>我是第17个li</li>
+		<li>我是第18个li</li>
+		<li>我是第19个li</li>
+		<li>我是第20个li</li>
+		<li>我是第21个li</li>
+		<li>我是第22个li</li>
+		<li>我是第23个li</li>
+		<li>我是第24个li</li>
+		<li>我是第25个li</li>
+		<li>我是第26个li</li>
+		<li>我是第27个li</li>
+		<li>我是第28个li</li>
+		<li>我是第29个li</li>
+		<li>我是第30个li</li>
+		<!-- <p>我是p标签</p> -->
+	</ul>
+</body>
+</html>
