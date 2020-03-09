@@ -40,6 +40,9 @@ ul {
 	margin: 0px auto;
 }
 
+body {
+	height: 2000px;
+}
 /*----------------------------------top样式*/
 .top {
 	height: 40px;
@@ -98,3 +101,149 @@ ul {
 }
 
 /*----------------------------------banner样式*/
+.banner {
+	height: 460px;
+}
+.banner ul {
+	background-color: #2c505f;
+	width: 235px;
+	height: 460px;
+	padding: 33px 24px 0 30px;
+	box-sizing: border-box;
+	float: left;
+}
+.banner ul li {
+	height: 42px;
+	background: url(images/jiantou-right.png) no-repeat right top;
+}
+.banner ul li a {
+	color: #fff;
+	font-size: 12px;
+}
+.banner .right {
+	width: 991px;
+	height: 460px;
+	background: url(images/banner.png) no-repeat;
+	float: left;
+}
+
+/*----------------------------------pro样式*/
+.pro {
+	height: 170px;
+	margin-top: 14px;
+}
+.pro .left {
+	width: 234px;
+	height: 170px;
+	background-color: #5f5750;
+}
+.pro .left p {
+	color: #ffffff;
+	margin-right: 53px;
+	text-align: right;
+}
+.pro .left p:first-child {
+	margin-top: 56px;
+	height: 38px;
+}
+.pro .pro1 {
+	width: 317px;
+	height: 170px;
+	background: url(images/pro1.png);
+	background-size: 317px 170px;
+	margin-left: 14px;
+}
+.pro .pro2 {
+	width: 317px;
+	height: 170px;
+	background: url(images/pro2.png);
+	background-size: 317px 170px;
+	margin-left: 15px;
+}
+.pro .pro3 {
+	width: 317px;
+	height: 170px;
+	background: url(images/pro3.png);
+	background-size: 317px 170px;
+}
+
+/*----------------------------------main top样式*/
+.main {
+	height: 799px;
+	background-color: #f5f5f5;
+	margin-top: 66px;
+}
+.main .content {
+	height: 799px;
+	padding-top: 79px;
+	box-sizing: border-box;
+}
+.main .content .ctop {
+	height: 40px;
+	font-size: 22px;
+}
+.main .content .ctop a {
+	float: right;
+	color: #000;
+	font-size: 16px;
+	margin-right: 28px;
+}
+
+/*----------------------------------main left样式*/
+.main .content .cbottom {
+	height: 614px;
+	background-color: pink;
+}
+.main .content .cbottom .cleft {
+	width: 234px;
+	height: 614px;
+	background: url(images/main_left.png);
+}
+.main .content .cbottom .cright {
+	width: 978px;
+	height: 614px;
+	background-color: hotpink;
+}
+.main .content .cbottom .cright div {
+	width: 234px;
+	height: 300px;
+}
+.main .content .cbottom .cright .cpro1 {
+	background: url(images/main1.png);
+}
+.main .content .cbottom .cright .cpro2 {
+	background: url(images/main2.png);
+	margin-left: 14px;
+	background-size: 234px 300px;
+}
+.main .content .cbottom .cright .cpro3 {
+	background: url(images/main3.png);
+	margin-left: 14px;
+	background-size: 234px 300px;
+}
+.main .content .cbottom .cright .cpro4 {
+	background: url(images/main4.png);
+	background-size: 234px 300px;
+}
+.main .content .cbottom .cright .cpro5 {
+	background: url(images/main4.png);
+	background-size: 234px 300px;
+	margin-top: 14px;
+}
+.main .content .cbottom .cright .cpro6 {
+	background: url(images/main3.png);
+	background-size: 234px 300px;
+	margin-left: 14px;
+	margin-top: 14px;
+}
+.main .content .cbottom .cright .cpro7 {
+	background: url(images/main1.png);
+	background-size: 234px 300px;
+	margin-left: 14px;
+	margin-top: 14px;
+}
+.main .content .cbottom .cright .cpro8 {
+	background: url(images/main4.png);
+	background-size: 234px 300px;
+	margin-top: 14px;
+}
