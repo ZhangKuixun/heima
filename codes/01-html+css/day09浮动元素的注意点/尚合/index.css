@@ -1,0 +1,185 @@
+/*css的初始化*/
+
+/*去除默认内外边距*/
+* {
+	margin: 0;
+	padding: 0;
+}
+
+/*去除ul圆点*/
+ul {
+	list-style: none;
+}
+
+/*li标签的下划线*/
+a {
+	text-decoration: none;
+}
+
+/*清除伪元素*/
+.clearfix::after {
+	content: '';
+	display: block;
+	clear: both;
+	height: 0;
+	line-height: 0;
+	visibility: hidden;
+}
+
+/*左浮动*/
+.fl {
+	float: left;
+}
+
+/*右浮动*/
+.fr {
+	float: right;
+}
+
+/*版心：宽度固定并且水平居中*/
+.w {
+	width: 980px;
+	margin: 0 auto;
+}
+
+body {
+	height: 3000px;
+}
+
+/*-----------------------------------------------------top的样式*/
+.top {
+	height: 62px;
+	background-color: pink;
+	padding-top: 20px;
+	box-sizing: border-box;
+}
+.top .left {
+	width: 180px;
+	height: 24px;
+	background:url(images/logo.jpg);
+	background-size: 180px 24px;
+}
+.top .right {
+	width: 200px;
+	height: 30px;
+	background:url(images/search.jpg);
+	background-size: 200px 30px;
+}
+
+/*-----------------------------------------------------nav*/
+.nav {
+	height: 55px;
+	background: url(images/nav_bg.jpg);
+	border-top: 1px solid #e1e1e1;
+}
+.nav ul li {
+	float: left;
+	background: url(images/nav_border.jpg) no-repeat right center;
+	background-size: 2px 55px;
+}
+ul li a {
+	width: 130px;
+	height: 55px;
+	float: left;
+	text-align: center;
+	line-height: 55px;
+	font-size: 14px;
+	color: #000;
+	font-size: 700;
+}
+
+/*-----------------------------------------------------banner*/
+.banner {
+	height: 666px;
+	background: #e1e1e1 url(images/banner.jpg) no-repeat center;
+}
+
+/*-----------------------------------------------------info*/
+.info {
+	height: 29px;
+	background-color: #fbfbfb;
+	border-top: 1px solid #efefef;
+	border-bottom: 1px solid #efefef;
+}
+.info .content {
+	height: 29px;
+	background-color: pink;
+}
+.info .content .left {
+	height: 29px;
+	line-height: 29px;
+	font-size: 12px;
+}
+.info .content .left span {
+	font-weight: 700;
+	margin-right: 18px;
+}
+.info .content .right {
+	width: 86px;
+	height: 16px;
+	margin-top: 5px;
+	margin-bottom: 6px;
+	background: url(images/sheard.jpg) no-repeat center;
+	background-size: 86px 16px;
+}
+
+/*-----------------------------------------------------main*/
+.main {
+	height: 226px;
+	margin-top: 15px;
+}
+.main .left {
+	width: 312px;
+	height: 226px;
+	border: 1px solid #e4e4e4;
+	box-sizing: border-box;
+	margin-right: 12px;
+	padding: 13px 6px; 0px;
+}
+.main .left h2 {
+	height: 18px;
+	font-size: 12px;
+	color: #7ab800;
+	padding-left: 21px;
+	text-align: 18px;
+	background: url(images/jiantou.jpg) no-repeat;
+	background-size:18px 27px;
+}
+.main .left .bottom {
+	text-align: center;
+}
+.main .left .bottom img {
+	width: 111px;
+	height: 148px;
+	margin-top: 6px;
+}
+.main .left .bottom .arrl {
+	width: 18px;
+	height: 27px;
+	background: url(images/jiantou_left.jpg);
+	margin-top: 59px;
+	margin-left: 17px;
+	background-size:18px 27px;
+}
+.main .left .bottom .arrr {
+	width: 18px;
+	height: 27px;
+	background: url(images/jiantou_right.jpg);
+	margin-top: 59px;
+	margin-right: 36px;
+	background-size:18px 27px;
+}
+
+.main .center {
+	width: 375px;
+	height: 226px;
+	border: 1px solid #e4e4e4;
+	box-sizing: border-box;
+}
+.main .right {
+	width: 270px;
+	height: 226px;
+	border: 1px solid #e4e4e4;
+	box-sizing: border-box;
+}
+
