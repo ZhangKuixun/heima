@@ -42,11 +42,11 @@ a {
 	margin: 0 auto;
 }
 
-body {
+/*body {
 	height: 3000px;
-}
+}*/
 
-/*-----------------------------------------------------top的样式*/
+/*-----------------------------------------------------top样式*/
 .top {
 	height: 62px;
 	background-color: pink;
@@ -66,7 +66,7 @@ body {
 	background-size: 200px 30px;
 }
 
-/*-----------------------------------------------------nav*/
+/*-----------------------------------------------------nav样式*/
 .nav {
 	height: 55px;
 	background: url(images/nav_bg.jpg);
@@ -77,7 +77,7 @@ body {
 	background: url(images/nav_border.jpg) no-repeat right center;
 	background-size: 2px 55px;
 }
-ul li a {
+.nav ul li a {
 	width: 130px;
 	height: 55px;
 	float: left;
@@ -88,13 +88,13 @@ ul li a {
 	font-size: 700;
 }
 
-/*-----------------------------------------------------banner*/
+/*-----------------------------------------------------banner样式*/
 .banner {
 	height: 666px;
 	background: #e1e1e1 url(images/banner.jpg) no-repeat center;
 }
 
-/*-----------------------------------------------------info*/
+/*-----------------------------------------------------info样式*/
 .info {
 	height: 29px;
 	background-color: #fbfbfb;
@@ -123,7 +123,7 @@ ul li a {
 	background-size: 86px 16px;
 }
 
-/*-----------------------------------------------------main*/
+/*-----------------------------------------------------main left*/
 .main {
 	height: 226px;
 	margin-top: 15px;
@@ -136,7 +136,9 @@ ul li a {
 	margin-right: 12px;
 	padding: 13px 6px; 0px;
 }
-.main .left h2 {
+.main .left h2,
+.main .center h2,
+.main .right h2 {
 	height: 18px;
 	font-size: 12px;
 	color: #7ab800;
@@ -170,16 +172,117 @@ ul li a {
 	background-size:18px 27px;
 }
 
+/*-----------------------------------------------------main center*/
 .main .center {
 	width: 375px;
 	height: 226px;
 	border: 1px solid #e4e4e4;
 	box-sizing: border-box;
+	padding: 13px 6px; 0px;
 }
+.main .center .more {
+	float: right;
+	font-size: 12px;
+	color: #666666;
+	font-weight: 700;
+}
+.main .center ul {
+	padding-left: 17px;
+	padding-right: 12px; 
+	padding-top: 4px;
+	display: block;
+}
+.main .center ul li {
+	border-bottom: 1px dashed #dcdcdc;
+	height: 27px;
+	line-height: 27px;
+}
+.main .center ul li a {
+	font-size: 12px;
+	color: #666666;
+}
+.main .center ul li .sorry {
+	color: #ff0000;
+	font-weight: 700;
+}
+/*-----------------------------------------------------main right*/
 .main .right {
 	width: 270px;
 	height: 226px;
 	border: 1px solid #e4e4e4;
 	box-sizing: border-box;
+	padding: 13px 6px; 0px;
+}
+.main .right ul {
+	padding-left: 22px;
+	padding-top: 4px;
+}
+.main .right ul li {
+	height: 20px;
+	background: url(images/sheard.jpg) no-repeat;
+	background-size: 2px 14px;
+	padding-left: 8px;
+}
+.main .right ul li a {
+	font-size: 12px;
+	color: 666666;
+}
+.main .right p {
+	height: 22px;
+	font-size: 12px;
+	color: #666666;
+	margin-left: 23px;
+}
+.main .right .one {
+	margin-top: 39px;
 }
 
+/*-----------------------------------------------------link样式*/
+.link {
+	height: 221px;
+	background-color: #2d2d2d;
+	margin-top: 52px;
+	border-bottom: 1px dashed #414141;
+}
+.link .content {
+	height: 221px;
+	padding-top: 16px;
+	padding-left: 20px;
+	padding-right: 20px;
+	background: url(images/jiantou.jpg) no-repeat right top;
+	background-size: 52px 27px;
+}
+.link .content dl {
+	float: left;
+	width: 108px;
+}
+.link .content dl dt {
+	font-size: 12px;
+	color: #c7c7c7;
+	margin-bottom: 34px;
+}
+.link .content dl dd {
+	font-size: 12px;
+	color: #707070;
+	height: 20px;
+}
+
+/*-----------------------------------------------------link样式*/
+.foot {
+	height: 84px;
+	background-color: #2d2d2d;
+	overflow: hidden;
+	text-align: center;
+}
+.foot p{
+	font-size: 12px;
+}
+.foot .first {
+	margin-top: 10px;
+	height: 30px;
+}
+.foot img {
+	margin-top: 8px;
+	width: 50px;
+	height: 20px;
+}
