@@ -6,7 +6,6 @@
 .top .content .left {
 	width: 200px;
 	height: 31px;
-	background-color: yellow;
 	line-height: 31px;
 }
 .top .content .left a {
@@ -15,7 +14,6 @@
 }
 .top .content ul {
 	height: 31px;
-	background-color: yellow;
 }
 .top .content ul li {
 	height: 31px;
@@ -37,6 +35,7 @@
 /*----------------------------------search*/
 .search {
 	height: 80px;
+	/*ps*/
 	background-color: pink;
 	margin-top: 26px;
 }
@@ -153,3 +152,47 @@
 	color: red;
 }
 */
+
+/*----------------------------------nav*/
+.nav {
+	height: 45px;
+	border-bottom: 2px solid #b1181a;
+	/*ps*/
+	background-color: deeppink;
+}
+.nav .content {
+	height: 45px;
+	/*ps*/
+	background-color: skyblue;
+}
+.nav .content .all {
+	width: 209px;
+	height: 45px;
+	background-color: #b1181a;
+	font-size: 16px;
+	color: #fff;
+	text-align: center;
+	line-height: 45px;
+	float: left;
+}
+.nav .content ul li {
+	float: left;
+	height: 45px;
+	line-height: 45px;
+}
+.nav .content ul li a {
+	font-size: 16px;
+	color: #000;
+	margin-right: 52px;
+}
+.nav .content ul li:first-child a {
+	margin-left: 41px;
+}
+
+
+
+
+
+
+
+
