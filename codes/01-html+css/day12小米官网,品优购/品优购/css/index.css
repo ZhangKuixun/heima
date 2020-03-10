@@ -77,6 +77,7 @@
 	font-size: 12px;
 	margin-left: 8px;
 }
+/*购物车的消息数量*/
 .search .cart .num {
 	/*width: 40px;*/
 	min-width: 16px;
@@ -85,12 +86,32 @@
 	border-radius: 6px 6px 6px 0px;
 	position: absolute;
 	top: -8px;
-	left: 118px;
+	left: 100px;
 	color: #fff;
 	line-height: 14px;
 }
-
-
+/*购物车的haver效果*/
+.search .cart .h {
+	width: 200px;
+	height: 100px;
+	background-color: #f6f6f6;
+	border: 1px solid #dbdbdb;
+	position: absolute;
+	right: -1px;
+	top: 36px;
+	display: none;
+}
+.search .cart .h .line {
+	width: 140px;
+	height: 1px;
+	background-color: #f6f6f6;
+	position: absolute;
+	top: -1px;
+	right: 0px;
+}
+.search .cart:hover .h {
+	display: block;
+}
 
 
 
