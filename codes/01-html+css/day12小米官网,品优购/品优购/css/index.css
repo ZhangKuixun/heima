@@ -31,6 +31,9 @@
 	font-size: 12px;
 	padding-left: 10px;
 }
+body {
+	height: 2000px;
+}
 
 /*----------------------------------search*/
 .search {
@@ -189,10 +192,88 @@
 	margin-left: 41px;
 }
 
+/*----------------------------------banner*/
+.banner {
+	height:465px;
+	/*ps*/
+	background-color: pink;
+}
+.banner .left {
+	width: 209px;
+	height: 465px;
+}
+.banner .left li {
+	height: 31px;
+	line-height: 31px;
+	padding: 0px 20px;
+	background-color: #c81622;
+}
+.banner .left li a {
+	color: #fff;
+	font-size: 14px;
+}
+.banner .left li .icon-jiantou {
+	float: right;
+	color: #fff;
+}
+.banner .left li:hover {
+	background-color: #fff;
+}
+.banner .left li:hover a,
+.banner .left li:hover .icon-jiantou {
+	color: #c81622;
+}
 
+/*banner的中间*/
+.banner .center {
+	width: 721px;
+	height: 455px;
+	background: url(../images/banner_center.png);
+	margin-left: 10px;
+	margin-top: 10px;
+}
 
+/*banner右边-上*/
+.banner .right {
+	width: 250px;
+	height: 455px;
+	/*ps*/
+	/*background-color: yellow;*/
+	margin-top: 10px;
+}
+.banner .right .one {
+	width: 250px;
+	height: 165px;
+	background-color: #fff;
+	border: 1px solid #e5d5d5;
+	box-sizing: border-box;
+}
+.banner .right .one .otop {
+	height: 32px;
+	border-bottom: 1px dotted #e5d5d5;
+	line-height: 32px;
+	padding-left: 15px;
+	padding-right: 15px;
+	color: #000;
 
-
-
-
+}
+.banner .right .one .otop a {
+	float: right;
+}
+.banner .right .one .otop a .icon-jiantou {
+	font-size: 12px;
+	margin-left: 5px;
+}
+.banner .right .one .obottom {
+	padding-left: 12px;
+	padding-top: 15px;
+}
+.banner .right .one .obottom li {
+	height: 24px;
+	line-height: 20px;
+}
+.banner .right .one .obottom li a span {
+	font-weight: 700;
+	margin-right: 5px;
+}
 
