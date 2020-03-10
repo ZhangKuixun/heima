@@ -112,6 +112,44 @@
 .search .cart:hover .h {
 	display: block;
 }
-
-
-
+/*搜索框*/
+.search .center input[type="text"] {
+	width: 458px;
+	height: 36px;
+	border: 2px solid #aa121e;
+	box-sizing: border-box;
+	padding-left: 10px;
+}
+.search .center input[type="button"] {
+	width: 80px;
+	height: 36px;
+	border: 2px;
+	background-color: #aa121e;
+	color: #fff;
+	font-size: 16pxl
+}
+.search .center {
+	/*text-align: center;*/
+	padding-left: 347px;
+}
+/*搜索下方的文字*/
+.search .center ul {
+	padding-top: 8px;
+}
+.search .center ul li {
+	float: left;
+}
+.search .center ul li a {
+	padding: 0px 12px;
+}
+.search .center ul li .one {
+	color: red;
+}
+/*.search .center ul li:first-child a {
+	color: red;
+}*/
+/*错误的做法*/
+/*.search .center ul li a:first-child {
+	color: red;
+}
+*/
