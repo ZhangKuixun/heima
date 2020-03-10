@@ -1,0 +1,96 @@
+/*----------------------------------top*/
+.top {
+	height: 31px;
+	background-color: #f1f1f1;
+}
+.top .content .left {
+	width: 200px;
+	height: 31px;
+	background-color: yellow;
+	line-height: 31px;
+}
+.top .content .left a {
+	padding-left: 5px;
+	color: #bc1b23;
+}
+.top .content ul {
+	height: 31px;
+	background-color: yellow;
+}
+.top .content ul li {
+	height: 31px;
+	float: left;
+	line-height: 31px;
+}
+.top .content ul li a {
+	padding-right: 16px;
+	padding-left: 16px;
+}
+.top .content ul li .last {
+	padding-right: 0px;
+}
+.top .content ul li .icon-jiantou-copy-copy {
+	font-size: 12px;
+	padding-left: 10px;
+}
+
+/*----------------------------------search*/
+.search {
+	height: 80px;
+	background-color: pink;
+	margin-top: 26px;
+}
+.search .logo {
+	width: 173px;
+	height: 56px;
+	background: url(../images/logo.png) no-repeat left top;
+	background-size: 173px 56px;
+}
+.search .text {
+	width: 50%;
+	height: 50%;
+	border: red;
+	outline-style: red;
+}
+.search .button {
+	width: 50px;
+	height: 50%;
+	border: red;
+	outline-style: red;
+}
+.search .cart {
+	width: 140px;
+	height: 36px;
+	background-color: #f6f6f6;
+	border: 1px solid #dbdbdb;
+	margin-right: 63px;
+	line-height: 36px;
+	text-align: center;
+	position: relative;
+}
+.search .cart .icon-cart {
+	color: red;
+	font-weight: 700;
+	font-size: 14px;
+}
+.search .cart .icon-jiantou {
+	font-size: 12px;
+	margin-left: 8px;
+}
+.search .cart .num {
+	/*width: 40px;*/
+	min-width: 16px;
+	height: 16px;
+	background-color: #df071e;
+	border-radius: 6px 6px 6px 0px;
+	position: absolute;
+	top: -8px;
+	left: 118px;
+	color: #fff;
+	line-height: 14px;
+}
+
+
+
+
+

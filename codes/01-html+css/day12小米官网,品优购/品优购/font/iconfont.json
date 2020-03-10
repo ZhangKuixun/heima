@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "810221",
+      "name": "箭头",
+      "font_class": "jiantou-copy-copy",
+      "unicode": "e668",
+      "unicode_decimal": 58984
+    },
+    {
+      "icon_id": "911010",
+      "name": "cart",
+      "font_class": "cart",
+      "unicode": "e613",
+      "unicode_decimal": 58899
+    },
+    {
+      "icon_id": "1161667",
+      "name": "refresh",
+      "font_class": "refresh",
+      "unicode": "e614",
+      "unicode_decimal": 58900
+    },
+    {
+      "icon_id": "1288599",
+      "name": "箭头",
+      "font_class": "jiantou",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "7736864",
+      "name": "鞋子 高跟鞋",
+      "font_class": "icon-",
+      "unicode": "e628",
+      "unicode_decimal": 58920
+    }
+  ]
+}
