@@ -90,7 +90,7 @@ body {
 	top: -8px;
 	left: 100px;
 	color: #fff;
-	line-height: 14px;
+	line-height: 16px;
 }
 /*购物车的haver效果*/
 .search .cart .h {
@@ -292,3 +292,118 @@ body {
 	margin: 0 auto;
 	margin-bottom: 10px;
 }
+.banner .right .three {
+	width: 250px;
+	height: 76px;
+	background: url(../images/ad.png);
+	background-size: 250px 76px;
+	margin-top: 4px;
+}
+
+/*----------------------------------recommend*/
+.recommend {
+	height: 163px;
+	/*ps*/
+	background-color: #ebebeb;
+	margin-top: 11px;
+}
+.recommend .clock {
+	width: 205px;
+	height: 163px;
+	background-color: #5c5251;
+	text-align: center;
+	color: #fff;
+	font-size: 18px;
+}
+.recommend .clock .time {
+	width: 57px;
+	height: 57px;
+	background: url(../images/clock.png);
+	background-size: 57px 57px;
+	margin: 0 auto;
+	margin-top: 31px;
+	margin-bottom: 10px;
+}
+.recommend .rec1 {
+	width: 248px;
+	height: 163px;
+	background: url(../images/recommend.png);
+	background-size: 248px 163px;
+	float: left;
+}
+.recommend .line {
+	width: 1px;
+	height: 145px;
+	margin-top: 9px;
+	float: left;
+	background-color: #fff;
+}
+
+/*----------------------------------like*/
+.like {
+	height: 261px;
+	/*background: pink;*/
+	margin-top: 31px;
+}
+.like .ltop {
+	height: 28px;
+	/*background: skyblue;*/
+	font-size: 18px;
+	color: #000;
+}
+.like .ltop a {
+	float: right;
+	font-size: 12px;
+}
+.like .ltop .icon-refresh {
+	font-size: 12px;
+	margin-left: 8px;
+	margin-right: 20px;
+}
+/*喜欢-内容*/
+.like .lbottom {
+	height: 233px;
+	border: 1px solid #eeeeee;
+	box-sizing: border-box;
+}
+.like .lbottom .item {
+	width: 16.66%;
+	height: 100%;
+	text-align: center;
+	float: left;
+}
+.like .lbottom .item img {
+	height: 150px;
+}
+.like .lbottom .item .low {
+	height: 62px;
+	border-right: 1px solid #eee;
+	text-align: left;
+	margin-left: 35px;
+	margin-top: 12px;
+}
+.like .lbottom .item .no {
+	height: 62px;
+	border-right: none;
+	text-align: left;
+	margin-left: 35px;
+	margin-top: 12px;
+}
+.like .lbottom .item .low p {
+	line-height: 21px;
+}
+.like .lbottom .item .low span {
+	color: #e02d30;
+	font-size: 16px;
+}
+
+
+
+
+
+
+
+
+
+
+
