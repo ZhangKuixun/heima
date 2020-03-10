@@ -247,6 +247,7 @@ body {
 	background-color: #fff;
 	border: 1px solid #e5d5d5;
 	box-sizing: border-box;
+	border-bottom: none;
 }
 .banner .right .one .otop {
 	height: 32px;
@@ -276,4 +277,18 @@ body {
 	font-weight: 700;
 	margin-right: 5px;
 }
-
+.banner .right .two {
+	width: 250px;
+	height: 210px;
+}
+.banner .right .two tr td {
+	border: 1px solid #e5e5e5;
+	text-align: center;
+}
+.banner .right .two tr td div {
+	width: 24px;
+	height: 25px;
+	background: url("../images/icons.png") -17px -16px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
