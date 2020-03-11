@@ -39,7 +39,7 @@ body {
 .search {
 	height: 80px;
 	/*ps*/
-	background-color: pink;
+	/*background-color: pink;*/
 	margin-top: 26px;
 }
 .search .logo {
@@ -161,12 +161,12 @@ body {
 	height: 45px;
 	border-bottom: 2px solid #b1181a;
 	/*ps*/
-	background-color: deeppink;
+	/*background-color: deeppink;*/
 }
 .nav .content {
 	height: 45px;
 	/*ps*/
-	background-color: skyblue;
+	/*background-color: skyblue;*/
 }
 .nav .content .all {
 	width: 209px;
@@ -196,7 +196,7 @@ body {
 .banner {
 	height:465px;
 	/*ps*/
-	background-color: pink;
+	/*background-color: pink;*/
 }
 .banner .left {
 	width: 209px;
@@ -303,7 +303,6 @@ body {
 /*----------------------------------recommend*/
 .recommend {
 	height: 163px;
-	/*ps*/
 	background-color: #ebebeb;
 	margin-top: 11px;
 }
@@ -397,13 +396,74 @@ body {
 	font-size: 16px;
 }
 
+/*----------------------------------home*/
+.home {
+	height: 389px;
+	margin-top: 30px;
+	/*ps*/
+	/*background-color: pink;*/
+}
+.home .htop {
+	height: 27px;
+	/*ps*/
+	/*background-color: skyblue;*/
+	border-bottom: 2px solid #cb1621;
+	color: #ba1c1b;
+	font-size: 18px;
+}
+.home .htop ul {
+	float: right;
+}
+.home .htop ul li {
+	float: left;
+	font-size: 12px;
+	color: #666666;
+}
+.home .htop ul li a {
+	margin-left: 14px;
+	margin-right: 14px;
+}
+.home .htop ul li:first-child a {
+	color: #c31634;
+}
+.home .hbottom {
+	height: 360px;
+	background-color: #f9f9f9;
+	float: left;
+}
+.home .hbottom .htv {
+	width: 209px;
+	height: 360px;
+	text-align: center;
+}
+.home .hbottom .htv ul li {
+	float: left;
+	width: 50%;
+}
+.home .hbottom .htv ul li a {
+	width: 84px;
+	height: 32px;
+	float: left;
+	margin-left: 11px;
+	border-bottom: 1px solid #ededed;
+	text-align: center;
+	line-height: 32px;
+}
+.home .hbottom .htv .one {
+	margin-top: 26px;
+	color: #c31222;
+	font-size: 18px;
+	height: 23px;
+}
+.home .hbottom .htv .two {
+	color: #c31222;
+	height: 32px;
+}
+.home .hbottom .htv img {
+	text-align: center;
+}
 
-
-
-
-
-
-
+/*----------------------------------home*/
 
 
 
