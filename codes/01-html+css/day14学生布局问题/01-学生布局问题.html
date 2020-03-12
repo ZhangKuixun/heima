@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.content {
+			background-color: pink;
+			width: 300px;
+			height: 300px;
+			margin: 0 auto;
+		}
+		.content .top .hui {
+			width: 100px;
+			height: 100px;
+			float: left;
+		}
+		.content .top .tange {
+			width: 0px;
+			height: 0px;
+			border-top: 20px solid transparent;
+			border-right: 20px solid transparent;
+			border-bottom: 20px solid transparent;
+			border-left: 20px solid #fff;
+			float: left;
+		}
+		.content .top .txt {
+			float: left;
+		}
+		.content .top .txt p img {
+			width: 12px;
+			height: 12px;
+			margin-right: 8px;
+			vertical-align: middle;
+		}
+		.content .top .txt p {
+			height: 30px;
+			line-height: 30px;
+			border-bottom: 1px solid #000;
+		}
+		.clearfix::after {
+          content: '';
+          display: block;
+          clear: both;
+          height: 0;
+          line-height: 0;
+          visibility: hidden; 
+        }
+	</style>
+</head>
+<body>
+	<div class="content">
+		<div class="top clearfix">
+			<img class="hui" src="er.png"></img>
+			<div class="tange"></div>
+			<div class="txt">
+				<p><img src="hui.png"> 我是p标签</p>
+				<p><img src="hui.png"> 我是p标签</p>
+				<p><img src="hui.png"> 我是p标签</p>
+			</div>
+		</div>
+		<div class="bottom">我是下面的p标签</div>
+	</div>
+</body>
+</html>

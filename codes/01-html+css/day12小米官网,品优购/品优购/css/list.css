@@ -49,6 +49,7 @@
 	height: 180px;
 	padding: 10px;
 	text-align: center;
+	border: 1px solid #fff;
 }
 .list .item .content:hover {
 	border: 1px solid red;
