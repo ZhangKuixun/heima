@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // NaN: not a number 不是数字，NaN是number类型，表示一个没办法用数字表示的值。
+    // NaN 不等于 NaN
+    var width = 'abc';
+    console.log(+width);
+    console.log(typeof NaN);
+
+    console.log(width === NaN);
+    console.log(isNaN(width));
+    
+    // parseInt
+    width = '100px';
+    console.log(parseInt(width));
+  </script>
+</body>
+</html>
