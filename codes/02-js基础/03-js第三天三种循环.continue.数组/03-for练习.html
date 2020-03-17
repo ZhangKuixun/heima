@@ -45,20 +45,25 @@
     // }
 
     // 直角三角形
-    for (let j = 1; j <= 9; j++) {
-      for (var i = 1; i <= j; i++) {
-        document.write("★ ");
-      }
-      document.write('<br>');
-    }
+    // for (let j = 1; j <= 9; j++) {
+    //   for (var i = 1; i <= j; i++) {
+    //     document.write("★ ");
+    //   }
+    //   document.write('<br>');
+    // }
 
     // 直角三角形
+    document.write('<table>');
     for (let j = 1; j <= 9; j++) {
+      document.write('<tr>');
       for (var i = 1; i <= j; i++) {
-        document.write(i + '*' + j + '=' + i * j+'&nbsp&nbsp');
+        document.write('<td>');
+        document.write(i + '*' + j + '=' + i * j+'&nbsp&nbsp&nbsp');
+        document.write('</td>');
       }
-      document.write('<br>');
+      document.write('</tr>');
     }
+    document.write('</table>');
   </Script>
 </body>
 
