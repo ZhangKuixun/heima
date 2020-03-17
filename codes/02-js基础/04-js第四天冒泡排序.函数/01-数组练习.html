@@ -1,3 +1,11 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-03-17 20:52:05
+ * @LastEditTime: 2020-03-17 23:30:50
+ * @LastEditors: your name
+ * @Description: In User Settings Edit
+ * @FilePath: \02-js基础\04-js第四天冒泡排序.函数\01-数组练习.html
+ -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,15 +27,15 @@
     // console.log(count);
 
 
-    // // 颠倒顺序 321-->123
-    // var num = +prompt('输入一个文字');
-    // var count = '';
-    // do {
-    //   var yu = num % 10;
-    //   count += yu;
-    //   num = parseInt(num / 10);
-    // } while (num != 0);
-    // console.log(count);
+    // 颠倒数字顺序 321-->123
+    var num = +prompt('输入一个文字');
+    var count = '';
+    do {
+      var yu = num % 10;
+      count += yu;
+      num = parseInt(num / 10);
+    } while (num != 0);
+    console.log(count);
 
 
     // // 有一个字符串数组，求字符串数组中每项的长度，并把长度的数值放到新的数组中。
@@ -40,13 +48,13 @@
     // console.log(newArr);
 
 
-    // 拼接“|”   var i = 1
-    var arr = ["aa", "bbb", "cc", "dddd"];
-    var str = arr[0];
-    for (var i = 1; i < arr.length; i++) {
-      str += '|' + arr[i];
-    }
-    console.log(str);
+    // // 拼接“|”   var i = 1
+    // var arr = ["aa", "bbb", "cc", "dddd"];
+    // var str = arr[0];
+    // for (var i = 1; i < arr.length; i++) {
+    //   str += '|' + arr[i];
+    // }
+    // console.log(str);
   </script>
 </body>
 
