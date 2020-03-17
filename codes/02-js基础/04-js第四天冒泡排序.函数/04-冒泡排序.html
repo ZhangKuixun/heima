@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // // 初级版
+    // var count = 0;
+    // var arr = [6, 5, 3, 1, 8, 7, 2, 4];
+    // for (let j = 0; j < arr.length - 1; j++) {
+    //   for (var i = 0; i < arr.length - 1; i++) {
+    //     count++;
+    //     if (arr[i] > arr[i + 1]) {
+    //       var temp = arr[i];
+    //       arr[i] = arr[i + 1];
+    //       arr[i + 1] = temp;
+    //     }
+    //   }
+    // }
+    // console.log(arr, count);
+
+
+    // 中级版
+    var count = 0;
+    var arr = [6, 5, 3, 1, 7, 2, 4];
+    for (let j = 0; j < arr.length - 1; j++) {
+      for (var i = 0; i < arr.length - 1 - j; i++) {
+        count++;
+        if (arr[i] > arr[i + 1]) {
+          var temp = arr[i];
+          arr[i] = arr[i + 1];
+          arr[i + 1] = temp;
+        }
+      }
+    }
+    console.log(arr, count);
+
+
+    // 终极版
+    // 优化点：如果数组已经排好序了，没有必要继续了
+    // 问题：我咋知道数组已经排好序了，  break
+    // 假设成立法
+  </script>
+</body>
+
+</html>
