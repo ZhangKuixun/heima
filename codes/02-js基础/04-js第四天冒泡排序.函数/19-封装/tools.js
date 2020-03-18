@@ -92,12 +92,10 @@ function unique (arr) {
  * @return: true或者false
  */
 function contain (arr, value) {
-  var flag = false;
   for (var i = 0; i < arr.length; i++) {
     if (arr[i] === value) {
-      flag = true;
-      break;
+      return true;
     }
   }
-  return flag;
+  return false;
 }
