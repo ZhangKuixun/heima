@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 预解析：预先解析
+    // js代码从上往下一行一行执行
+
+    /* 
+    1.js有一个预解析的过程
+      目的：确保代码没有语法错误
+            确定有多少变量
+    2.js代码从上往下一行一行执行。
+
+    预解析：
+      把所有var声明的变量提升到当前作用域的最前面，不会提升赋值。如果有同名的var声名，会忽略。
+      把所有function声明的变量提升到当前作用域的最前面，不会提示调用。如果有同名的function声明，会覆盖。
+      如果变量名和函数名重名，函数优先。
+
+    */
+
+    // console.log(num)
+    // var num = 11;
+    // console.log(num);
+
+
+    // 如果变量名和函数名重名，函数优先。
+    console.log(a);
+    var a = 10;
+    function a() {
+      console.log('haha');
+    }
+  </script>
+</body>
+
+</html>

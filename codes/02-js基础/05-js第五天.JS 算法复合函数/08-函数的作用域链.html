@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 函数有作用域，如果函数内部还有函数，也会形成作用域，作用域一层套一层，形成作用域链
+    var num1 = 11;
+    function fn() {
+      var num1 = 22;
+      function fn2() {
+        var num3 = 33;
+        console.log(num3);
+      }
+      fn2();
+    }
+    fn();
+  </script>
+</body>
+
+</html>
