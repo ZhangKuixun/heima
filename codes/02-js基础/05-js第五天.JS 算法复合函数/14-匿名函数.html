@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    匿名函数：
+      使用1：赋值给变量==>>函数表达式。
+      使用2：匿名函数自调用。
+    */
+    var fn = function(){
+      console.log('嘻嘻');
+    }
+    fn();
+
+    // 使用2：匿名函数自调用。沙箱（非常有用）
+    (function(){
+      console.log('哈哈');
+    })()
+  </script>
+</body>
+</html>

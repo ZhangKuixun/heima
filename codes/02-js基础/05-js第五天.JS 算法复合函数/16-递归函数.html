@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // function getSum(n) {
+    //   // 递归的约束条件
+    //   if (n === 1) {
+    //     return 1;
+    //   }
+    //   return getSum(n - 1) + n;
+    // }
+    // console.log(getSum(100));
+
+
+    // 兔子数，斐波那契数列
+    // 买一对兔子回来
+    // 1 1 2 3 5 8 13 21 34 55
+    // 需求：计算第n个月的兔子有多少
+    // 当月的兔子数 = 前第一个月 + 前第二个月
+    // 已知条件，第一个月和第二个月都是1对
+    function getTu(n) {
+      if (n === 1 || n === 2) {
+        return 1;
+      }
+      return getTu(n - 1) + getTu(n - 2);
+    }
+    console.log(getTu(12));
+  </script>
+</body>
+
+</html>

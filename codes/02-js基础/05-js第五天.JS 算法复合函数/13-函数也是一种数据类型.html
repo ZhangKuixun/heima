@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    场景的数据类型
+      简单数据类型：number、string 、boolean、undefined、null
+      复杂数据类型：array、function
+
+    函数其实就是一个值，复杂类型的值，函数一般被调用。
+    */
+
+    // 申明函数的两种方式：
+    // 方式1:
+    function fn(){
+      console.log('哈哈哈');
+    }
+    fn();
+    // // 赋值给fn1
+    // var fn1 = fn;
+    // fn1();
+
+    // 第二种方式：函数表达式
+    var fn1 = function(){
+      console.log('呵呵呵');
+    }
+    fn1();
+  </script>
+</body>
+</html>

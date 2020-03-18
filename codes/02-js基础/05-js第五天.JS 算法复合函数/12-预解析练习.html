@@ -43,20 +43,43 @@
     // /* 4 6 报错 */
 
 
-    // 3.
+    // // 3.
+    // /*
+    //   第一步：预解析，var num，fn1()
+    //   第二步：从上往下执行，num = 10，执行fn1，
+    //           函数fn1的作用域：预解析, var num，
+    //                           从上往下执行，num没有赋值，num=undefined。
+    //  */
+    // var num = 10;
+    // fn1();
+    // function fn1() {
+    //   console.log(num);
+    //   var num = 20;
+    // }
+    // /* undefined */
+
+    // 4.
     /*
-      第一步：预解析，var num，fn1()
-      第二步：从上往下执行，num = 10，执行fn1，
-              函数fn1的作用域：预解析, var num，
-                              从上往下执行，num没有赋值，num=undefined。
+      第一步：预解析，找所有的var,没有，找所有的function，有fn3。
+      第二部：从上往下执行，执行fn3()，
+              函数fn3预解析，找所有的var，有一个 var a，
+                          从上往下执行，告诉浏览器，让c等于9，浏览器不认识c，fn3外面也没有c，在fn3外面让c等于9，在fn3外面让b等于9。
+                          打印a、b、c，都是9。
+
      */
-    var num = 10;
-    fn1();
-    function fn1() {
-      console.log(num);
-      var num = 20;
+    fn3();
+    console.log(c);
+    console.log(b);
+    console.log(a);
+    function fn3(){
+      var a = b = c = 9;
+      console.log(a);
+      console.log(b);
+      console.log(c);
     }
-    /* undefined */
+    /* 9 9 9 9 9 报错 */
+    
+    
     
   </script>
 </body>
