@@ -3,7 +3,7 @@
  * @param {type} arr 数组
  * @return: 最大值
  */
-function getMax(arr) {
+function getMax (arr) {
   var max = arr[0];
   for (let i = 0; i < arr.length; i++) {
     if (max < arr[i]) {
@@ -18,7 +18,7 @@ function getMax(arr) {
  * @param {type}  arr 数组
  * @return: 最小值
  */
-function getMin(arr) {
+function getMin (arr) {
   var min = arr[0];
   for (let i = 0; i < arr.length; i++) {
     if (min > arr[i]) {
@@ -33,7 +33,7 @@ function getMin(arr) {
  * @param {type} arr 数组
  * @return: 翻转后的数组
  */
-function reverse(arr) {
+function reverse (arr) {
   var newArr = [];
   for (let i = 0; i < arr.length; i++) {
     newArr.push(arr[i]);
@@ -46,7 +46,7 @@ function reverse(arr) {
  * @param {type} arr 数组
  * @return: 排序后的从小到大的数组
  */
-function bubbleSort(arr) {
+function bubbleSort (arr) {
   for (let j = 0; j < arr.length - 1; j++) {
     // 假设都排好序了
     var flag = true;
@@ -73,14 +73,31 @@ function bubbleSort(arr) {
  * @param {type} arr 数组
  * @return: 去重后的数组
  */
-function unique(arr){
+function unique (arr) {
   for (let i = 0; i < arr.length; i++) {
     for (let j = i + 1; j <= arr.length; j++) {
       if (arr[i] == arr[j]) {
-       arr.splice(j,1);
-       j--;
+        arr.splice(j, 1);
+        j--;
       }
     }
   }
   return arr;
+}
+
+/**
+ * @description: 判断value是否在arr中存在
+ * @param {type} arr 数组
+ * @param {type} value 值
+ * @return: true或者false
+ */
+function contain (arr, value) {
+  var flag = false;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === value) {
+      flag = true;
+      break;
+    }
+  }
+  return flag;
 }
