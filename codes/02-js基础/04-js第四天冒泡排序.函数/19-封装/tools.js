@@ -74,19 +74,18 @@ function bubbleSort (arr) {
  * @return: 去重后的数组
  */
 function unique (arr) {
+  var newArr = [];
   for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j <= arr.length; j++) {
-      if (arr[i] == arr[j]) {
-        arr.splice(j, 1);
-        j--;
-      }
+    if (contain(newArr, arr[i])) {
+      continue;
     }
+    newArr.push(arr[i]);
   }
-  return arr;
+  return newArr;
 }
 
 /**
- * @description: 判断value是否在arr中存在
+ * @description: 判断arr中是否存在value
  * @param {type} arr 数组
  * @param {type} value 值
  * @return: true或者false
