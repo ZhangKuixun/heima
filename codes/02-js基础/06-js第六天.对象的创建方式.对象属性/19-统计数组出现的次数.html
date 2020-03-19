@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // var obj = {
+    //   name: 'aaa',
+    //   age: 18,
+    //   gender: '女'
+    // }
+    // /*
+    // in 操作符
+    //   判断对象是否有某个属性
+    // 属性名 in 对象名
+    // */
+    // console.log('name' in obj);
+
+
+    // 统计这个数组中每个字母出现的次数
+    var arr = ['a', 'b', 'c', 'a', 'c', 'a', 'a', 'x', 'z']
+    var obj = {};
+    /*
+    1.遍历arr数组。
+    2.判断arr[i] 是否在obj中存在
+    3.如果存在，让值+1
+    4.如果不存在，增加一个属性，值为1
+    */
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] in obj) {// 存在
+        obj[arr[i]]++;
+      } else {
+        obj[arr[i]] = 1;// 去重了
+      }
+    }
+    console.log(obj);
+
+    // obj对象变成数组
+    // 数组储存obj中所有的key
+    var newArr = [];
+    for (const key in obj) {
+      newArr.push(key);
+    }
+    console.log(newArr);
+  </script>
+</body>
+
+</html>
