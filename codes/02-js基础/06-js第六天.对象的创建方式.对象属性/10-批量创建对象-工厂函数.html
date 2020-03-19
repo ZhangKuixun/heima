@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 工厂函数
+    function createStudent(name, age) {
+      var obj = {};
+      obj.name = name;
+      obj.age = age;
+      obj.seyHi = function () {
+        console.log('大家好，我是' + this.name);
+      }
+      return obj;
+    }
+    var xm = createStudent('小明', 18);
+    console.log(xm);
+    xm.seyHi();
+
+    var xh = createStudent('小红', 20);
+    console.log(xh);
+    xh.seyHi();
+    
+  </script>
+</body>
+
+</html>

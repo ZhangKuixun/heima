@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 创建对象
+    var obj = {
+      name: '小连子',
+      age: 23,
+      gender: '女',
+      dianming: function () {
+        console.log('点名');
+      }
+    }
+
+    // 取值：对象名.属性名
+    // 属性名不存在，返回undefined。
+    // 调用方法。函数：function声明。方法：对象中的函数。
+    console.log(obj.age);
+    console.log(obj.name);
+    console.log(obj.xxx);
+    obj.dianming();
+
+    // 存值
+    // 对象名.属性名=值
+    // 属性存在，修改原来的属性，不存在，新增一个属性
+    obj.name = 'lll';
+    obj.xxx = '是啥？';
+    console.log(obj);
+
+  </script>
+</body>
+
+</html>

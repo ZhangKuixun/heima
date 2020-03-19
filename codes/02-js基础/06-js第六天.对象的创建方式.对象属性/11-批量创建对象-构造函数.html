@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+
+<body>
+  <script>
+    // 构造函数：首字母大写的函数。
+    function Student(name, age) {
+      this.name = name;
+      this.age = age;
+      this.seyHi = function (n) {
+        console.log('大家好，我是' + this.name+'。'+n);
+      }
+    }
+    var xm = new Student('小明', 12);
+    console.log(xm);
+    xm.seyHi('校长是你爹');
+
+    var xh = new Student('小红', 12);
+    console.log(xh);
+    /* 
+      new的4个步骤：
+        1.创建空对象。
+        2.让构造函数里的this指向新对象。
+        3.执行构造函数。
+        4.返回对象。
+     */
+  </script>
+</body>
+
+</html>

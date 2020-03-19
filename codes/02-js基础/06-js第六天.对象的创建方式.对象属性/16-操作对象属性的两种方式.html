@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var obj = {
+      name: 'zs',
+      age: 18
+    }
+
+    // 方式一：点语法-->对象名.属性
+    console.log(obj.name);
+    obj.name = 'ls';
+    console.log(obj);
+
+    // 方式二：[]语法-->对象名['属性名']
+    obj['name'] = 'ls';
+    console.log(obj);
+
+
+    // 例子：请封装一个函数，能打印指定对象的指定属性。
+    function fn(key) {
+      var obj = { name: 'zs', age: 18, gender: '女' };
+      console.log(obj[key]);
+    }
+    fn('gender');
+    fn('age');
+  </script>
+</body>
+
+</html>

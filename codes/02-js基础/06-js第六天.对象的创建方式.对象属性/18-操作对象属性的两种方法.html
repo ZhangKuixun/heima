@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 需求：有一个数组，通过数组得到一个对象{name1:'张三'}
+    var arr = ['张三', '李四', '王五'];
+    var obj = {};
+    for (let i = 0; i <= arr.length; i++) {
+      obj['name' + i] = arr[i];
+    }
+    console.log(obj);
+    
+  </script>
+</body>
+
+</html>

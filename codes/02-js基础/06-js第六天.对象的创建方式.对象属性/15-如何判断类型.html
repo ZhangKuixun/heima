@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+/* 
+typeof 判断类型
+1.typeof 只能判断简单数据类型的类型。number string boolean undefined
+2.typeof 判断复杂类型，全部是object。
+3.如果判断的是函数，其实函数也是复杂类型，返回值是function，函数再js中是一等公民。
+4.typeof null 结果是object。
+*/
+    var n = 1;
+    console.log(typeof n);
+
+    var obj = {};
+    var arr = [];
+    console.log(typeof obj);
+    console.log(typeof arr);
+
+    function Hero() {
+    }
+    console.log(typeof Hero);
+
+    var h = new Hero();
+    console.log(typeof h);
+
+    console.log(typeof null);
+
+  </script>
+</body>
+
+</html>
