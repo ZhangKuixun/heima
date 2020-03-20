@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    从内存存储的角度来分
+    值类型：简单类型。
+    引用类型：复杂类型。
+
+    定义的变量，数据都在内存中。
+
+    值类型：简单类型，在内存中存变量时，存储的就是值本身。
+    引用类型：复杂类型，变量并不会直接把整个复杂类型给存储起来，存储的仅仅是这个复杂类型的地址。
+    */
+
+
+    var obj = {
+      name: 'zs',
+      age: 18
+    }
+    var obj1 = obj;
+    obj1.name = 'ls';
+    console.log(obj, obj1);
+
+  </script>
+</body>
+
+</html>
