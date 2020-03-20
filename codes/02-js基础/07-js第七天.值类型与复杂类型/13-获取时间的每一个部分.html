@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var date = new Date();
+    // 获取年份
+    var year = date.getFullYear();
+    console.log(year);
+
+    // 获取月，需要加1
+    var month = date.getMonth();
+    console.log(month);
+
+    // 获取日，用getDate()，不是getDay()，getDay是一周的第几天
+    var day = date.getDate();
+    console.log(day);
+
+    // 小时
+    var hour = date.getHours();
+    console.log(hour);
+
+    // 分钟
+    var minute = date.getMinutes();
+    console.log(minute);
+
+    // 秒
+    var second = date.getSeconds();
+    console.log(second);
+
+  </script>
+</body>
+
+</html>

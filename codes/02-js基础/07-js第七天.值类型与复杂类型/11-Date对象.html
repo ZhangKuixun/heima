@@ -9,17 +9,44 @@
 
 <body>
   <script>
-    // Date是一个内置构造函数，日期需要创建
+    // Date是一个内置构造函数，日期需要 new。
 
     /*
     创建一个日期对象
-    用法：new Date() 创建一个当前的时间。
+    用法1：new Date() 创建一个当前的时间。
     */
     var date = new Date();
     console.log(date);
-    
+
+
+    /* 
+    用法2：创建一个指定的时间 new Date('')
+           参数：指定的时间字符串
+    */
+    var date1 = new Date('2018-12-12 12:00:00');
+    console.log(date1);
+
+
+    /* 
+    用法3：参数可以是年月日时分秒，月份从0开始
+    */
+    var date2 = new Date(2018, 1, 2);
+    console.log(date2);
     
 
+    /*
+    用法4：参数可以是时间戳  1970年1月0时，距离现在过去的毫秒数
+     */
+    var date3 = new Date(1000000000000);
+    console.log(date3);
+    
+
+    /* 
+    1. new Date() 创建当前时间
+    2. new Date('2018-12-12') 创建指定时间
+    3. new Date(2018, 1, 2) 创建指定时间
+    4. new Date(时间戳) 创建指定时间
+    */
   </script>
 </body>
 
