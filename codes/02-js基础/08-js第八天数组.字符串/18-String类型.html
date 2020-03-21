@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1.字符串可以跟数组一样进行遍历
+    var str = 'sadfsgrg'
+    for (let i = 0; i < str.length; i++) {
+      console.log(str[i]);
+    }
+
+    /* 
+      2. indexOf  获取字符第一次出现的位置，没有，返回-1
+         lastIndexOf  获取字符最后出现的位置，没有，返回-1
+    */
+    var str = 'sadfjskdf'
+    console.log(str.indexOf('dd'));
+
+    // 3. trim 去除字符串两边的空格
+    var str = '    ad  re    '
+    console.log(str.trim());
+
+    /* 
+        4. toUpperCase() 转换成大写
+           toLowerCase() 转换成小写
+    */
+    var str = "Hello Word"
+    console.log(str.toUpperCase());
+    console.log(str.toLowerCase());
+
+    // 5. 字符串的拼接和截取
+    var str = 'abc'
+    var str1 = 'bcd'
+    console.log(str.concat(str1));
+    console.log(str + str1);
+
+    // 6. 字符串截取
+    var str = 'abdsldkfj'
+    // slice(begin, end)
+    console.log(str.slice(1, 3));
+    // str.substring(begin, end)
+    console.log(str.substring(1, 3));
+    // str.substr(begin, length)  从bigin开始截取，截取length个字符
+    console.log(str.substr(1, 2));
+
+    /* 
+      7. split 把一个字符串按照分隔符切割成一个数组
+        返回值：一个数组
+    */
+    var str = '张飞|赵云|马超'
+    var arr = str.split('|')
+    console.log(arr);
+    console.log(arr.join('|'));
+
+    // 需求：翻转一个字符串
+    var str = 'abcdefg'
+    console.log(str.split('').reverse().join(''));
+
+    /* 
+      8. replace
+      参数1：表示要替换的值
+      参数2：替换成什么值
+    */
+    var str = "大家好，我是kevin，我最帅，我最有钱"
+    console.log(str.replace('帅', '有钱'));
+  </script>
+</body>
+
+</html>

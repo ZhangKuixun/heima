@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var arr = ['c', 'a', 'z', 'a', 'x', 'a', 'a', 'z'];
+    // 数组去重
+    // 思路：有一个新数组，遍历老数组，判断数组中是否存在元素，如果不存在，添加到新数组中
+    var newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      if (newArr.indexOf(arr[i]) === -1) {
+        newArr.push(arr[i])
+      }
+    }
+    console.log(newArr);
+
+
+    /*
+    获取数组中每个元素出现的次数
+
+    思路：
+    1.有一个空对象
+    2.遍历数组arr
+    3.判读对象中是否存在arr[i]
+    4.如果存在，值+1，如果不存在，增加这个属性，值=1
+    */
+    var obj = new Object();
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] in obj) {
+        obj[arr[i]] += 1;
+      } else {
+        obj[arr[i]] = 1;
+      }
+    }
+    console.log(obj);
+    
+  </script>
+</body>
+
+</html>
