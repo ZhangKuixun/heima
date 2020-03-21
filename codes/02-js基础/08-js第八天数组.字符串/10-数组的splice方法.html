@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    splice
+    增删原数组中任意位置的元素
+    参数1：start--从谁开始删除元素
+    参数2：deleteCount--删除的个数，如果不传，表示删除start后所有的元素
+    参数3：表示需要添加的元素，可以添加多个元素
+    返回值：删除的元素
+     */
+    var arr = ['张飞', '赵云', '马超', '黄忠', '关羽'];
+    // 用法一：arr.splice(start)  从start开始删除后面所有的元素
+    // var newArr = arr.splice(2);
+    // console.log(arr);
+    // console.log(newArr);
+
+    // 用法二：splice(sart, deleteCount) 从start开始删除后面指定的个数
+    // var newArr = arr.splice(1, 1)
+    // console.log(arr);
+    // console.log(newArr);
+
+    // 用法三：splice(start, deleteCount, item1, item2)  从start开始删除后面指定的个数，并且添加item1、item2
+    // arr.splice(2, 1, '魏延', '张宝')
+    // console.log(arr);
+    arr.splice(2, 0, '魏延', '张宝')
+    console.log(arr);
+
+
+
+  </script>
+</body>
+
+</html>
