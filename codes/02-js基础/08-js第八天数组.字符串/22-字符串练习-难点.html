@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var str = 'my_name_is_jim_green'
+    // 把上面的字符串变成myNameIsJimGreen
+    // var arr = str.split('_')
+    // console.log(arr);
+    // var endStr = ''
+    // for (let i = 0; i < arr.length; i++) {
+    //   if (i == 0) {
+    //     endStr = arr[i]
+    //     continue
+    //   }
+    //   var arrStr = arr[i].split('')
+    //   var upper = arrStr[0].toUpperCase()
+    //   arrStr.shift()
+    //   arrStr.unshift(upper)
+    //   var join_ = arrStr.join('')
+    //   endStr += join_
+    // }
+    // console.log(endStr);
+
+    //改进：
+    var arr = str.split('_')
+    for (let i = 1; i < arr.length; i++) {
+      // console.log(arr[i][0].toUpperCase());
+      // console.log(arr[i].slice(1));
+      arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1)
+    }
+    console.log(arr.join(''));
+
+  </script>
+</body>
+
+</html>
