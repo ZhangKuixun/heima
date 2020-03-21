@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var arr1 = [1, 2, 3];
+    var arr2 = [4, 5, 6];
+    var arr3 = [7, 8, 9];
+
+    /* 
+    concat
+    作用：合并两个数组，返回合并后的数组，原数组不会改变
+    参数：用于合并的数组
+    返回值：合并后的数组
+     */
+    var newArr = arr1.concat(arr2).concat(arr3)
+    console.log(newArr);
+
+    /*
+    slice
+    截取数组的某个部分，原数组不会发生改变，截取到的结果就是返回值
+     */
+    var arr = [1, 2, 3, 4, 5, 6]
+
+    // 用法1：不传参数
+    var newArr = arr.slice();
+    console.log(newArr);
+
+    // 用法2：一个参数slice(begin)，从begin下标开始截取，包含bigain
+    var newArr = arr.slice(2);
+    console.log(newArr);
+
+    // 用法3：两个参数slice(begin, end)，从begin下标开始截取，截取到end，不包含end
+    var newArr = arr.slice(2, 4)
+    console.log(newArr);
+
+
+
+  </script>
+</body>
+
+</html>
