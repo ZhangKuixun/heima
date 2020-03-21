@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var arr = ['孙权', '周瑜', '孙博']
+    /*
+    push
+    作用：数组最后面添加一个或者多个元素
+    参数：1个或者多个值
+    返回值：数组添加后的长度
+     */
+    // var result = arr.push('小乔', '吕蒙', '大乔')
+    // console.log(result);
+    // console.log(arr);
+
+    /*
+    unshift
+    作用：数组最前面添加一个或者多个元素
+    返回值：数组添加后的长度
+     */
+    var result = arr.unshift('张文')
+    console.log(arr, result);
+
+    /*
+    pop
+    作用：删除数组最后面的一个元素
+    参数：无
+    返回值：删除的那个元素
+     */
+    var arr = ['司马懿', '曹操', '典韦']
+    var result = arr.pop()
+    console.log(arr, result);
+
+
+    /* 
+    shift
+    作用：删除数组最前面的一个元素
+    参数：无
+    返回值：删除的元素
+     */
+    var arr = ['司马懿', '曹操', '典韦']
+    var result = arr.shift();
+    console.log(arr, result);
+    
+  </script>
+</body>
+
+</html>
