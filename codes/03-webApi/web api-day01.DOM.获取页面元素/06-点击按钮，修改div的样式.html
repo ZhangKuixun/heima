@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,6 +11,7 @@
             height: 100px;
             background-color: #f99;
         }
+
         .box {
             width: 300px;
             height: 300px;
@@ -17,17 +19,23 @@
         }
     </style>
 </head>
+
 <body>
     <button id='btn'>按钮</button>
     <div id="box2"></div>
     <script>
         // 修改div的样式，给div添加box类名
         var btn = document.getElementById('btn')
-        var box2 = document.getElementById('box2') 
-        btn.onclick = function(){
+        var box2 = document.getElementById('box2')
+        btn.onclick = function () {
             // class属性特殊：标签中的class属性对应了DOM对象中的className属性。
             // box2.class = 'box'
+
+            console.dir(box2)
+
+            box2.className = "box"
         }
     </script>
 </body>
+
 </html>
