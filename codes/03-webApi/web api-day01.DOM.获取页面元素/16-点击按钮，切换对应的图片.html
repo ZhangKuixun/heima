@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="button" value="第1张" title="1">
+  <input type="button" value="第2张" title="2">
+  <input type="button" value="第3张" title="3">
+  <input type="button" value="第4张" title="4">
+  <br>
+  <img src="images/1.jpg" alt="" width="300" height="300" id="img">
+</body>
+<script>
+  var btn = document.getElementsByTagName('input')
+  var img = document.getElementById('img')
+  for (let i = 0; i < btn.length; i++) {
+    btn[i].onclick = function () {
+      // 按钮身上有title属性，储存这切换后的图片地址
+
+      // 思想：我要展示谁，我就把谁的路径展示出来
+      img.src = 'images/' + this.title + '.jpg'
+    }
+
+  }
+</script>
+
+</html>

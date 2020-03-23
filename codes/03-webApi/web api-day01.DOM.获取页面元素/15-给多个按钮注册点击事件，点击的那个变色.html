@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .button {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+
+<body>
+  <script>
+    var btn = document.getElementsByTagName('button')
+    for (let i = 0; i < btn.length; i++) {
+      console.dir(btn[i])
+      btn[i].onclick = function () {
+        this.className = 'button'
+        // 不能使用btn[i].className，因为btn[i]中的i，此时的i是10
+      }
+    }
+  </script>
+</body>
+
+</html>

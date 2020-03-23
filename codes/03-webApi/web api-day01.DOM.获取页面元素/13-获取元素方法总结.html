@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="box">
+    <p>p标签</p>
+    <div>div标签</div>
+  </div>
+
+  <script>
+    var p = document.getElementsByTagName('p')[0]
+    console.log(p);
+
+    // var box = document.getElementById('box')
+    // var div = box.getElementsByTagName('div')[0]
+
+    var div = document.getElementById('box').getElementsByTagName('div')[0]
+
+    console.log(div);
+
+  </script>
+</body>
+
+</html>

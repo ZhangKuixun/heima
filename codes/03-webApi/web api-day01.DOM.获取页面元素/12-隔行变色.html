@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red {
+      background-color: red;
+    }
+
+    .pink {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+
+  <ul id="box">
+    <li>莲妹去哪儿了</li>
+    <li>莲妹去哪儿了</li>
+    <li>莲妹去哪儿了</li>
+    <li>莲妹去哪儿了</li>
+    <li>莲妹去哪儿了</li>
+    <li>莲妹去哪儿了</li>
+    <li>莲妹去哪儿了</li>
+    <li>莲妹去哪儿了</li>
+    <li>莲妹去哪儿了</li>
+    <li>莲妹去哪儿了</li>
+  </ul>
+
+  <ol>
+    <li>整个li不需要改变</li>
+    <li>整个li不需要改变</li>
+    <li>整个li不需要改变</li>
+    <li>整个li不需要改变</li>
+    <li>整个li不需要改变</li>
+    <li>整个li不需要改变</li>
+    <li>整个li不需要改变</li>
+    <li>整个li不需要改变</li>
+    <li>整个li不需要改变</li>
+    <li>整个li不需要改变</li>
+  </ol>
+
+  <script>
+    // 在整个页面中查找li元素，获取的就是页面中所有的li元素
+    // var ret = document.getElementsByTagName('li')
+
+    // 从父元素获取子元素，更精确
+    var ul = document.getElementById('box')
+    var ret = ul.getElementsByTagName('li')
+    console.log(ret)
+
+    for (let i = 0; i < ret.length; i++) {
+      if (i % 2 == 0) {
+        ret[i].className = 'red'
+      } else {
+        ret[i].className = 'pink'
+      }
+    }
+  </script>
+</body>
+
+</html>
