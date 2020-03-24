@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    body {
+      padding-left: 100px;
+    }
+
+    ul {
+      overflow: hidden;
+      margin: 50px 0;
+    }
+
+    ul li {
+      float: left;
+      margin-right: 10px;
+    }
+
+    ul li a img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="imgs">
+    <h1>美女相册</h1>
+    <li>
+      <a href="images/1.jpg" title="美女a">
+        <img src="images/1.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="images/2.jpg" title="美女b">
+        <img src="images/2.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="images/3.jpg" title="美女c">
+        <img src="images/3.jpg" alt="">
+      </a>
+    </li>
+    <li>
+      <a href="images/4.jpg" title="美女D">
+        <img src="images/4.jpg" alt="">
+      </a>
+    </li>
+  </ul>
+
+  <!-- 大图 -->
+  <img src="" width="400px" height="300px" id="bigImg">
+
+  <!-- 说明信息 -->
+  <p id="des">这是描述信息</p>
+
+  <script>
+
+    /* 
+    思路：
+    1.找对象（所有的a）
+    2.给a注册click
+    3.禁止跳转
+    4.bigImg的src换成当前点击的a的href属性值
+    5.des的文字内容换成当前点击的a的title属性值
+     */
+    var a_ = document.getElementById('imgs').getElementsByTagName('a')
+    var bigImg = document.getElementById('bigImg')
+    var des = document.getElementById('des')
+
+    for (let i = 0; i < a_.length; i++) {
+      a_[i].onclick = function () {
+        bigImg.src = this.href
+        des.innerText = this.title
+        return false
+      }
+    }
+    console.dir(a_)
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .nodeSmall {
+      width: 50px;
+      height: 50px;
+      background: url('images/1.jpg') no-repeat -195px -51px;
+      position: fixed;
+      right: 10px;
+      top: 40%;
+    }
+
+    .nodeSmall a {
+      display: block;
+      width: 50px;
+      height: 50px;
+    }
+
+    .erweima {
+      position: absolute;
+      top: 0;
+      left: -200px;
+    }
+
+    .hide {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nodeSmall" id="node_small">
+    <a href="#" id="link"></a>
+    <div class="erweima hide" id="er">
+      <img src="images/456.jpg" alt="">
+    </div>
+  </div>
+  <script>
+    /*
+    onmouseover：鼠标移入事件
+    onmouseout：鼠标离开事件
+
+    思路：
+    1.找对象a
+    2.给a注册onmouseover
+    3.二维码的hide类名去掉，二维码就展示出来了
+     */
+    var link = document.getElementById('link')
+    var er = document.getElementById('er')
+    link.onmouseover = function () {
+      // 注意：设置类名的时候，注意标签有几个类名
+      er.className = 'erweima'
+    }
+    link.onmouseout = function () {
+      er.className = 'erweima hide'
+    }
+  </script>
+</body>
+
+</html>

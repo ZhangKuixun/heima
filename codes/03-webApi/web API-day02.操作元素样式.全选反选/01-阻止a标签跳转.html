@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <a id="link" href="www.baidu.com">百度链接</a>
+  <script>
+    // 阻止a标签跳转
+    // 如果需要阻止a链接跳转，就需要给a链接注册click，在事件处理函数中return false
+
+    var link = document.getElementById('link')
+    link.onclick = function () {
+      return false
+    }
+  </script>
+
+</body>
+
+</html>
