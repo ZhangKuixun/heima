@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" disabled>
+  <input type="checkbox" checked>
+  <select name="" id="">
+    <option value="1">1</option>
+    <option value="1" selected>2</option>
+  </select>
+  <button id="btn">按钮</button>
+  <script>
+    /*
+    表单属性操作
+    常见的属性：type、name、value...
+    布尔类型的属性：disabled,checked,selected
+      1.标签中：这些属性只要标签中有，就可以起到效果
+      2.dom对象：在dom对象中都是布尔类型的
+     */
+    var btn = document.getElementById('btn')
+    btn.onclick = function () {
+      this.disabled = true
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">按钮</button>
+  <select name="" id="select">
+    <option>为人民</option>
+    <option>说的</option>
+    <option>浮动</option>
+    <option>受到</option>
+    <option>二哥</option>
+    <option>恩赐</option>
+  </select>
+
+  <script>
+    var btn = document.getElementById('btn')
+    var opt = document.getElementById('select').getElementsByTagName('option')
+    btn.onclick = function () {
+
+      //获取随机下标
+      var random = parseInt(Math.random() * (opt.length - 1))
+      console.log(random)
+
+      opt[random].selected = true
+    }
+  </script>
+</body>
+
+</html>

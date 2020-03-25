@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text"><br>
+  <input type="text"><br>
+  <input type="text"><br>
+  <input type="text"><br>
+  <input type="checkbox"><br>
+  <input type="text"><br>
+  <input type="text"><br>
+  <input type="text"><br>
+  <input type="button" id="btn" value="禁用所有的文本框">
+  <script>
+    var btn = document.getElementById('btn')
+    var txt = document.getElementsByTagName('input')
+    btn.onclick = function () {
+      for (let i = 0; i < txt.length; i++) {
+        if (txt[i].type == 'text') {
+          txt[i].disabled = true
+        }
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>
