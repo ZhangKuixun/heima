@@ -22,6 +22,7 @@
     var txt = document.getElementsByTagName('input')
     btn.onclick = function () {
       for (let i = 0; i < txt.length; i++) {
+        // type属性
         if (txt[i].type == 'text') {
           txt[i].disabled = true
         }

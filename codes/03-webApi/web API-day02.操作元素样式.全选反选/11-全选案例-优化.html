@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="wrap">
+    <table>
+      <thead>
+        <tr>
+          <th><input type="checkbox" id="j_cbAll"></th>
+          <th>菜名</th>
+          <th>饭店</th>
+        </tr>
+      </thead>
+      <tbody id="j_tb">
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>红烧肉</td>
+          <td>老师</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>红烧肉</td>
+          <td>老师</td>
+        </tr>
+        <tr>
+          <td><input type="checkbox"></td>
+          <td>红烧肉</td>
+          <td>老师</td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+  <script>
+    var j_cbAll = document.getElementById('j_cbAll')
+    var j_tb = document.getElementById('j_tb').getElementsByTagName('input')
+    j_cbAll.onclick = function () {
+      for (let i = 0; i < j_tb.length; i++) {
+        j_tb[i].checked = j_cbAll.checked
+      }
+    }
+
+    // 假设成立法
+    for (let i = 0; i < j_tb.length; i++) {
+      j_tb[i].onclick = function () {
+        // 假设都被选中
+        var flag = true
+        for (let i = 0; i < j_tb.length; i++) {
+          if (!j_tb[i].checked) {
+            // 有一个没有被选中
+            flag = false
+            break
+          }
+        }
+        j_cbAll.checked = flag
+      }
+    }
+  </script>
+</body>
+
+</html>
