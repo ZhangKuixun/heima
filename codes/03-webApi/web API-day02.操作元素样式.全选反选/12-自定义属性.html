@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="test" title="标题" aa="bb" class="cl">测试固有属性</div>
+  <script>
+    /*
+
+    属性操作方法
+    getAttribute(name); // 就是字符串类型的属性名
+        作用：获取元素的属性值，
+        注意点：属性操作方法只要是标签的属性都可以操作（不管属性是固定的还是自定义的）
+
+      操作类名不同：
+        box.className
+        box.getAttribute('class')
+    */
+    var test = document.getElementById('test')
+
+    var cl = test.getAttribute('class')
+    var aa = test.getAttribute('aa')
+    console.dir(cl)
+    console.dir(aa)
+
+    console.log(test.aa);
+
+  </script>
+</body>
+
+</html>

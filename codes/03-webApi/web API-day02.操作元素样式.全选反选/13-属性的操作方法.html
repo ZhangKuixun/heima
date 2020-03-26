@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <div id="box" title="标题" aa="bb" class="cl">测试自定义属性</div>
+  <script>
+    /*
+
+    属性操作方法
+    getAttribute(name); // 就是字符串类型的属性名
+        作用：获取元素的属性值，
+        注意点：属性操作方法只要是标签的属性都可以操作（不管属性是固定的还是自定义的）
+
+      操作类名不同：
+        box.className
+        box.getAttribute('class')
+    */
+    var box = document.getElementById('box')
+    // console.dir(box)
+
+    var cl = box.setAttribute('title', '把标题改了')
+    var aa = box.setAttribute('aa', 'dsdf')
+
+    var cl = box.getAttribute('title')
+    var aa = box.getAttribute('aa')
+
+    /* 
+    removeAttribute(name)
+      移除标签中的属性
+      name：字符串类型的属性名
+    */
+    box.removeAttribute('class')
+
+    console.dir(cl)
+    console.dir(aa)
+    console.dir(box)
+  </script>
+</body>
+
+</html>
