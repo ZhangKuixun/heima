@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box">
+    <h1>这是标题内容</h1>
+  </div>
+  <script>
+    var box = document.getElementById('box')
+
+    /*
+    获取内容：
+        innerText：不能识别标签，获取内容只能获取纯文本
+        innerHTML：能识别标签，获取内容可以获取到标签
+    */
+    console.log(box.innerText);
+    console.log(box.innerHTML);
+
+    /* 
+    设置内容（纯文本）：
+      共同点：设置内容都覆盖标签中默认的内容
+    */
+    box.innerText = '设置后的内容Text'
+    box.innerHTML = '设置后的内容'
+
+    /* 
+    设置内容（带标签）：
+      innerText 不能识别标签，设置内容的时候，把标签转义了，标签成了普通文本
+      innerHTML 可以识别标签，在设置内容的时候，标签可以起效果。
+    */
+    box.innerText = '<h1>修改</h1>'
+    box.innerHTML = '<h1>修改</h1>'
+
+  </script>
+</body>
+
+</html>
