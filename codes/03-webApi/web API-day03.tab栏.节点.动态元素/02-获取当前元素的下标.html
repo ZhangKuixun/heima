@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <script>
+    // 需求：点击按钮时，获取当前按钮的下标
+
+    // 方法一：
+    var btn = document.getElementsByTagName('button')
+
+    // for (let i = 0; i < btn.length; i++) {
+
+    //   // 先通过js给button标签添加下标，再取出下标
+    //   btn[i].setAttribute('index', i)
+
+    //   btn[i].onclick = function () {
+    //     console.log(this.getAttribute('index'))
+    //     console.dir(this)
+    //   }
+    // }
+
+    // 方法二：
+    for (let i = 0; i < btn.length; i++) {
+
+      // 给dom对象添加index属性，值就是对应的i
+      // dom对象存的，标签上没有index，因为index属性是自定义的
+      btn[i].index = i
+      console.dir(btn[i])
+
+      btn[i].onclick = function () {
+
+        // 通过dom对象的形式去获取index属性
+        console.log(this.index);
+      }
+
+    }
+  </script>
+</body>
+
+</html>
