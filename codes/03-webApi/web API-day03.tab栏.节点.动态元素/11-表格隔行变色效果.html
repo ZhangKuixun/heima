@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .wrap {
+      width: 500px;
+      margin: 100px auto 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+      width: 500px;
+    }
+
+    th,
+    td {
+      border: 1px solid #d0d0d0;
+      padding: 10px;
+      color: #404060;
+    }
+
+    thead tr th {
+      background-color: goldenrod;
+      font: bold 16px '微软雅黑';
+      color: #fff;
+    }
+
+    td {
+      font: 14px '微软雅黑'
+    }
+  </style>
+  <!-- /* 方式2： css实现效果 */
+    tbody tr:nth-child(odd) {
+      /* odd 偶数 */
+      background-color: lime;
+    }
+
+    tbody tr:nth-child(even) {
+      /* even 奇数 */
+      background-color: yellowgreen;
+    }
+
+    tbody tr:hover {
+      background-color: magenta;
+    } -->
+</head>
+
+<body>
+  <div class="wrap">
+    <table align='center'>
+      <thead>
+        <tr>
+          <th>序号</th>
+          <th>姓名</th>
+          <th>课程</th>
+          <th>成绩</th>
+        </tr>
+      </thead>
+      <tbody align="center">
+        <tr>
+          <td>1</td>
+          <td>柳岩</td>
+          <td>语文</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>苍老师</td>
+          <td>日语</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>凤姐</td>
+          <td>营销</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>张飞</td>
+          <td>数学</td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>小生杨</td>
+          <td>英语</td>
+          <td>100</td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>马超</td>
+          <td>体育</td>
+          <td>100</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+
+    // 方式1
+    var tr = document.querySelectorAll('.wrap table tbody tr')
+    var oldColor// 记录当前鼠标移入上去的那个tr的背景颜色
+    for (let i = 0; i < tr.length; i++) {
+      // 隔行变色
+      if (i % 2 == 0) {
+        tr[i].style.backgroundColor = 'yellowgreen'
+      } else {
+        tr[i].style.backgroundColor = 'lime'
+      }
+      // console.dir(tr[i]);
+
+      // 注册鼠标移入移除，变色
+      tr[i].onmouseover = function () {
+        oldColor = this.style.backgroundColor
+        this.style.backgroundColor = '#09c'
+      }
+      tr[i].onmouseout = function () {
+        this.style.backgroundColor = oldColor
+      }
+    }
+
+  </script>
+</body>
+
+</html>

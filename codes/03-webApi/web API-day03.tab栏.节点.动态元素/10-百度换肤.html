@@ -5,12 +5,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-image: url(images/1.jpg);
+    }
+
+    ul {
+      list-style: none;
+      text-align: center;
+    }
+
+    ul li {
+      margin: 10px auto;
+      display: inline-block;
+    }
+
+    ul li img {
+      width: 100px;
+      height: 100px;
+    }
+  </style>
 </head>
 
 <body>
-
+  <ul>
+    <li><img src="images/1.jpg" alt=""></li>
+    <li><img src="images/2.jpg" alt=""></li>
+    <li><img src="images/3.jpg" alt=""></li>
+    <li><img src="images/4.jpg" alt=""></li>
+    <li><img src="images/5.jpg" alt=""></li>
+  </ul>
   <script>
+    var img = document.querySelectorAll('ul li img')
+    for (let i = 0; i < img.length; i++) {
+      img[i].onclick = function () {
+        var e = this.src;
+        console.log(e);
 
+        // 设置背景图片，一定要加上url()
+        // backgroundImage，单词写错了浏览器不报错
+        document.body.style.backgroundImage = "url(" + this.src + ")";
+      }
+    }
   </script>
 </body>
 
