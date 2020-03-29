@@ -8,8 +8,24 @@
 </head>
 
 <body>
+  <div id="box" style="padding: 20px; border: 1px solid #000;">
+    <h1>这是h1</h1>
+  </div>
+  <p>这是p元素</p>
   <script>
-
+    /*
+    添加节点
+    appendChild
+      语法：parent.appendChild(child)
+      参数：
+        parent：指定的父元素
+        child：指定的子元素，添加到父元素的里面的最后面
+    注意：
+      参数child是页面中存在的元素，添加就是将child剪切到parent中。
+    */
+    var box = document.querySelector('#box')
+    var p = document.querySelector('p')
+    box.appendChild(p)
   </script>
 </body>
 
