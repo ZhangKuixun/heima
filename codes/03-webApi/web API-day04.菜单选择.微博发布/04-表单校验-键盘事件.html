@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  用户名：<input type="text" id="textName"><span></span><br>
+  密码：<input type="password" id="txtPwd"><span></span><br>
+  <script>
+    /*
+    onkeydown：当键盘按下的时候触发
+    okeyup：当键盘弹起的时候
+
+    onkeydown和okeyup在获取input内容的区别：
+      onkeydown 获取的是上一次的内容
+      okeyup 获取的内容是完整的
+    */
+    // var textName = document.querySelector('#textName')
+    // textName.onkeydown = function () {
+    //   console.log('键盘按下去了');
+    //   console.log(textName.value);
+    // }
+    // textName.onkeyup = function () {
+    //   console.log('键盘弹起来了');
+    //   console.log(textName.value);
+    // }
+
+    var textName = document.querySelector('#textName')
+    textName.onkeyup = function () {
+      var length = this.value.length
+      if (length > 6) {
+        // 找input的兄弟元素 span
+        this.nextElementSibling.innerText = '超过最大值'
+        this.nextElementSibling.style.color = 'red'
+      } else if (length >= 2 && length <= 6) {
+        this.nextElementSibling.innerText = '正确'
+        this.nextElementSibling.style.color = 'green'
+      } else if (length <= 0) {
+        this.nextElementSibling.innerText = ''
+      }
+    }
+    var txtPwd = document.querySelector('#txtPwd')
+    txtPwd.onkeyup = function () {
+      var length = this.value.length
+      if (length > 6) {
+        this.nextElementSibling.innerText = '超过最大值'
+        this.nextElementSibling.style.color = 'red'
+      } else if (length >= 2 && length <= 6) {
+        this.nextElementSibling.innerText = '正确'
+        this.nextElementSibling.style.color = 'green'
+      } else if (length <= 0) {
+        this.nextElementSibling.innerText = ''
+      }
+    }
+  </script>
+</body>
+
+</html>
