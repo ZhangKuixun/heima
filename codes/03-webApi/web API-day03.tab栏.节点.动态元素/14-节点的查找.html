@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>这是第1个li元素</li>
+    <li id="two">这是第2个li元素</li>
+    <li>这是第3个li元素</li>
+  </ul>
+  <script>
+    var ul = document.querySelector('ul')
+    /*
+    childNodes：获取所有的子节点
+    children：获取所有的标签节点
+      IE678有bug，会把注释节点计算在内
+     */
+    console.log(ul.childNodes);
+    console.log(ul.children);
+
+    /*
+    firstChild：获取第一个子节点
+    firstElementChild：获取第一个子元素（IE678不支持）
+    */
+    console.log(ul.firstChild);
+    console.log(ul.firstElementChild);
+
+    /*
+    lastChild：获取最后一个子节点
+    lastElementChild：获取最后一个子元素（IE678不支持）
+    */
+    console.log(ul.lastChild);
+    console.log(ul.lastElementChild);
+
+    /*
+    兄弟节点关系
+    previousSibling：上一个兄弟节点
+    previousElementSibling：上一个兄弟元素
+    */
+    var two = document.querySelector('#two')
+    console.log(two.previousSibling);
+    console.log(two.previousElementSibling);
+
+    /*
+    下一个兄弟节点关系
+    nextSibling：下一个兄弟节点
+    nextElementSibling：下一个兄弟元素
+    */
+    var two = document.querySelector('#two')
+    console.log(two.nextSibling);
+    console.log(two.nextElementSibling);
+
+    /*
+    父节点，父元素
+    parentNode：父元素、父节点
+    */
+    var two = document.querySelector('#two')
+    console.log(two.nextSibling);
+    console.log(two.nextElementSibling);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>这是第1个li元素</li>
+    <li>这是第2个li元素</li>
+    <li>这是第3个li元素</li>
+  </ul>
+</body>
+<script>
+  // 节点的属性
+  var ul = document.querySelector('ul')
+
+  /* 
+  childNodes ==>该属性可以用来获取节点所有的子节点
+  节点：任何内容（标签、属性、注释、文本）
+
+  节点的属性：
+    nodeName：节点的名称
+    nodeType：节点的类型，数字表示，标签节点=1
+    nodeValue：节点的值
+  
+  标签节点的属性比其他的节点属性多，多在了on系列的事件，只有标签才可以注册事件
+  */
+
+  console.log(ul.childNodes[0]);// 文本节点
+  console.log(ul.childNodes[1]);// 文本节点
+
+</script>
+
+</html>
