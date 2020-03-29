@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box">
+    <p>1</p>
+    <p>1</p>
+    <p>1</p>
+    <div>2</div>
+    <div>2</div>
+    <div>2</div>
+  </div>
+  <script>
+    // 让box中的元素隔行变色
+    var box = document.querySelector('#box')
+    var child = box.children;
+    console.log(child);
+    for (let i = 0; i < child.length; i++) {
+      if (i % 2 == 0) {
+        child[i].style.backgroundColor = 'pink';
+      } else {
+        child[i].style.backgroundColor = 'red';
+      }
+
+    }
+
+  </script>
+</body>
+
+</html>
