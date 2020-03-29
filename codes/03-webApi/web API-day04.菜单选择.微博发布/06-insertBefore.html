@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box">
+    <span>span元素</span>
+    <h1>h1标题</h1>
+    <h2>h2标题</h2>
+  </div>
+  <p>这是div外的p元素</p>
+
+  <script>
+    /*
+    insertBefore() 添加节点到任意的位置
+    语法：parent.insertBefore(child, refChild)
+    parent：父元素
+    child：需要添加的节点
+    refChild：添加在该参数的前面
+    必须是两个参数
+    */
+    var box = document.querySelector('#box')
+    var h2 = document.querySelector('h2')
+    var p = document.querySelector('p')
+    box.insertBefore(p, h2)// p添加到h2的前面
+    box.insertBefore(p, box.firstElementChild)// p添加到span的前面
+    box.insertBefore(p, box.children[0])// p添加到span的前面
+    // 第二个参数为null、undefined，就和appendChild一样了
+    box.insertBefore(p, undefined)
+  </script>
+</body>
+
+</html>
