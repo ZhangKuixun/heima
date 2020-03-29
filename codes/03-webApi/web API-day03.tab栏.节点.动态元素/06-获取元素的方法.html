@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box" class="box1">
+    <p class="demo">123</p>
+    <span class="demo">456</span>
+  </div>
+
+  <form action="">
+    <input type="text" name="age">
+    <input type="text" name="age">
+    <input type="text" name="age">
+  </form>
+
+  <script>
+
+    /* 
+    document.getElementsByClassName()（少）
+      通过类名获取元素。存在兼容性问题：IE678不支持
+      参数：类名
+      返回值：伪数组
+     */
+    var res = document.getElementsByClassName('demo')
+    console.log(res);
+
+    /* 
+    document.getElementsByName()（少）
+      通过name获取元素。只支持表单元素，表单元素才有name属性
+    */
+    var res = document.getElementsByName('age')
+    console.log(res);
+
+    /*
+    document.querySelector()（重点）
+      通过css选择器获取元素。IE678不支持
+      参数：选择器
+      返回值：返回获取到的元素的第一个（不管获取到多少个元素，只会返回一个）
+    */
+    var box = document.querySelector('#box')
+    console.log(box);
+
+    /*
+    document.querySelectorAll()（重点）
+      通过css选择器获取元素。IE678不支持
+      返回值：返回一个伪数组，伪数组里有获取到的所有元素。没有，返回一个空数组
+    */
+    var res = document.querySelectorAll('.demo')
+    console.log(res);
+
+  </script>
+</body>
+
+</html>

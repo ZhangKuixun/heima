@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box">哈哈</div>
+  <script>
+    /* 
+    innerHTML：改属性是W3C推荐用来操作文本内容的属性
+    innerText：IE的属性，低版本的火狐浏览器不支持
+    textContet：火狐浏览器的属性，低版本的IE浏览器不支持
+    */
+    var box = document.getElementById('box')
+    // console.log(box.innerHTML);
+    // console.log(box.innerText);
+    // console.log(box.textContent);
+
+    function getText(element) {
+      if (typeof element.innerText == 'string') {
+        return element.innerText
+      } else {
+        return element.textContent
+      }
+    }
+    var txt = getText(box)
+    console.log(txt);
+
+  </script>
+</body>
+
+</html>
