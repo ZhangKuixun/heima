@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>王二</li>
+    <li>李斯</li>
+    <li>飞机</li>
+  </ul>
+  <script>
+    /*
+    removeChild()
+    语法：parent.removeChild(child)
+    该方法必须由parent父元素去调用，参数为需要删除的子元素
+     */
+
+    // 点谁删除谁
+    var ul = document.querySelector('ul')
+    console.log(ul);
+
+    var li = ul.children
+    for (let i = 0; i < li.length; i++) {
+      li[i].onclick = function () {
+        ul.removeChild(this)
+      }
+    }
+  </script>
+</body>
+
+</html>
