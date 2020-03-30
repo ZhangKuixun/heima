@@ -8,11 +8,17 @@
 </head>
 
 <body>
+  这是本来的内容
+  <button>点击我输入内容</button>
   <script>
     /*
     方式一：
       document.write（基本不用），写入内容存在覆盖问题。
      */
+    var btn = document.querySelector('button')
+    btn.onclick = function () {
+      document.write('456213')
+    }
   </script>
 </body>
 

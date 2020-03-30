@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box" style="width: 300px; height: 300px; border: 1px solid #000;">
+    这是原本的问题
+  </div>
+  <script>
+    /* 
+    innerHTML去创建标签节点，原理：识别标签
+    innerHTML可以创建标签，但是用的不多
+      1.覆盖问题，会把标签之前的内容给覆盖
+      2.存在效率问题
+     */
+    var box = document.querySelector('#box')
+    box.innerHTML += '<h1>这是设置的标签</h1>'
+  </script>
+</body>
+
+</html>

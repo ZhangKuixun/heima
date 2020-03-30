@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box" style="width: 300px; height: 300px; border: 1px solid #000;">
+    这是原本的问题
+  </div>
+  <script>
+    /*
+    document.createElement(tagName)
+      参数：标签名
+      返回值：创建好的标签，存在内存中
+     */
+    var box = document.querySelector('#box')
+    var h1Node = document.createElement('h1')
+    h1Node.innerText = '这是设置的内容'
+    console.log(h1Node);
+    box.appendChild(h1Node)
+  </script>
+
+</body>
+
+</html>
