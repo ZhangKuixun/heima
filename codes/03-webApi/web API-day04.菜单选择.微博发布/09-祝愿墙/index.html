@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .clearfix::after {
+      content: '';
+      display: block;
+      clear: both;
+      /*补充属性：在页面中看不见伪元素（非必要）*/
+      height: 0;
+      line-height: 0;
+      visibility: hidden;
+    }
+
+    #content {
+      width: 90%;
+      height: 627px;
+      margin: 0 auto;
+      background-color: aliceblue;
+      position: relative;
+    }
+
+    #content .tip1 {
+      width: 227px;
+      height: 181px;
+      background: url(images/bainqian.jpg) no-repeat;
+      background-size: 227px 181px;
+      padding: 29px 10px 10px;
+      box-sizing: border-box;
+      background-color: pink;
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .tip1 .tip_h {
+      font: 400 14px '微软雅黑';
+    }
+
+    .tip1 .tip_h .num {
+      float: left;
+    }
+
+    .tip1 .tip_h .close {
+      float: right;
+    }
+
+    #content .tip1 .tip_c {
+      font: 400 16px '微软雅黑';
+      min-height: 42px;
+      max-height: 96px;
+      padding-top: 2px;
+      box-sizing: border-box;
+      text-align: left;
+      height: 96px;
+    }
+
+    .tip1 .tip_f .icon {
+      float: left;
+    }
+
+    .tip1 .tip_f .icon img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .tip1 .tip_f .name {
+      float: right;
+      line-height: 30px;
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="content">
+    <!-- 一张纸条 -->
+    <div class="tip1">
+
+      <div class="tip_h clearfix" title="双击关闭纸条">
+        <div class="num">第123条 2016-02-17 22:24</div>
+        <div class="close" title="关闭纸条">x</div>
+        <div class="clr"></div>
+      </div>
+
+      <div class="tip_c">每天都要被自己给帅醒，希望以后越来越帅！！！</div>
+
+      <div class="tip_f clearfix">
+        <div class="icon">
+          <img src="images/icon.gif" title="舔一舔">
+        </div>
+        <div class="name">我的人</div>
+        <div class="clr"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /*
+    需求：
+      1.克隆十份tip1添加到content中
+      2.把每一个tip1的位置进行随机
+      3.点击关闭纸条
+      4.双击关闭纸条
+      5.点击哪个纸条，让哪个纸条显示在最前面
+     */
+
+    // 1.克隆十份tip1添加到content中
+    var content = document.querySelector('#content')
+    var tip1 = document.querySelector('#content .tip1')
+    for (let i = 0; i < 10; i++) {
+      var newTip = tip1.cloneNode(true)
+      content.appendChild(newTip)
+    }
+
+  </script>
+</body>
+
+</html>
