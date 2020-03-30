@@ -128,13 +128,26 @@
     for (let i = 0; i < tip1s.length; i++) {
       var randomLeft = parseInt(Math.random() * (800 - 227))
       var randomTop = parseInt(Math.random() * (627 - 181))
-      console.log(randomLeft, randomTop);
 
       tip1s[i].style.left = randomLeft + 'px';
       tip1s[i].style.top = randomTop + 'px';
+
+
+      // 3.点击关闭纸条
+      var close = tip1s[i].querySelector('.close')
+      close[i].onclick = function () {
+        content.removeChild(this.parentNode.parentNode)
+      }
     }
 
-
+    // // 3.点击关闭纸条
+    // var close = document.querySelectorAll('.close')
+    // for (let i = 0; i < close.length; i++) {
+    //   close[i].onclick = function () {
+    //     // console.log(this.parentNode.parentNode);
+    //     content.removeChild(this.parentNode.parentNode)
+    //   }
+    // }
   </script>
 </body>
 
