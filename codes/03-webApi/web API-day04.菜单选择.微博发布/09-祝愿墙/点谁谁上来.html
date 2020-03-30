@@ -5,12 +5,43 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+      height: 300px;
+      position: absolute;
+    }
+
+    .one {
+      background-color: #f99;
+    }
+
+    .two {
+      background-color: lime;
+      margin: 100px;
+    }
+
+    .three {
+      background-color: yellow;
+      margin: 200px;
+    }
+  </style>
 </head>
 
 <body>
-
+  <div class="one">one</div>
+  <div class="two">two</div>
+  <div class="three">three</div>
   <script>
+    var count = 0;// 当前div的层级
 
+    var box = document.querySelectorAll('div')
+    for (let i = 0; i < box.length; i++) {
+      box[i].onclick = function () {
+        count++;
+        this.style.zIndex = count;
+      }
+    }
   </script>
 </body>
 
