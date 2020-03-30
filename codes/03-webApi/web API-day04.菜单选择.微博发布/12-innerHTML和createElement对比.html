@@ -9,6 +9,39 @@
 
 <body>
   <script>
+    // 需求：往body中创建添加1000个按钮
+
+    // innerHTML底效率
+    var start = new Date()
+    for (let i = 0; i < 1000; i++) {
+      document.body.innerHTML += '<button>按钮</button>'
+      // 类似于：盖了一层楼，盖第二层楼的时候把前面盖的楼推倒
+    }
+    var end = new Date()
+    console.log(end - start);
+
+
+    // innerHTML优化
+    var str = ''
+    var start = new Date()
+    for (let i = 0; i < 1000; i++) {
+      str += '<button>按钮</button>'
+    }
+    document.body.innerHTML = str;
+    var end = new Date()
+    console.log(end - start);
+
+
+    // createElement
+    var start = new Date()
+    for (let i = 0; i < 1000; i++) {
+      var btn = document.createElement('button')
+      btn.innerText = '按钮'
+      document.body.appendChild(btn)
+    }
+    var end = new Date()
+    console.log(end - start);
+
 
   </script>
 </body>
