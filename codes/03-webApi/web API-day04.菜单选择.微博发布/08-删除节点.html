@@ -18,16 +18,28 @@
     removeChild()
     语法：parent.removeChild(child)
     该方法必须由parent父元素去调用，参数为需要删除的子元素
-     */
+
+    removeChild和display:none
+      display:none：只是隐藏了看不见，在dom树还是存在的
+      removeChild：从dom树移除
+
+    */
 
     // 点谁删除谁
-    var ul = document.querySelector('ul')
-    console.log(ul);
+    // var ul = document.querySelector('ul')
+    // console.log(ul);
 
-    var li = ul.children
+    // var li = ul.children
+    // for (let i = 0; i < li.length; i++) {
+    //   li[i].onclick = function () {
+    //     ul.removeChild(this)
+    //   }
+    // }
+
+    var li = document.querySelectorAll('li')
     for (let i = 0; i < li.length; i++) {
       li[i].onclick = function () {
-        ul.removeChild(this)
+        this.parentNode.removeChild(this)
       }
     }
   </script>
