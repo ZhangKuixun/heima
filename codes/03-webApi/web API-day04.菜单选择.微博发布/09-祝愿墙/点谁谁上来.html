@@ -38,8 +38,7 @@
     var box = document.querySelectorAll('div')
     for (let i = 0; i < box.length; i++) {
       box[i].onclick = function () {
-        count++;
-        this.style.zIndex = count;
+        this.style.zIndex = ++count;
       }
     }
   </script>

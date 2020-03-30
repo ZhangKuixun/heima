@@ -121,6 +121,10 @@
     // 1.克隆十份tip1添加到content中
     var content = document.querySelector('#content')
     var tip1 = document.querySelector('#content .tip1')
+
+    var count = 0;// 当前div的层级
+
+
     for (let i = 0; i < 10; i++) {
       var newTip = tip1.cloneNode(true)
       content.appendChild(newTip)
@@ -145,6 +149,11 @@
       var tip_h = tip1s[i].querySelector('.tip_h')
       tip_h.ondblclick = function () {
         content.removeChild(this.parentNode)
+      }
+
+      // 5.点击哪个纸条，让哪个纸条显示在最前面
+      tip1s[i].onclick = function () {
+        this.style.zIndex = ++count;
       }
     }
 
