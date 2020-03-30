@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .box {
+      width: 600px;
+      margin: 100px auto;
+      border: 1px solid #000;
+      padding: 20px;
+    }
+
+    textarea {
+      width: 450px;
+      height: 160px;
+      outline: none;
+      resize: none;
+    }
+
+    ul {
+      width: 450px;
+      padding-left: 80px;
+    }
+
+    ul li {
+      line-height: 25px;
+      border-bottom: 1px dashed #cccccc;
+    }
+
+    input {
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="weibo">
+    <span>微博发布</span>
+    <textarea name="" id="txt" cols="60" rows="10"></textarea>
+    <button id="btn">发布</button><br>
+    <ul id="ul">
+    </ul>
+  </div>
+  <script>
+    var txt = document.querySelector('#txt')
+    var btn = document.querySelector('#btn')
+    var ul = document.querySelector('#ul')
+    btn.onclick = function () {
+
+      // 文本内容
+      var content = txt.value;
+      if (content.length <= 0) {
+        return
+      }
+
+      // 创建li元素
+      var newLi = document.createElement('li')
+      newLi.innerText = content;
+
+      // 删除按钮
+      var newBtn = document.createElement('button')
+      newBtn.innerText = '删除'
+      newBtn.style.float = 'right'
+
+      // 点击按钮删除li
+      newBtn.onclick = function () {
+        ul.removeChild(this.parentNode)
+      }
+      newLi.appendChild(newBtn)
+
+      // ul.appendChild(newLi)// 往后面添加
+      ul.insertBefore(newLi, ul.children[0])// 添加到第一个
+
+      // 清空textarea内容
+      txt.value = ''
+    }
+  </script>
+</body>
+
+</html>

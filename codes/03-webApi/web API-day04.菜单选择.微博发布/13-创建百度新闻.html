@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 500px;
+      height: 300px;
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+
+<body>
+  <button>生成</button><br>
+  <div></div>
+  <script>
+
+    var div = document.querySelector('div')
+    var btn = document.querySelector('button')
+
+    var arr = [
+      '吴晓军任南昌市委书记 半年前被批准任江西省委常委',
+      '受贿716余万 贵州茅台原副总经理高守洪一审获刑10年',
+      '四川凉山火灾一周年当地再发山火 书记省长作出批示',
+      '商务部将会同有关部门加强医疗物资出口质量管理',
+      '中央纪委新添一名女将 曾在重大政治任务中担任要职',
+      '中央纪委新添一名女将 曾在重大政治任务中担任要职',
+      '中央纪委新添一名女将 曾在重大政治任务中担任要职',
+      '中央纪委新添一名女将 曾在重大政治任务中担任要职',
+      '武汉儿童医院：封城至今共接受分娩2078人次',
+      '新京报:把深圳写成湛江 环评抄袭暴露了"纸糊的关卡"'
+    ]
+
+    btn.onclick = function () {
+      var ul = document.createElement('ul')
+      for (let i = 0; i < 10; i++) {
+        var li = document.createElement('li')
+        if (i % 2 == 0) {
+          li.style.backgroundColor = 'grey'
+        } else {
+          li.style.backgroundColor = 'lightslategray'
+        }
+        li.innerText = arr[i]
+        ul.appendChild(li)
+      }
+      div.appendChild(ul)
+    }
+    console.log(div);
+  </script>
+</body>
+
+</html>
