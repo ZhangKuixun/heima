@@ -25,7 +25,7 @@
       width: 800px;
       height: 627px;
       margin: 0 auto;
-      background-color: aliceblue;
+      background-color: slategrey;
       position: relative;
     }
 
@@ -34,7 +34,7 @@
       height: 181px;
       background: url(images/bainqian.jpg) no-repeat;
       background-size: 227px 181px;
-      padding: 29px 10px 10px;
+      padding: 0px 10px 10px;
       box-sizing: border-box;
       background-color: pink;
       display: inline-block;
@@ -44,7 +44,10 @@
     }
 
     .tip1 .tip_h {
+      height: 40px;
       font: 400 14px '微软雅黑';
+      padding-top: 23px;
+      box-sizing: border-box;
     }
 
     .tip1 .tip_h .num {
@@ -132,11 +135,16 @@
       tip1s[i].style.left = randomLeft + 'px';
       tip1s[i].style.top = randomTop + 'px';
 
-
       // 3.点击关闭纸条
       var close = tip1s[i].querySelector('.close')
-      close[i].onclick = function () {
+      close.onclick = function () {
         content.removeChild(this.parentNode.parentNode)
+      }
+
+      // 4.双击关闭纸条
+      var tip_h = tip1s[i].querySelector('.tip_h')
+      tip_h.ondblclick = function () {
+        content.removeChild(this.parentNode)
       }
     }
 
