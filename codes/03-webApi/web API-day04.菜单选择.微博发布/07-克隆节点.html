@@ -8,9 +8,29 @@
 </head>
 
 <body>
-
+  <p>
+    <span>这是span</span>
+  </p>
   <script>
+    /*
+    克隆节点
+    node.cloneNode(deep)
+      参数：
+        node：克隆的节点
+        deep：boolean类型的值。如果不写，默认false
+              true：深拷贝，不仅仅要拷贝标签，还要拷贝标签里面的标签和内容
+              false：浅拷贝，只会克隆标签自身
+      返回值：克隆出来的元素，在内存中，页面中看不见
 
+    注意：如果克隆元素带id，那么需要对克隆出来的元素做id修改
+    克隆出来的元素和原来的元素没有关系，之间的修改互不影响
+     */
+    var p = document.querySelector('p')
+    var newP = p.cloneNode(true)
+    newP.id = 'box2'
+    console.log(newP)
+
+    document.body.appendChild(newP)
   </script>
 </body>
 
