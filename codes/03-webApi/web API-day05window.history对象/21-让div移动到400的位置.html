@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>移动</button>
+  <br>
+  <div></div>
+  <script>
+    var btn = document.querySelector('button')
+    var box = document.querySelector('div')
+
+    // 没有动画效果
+    // btn.onclick = function () {
+    //   box.style.left = '400px'
+    // }
+
+    /*
+    动画效果实现的原理：
+      在当前的位置上每次移动一段距离，不同的移动（用到定时器），就会有动画效果
+     */
+
+    // 点击的动画
+    btn.onclick = function () {
+      var current = box.offsetLeft;// div到左边的距离
+      current += 10;
+      box.style.left = current + 'px'
+    }
+
+    // 用定时器不停的移动
+    btn.onclick = function () {
+      var timerId = setInterval(() => {
+        var current = box.offsetLeft;// div到左边的距离
+        if (current >= 100) {
+          clearInterval(timerId)
+        } else {
+          current += 6;
+          box.style.left = current + 'px'
+        }
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>
