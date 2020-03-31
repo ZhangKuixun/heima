@@ -30,6 +30,8 @@
           任何一个函数都有this指向
           这个函数里不能用this，在定时函数中的this指向为window
         */
+        console.log(this);// 指向了window
+
         that.innerText = --num + '秒后再次发送'
 
         if (num <= 0) {
