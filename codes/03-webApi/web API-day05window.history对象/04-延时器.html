@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    需求：让fn函数演示3s执行
+
+    setTimeout(function(){}, delay)
+      参数：function(){} 需要演示执行的函数
+            delay 演示的时间，单位ms
+      返回值：返回了延时器的id，用于后面清除延时器
+    */
+    function fn() {
+      console.log('fn函数执行了');
+    }
+    // 方法一：
+    setTimeout(fn, 3000)
+
+    // 方法二：
+    setTimeout(function () {
+      fn();
+    }, 3000);
+
+    // 错误的写法：
+    // setTimeout(fn(), 3000)
+  </script>
+</body>
+
+</html>

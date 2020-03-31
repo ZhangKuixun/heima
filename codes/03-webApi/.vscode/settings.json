@@ -62,5 +62,6 @@
   "workbench.iconTheme": "vscode-icons",
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }, //图标
+  },
+  "files.autoSave": "onFocusChange", // 自动保存
 }
