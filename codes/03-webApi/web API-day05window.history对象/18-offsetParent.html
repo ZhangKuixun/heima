@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    father
+    <div style="position: absolute;">
+      son
+      <div class="sun">
+        sun
+      </div>
+    </div>
+  </div>
+  <script>
+    /* 
+    offsetParent
+    parentNode==>获取父元素
+    */
+    var sun = document.querySelector('.sun')
+    console.log(sun.parentNode); // son
+
+    // 获取该元素最近的有定位的父元素，如果没有定位，找的是body
+    console.log(sun.offsetParent);
+
+    /*
+    记忆：
+      parentNode 找父元素，找亲爹
+      offsetParent 找有钱的爹
+     */
+  </script>
+</body>
+
+</html>
