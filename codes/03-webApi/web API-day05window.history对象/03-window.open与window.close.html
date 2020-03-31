@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button class="open_">打开窗口</button>
+  <button class="close_">关闭窗口</button>
+  <script>
+    /*
+    window.open、window.close第三方登录会用到
+
+    window.open(url,name,desc)
+      参数：url 需要打开网页的网址
+            name 页面窗口名称，可选。通过window.name获取页面的名称，打开第二个窗口时，如果和第一个窗口name相同，就刷新第一个窗口。
+            desc 设置打开网页的特征，可选。参数写法："width=300,height300"
+      返回值：返回打开的窗口--newWindow
+
+    newWindow.close()
+      newWindow：新打开的窗口调用close方法，关闭打开的窗口
+    */
+    var open_ = document.querySelector('.open_')
+    var close_ = document.querySelector('.close_')
+    var newWindow;
+
+    open_.onclick = function () {
+      newWindow = window.open('http://www.baidu.com', 'name', "width=300,height=300,left=100,top=100")
+    }
+    close_.onclick = function () {
+      newWindow.close()
+    }
+
+  </script>
+</body>
+
+</html>
