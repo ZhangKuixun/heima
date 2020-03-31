@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <button id="btn">点击发送验证码</button>
+  <script>
+    var btn = document.querySelector('#btn')
+    var oldText = btn.innerText
+    // var num = 3;// 不能写在外面，第二次就从0开始倒计时
+
+    btn.onclick = function () {
+
+      var num = 3;
+      this.disabled = true
+      btn.innerText = num + '秒后再次发送'
+      var that = this
+
+      var timerId = setInterval(() => {
+        /* 
+        注意：
+          任何一个函数都有this指向
+          这个函数里不能用this，在定时函数中的this指向为window
+        */
+        that.innerText = --num + '秒后再次发送'
+
+        if (num <= 0) {
+          clearInterval(timerId)
+          that.innerText = oldText
+          that.disabled = false
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+
+</html>
