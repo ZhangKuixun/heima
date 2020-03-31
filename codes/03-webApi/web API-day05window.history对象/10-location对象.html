@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    location：是window的一个属性，location对应的就是浏览器中地址栏
+
+    location.href 可以获取地址栏里完整的链接地址
+    location.href 可以设置页面的地址（跳转页面）
+    */
+    console.log(window.location == location);
+
+    console.log(location.href);
+    location.href = 'http://www.baidu.com'
+
+    /*
+    location.reload() 刷新页面
+    location.href = '' 把地址设置为空字符串，也是刷新页面的效果
+    */
+    /*
+    location对象的其他属性：
+      hash 锚点
+      host 服务器（服务器名+端口号）
+      hostname 服务器名
+      port 端口
+      origin 源头（http协议+host）
+      protocol 协议
+      search 查询字符串
+    */
+  </script>
+</body>
+
+</html>
