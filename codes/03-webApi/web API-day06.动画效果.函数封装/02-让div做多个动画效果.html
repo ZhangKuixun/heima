@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+      position: absolute;
+      top: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>去400</button>
+  <button>去800</button>
+  <div></div>
+
+  <script>
+    var btn1 = document.querySelectorAll('button')[0]
+    var btn2 = document.querySelectorAll('button')[1]
+    var box = document.querySelector('div')
+
+
+    // 用定时器不停的移动
+    btn1.onclick = function () {
+      animation(box, 400);
+    }
+    btn2.onclick = function () {
+      animation(box, 800);
+    }
+
+    function animation(element, target) {
+      var timerId = setInterval(() => {
+        var current = element.offsetLeft;// div到左边的距离
+        if (current >= target) {
+          clearInterval(timerId)
+        } else {
+          current += 10;
+          element.style.left = current + 'px'
+        }
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>
