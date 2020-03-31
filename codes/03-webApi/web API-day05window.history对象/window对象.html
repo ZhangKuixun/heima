@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // window对象
+    // window对象是我们js中的全局对象，也叫做顶级对象
+    window.alert(1)
+    window.console.log(1)
+    // document是window的对象
+    console.log(document == window.document);
+    // 在全局中声明变量、函数都是widow对象的属性和方法
+    // BOM中的对象也是属于window对象
+    // 在使用想document这个属性的时候，可以不用写
+    var num = 10;
+    console.log(window);
+
+    function fn() {
+      console.log(123);
+
+    }
+
+  </script>
+</body>
+
+</html>
