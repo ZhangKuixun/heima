@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 300px;
+      height: 300px;
+      padding: 10px;
+      border: 10px solid #000;
+      background-color: #f99;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    /*
+    需求：获取div的宽高
+     */
+    var box = document.querySelector('div')
+    // box.style.width 获取宽度，操作的是行内样式，无法获取宽度（无效）
+    console.log(box.style.width)
+
+    /* 
+    offsetWidth 
+      获取元素的真实的宽度，真实的宽度=内容的宽度+padding+border。
+      返回值：数值
+    */
+    console.log(box.offsetWidth);
+    console.log(box.offsetHeight);
+
+    /*
+    设置元素的宽高：
+    
+    通过offsetWidth设置宽高无效，是只读属性（无效）
+    // box.offsetWidth = 400;
+    // box.offsetHeight = 400;
+
+    box.width = 400px，这样设置宽高仅限于图片，图片有width属性（无效）
+    
+    通过style来设置行内样式
+    */
+    box.style.width = '400px';
+    box.style.height = '400px';
+
+  </script>
+</body>
+
+</html>
