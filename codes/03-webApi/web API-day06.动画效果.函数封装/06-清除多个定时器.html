@@ -41,6 +41,13 @@
     }
 
     var timerId// 解决bug2
+    window.timerid
+    /* 
+    06-
+
+    优化：上面的timerid声明在全局，animation函数依赖了timerid这个全局变量，需要解除他们的依赖
+    解决：声明的全局中变量都是widow对象的属性，所以写成：window.timerid
+    */
 
     /* 
     03-
@@ -82,7 +89,7 @@
         if (Math.abs(target - current) < Math.abs(step)) {
           clearInterval(timerId)
 
-          /* 
+          /*
           04-
 
           bug1：有可能div是没有到达终点的情况，假如设置96px，到了90px的时候，需要清除定时器，div就停下来了

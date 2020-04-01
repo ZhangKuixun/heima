@@ -41,6 +41,8 @@
     }
 
     /* 
+    03-
+
     实现往回走：
       1.每次移动的距离都是 +10，这是往右走的效果
         想要div从800-->400，需要-10，就可以实现往左走
@@ -62,7 +64,7 @@
      */
     function animation(element, target) {
       var timerId = setInterval(() => {
-        var current = element.offsetLeft;// div到左边的距离
+        var current = element.offsetLeft;
         // 修改1
         var step = current < target ? 10 : -10;
 

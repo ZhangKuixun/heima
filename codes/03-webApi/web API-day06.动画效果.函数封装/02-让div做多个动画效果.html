@@ -42,7 +42,12 @@
 
     function animation(element, target) {
       var timerId = setInterval(() => {
-        var current = element.offsetLeft;// div到左边的距离
+        /* 
+        02-
+
+        div到左边的距离
+         */
+        var current = element.offsetLeft;
         if (current >= target) {
           clearInterval(timerId)
         } else {
