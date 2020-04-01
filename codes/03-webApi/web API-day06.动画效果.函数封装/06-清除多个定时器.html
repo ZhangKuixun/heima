@@ -40,7 +40,7 @@
       animation(box, 800);
     }
 
-    var timerId// 解决bug2
+    // var timerId// 解决bug2
     window.timerid
     /* 
     06-
@@ -77,17 +77,17 @@
       bug2：点击800，如果div没有到800，又点了96，div身上就有两个定时器，就会来回抖动
       解决：在开启一个定时器之前，先把之前开启的定时器给清除掉。需要把timerId修改成全局变量
       */
-      console.log('timerId 清除之前的id ' + timerId);
-      clearInterval(timerId)
+      console.log('timerId 清除之前的id ' + window.timerid);
+      clearInterval(window.timerid)
 
-      timerId = setInterval(() => {
+      window.timerid = setInterval(() => {
         var current = element.offsetLeft;// div到左边的距离
         // 修改1
         var step = current < target ? 10 : -10;
 
         // 修改2
         if (Math.abs(target - current) < Math.abs(step)) {
-          clearInterval(timerId)
+          clearInterval(window.timerid)
 
           /*
           04-
@@ -101,7 +101,7 @@
           element.style.left = current + 'px'
         }
       }, 30);
-      console.log('timerId 开启新的id ' + timerId);
+      console.log('timerId 开启新的id ' + window.timerid);
     }
   </script>
 </body>
