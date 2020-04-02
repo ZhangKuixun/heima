@@ -8,9 +8,10 @@
 */
 /* 
 element 就是让哪个元素做动画效果
-target 目标位置的值
+target 目标位置的值，负值=向左移动，正值=向右移动
+num 每次需要移动的距离
 */
-function animation (element, target) {
+function animation (element, target, num) {
   // 把timerid储存到element的dome对象上，类似于存下标。
   // 用console.dir(element);可以查看timerid
   console.dir(element);
@@ -19,7 +20,7 @@ function animation (element, target) {
   element.timerid = setInterval(() => {
     var current = element.offsetLeft;// 每次获取div左边的距离
 
-    var step = current < target ? 10 : -10;// 每次移动的距离，往左走还是往右走
+    var step = current < target ? num : -num;// 每次移动的距离，往左走还是往右走
 
     if (Math.abs(target - current) < Math.abs(step)) {// 判断剩下的距离 < 移动的距离。只比较值，所有取绝对值
       clearInterval(element.timerid)// 到达终点
