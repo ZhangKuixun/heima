@@ -147,7 +147,7 @@
 
     // 2.js动态添加最后一张假图片
     ul.appendChild(ul.firstElementChild.cloneNode(true))
-
+    /* 获取ul下的元素，如果使用了querySelectorAll获取li元素，需要在往ul中添加了假图片之后，还要更新images遍历的值 */
 
     // 3.实现点击左右焦点图+无缝滚动+同步小圆点
     // 点击左箭头
