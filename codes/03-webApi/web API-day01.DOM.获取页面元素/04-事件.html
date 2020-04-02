@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img id="pic" src="images/01.jpg" alt="">
+    <button id="btn">切换图片</button>
+    <script>
+        /*
+        事件的三要素：
+            1.事件源，触发事件的元素
+            2.事件名，如点击事件
+            3.事件处理程序，事件处理函数，事件触发后要做什么
+        
+        写法：
+            事件源.on事件名 = function(){
+                处理事件
+            }
+         */
+
+        // 切换图片
+        var pic = document.getElementById('pic')
+        var btn = document.getElementById('btn')
+        btn.onclick = function () {
+            pic.src = 'images/02.jpg'
+        }
+    </script>
+</body>
+
+</html>

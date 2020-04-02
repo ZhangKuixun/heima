@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img id="pic" src="images/01.jpg" alt="这是啥？" title="dom初体验">
+    <script>
+        /* 
+        操作元素之前要获取到该元素
+        document：文档，是一个对象
+        document.getElementById();
+            在页面中，通过id去获取元素。返回了获取到的元素
+            参数：字符串类型的id名称
+         */
+
+        var ret = document.getElementById('pic')
+        console.log(ret)// 打印返回的元素，以标签形式展示
+        console.dir(ret)// 打印返回的元素，以对象形式展示，查看里面的属性和方法
+
+        // dom对象上的属性、方法，和标签上的一一对应，所以可以通过dom获取的对象，去修改标签上的属性。
+        ret.alt = '这是妹子'
+        ret.src = "images/02.jpg"
+        console.log(ret.alt);
+        console.log(ret.title);
+
+
+    </script>
+</body>
+
+</html>

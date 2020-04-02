@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img id="pic" src="images/01.jpg" alt="" width="300">
+    <button id="btn">放大图片</button>
+    <script>
+        var pic = document.getElementById('pic')
+        var btn = document.getElementById('btn')
+        btn.onclick = function () {
+            pic.width = '500'
+            pic.height = '500'
+            console.log(pic);
+        }
+        console.log(pic);
+    </script>
+</body>
+
+</html>
