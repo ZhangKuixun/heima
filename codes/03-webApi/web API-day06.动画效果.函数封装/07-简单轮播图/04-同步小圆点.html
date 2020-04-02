@@ -18,12 +18,13 @@
       border: 1px solid #000;
       margin: 100px auto;
       position: relative;
-      box-sizing: border-box;
       overflow: hidden;
+      box-sizing: border-box;
     }
 
     .box ul {
-      width: 900%;
+      /* 03- */
+      width: 1000%;
       height: 100%;
       position: absolute;
     }
@@ -105,6 +106,12 @@
       <li><a href="#"><img src="images/6.jpg" alt="" width="720px" height="480px"></a></li>
       <li><a href="#"><img src="images/7.jpg" alt="" width="720px" height="480px"></a></li>
       <li><a href="#"><img src="images/8.jpg" alt="" width="720px" height="480px"></a></li>
+      <!-- 
+        03-
+
+        为了无缝切换
+       -->
+      <li><a href="#"><img src="images/1.jpg" alt="" width="720px" height="480px"></a></li>
     </ul>
 
     <!-- 原点 -->
@@ -130,26 +137,103 @@
   <script>
     var box = document.querySelector('#box')
     var points = box.querySelectorAll('ol li')
-    var images = box.querySelectorAll('ul li')
     var ul = box.querySelector('ul')
-    var prev = box.querySelector('arrow.prev')
-    var next = box.querySelector('arrow.next')
+    var images = ul.children
+    var prevBtn = box.querySelector('.arrow .prev')
+    var nextBtn = box.querySelector('.arrow .next')
+    var index = 0;
 
+    /* 
+    04-
+    
+    同步小圆点
+    */
     for (let i = 0; i < points.length; i++) {
       points[i].index = i
 
       // 点击原点
       points[i].onclick = function () {
-        for (let i = 0; i < points.length; i++) {
-          points[i].className = ''
-        }
-        this.className = 'current'
+        synPoints(this)
 
         // 切换原点对应的图片
         // ul.style.left = -this.index * box.offsetWidth + 'px'
         animation(ul, -this.index * box.offsetWidth, 100)
       }
 
+    }
+
+    // 点击左箭头
+    prevBtn.onclick = function () {
+      if (index <= 0) {
+        /* 
+        03- 
+
+        首先index=8，是假图片的下标，先瞬间跳转到假图片
+        然后从假图片切换到上一张
+        */
+        index = images.length - 1
+        ul.style.left = -index * box.offsetWidth + 'px'
+      }
+
+      index--
+      animation(ul, -index * box.offsetWidth, 100)
+
+      /* 
+      04-
+
+      同步小圆点
+       */
+      // if (index <= 0) {
+      //   synPoints(points[0]);
+      // } else {
+      synPoints(points[index]);
+      // }
+    }
+
+    nextBtn.onclick = function () {
+      if (index >= images.length - 1) {
+        // index = -1// 这样index=-1，下面index++,index=0，这样的效果是往回走
+
+        /* 
+        03- 
+
+        方法一：失败
+          瞬间切换到第一张
+          bug：可以从最后一张回到第一张，但是最后一张到第一张没有动画效果。
+        */
+        //  index = 0;
+        //  ul.style.left = 0;
+
+        /* 
+        方法二：
+          借助假图片，最后一张图片后面添加第一张的图片，最后一张图片切换到第一张图片时，
+          可以有动画效果，当第一张切换到第二张图片时，先瞬间跳到第一张图片，再切换到第二张图片。
+        */
+        // 坑：不仅要把ul的left变成0的位置，还需要把下标变成0，为后面的index++，这样展示的就是第二张了
+        index = 0;// 展示第一张。
+        ul.style.left = 0;// 瞬间回到第一张
+      }
+
+      index++
+      animation(ul, -index * box.offsetWidth, 100)
+
+      /* 
+      04- 
+
+      同步小圆点：
+       */
+      if (index >= points.length) {
+        synPoints(points[0]);
+      } else {
+        synPoints(points[index]);
+      }
+    }
+
+    function synPoints(element) {
+      for (let i = 0; i < points.length; i++) {
+        points[i].className = ''
+      }
+      element.className = 'current'
     }
 
   </script>
