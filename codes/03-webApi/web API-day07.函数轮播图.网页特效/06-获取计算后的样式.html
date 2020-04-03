@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #f99;
+      border-radius: 10px;
+    }
+
+    .box {
+      border-radius: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box"></div>
+  <script>
+    /*
+    需求：获取div的圆角值多少
+     */
+    var div = document.querySelector('div')
+
+    /*
+    获取计算后的样式，理解：就是真正在元素上起效果的样式
+    语法：window.getComputedStyle(元素，伪类);
+      元素：表示获取那个元素计算后的样式
+      伪类：表示获取元素伪类的样式，但是通常不需要，通常写null
+      返回值：返回了对象，对象里面就有元素所有计算后的样式
+    
+    使用建议：对于复合样式，如果需要获取具体的样式，就写上具体的样式名称，这样能够兼容更多的浏览器。
+     */
+    // var ret = window.getComputedStyle(div, null).borderRadius
+    var ret = window.getComputedStyle(div, null).backgroundColor
+    console.log(ret);
+
+    /*
+    兼容问题：IE678不支持该方法
+      IE678：element.currentStyle
+     */
+    // console.log(div.currentStyle.backgroundColor);
+    // console.log(div.currentStyle['backgroundColor']);
+
+  </script>
+</body>
+
+</html>
