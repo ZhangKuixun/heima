@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: darkkhaki;
+    }
+
+    .nav {
+      width: 800px;
+      height: 42px;
+      background-color: #ffffff;
+      border-radius: 10px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .cloud {
+      width: 83px;
+      height: 42px;
+      background: url('images/cloud.jpg') no-repeat;
+      top: 0;
+      left: 0;
+      background-size: 83px 42px;
+      border-radius: 10px 10px 10px 10px;
+      font: bold 42px "楷体";
+      position: absolute;
+    }
+
+    .nav .navBar {
+      list-style: none;
+      /* 居于文字底部 */
+      position: relative;
+    }
+
+    .nav .navBar li {
+      width: 83px;
+      height: 42px;
+      float: left;
+      text-align: center;
+      line-height: 42px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="nav">
+    <span class="cloud"></span>
+    <ul class="navBar">
+      <li>上海校区</li>
+      <li>上海校区</li>
+      <li>上海校区</li>
+      <li>上海校区</li>
+      <li>上海校区</li>
+      <li>上海校区</li>
+      <li>上海校区</li>
+      <li>上海校区</li>
+      <li>上海校区</li>
+    </ul>
+  </div>
+
+  <script>
+    /* 
+    实现功能：
+      1.鼠标移入，云朵跟随效果
+      2.鼠标离开，回到原来的位置
+      3.鼠标点击，修改云朵回去的位置
+          思路：1.给li注册click
+                2.把变量position的值修改成当前li的offsetLeft
+    */
+    var cloud = document.querySelector('.cloud')
+    var lis = document.querySelectorAll('.navBar li')
+
+    var position = 0;// 表示鼠标离开的时候，span回去的时候
+
+    for (let i = 0; i < lis.length; i++) {
+      lis[i].onmouseover = function () {
+        animate(cloud, this.offsetLeft)
+      }
+      lis[i].onmouseout = function () {
+        animate(cloud, position)
+      }
+      lis[i].onclick = function () {
+        position = this.offsetLeft
+      }
+    }
+
+    function animate(element, target) {
+      clearInterval(element.timerId)
+      element.timerId = setInterval(() => {
+        var current = element.offsetLeft
+        var step = (target - current) / 2
+        step = step > 0 ? Math.ceil(step) : Math.floor(step)
+
+        current += step
+        element.style.left = current + "px"
+
+        if (current == target) {
+          clearInterval(element.timerId)
+        }
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>
