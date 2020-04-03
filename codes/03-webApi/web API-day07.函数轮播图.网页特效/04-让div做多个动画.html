@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 40px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button>移动到400</button>
+  <button>移动到800</button>
+  <br>
+  <div></div>
+  <script>
+    /* 
+    缓动动画，每次移动的距离是能够变化的
+    公式：var step = (target - current)/10
+    */
+    var btn1 = document.querySelectorAll('button')[0]
+    var btn2 = document.querySelectorAll('button')[1]
+    var box = document.querySelector('div')
+
+    btn1.onclick = function () {
+      animate(box, 400)
+    }
+
+    btn2.onclick = function () {
+      animate(box, 800)
+    }
+
+    function animate(element, target) {
+
+      clearInterval(element.timerId)
+
+      element.timerId = setInterval(() => {
+
+        var current = element.offsetLeft
+
+        var step = (target - current) / 10
+
+        /* 
+        bug1：box始终有4px没有走到400的终点，
+        原因：offsetLeft在获取值的时候，把小数部分的值给弄丢了。
+        解决：让step做向上取整，step的每次移动的最小距离值为1，往右走， Math.ceil()。
+        */
+        // step = Math.ceil(step)
+        /* 
+        bug2：先让div移动到800，再让div移动到400，left的值停留在409，没有到达400，
+        原因：Math.ceil(step)==>-0.9就取成了0
+        解决：让step向下取整，step最小移动的最小距离值为-1，往左走
+         */
+        step = step > 0 ? Math.ceil(step) : Math.floor(step)
+        console.log(step);
+
+        current += step
+        element.style.left = current + "px"
+
+        // 到了终点，停止动画
+        if (current == target) {
+          clearInterval(element.timerId)
+        }
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>

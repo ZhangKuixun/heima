@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 40px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button>移动到400</button>
+  <br>
+  <div></div>
+  <script>
+    /* 
+    缓动动画，每次移动的距离是能够变化的
+    公式：var step = (target - current)/10
+    */
+    var btn = document.querySelector('button')
+    var box = document.querySelector('div')
+
+    btn.onclick = function () {
+      var timerId = setInterval(() => {
+        var target = 400
+        var current = box.offsetLeft
+
+        var step = (target - current) / 10
+
+        /* 
+        bug：box始终有4px没有走到400的终点，原因：offsetLeft在获取值的时候，把小数部分的值给弄丢了。
+        解决：让step的每次移动的距离的最小值是1，对step做向上取整 Math.ceil()。
+        */
+        step = Math.ceil(step)
+        console.log(step);
+
+        current += step
+        box.style.left = current + "px"
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>
