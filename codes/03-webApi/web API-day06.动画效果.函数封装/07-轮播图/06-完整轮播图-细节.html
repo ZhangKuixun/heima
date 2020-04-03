@@ -118,6 +118,15 @@
 
   <script src="../06-animate.js"></script>
   <script>
+    /* 
+    需求：
+      1.js动态添加小圆点
+      2.js动态添加最后一张假图片
+      3.实现点击左右焦点图+无缝滚动+同步小圆点
+      4.自动播放
+      5.点击小圆点同步切换
+      6.解决点击小圆点的bug（展示最后一张图片的时候，点击小圆点）
+     */
 
     var box = document.querySelector('#box')
     var ol = box.querySelector('ol')
@@ -138,9 +147,10 @@
 
     // 2.js动态添加最后一张假图片
     /* 
+    06- 细节1。细节2-是改的动画时间
+    
     获取ul下的元素：
-      如果使用 document.querySelectorAll('li') 获取li元素，在后面需要往ul中添加
-      假图片之后，还要用 querySelectorAll 重新获取一下 images 的值。
+      如果使用 document.querySelectorAll('li') 获取li元素，在后面需要往ul中添加假图片之后，还要用 querySelectorAll 重新获取一下 images 的值。
       如果使用 ul.children 获取li元素，在后面往ul中添加假图片，不需要重新获取元素。
      */
     ul.appendChild(ul.firstElementChild.cloneNode(true))
@@ -154,7 +164,7 @@
       }
 
       index--
-      animation(ul, -index * box.offsetWidth, 40)
+      animation(ul, -index * box.offsetWidth)
       synPoints(points[index]);
     }
 
@@ -166,7 +176,7 @@
       }
 
       index++
-      animation(ul, -index * box.offsetWidth, 40)
+      animation(ul, -index * box.offsetWidth)
 
       if (index >= points.length) {
         synPoints(points[0]);
@@ -213,7 +223,7 @@
         }
 
         index = this.index// 坑：记得要同步index值为小圆点的下标
-        animation(ul, -this.index * box.offsetWidth, 40)
+        animation(ul, -this.index * box.offsetWidth)
       }
     }
   </script>

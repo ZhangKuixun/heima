@@ -14,10 +14,11 @@ num 每次需要移动的距离
 function animation (element, target, num) {
   /* 
   06-细节2
-  
+
   num设置默认值
   */
   num = num || 80
+
   // 把timerid储存到element的dome对象上，类似于存下标。
   // 用console.dir(element);可以查看timerid
   console.dir(element);
