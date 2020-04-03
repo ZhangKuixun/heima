@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .box {
+      width: 720px;
+      height: 480px;
+      border: 1px solid #000;
+      margin: 100px auto;
+      position: relative;
+      overflow: hidden;
+      box-sizing: border-box;
+    }
+
+    .box ul {
+      /* 03- */
+      width: 1000%;
+      height: 100%;
+      position: absolute;
+    }
+
+    .box ul li {
+      float: left;
+    }
+
+    .box ol {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 20px;
+      background-color: rgba(255, 255, 255, 0.5);
+      border-radius: 10px;
+      padding: 0 5px;
+    }
+
+    .box ol li {
+      width: 12px;
+      height: 12px;
+      background-color: #fff;
+      border-radius: 50%;
+      float: left;
+      margin: 5px;
+      cursor: pointer;
+    }
+
+    /* 增加权重 */
+    .box ol li.current {
+      background-color: red;
+    }
+
+    /* 左右箭头 */
+    .box .arrow {
+      display: none;
+    }
+
+    /* 鼠标移入后显示箭头 */
+    .box:hover .arrow {
+      display: block;
+    }
+
+    .box .arrow span {
+      width: 30px;
+      height: 60px;
+      line-height: 60px;
+      text-align: center;
+      position: absolute;
+      background-color: rgba(0, 0, 0, 0.5);
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      font-size: 24px;
+      font-family: '楷体';
+      cursor: pointer;
+    }
+
+    .box .arrow span.prev {
+      left: 0;
+    }
+
+    .box .arrow span.next {
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+
+    <ul>
+      <li><a href="#"><img src="images/1.jpg" alt="" width="720px" height="480px"></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt="" width="720px" height="480px"></a></li>
+      <li><a href="#"><img src="images/3.jpg" alt="" width="720px" height="480px"></a></li>
+      <li><a href="#"><img src="images/4.jpg" alt="" width="720px" height="480px"></a></li>
+      <li><a href="#"><img src="images/5.jpg" alt="" width="720px" height="480px"></a></li>
+      <li><a href="#"><img src="images/6.jpg" alt="" width="720px" height="480px"></a></li>
+      <li><a href="#"><img src="images/7.jpg" alt="" width="720px" height="480px"></a></li>
+      <li><a href="#"><img src="images/8.jpg" alt="" width="720px" height="480px"></a></li>
+    </ul>
+
+    <ol>
+    </ol>
+
+    <div class="arrow">
+      <span class="prev">&lt;</span>
+      <span class="next">&gt;</span>
+    </div>
+  </div>
+
+  <script src="../06-animate.js"></script>
+  <script>
+
+    var box = document.querySelector('#box')
+    var ol = box.querySelector('ol')
+    var ul = box.querySelector('ul')
+    var images = ul.children
+    var prevBtn = box.querySelector('.arrow .prev')
+    var nextBtn = box.querySelector('.arrow .next')
+    var index = 0;// 图片的下标
+
+    // 1.js动态添加小圆点
+    for (let i = 0; i < images.length; i++) {
+      var li = document.createElement('li')
+      li.className = 'li';
+      ol.appendChild(li)
+    }
+    var points = ol.children
+    points[0].className = 'current'
+
+    // 2.js动态添加最后一张假图片
+    /* 
+    获取ul下的元素：
+      如果使用 document.querySelectorAll('li') 获取li元素，在后面需要往ul中添加
+      假图片之后，还要用 querySelectorAll 重新获取一下 images 的值。
+      如果使用 ul.children 获取li元素，在后面往ul中添加假图片，不需要重新获取元素。
+     */
+    ul.appendChild(ul.firstElementChild.cloneNode(true))
+
+    // 3.实现点击左右焦点图+无缝滚动+同步小圆点
+    // 点击左箭头
+    prevBtn.onclick = function () {
+      if (index <= 0) {
+        index = images.length - 1
+        ul.style.left = -index * box.offsetWidth + 'px'
+      }
+
+      index--
+      animation(ul, -index * box.offsetWidth, 40)
+      synPoints(points[index]);
+    }
+
+    // 右箭头
+    nextBtn.onclick = function () {
+      if (index >= images.length - 1) {
+        index = 0;// 展示第一张。
+        ul.style.left = 0;// 瞬间回到第一张
+      }
+
+      index++
+      animation(ul, -index * box.offsetWidth, 40)
+
+      if (index >= points.length) {
+        synPoints(points[0]);
+      } else {
+        synPoints(points[index]);
+      }
+    }
+
+    function synPoints(element) {
+      for (let i = 0; i < points.length; i++) {
+        points[i].className = ''
+      }
+      element.className = 'current'
+    }
+
+
+    // 4.自动播放
+    var timerId = setInterval(() => {
+      nextBtn.onclick()
+    }, 3000);
+
+    // 鼠标移入到box上，清除定时器
+    box.onmouseover = function () {
+      clearInterval(timerId)
+    }
+    box.onmouseout = function () {
+      // timerId 前面千万不要加var，否则，移入移出box，box会越来越快
+      timerId = setInterval(() => {
+        nextBtn.onclick()
+      }, 3000);
+    }
+
+    // 5.点击小圆点同步切换
+    for (let i = 0; i < points.length; i++) {
+      points[i].index = i
+      // 点击原点
+      points[i].onclick = function () {
+        synPoints(this)
+
+        // 6.解决bug：当展示最后的假图片的时候，如果点击了小圆点，图片倒着往回走切换到对应的小圆点的图片
+        if (index >= images.length - 1) {
+          ul.style.left = 0
+          index = 0// 这里写不写无所谓，下面吧index同步为小圆点的下标了
+        }
+
+        index = this.index// 坑：记得要同步index值为小圆点的下标
+        animation(ul, -this.index * box.offsetWidth, 40)
+      }
+    }
+  </script>
+</body>
+
+</html>
