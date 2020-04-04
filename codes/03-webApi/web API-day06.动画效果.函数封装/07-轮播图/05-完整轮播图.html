@@ -158,7 +158,7 @@
       }
 
       index--
-      animation(ul, -index * box.offsetWidth, 40)
+      animate(ul, -index * box.offsetWidth, 40)
       synPoints(points[index]);
     }
 
@@ -170,7 +170,7 @@
       }
 
       index++
-      animation(ul, -index * box.offsetWidth, 40)
+      animate(ul, -index * box.offsetWidth, 40)
 
       if (index >= points.length) {
         synPoints(points[0]);
@@ -217,7 +217,7 @@
         }
 
         index = this.index// 坑：记得要同步index值为小圆点的下标
-        animation(ul, -this.index * box.offsetWidth, 40)
+        animate(ul, -this.index * box.offsetWidth, 40)
       }
     }
   </script>

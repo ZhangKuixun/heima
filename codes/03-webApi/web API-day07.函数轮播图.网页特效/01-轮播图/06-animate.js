@@ -11,7 +11,7 @@ element 就是让哪个元素做动画效果
 target 目标位置的值，负值=向左移动，正值=向右移动
 num 每次需要移动的距离
 */
-function animation (element, target, num) {
+function animate(element, target, num) {
   /* 
   06-细节2
 

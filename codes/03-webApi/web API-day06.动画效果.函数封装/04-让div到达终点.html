@@ -34,13 +34,13 @@
 
     // 用定时器不停的移动
     btn1.onclick = function () {
-      animation(box, 96);
+      animate(box, 96);
     }
     btn2.onclick = function () {
-      animation(box, 800);
+      animate(box, 800);
     }
 
-    function animation(element, target) {
+    function animate(element, target) {
       var timerId = setInterval(() => {
         var current = element.offsetLeft;// div到左边的距离
         // 修改1

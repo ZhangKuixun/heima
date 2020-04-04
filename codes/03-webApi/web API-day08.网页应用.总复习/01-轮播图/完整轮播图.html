@@ -18,8 +18,8 @@
       border: 1px solid #000;
       margin: 100px auto;
       position: relative;
-      box-sizing: border-box;
       overflow: hidden;
+      box-sizing: border-box;
     }
 
     .box ul {
@@ -96,7 +96,6 @@
 <body>
   <div class="box" id="box">
 
-    <!-- 图片 -->
     <ul>
       <li><a href="#"><img src="images/1.jpg" alt="" width="720px" height="480px"></a></li>
       <li><a href="#"><img src="images/2.jpg" alt="" width="720px" height="480px"></a></li>
@@ -106,87 +105,127 @@
       <li><a href="#"><img src="images/6.jpg" alt="" width="720px" height="480px"></a></li>
       <li><a href="#"><img src="images/7.jpg" alt="" width="720px" height="480px"></a></li>
       <li><a href="#"><img src="images/8.jpg" alt="" width="720px" height="480px"></a></li>
-      <!-- 为了无缝切换 -->
-      <!-- 03- -->
-      <li><a href="#"><img src="images/1.jpg" alt="" width="720px" height="480px"></a></li>
     </ul>
 
-    <!-- 原点 -->
     <ol>
-      <li class="current"></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li></li>
     </ol>
 
-    <!-- 左右的箭头 -->
     <div class="arrow">
       <span class="prev">&lt;</span>
       <span class="next">&gt;</span>
     </div>
   </div>
 
-  <script src="../06-animate.js"></script>
+  <script src="../animate_final.js"></script>
   <script>
+    /* 
+    需求：
+      1.js动态添加小圆点
+      2.js动态添加最后一张假图片
+      3.实现点击左右焦点图+无缝滚动+同步小圆点
+      4.自动播放
+      5.点击小圆点同步切换
+      6.解决点击小圆点的bug（展示最后一张图片的时候，点击小圆点）
+     */
+
     var box = document.querySelector('#box')
-    var points = box.querySelectorAll('ol li')
+    var ol = box.querySelector('ol')
     var ul = box.querySelector('ul')
     var images = ul.children
     var prevBtn = box.querySelector('.arrow .prev')
     var nextBtn = box.querySelector('.arrow .next')
-    var index = 0;
+    var index = 0;// 图片的下标
 
+    // 1.js动态添加小圆点
+    for (let i = 0; i < images.length; i++) {
+      var li = document.createElement('li')
+      li.className = 'li';
+      ol.appendChild(li)
+    }
+    var points = ol.children
+    points[0].className = 'current'
+
+    // 2.js动态添加最后一张假图片
+    /* 
+    06- 细节1。细节2是改的动画时间
+    
+    获取ul下的元素：
+      如果使用 document.querySelectorAll('li') 获取li元素，在后面需要往ul中添加假图片之后，还要用 querySelectorAll 重新获取一下 images 的值。
+      如果使用 ul.children 获取li元素，在后面往ul中添加假图片，不需要重新获取元素。
+     */
+    ul.appendChild(ul.firstElementChild.cloneNode(true))
+
+    // 3.实现点击左右焦点图+无缝滚动+同步小圆点
     // 点击左箭头
     prevBtn.onclick = function () {
       if (index <= 0) {
-
-        /* 
-        03- 
-
-        首先index=8，是假图片的下标，先瞬间跳转到假图片
-        然后从假图片切换到上一张
-        */
         index = images.length - 1
         ul.style.left = -index * box.offsetWidth + 'px'
       }
 
       index--
-      animate(ul, -index * box.offsetWidth, 100)
+      animate(ul, { 'left': -index * box.offsetWidth })
+      synPoints(points[index]);
     }
 
+    // 右箭头
     nextBtn.onclick = function () {
       if (index >= images.length - 1) {
-        // index = -1// 这样index=-1，下面index++,index=0，这样的效果是往回走
-
-        /* 
-        03- 
-
-        
-        方法一：失败
-          瞬间切换到第一张
-          bug：可以从最后一张回到第一张，但是最后一张到第一张没有动画效果。
-        */
-        //  index = 0;
-        //  ul.style.left = 0;
-
-        /* 
-        方法二：
-          借助假图片，最后一张图片后面添加第一张的图片，最后一张图片切换到第一张图片时，
-          可以有动画效果，当第一张切换到第二张图片时，先瞬间跳到第一张图片，再切换到第二张图片。
-        */
-        // 坑：不仅要把ul的left变成0的位置，还需要把下标变成0，为后面的index++，这样展示的就是第二张了
         index = 0;// 展示第一张。
         ul.style.left = 0;// 瞬间回到第一张
       }
 
       index++
-      animate(ul, -index * box.offsetWidth, 100)
+      animate(ul, { 'left': -index * box.offsetWidth })
+
+      if (index >= points.length) {
+        synPoints(points[0]);
+      } else {
+        synPoints(points[index]);
+      }
     }
 
+    function synPoints(element) {
+      for (let i = 0; i < points.length; i++) {
+        points[i].className = ''
+      }
+      element.className = 'current'
+    }
+
+
+    // 4.自动播放
+    var timerId = setInterval(() => {
+      nextBtn.onclick()
+    }, 3000);
+
+    // 鼠标移入到box上，清除定时器
+    box.onmouseover = function () {
+      clearInterval(timerId)
+    }
+    box.onmouseout = function () {
+      // timerId 前面千万不要加var，否则，移入移出box，box会越来越快
+      timerId = setInterval(() => {
+        nextBtn.onclick()
+      }, 3000);
+    }
+
+    // 5.点击小圆点同步切换
+    for (let i = 0; i < points.length; i++) {
+      points[i].index = i
+      // 点击原点
+      points[i].onclick = function () {
+        synPoints(this)
+
+        // 6.解决bug：当展示最后的假图片的时候，如果点击了小圆点，图片倒着往回走切换到对应的小圆点的图片
+        if (index >= images.length - 1) {
+          ul.style.left = 0
+          index = 0// 这里写不写无所谓，下面吧index同步为小圆点的下标了
+        }
+
+        index = this.index// 坑：记得要同步index值为小圆点的下标
+        animate(ul, { 'left': -index * box.offsetWidth })
+      }
+    }
   </script>
 </body>
 
