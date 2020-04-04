@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 40px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button>宽高同时变成300</button>
+  <br>
+  <div></div>
+  <script>
+    /* 
+    缓动动画，每次移动的距离是能够变化的
+    公式：var step = (target - current)/10
+    */
+    var btn1 = document.querySelectorAll('button')[0]
+    var box = document.querySelector('div')
+
+    btn1.onclick = function () {
+      animate(box, { 'width': 300, 'height': 300, 'left': 400, 'top': 400 })
+    }
+
+    /* 
+    同时做多个动画
+     */
+    function animate(element, object) {
+      clearInterval(element.timerId)
+      element.timerId = setInterval(() => {
+        for (const k in object) {
+          var attr = k
+          var target = object[k]
+          // 1.首先获取div当前的attr参数对应的样式
+          var current = window.getComputedStyle(element, null)[attr]
+          console.log(current);
+
+          // 坑：current是带了单位，不方便下面计算，所以要去掉px
+          current = parseInt(current)
+
+          // 3.每次在当前位置上移动一段距离
+          var step = (target - current) / 10
+          // 向上向下取整
+          step = step > 0 ? Math.ceil(step) : Math.floor(step)
+          console.log(step);
+
+          current += step
+          // element.style.left = current + "px"
+          element.style[attr] = current + "px"
+
+          if (current == target) {
+            clearInterval(element.timerId)
+          }
+        }
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>

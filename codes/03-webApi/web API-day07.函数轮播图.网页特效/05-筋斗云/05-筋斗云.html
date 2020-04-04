@@ -98,6 +98,7 @@
     function animate(element, target) {
       clearInterval(element.timerId)
       element.timerId = setInterval(() => {
+
         var current = element.offsetLeft
         var step = (target - current) / 2
         step = step > 0 ? Math.ceil(step) : Math.floor(step)
