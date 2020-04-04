@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 322px;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+    }
+
+    #closeButton {
+      width: 30px;
+      height: 20px;
+      padding-left: 6px;
+      background-color: greenyellow;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    .hd {
+      width: 100%;
+      height: 248px;
+    }
+
+    .bd {
+      width: 100%;
+      height: 105px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+    <span id="closeButton">x</span>
+    <div class="hd" id="headParg"><img src="images/hd.jpg" alt="" width="322px" height="248px"></div>
+    <div class="bd" id="bottomPart"><img src="images/bd.jpg" alt="" width="322px" height="105px"></div>
+  </div>
+  <script src="animate_final.js"></script>
+  <script>
+    var box = document.querySelector('#box')
+    var closeButton = document.querySelector('#closeButton')
+    var bd = document.querySelector('.bd')
+    console.log(box.offsetWidth);
+
+    closeButton.onclick = function () {
+      animate(box, { 'bottom': -bd.offsetHeight }, function () {
+        animate(box, { 'right': -box.offsetWidth })
+      })
+    }
+  </script>
+</body>
+
+</html>

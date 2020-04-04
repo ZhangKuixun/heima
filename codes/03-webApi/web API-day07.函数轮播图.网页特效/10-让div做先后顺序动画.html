@@ -42,7 +42,7 @@
 
     难点：怎么知道一个动画结束了。
     解决：定时器被清除了，就是动画结束了。
-        给animate添加了第三个参数：回调函数
+        给animate添加了第三个参数：回调函数。可以在animate函数中调用
      */
     function animate(element, object, fn) {
       clearInterval(element.timerId)
@@ -68,7 +68,7 @@
         if (flag) {
           clearInterval(element.timerId)
 
-          // 解决：动画第二次执行完之后，fn没有值了
+          // && 解决：如果没有传递fn的情况下，会报错。比如最后一次动画做完了，没有fn
           fn && fn()
         }
       }, 30);
