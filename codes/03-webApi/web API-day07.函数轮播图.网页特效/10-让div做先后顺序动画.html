@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    div {
+      width: 100px;
+      height: 100px;
+      position: absolute;
+      top: 40px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button>同时做多个动画，每个动画能到达终点</button>
+  <br>
+  <div></div>
+  <script>
+    var btn1 = document.querySelectorAll('button')[0]
+    var box = document.querySelector('div')
+
+    btn1.onclick = function () {
+      animate(box, { 'width': 200, 'height': 800 })
+    }
+
+    /* 
+    同时做多个动画，每个动画能到达终点
+
+    难点：怎么知道所有的样式都到达了终点
+    假设成立法：
+      1.假设一种情况
+      2.尝试推翻假设
+      3.经过1，2步骤，就可以确认假设是否正确
+     */
+    function animate(element, object) {
+      clearInterval(element.timerId)
+      element.timerId = setInterval(() => {
+        // 1.假设一种情况
+        var flag = true
+
+        for (const k in object) {
+          var attr = k
+          var target = object[k]
+          var current = window.getComputedStyle(element, null)[attr]
+          current = parseInt(current)
+
+          var step = (target - current) / 10
+          step = step > 0 ? Math.ceil(step) : Math.floor(step)
+
+          current += step
+          element.style[attr] = current + "px"
+
+          if (current != target) {
+            // 2.尝试推翻假设
+            // 此时的样式动画没有到达对应的终点值，说明假设失败
+            flag = false
+          }
+        }
+        console.log(flag);
+
+        // 3.经过1，2步骤，就可以确认假设是否正确
+        // for循环结束，就可以知道了假设是否正确了
+        if (flag) {
+          clearInterval(element.timerId)
+        }
+      }, 30);
+    }
+  </script>
+</body>
+
+</html>
