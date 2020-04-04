@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      margin-top: 10px;
+    }
+
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top" id="topPart"><img src="iamges/top.jpg" alt=""></div>
+  <div class="nav" id="navBar"><img src="iamges/nav.jpg" alt=""></div>
+  <div class="main" id="mainPart"><img src="iamges/main.jpg" alt="" width="1000px" height="1000px"></div>
+  <script>
+    /*
+    思考：
+      1.找对象
+      2.给window注册onscroll
+      3.获取页面垂直方向的卷曲距离 scrollTop
+      4.scrollTop和topPart的高度做比较
+        4.1 scrollTop >= topPart 的高度，需要让navBar进行固定定位
+          bug：固定定位会脱标，不占位置，底下的mainPart会蹦一下，跑上面去
+          解决：给mainPart设置mainTop=10+navBar 的高度
+        4.2 scrollTop < topPart 的高度，让navBar取消固定定位
+          当navBar取消固定定位，mainPart设置marginTop=10
+    */
+    var navBar = document.querySelector('#navBar')
+    var topPart = document.querySelector('#topPart')
+    var mainPart = document.querySelector('#mainPart')
+
+    // 2
+    window.onscroll = function () {
+      // 3
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+      // 4
+      if (scrollTop >= topPart.offsetHeight) {
+        navBar.className = 'nav fixed'
+        mainPart.style.marginTop = 10 + navBar.offsetHeight + 'px'
+      } else {
+        navBar.className = 'nav'
+        mainPart.style.marginTop = 10 + 'px'
+      }
+    }
+  </script>
+</body>
+
+</html>

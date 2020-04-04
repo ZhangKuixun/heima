@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 4000px;
+      width: 4000px;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    /*
+    获取页面的卷曲的距离
+    兼容问题：
+      老版浏览器：通过html的scrollTop来获取，或者通过body的scrollTop获取
+      新版浏览器：通过widow.pageYOffset
+    */
+    window.onscroll = function () {
+      // var scrollTop = document.documentElement.scrollTop || document.body.scrollTop || 0
+      // var scrollTop = window.pageYOffset
+
+      // 兼容代码：垂直方向的卷曲距离
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+
+      // var scrollLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft
+      // console.log(scrollLeft);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      padding: 10px;
+      border: 10px solid black;
+      /* overflow: hidden; */
+      overflow: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    qwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+    按小时收费的网站
+  </div>
+  <script>
+    var box = document.querySelector('div')
+
+    /* 
+    scrollWidth、scrollHeight = 内容的宽高
+    offsetWidth、offsetHeight = padding + border + width
+    */
+    console.log(box.offsetWidth);
+    console.log(box.scrollWidth);
+
+    /*
+    offsetWidth、offsetHeight 只和div的宽高相关，和内容无关
+    */
+    console.log(box.offsetHeight);
+    console.log(box.scrollHeight);
+
+    /* 
+    scrollTop、scrollLeft 卷曲的距离
+      如果卷曲值是0，没有卷曲或者是没有滚动条
+    scrollTop 获取box的垂直方向的卷曲距离
+    scrollLeft 获取box的水平方向的卷曲距离
+    */
+    console.log(box.scrollTop);
+
+    /*
+    实时获取滚动的卷曲距离
+    onscroll 当滚动条在滚动的时候触发
+    */
+    box.onscroll = function () {
+      // console.log(box.scrollTop);
+      console.log(box.scrollLeft);
+    }
+  </script>
+</body>
+
+</html>
