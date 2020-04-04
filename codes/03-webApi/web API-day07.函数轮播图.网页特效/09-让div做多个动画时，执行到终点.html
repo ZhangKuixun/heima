@@ -22,52 +22,56 @@
 </head>
 
 <body>
-  <button>宽高同时变成300</button>
+  <button>同时做多个动画，每个动画能到达终点</button>
   <br>
   <div></div>
   <script>
-    /* 
-    缓动动画，每次移动的距离是能够变化的
-    公式：var step = (target - current)/10
-    */
     var btn1 = document.querySelectorAll('button')[0]
     var box = document.querySelector('div')
 
     btn1.onclick = function () {
-      animate(box, { 'width': 300, 'height': 300, 'left': 400, 'top': 400 })
+      animate(box, { 'width': 200, 'height': 800 })
     }
 
     /* 
-    同时做多个动画
-    element 做动画的元素
-    obj 是一个对象，对象里面的键值对就是需要做的动画效果
+    同时做多个动画，每个动画能到达终点
+
+    难点：怎么知道所有的样式都到达了终点
+    假设成立法：
+      1.假设一种情况
+      2.尝试推翻假设
+      3.经过1，2步骤，就可以确认假设是否正确
      */
     function animate(element, object) {
       clearInterval(element.timerId)
       element.timerId = setInterval(() => {
+        // 1.假设一种情况
+        var flag = true
+
         for (const k in object) {
           var attr = k
           var target = object[k]
-          // 1.首先获取div当前的attr参数对应的样式
           var current = window.getComputedStyle(element, null)[attr]
-          console.log(current);
-
-          // 坑：current是带了单位，不方便下面计算，所以要去掉px
           current = parseInt(current)
 
-          // 3.每次在当前位置上移动一段距离
           var step = (target - current) / 10
-          // 向上向下取整
           step = step > 0 ? Math.ceil(step) : Math.floor(step)
-          console.log(step);
 
           current += step
-          // element.style.left = current + "px"
           element.style[attr] = current + "px"
 
-          if (current == target) {
-            clearInterval(element.timerId)
+          if (current != target) {
+            // 2.尝试推翻假设
+            // 此时的样式动画没有到达对应的终点值，说明假设失败
+            flag = false
           }
+        }
+        console.log(flag);
+
+        // 3.经过1，2步骤，就可以确认假设是否正确
+        // for循环结束，就可以知道了假设是否正确了
+        if (flag) {
+          clearInterval(element.timerId)
         }
       }, 30);
     }
