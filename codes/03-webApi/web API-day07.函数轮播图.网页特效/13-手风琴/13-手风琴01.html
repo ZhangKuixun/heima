@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #accordion {
+      width: 1200px;
+      height: 400px;
+      margin: 100px auto;
+      border: 2px solid pink;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #accordion li {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-size: 1200px 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="accordion">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <script src="../animate_final.js"></script>
+  <script>
+    /* 
+    功能1：给每一个li设置背景图片
+      1.for循环找到所有li元素
+      2.for循环，给每一个li都要设置背景图片
+
+    功能2：给li设置left，排布位置
+    
+    功能3：鼠标移入li，li的left改变
+
+    功能4：鼠标离开li
+     */
+
+    var lis = document.querySelectorAll('#accordion li')
+    var accordion = document.querySelector('#accordion')
+
+    for (let i = 0; i < lis.length; i++) {
+      // 功能1：给每一个li设置背景图片
+      lis[i].style.backgroundImage = 'url(images/' + (i + 1) + '.jpg)'
+
+      // 功能2：给li设置left，排布位置
+      lis[i].style.left = i * 240 + 'px'
+
+      // 功能3：鼠标移入li，li的left改变
+      lis[i].index = i;
+      lis[i].onmouseover = function () {
+        console.log(this.index);
+        for (let i = 0; i < lis.length; i++) {
+          if (i <= this.index) {
+            animate(lis[i], { 'left': i * 100 })
+          } else {
+            animate(lis[i], { 'left': i * 100 + 700 })
+          }
+        }
+      }
+    }
+
+    // 功能4：鼠标离开，恢复成原来的样子
+    accordion.onmouseout = function () {
+      for (let i = 0; i < lis.length; i++) {
+        animate(lis[i], { 'left': i * 240 })
+      }
+    }
+  </script>
+</body>
+
+</html>
