@@ -20,7 +20,7 @@
 </head>
 
 <body>
-  <div class="box"></div>
+  <div class="box">asdf</div>
   <script>
     /*
     需求：获取div的圆角值多少
@@ -39,6 +39,8 @@
     // var ret = window.getComputedStyle(div, null).borderRadius
     var ret = window.getComputedStyle(div, null).backgroundColor
     console.log(ret);
+
+    console.log(window.getComputedStyle(div, null)['fontSize']);
 
     /*
     兼容问题：IE678不支持该方法
