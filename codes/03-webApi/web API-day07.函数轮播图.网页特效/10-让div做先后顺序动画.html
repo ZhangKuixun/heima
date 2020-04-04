@@ -31,7 +31,9 @@
 
     btn1.onclick = function () {
       animate(box, { 'left': 200 }, function () {
-        animate(box, { 'top': 200 })
+        animate(box, { 'top': 200 }, function () {
+          animate(box, { 'borderRadius': 100 })
+        })
       })
     }
 
@@ -39,7 +41,8 @@
     需求：让div先left=600，到达600之后，再top=300，之后再变成圆角
 
     难点：怎么知道一个动画结束了。
-    解决：定时器被清除了，就是动画结束了。使用回调函数
+    解决：定时器被清除了，就是动画结束了。
+        给animate添加了第三个参数：回调函数
      */
     function animate(element, object, fn) {
       clearInterval(element.timerId)
