@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    事件对象：在事件触发的时候，会产生一个事件对象，这个对象里面存储了一些和事件相关的信息。
+
+    获取事件对象：
+      存在兼容问题：
+        新浏览器：只需要在事件处理函数里面指定一个形参即可，这个形参就是事件对象
+        IE678：window.event来获取
+     */
+
+    // 新版，形参可以任意指定
+    document.onclick = function (event) {
+      console.log(event);
+    }
+
+    // IE678
+    document.onclick = function (event) {
+      console.log(window.event);
+    }
+
+    // 处理事件对象的兼容性问题
+    document.onclick = function (event) {
+      event = event || window.event
+      console.log(event);
+    }
+  </script>
+</body>
+
+</html>
