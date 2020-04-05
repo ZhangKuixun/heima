@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    /*
+    拖拽案例：三个事件
+      鼠标按下事件：onmousedown
+      鼠标移动事件：onmousemove
+      鼠标抬起事件：onmouseup
+
+    效果：按下去，移动，抬起鼠标停止移动
+     */
+
+    /* 
+    节流阀：让事件有限制的触发
+     */
+    var open = false; // 阀门现在是关闭状态，该阀门用来控制鼠标按下和抬起，触发移动
+
+    var div = document.querySelector('div')
+    // 在div上按下去，给div注册鼠标按下去
+    div.onmousedown = function () {
+      open = true
+      console.log('鼠标按下去了');
+    }
+
+    // 鼠标在页面中移动时，document
+    document.onmousemove = function () {
+      console.log('鼠标移动了');
+    }
+
+    // 鼠标在页面中抬起时
+    document.onmouseup = function () {
+      open = false
+      console.log('鼠标抬起来了');
+    }
+
+  </script>
+</body>
+
+</html>

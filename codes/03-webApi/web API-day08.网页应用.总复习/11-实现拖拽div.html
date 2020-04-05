@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      position: absolute;
+      left: 100px;
+      top: 100px;
+      cursor: move;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <script>
+    /*
+    拖拽案例：三个事件
+      鼠标按下事件：onmousedown
+      鼠标移动事件：onmousemove
+      鼠标抬起事件：onmouseup
+
+    效果：按下去，移动，抬起鼠标停止移动
+     */
+
+    /* 
+    节流阀：让事件有限制的触发
+     */
+    var open = false; // 阀门现在是关闭状态，该阀门用来控制鼠标按下和抬起，触发移动
+
+    // 鼠标到div左边和上边的距离
+    var disX = 0
+    var disY = 0
+
+    var div = document.querySelector('div')
+    // 在div上按下去，给div注册鼠标按下去
+    div.onmousedown = function (e) {
+      open = true
+      disX = e.pageX - div.offsetLeft
+      disY = e.pageY - div.offsetTop
+      console.log(disX, disY);
+
+    }
+
+    // 鼠标在页面中移动时，不能给div注册移动的事件，容易弄丢div，必须给document注册
+    document.onmousemove = function (e) {
+      if (open) {
+        /* 
+        bug：div移动时，鼠标的位置给了div左上角
+        解决：
+          获取鼠标距离页面左边的距离 pageX，然后减去div到offsetParent之间的距离（就是到body之间的距离），就是鼠标到div左边的距离
+         */
+        div.style.left = e.pageX - disX + 'px'
+        div.style.top = e.pageY - disY + 'px'
+      }
+    }
+
+    // 鼠标在页面中抬起时
+    div.onmouseup = function () {
+      open = false
+    }
+
+  </script>
+</body>
+
+</html>
