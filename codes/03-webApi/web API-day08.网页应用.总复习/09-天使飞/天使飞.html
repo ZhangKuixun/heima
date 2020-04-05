@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 4000px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="images/timg.gif" alt="">
+  <script>
+    /*
+    需求：鼠标在页面中移动的时候，让图片跟随鼠标移动
+
+    思路：获取鼠标的位置信息，给图片设置left、top
+
+    onmousemove 鼠标在页面中移动的时候触发
+     */
+    var ts = document.querySelector('img')
+    document.onmousemove = function (e) {
+      /* 
+      如果采用的是绝对定位，最好采用pageX，如果没有滚动条时，clientY和pageY相等，如果有滚动条，采用pageY更合适。
+
+      特殊案例：把高设成4000px，有滚动条了，需要设置成 pageX、pageY
+        解决1：
+          ts.style.position = 'absolute'
+          ts.style.left = e.pageX + 'px'
+          ts.style.top = e.pageY + 'px'
+
+        解决2：
+          ts.style.position = 'fixed'
+          ts.style.left = e.clientX + 'px'
+          ts.style.top = e.clientY + 'px'
+       */
+
+      // ts.style.position = 'absolute'
+      // ts.style.left = e.clientX + 'px'// 设置元素的left、top，必须要有定位
+      // ts.style.top = e.clientY + 'px'
+
+      // 解决1：
+      // ts.style.position = 'absolute'
+      // ts.style.left = e.pageX + 'px'
+      // ts.style.top = e.pageY + 'px'
+
+      // 解决2：
+      ts.style.position = 'fixed'
+      ts.style.left = e.clientX + 'px'
+      ts.style.top = e.clientY + 'px'
+    }
+  </script>
+</body>
+
+</html>
