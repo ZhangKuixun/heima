@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    获取页面的可视区域大小
+
+    获取也有兼容性问题
+    老版浏览器：通过html或者body的clientWidth
+    新版浏览器：window.innerWidth、window.innerHeight
+     */
+    var clientW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+    var clientH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+    console.log(clientW, clientH);
+
+    /*
+    实时获取可视区域的大小
+    onresize 当页面可视区域在发生改变的时候触发
+     */
+    window.onresize = function () {
+      var clientW = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth
+      var clientH = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+      console.log(clientW, clientH);
+    }
+  </script>
+</body>
+
+</html>
