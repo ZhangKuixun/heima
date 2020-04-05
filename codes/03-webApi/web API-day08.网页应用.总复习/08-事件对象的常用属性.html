@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 4000px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script>
+    /* 
+    事件对象常用的属性
+
+    鼠标事件对象中，常用的属性有三个
+      clientX、clientY 鼠标距离可视区左边和上边的距离
+      pageX、pageY 鼠标距离页面左边和上边的距离
+      screenX、screenY 鼠标距离屏幕左边和上边的距离
+    上面三个属性都是用来获取鼠标的距离  
+     */
+    document.onclick = function (e) {
+      console.log(e);
+
+      // console.log('clientX ' + e.clientX);
+      // console.log('pageX ' + e.pageX);
+      // console.log('screenX ' + e.screenX);
+
+      // 当页面没有滚动条时，clientY、pageY相等
+      console.log('clientY ' + e.clientY);
+      console.log('pageY ' + e.pageY);
+      console.log('screenY ' + e.screenY);
+    }
+
+    /*
+    鼠标的事件对象
+
+    常用属性：keyCode: 13 键盘码
+     */
+    document.onkeyup = function (e) {
+      console.log(e);
+    }
+  </script>
+</body>
+
+</html>
