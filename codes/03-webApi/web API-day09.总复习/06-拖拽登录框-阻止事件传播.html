@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .login-header {
+      text-align: center;
+    }
+
+    .login-header #link {
+      font-size: 30px;
+      text-decoration: none;
+      color: black;
+    }
+
+    .login {
+      width: 512px;
+      position: absolute;
+      border: #ebebeb solid 1px;
+      height: 280px;
+      left: 0;
+      right: 0;
+      background: #ffffff;
+      box-shadow: 0px 0px 20px #ddd;
+      z-index: 9999;
+      display: none;
+    }
+
+    .login .login-title {
+      width: 100%;
+      font-size: 18px;
+      padding: 2px;
+      text-align: center;
+      margin-top: 4px;
+      cursor: move;
+      /* 禁止用户选中 */
+      user-select: none;
+    }
+
+    .login #closeBtn {
+      width: 30px;
+      height: 30px;
+      font-size: 12px;
+      padding: 4px;
+      text-align: center;
+      line-height: 30px;
+      background-color: white;
+      border-radius: 50%;
+      border: 1px solid gray;
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      z-index: 99;
+    }
+
+    .login .login-input-content {
+      width: 100%;
+      height: 98px;
+      box-sizing: border-box;
+    }
+
+    .login .login-input-content .login-input {
+      text-align: right;
+      padding-top: 20px;
+      padding-right: 80px;
+    }
+
+    .login .login-input-content .login-input input {
+      padding: 4px;
+      width: 280px;
+    }
+
+    .login .login-button {
+      width: 256px;
+      height: 40px;
+      text-align: center;
+      border: 1px solid #ebebeb;
+      margin: 40px auto;
+    }
+
+    .login .login-button a#login-button-submit {
+      font-size: 16px;
+      text-decoration: none;
+      color: black;
+      line-height: 40px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-header">
+    <a id="link" href="javascript:void(0);">点击，弹出登录框</a>
+  </div>
+  <div id="login" class="login">
+    <div id="title" class="login-title">登录会员</div>
+    <span id="closeBtn">关闭</span>
+    <div class="login-input-content">
+      <div class="login-input">
+        用户名： <input id="name" type="text" placeholder="请输入用户名">
+      </div>
+      <div class="login-input">
+        登录密码： <input id="pwd" type="password" placeholder="请输入密码">
+      </div>
+    </div>
+    <div id="loginBtn" class="login-button">
+      <a href="javasecript:void(0);" id="login-button-submit">会员登录</a>
+    </div>
+  </div>
+  <script>
+    /*
+    需求：
+      功能1.点击link，显示登录框
+      功能2.js控制登录框居中显示
+      功能3.按住标题拖拽
+      功能4.点击关闭按钮和esc键，关闭弹框
+      功能5.限制登录框的拖拽范围
+     */
+
+    // 功能1.点击link，显示登录框
+    var link = document.querySelector('#link')
+    var login = document.querySelector('#login')
+    var title = document.querySelector('#title')
+    var closeBtn = document.querySelector('#closeBtn')
+
+    link.onclick = function (e) {
+      login.style.display = 'block'
+
+      /* 
+      06--
+
+      阻止事件传播
+      在事件对象中，有一个方法stopPropagation
+      */
+      e.stopPropagation()
+
+      /* 
+      功能2.js控制登录框居中显示
+      思路：
+        可视区的宽度 - login的宽度，剩下的距离就是左右各相等，再除以2
+       */
+      login.style.left = (window.innerWidth - login.offsetWidth) / 2 + 'px'
+      login.style.top = (window.innerHeight - login.offsetHeight) / 2 + 'px'
+    }
+
+    /* 
+    06--
+    */
+    document.onclick = function () {
+      console.log('隐藏login');
+      login.style.display = 'none'
+    }
+
+    // 功能3.按住标题拖拽
+    var open = false
+    var disX = 0
+    var disY = 0
+    title.onmousedown = function (e) {
+      open = true
+      disX = e.pageX - login.offsetLeft
+      disY = e.pageY - login.offsetTop
+    }
+    document.onmousemove = function (e) {
+      if (open) {
+        var currentX = e.pageX - disX
+        var currentY = e.pageY - disY
+
+        // 功能5.限制登录框的拖拽范围
+        if (currentX <= 0) {// 左
+          currentX = 0
+        }
+        if (currentY <= 21) {// 上
+          currentY = 21
+        }
+        if (currentX >= window.innerWidth - login.offsetWidth - (closeBtn.offsetWidth / 2)) {// 右
+          currentX = window.innerWidth - login.offsetWidth - (closeBtn.offsetWidth / 2)
+        }
+        if (currentY >= window.innerHeight - login.offsetHeight) {// 下
+          currentY = window.innerHeight - login.offsetHeight
+        }
+
+        login.style.left = currentX + 'px'
+        login.style.top = currentY + 'px'
+
+
+        // 清除拖动过程中选中的文字
+        // window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+      }
+    }
+    title.onmouseup = function () {
+      open = false
+    }
+
+    // 功能4.点击关闭按钮和esc键，关闭弹框
+    closeBtn.onclick = function () {
+      login.style.display = 'none'
+    }
+    document.onkeyup = function (e) {
+      e == 27 || (login.style.display = 'none')
+    }
+  </script>
+</body>
+
+</html>
