@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    同一个元素、同一个事件，使用on注册事件，存在覆盖问题，
+     */
+    // document.onclick = function () {
+    //   console.log(1);
+    // }
+    // document.onclick = function () {
+    //   console.log(2);
+    // }
+    // // 解绑元素方便
+    // document.onclick = null
+
+    /* 
+    新的注册事件的方式：添加事件监听
+    addEventListener(event, fn, useCapture)
+      参数：
+        event 事件名，字符串，不能加on，如：click、mousemove
+        fn 事件处理函数
+        useCapture 是否使用事件捕获，默认值是false，可以省略
+    
+    addEventListener解决了on注册事件的覆盖问题
+     */
+
+    document.addEventListener('click', function () {
+      console.log(3);
+    })
+    function fn() {
+      console.log(4);
+    }
+    document.addEventListener('click', fn)
+
+    /* 
+    解绑addEventListener注册的事件
+    removeEventListener(event, fn, useCapture)
+      参数：和addEventListener一样
+    注意：匿名函数无法解绑
+      如：document.addEventListener('click', function () {
+            console.log(3);
+          })
+    正确的写法：
+      function fn() {
+        console.log(4);
+      }
+      document.addEventListener('click', fn)
+      removeEventListener('click', fn)
+     */
+    removeEventListener('click', fn)
+
+  </script>
+</body>
+
+</html>
