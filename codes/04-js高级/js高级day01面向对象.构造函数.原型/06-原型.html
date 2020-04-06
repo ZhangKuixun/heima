@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      1.任何函数，都有prototype属性
+      2.函数的prototype属性值是一个对象，把这个对象叫做原型（原型对象）
+      3.原型的作用：通过构造函数创建的对象，可以直接访问构造函数的prototype属性上的任意成员
+     */
+    function Person() {
+
+    }
+
+    // 给原型对象添加color属性
+    Person.prototype.color = 'lime'
+
+    Person.prototype.sayHi = function () {
+      console.log('hi');
+    }
+
+    console.log(Person.prototype);
+
+    var p1 = new Person();
+    // console.log(p1.color);
+    p1.sayHi();
+
+    var p2 = new Person();
+    // console.log(p1.color);
+    p2.sayHi();
+
+    // p1的sayHi和p2的sayHi方法是同一个方法，都来源与原型对象上的sayHi方法
+    console.log(p1.sayHi == p2.sayHi);
+    
+    
+  </script>
+</body>
+
+</html>
