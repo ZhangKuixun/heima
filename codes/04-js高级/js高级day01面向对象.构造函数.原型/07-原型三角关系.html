@@ -26,6 +26,19 @@
     // p2 实例对象
     var p2 = new Person();
     p2.sayHi();
+
+
+    // 比较的是不是同一个数组
+    console.log([] == []);
+
+    /* 
+    比较的是push方法，是不是同一个
+
+    push方法存在于数组的原型上，访问数组的原型：array.prototype
+    []实例，就可以访问数组的原型上任意成员
+     */
+    console.log([].push == [].push);// true
+
   </script>
 </body>
 
