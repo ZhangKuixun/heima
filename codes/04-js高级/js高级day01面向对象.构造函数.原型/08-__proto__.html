@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    __proto__
+      1.任何对象都有__proto__
+      2.对象的__proto__属性值指向了构造函数的prototype属性
+
+     */
+    function Person() {
+
+    }
+    var p1 = new Person();
+    // console.log(p1);
+    console.log(p1.__proto__);
+
+
+    /* 
+    要想访问原型对象，有两种方式：
+      1.通过构造函数去访问-->构造函数的prototype属性
+      2.通过实例对象去访问-->实例对象的__proto__属性
+
+    注意点：
+      该属性是一个私有属性，不是个标准的属性，IE没有该属性，不要在线上使用该属性，本地开发中可以使用该属性查看原型上有哪些成员可以使用
+      以下滑线开头的属性都是私有属性，不希望被外部访问和修改
+     */
+     console.log(Person.prototype == p1.__proto__);
+    
+    // 不推荐这么用
+    // p1.__proto__.color = 'lime'
+    // console.log(p1.__proto__);
+    
+  </script>
+</body>
+
+</html>
