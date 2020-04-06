@@ -40,6 +40,9 @@
       padding: 2px;
       text-align: center;
       margin-top: 4px;
+      cursor: move;
+      /* 禁止用户选中 */
+      user-select: none;
     }
 
     .login #closeBtn {
@@ -171,8 +174,8 @@
         login.style.top = currentY + 'px'
 
 
-        //清除拖动过程中选中的文字
-        window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
+        // 清除拖动过程中选中的文字
+        // window.getSelection ? window.getSelection().removeAllRanges() : document.selection.empty();
       }
     }
     title.onmouseup = function () {
