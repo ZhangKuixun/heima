@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    constructor属性
+
+    1.原型对象中自带的属性
+    2.该属性值指向了构造函数
+     */
+    function Person() {
+
+    }
+    // console.log(Person.prototype);
+    // console.log(Person.prototype.constructor);
+
+    var p1 = new Person()
+    console.log(p1.constructor == Person);
+    console.log(p1.constructor == Person.prototype.constructor);
+    
+    /* 
+    小结：
+    完整的原型三角关系：
+      构造函数（妈妈）
+      原型对象（爸爸）
+      实例对象（孩子）
+    构造函数 和 原型对象的关系：配偶关系
+      构造函数通过prototype属性找到原型对象
+      原型对象通过constructor属性找到构造函数
+    构造函数 和 实例对象的关系：母子关系
+      构造函数通过new得到实例对象
+      实例对象不能直接找到构造函数
+    原型对象 和 实例对象的关系：父子关系
+      实例对象通过__proto__属性找到原型对象
+      实例对象可以间接的通过原型对象的constructor属性找到 构造函数
+     */
+  </script>
+</body>
+
+</html>
