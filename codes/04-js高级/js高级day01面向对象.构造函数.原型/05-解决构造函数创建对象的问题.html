@@ -9,17 +9,47 @@
 
 <body>
   <script>
-    function Person(name, age){
-      this.name = name;
-      this.age = age;
-      this.sayHi = function(){
-        console.log(Hello);
+
+    /* 
+    内存浪费的解决方法：重新写一个函数sayHi，在Person对象中引用。
+    但是又造成了全局污染的问题。
+      解决全局污染的问题：用一个对象封装下面两个方法
+     */
+    // function sayHi() {
+    //   console.log('Hello');
+    // }
+    // function run(){
+    //   console.log('running');
+    // }
+
+    // 既解决全局污染，又解决内存浪费
+    var tools = {
+      sayHi: function () {
+        console.log('Hello');
+      },
+      run: function () {
+        console.log('running');
       }
     }
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+      this.sayHi = tools.sayHi;
+      this.run = tools.run;
+    }
 
-    var p1 = new Person('ls',20)
+    var p1 = new Person('ls', 20)
     console.log(p1);
-    
+
+    var p2 = new Person('zs', 25)
+    console.log(p2);
+
+    console.log(p2.sayHi == p1.sayHi);
+
+    /*
+    小结：
+      解决的思路；把sayHi等方法提取到构造函数外面，在内存中只会有一份sayHi方法
+    */
   </script>
 </body>
 
