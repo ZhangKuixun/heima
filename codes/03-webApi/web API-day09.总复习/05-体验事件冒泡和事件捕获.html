@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .father {
+      width: 400px;
+      height: 400px;
+      background-color: #ff9999;
+    }
+
+    .son {
+      width: 200px;
+      height: 200px;
+      background-color: yellow;
+    }
+
+    .sun {
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="father">
+    <div class="son">
+      <div class="sun">
+      </div>
+    </div>
+  </div>
+  <script>
+    var father = document.querySelector('.father')
+    var son = document.querySelector('.son')
+    var sun = document.querySelector('.sun')
+    var arr = [document, document.body, father, son, sun]
+
+    for (let i = 0; i < arr.length; i++) {
+      // 使用on注册的事件只能在事件冒泡阶段触发
+      // arr[i].onclick = function () {
+      //   console.log(this);
+      // }
+
+      arr[i].addEventListener('click', function () {
+        console.log(this);
+        // useCapture 为false，表示在事件冒泡阶段触发
+      }, false)
+    }
+
+    /*
+    重点：事件冒泡、事件捕获，是事件的底层机制，只要触发了事件，这个事件就会传播，不是说所有的元素都注册了事件，才会传播，跟注册事件没有关系。
+    比如：不给father注册事件，事件依然会往上传递
+     */
+  </script>
+</body>
+
+</html>
