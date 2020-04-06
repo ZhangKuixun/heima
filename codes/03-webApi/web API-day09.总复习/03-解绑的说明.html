@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 坑：如果希望注册的事件能够解绑，不能下面这种方式来注册，这样注册的事件是无法解绑的
+    document.addEventListener('click', function foo() {
+      console.log(3);
+    })
+
+    /*
+    把函数声明作为参数传递的时候，解析成了具名函数表达式的写法
+    具名函数表达式中function关键字后面的函数名，在外面获取不到，只能在函数内部去使用这个函数名
+     */
+    var fn = function bar() {
+      console.log(1);
+      console.log(bar);
+    }
+    bar()
+  </script>
+</body>
+
+</html>
