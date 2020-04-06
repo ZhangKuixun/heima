@@ -19,13 +19,13 @@
     }
 
     // 给原型对象添加color属性
-    Person.prototype.color = 'lime'
+    // Person.prototype.color = 'lime'
 
     Person.prototype.sayHi = function () {
       console.log('hi');
     }
 
-    console.log(Person.prototype);
+    // console.log(Person.prototype);
 
     var p1 = new Person();
     // console.log(p1.color);
@@ -35,10 +35,10 @@
     // console.log(p1.color);
     p2.sayHi();
 
-    // p1的sayHi和p2的sayHi方法是同一个方法，都来源与原型对象上的sayHi方法
+    // p1的sayHi和p2的sayHi方法是同一个方法，都来源于原型对象上的sayHi方法
     console.log(p1.sayHi == p2.sayHi);
     
-    
+
   </script>
 </body>
 
