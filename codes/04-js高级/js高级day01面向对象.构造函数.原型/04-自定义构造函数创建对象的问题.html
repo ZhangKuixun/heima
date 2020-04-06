@@ -9,6 +9,37 @@
 
 <body>
   <script>
+    /* 
+    new的4个步骤：
+      1.创建空对象
+      2.让构造函数里的this指向新对象
+      3.执行构造函数
+      4.返回新对象
+    */
+    // 自定义构造函数创建对象的问题
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+
+      /* 
+      经过此图的比较：04-自定义构造函数的内存模型.jpg
+      得知构造函数创建对象存在的问题：
+        浪费了内存，每创建ige对象，就会在内存中创建一个sayHi方法
+     */
+      this.sayHi = function () {
+        console.log('hello');
+      }
+    }
+
+    var p1 = new Person('ls', 20)
+    console.log(p1);
+
+    var p2 = new Person('ls', 20)
+    console.log(p2);
+
+    // 复杂数据类型，相等比较，比较的是地址。
+    console.log(p1.sayHi == p2.sayHi);// false
+
 
   </script>
 </body>
