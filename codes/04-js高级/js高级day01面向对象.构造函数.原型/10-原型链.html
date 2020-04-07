@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Person() {
+
+    }
+    console.log(Person.prototype);
+    console.log(Person.prototype.__proto__);// 找爸爸
+    console.log(Person.prototype.__proto__.constructor);// 找妈妈
+
+    console.log(Person.prototype.__proto__ == Object.prototype);
+
+    console.log(Object.prototype.__proto__);
+
+    var p = new Person();
+
+    /*
+    实例对象p的原型链：
+      p ==> Person.prototype ==> Object.prototype ==> null
+    
+    小结：
+      原型链和构造函数没有关系
+     */
+  </script>
+</body>
+
+</html>
