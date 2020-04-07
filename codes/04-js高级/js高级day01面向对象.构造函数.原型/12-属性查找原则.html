@@ -15,6 +15,10 @@
       2.如果没有，就去对象的原型上进行查找，如果有，返回结果
       3.如果没有，就沿着原型链继续往上查找，直到Object.prototype原型上，如果有，返回结果
       4.如果Object.prototype原型上没有，返回undefined
+
+    属性设置原则：
+      1.如果对象没有该属性，就会给对象添加该属性
+      2.如果对象有该属性，就会修改对象
      */
     function Person(name, age) {
       this.name = name;
@@ -25,7 +29,7 @@
 
     var p = new Person('dacong', 20)
 
-    console.log(p);
+    // console.log(p);
 
     /*
     p的原型链：
@@ -35,12 +39,12 @@
     console.log(p.age);// 20
     console.log(p.gender);// male
     console.log(p.sex);// undefined
-
     // p.toString() 来源于Object.protetype，沿着原型链找到结果
     console.log(p.toString());// '[object Object]'
     
     /* 
-    查找对象的属性：沿着原型链查找
+    查找对象的属性：沿着原型链查找，找是否有该属性，不管属性值是什么
+    设置对象的属性：有属性，就修改，没有就添加，不会影响原型链生的属性
      */
   </script>
 </body>
