@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // Array
+    var arr = new Array();
+    // console.log(Array.prototype.__proto__);// 找爸爸
+    // console.log(Array.prototype.__proto__.constructor);// 找妈妈
+    // console.log(Array.prototype.__proto__ == Object.prototype);
+    // 原型链：arr ==> Array.prototype ==> Object.prototype ==> null
+
+    // Date
+    var d = new Date();
+    // 原型链：d ==> Date.prototype ==> Object.prototype ==> null
+
+    // Math
+    console.log(Math.__proto__);
+    console.log(Math.__proto__.constructor);
+    console.log(Math.__proto__ == Object.prototype);
+    // 原型链：==> Object.prototype ==> null
+  </script>
+</body>
+
+</html>
