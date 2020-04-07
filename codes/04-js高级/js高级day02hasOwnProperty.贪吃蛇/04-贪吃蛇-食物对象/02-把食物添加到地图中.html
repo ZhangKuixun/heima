@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #map {
+      width: 800px;
+      height: 800px;
+      background-color: #ccc;
+      margin: 50px auto;
+      /* 蛇和食物需要相对于地图定位 */
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+    var map = document.querySelector('#map')
+
+    function Food(options) {
+      options = options || {}
+
+      this.width = options.width || 20;
+      this.height = options.height || 20;
+      this.bgc = options.bgc || 'blue';
+      this.x = options.x || 0;
+      this.y = options.y || 0;
+    }
+
+    Food.prototype.render = function () {
+      var div = document.createElement('div')
+
+      // this 谁调用，就指向谁
+      div.style.width = this.width + "px"
+      div.style.height = this.height + "px"
+      div.style.backgroundColor = this.bgc
+      div.style.position = 'absolute'
+
+      /* 
+      坐标范围：
+      1.地图的x y的坐标间隔和食物的大小一样。公式：left = x * 食物的宽度
+      2.this.width = 还在这个函数里面，可以用this
+       */
+      var x = parseInt(Math.random() * map.offsetWidth / this.width)
+      var y = parseInt(Math.random() * map.offsetHeight / this.height)
+
+      div.style.left = x * this.width + 'px'
+      div.style.top = y * this.height + 'px'
+
+      map.appendChild(div)
+    }
+
+    var f = new Food();
+    f.render();
+
+  /*   for (let i = 0; i < 1000; i++) {
+      f.render();
+    } */
+
+  </script>
+</body>
+
+</html>

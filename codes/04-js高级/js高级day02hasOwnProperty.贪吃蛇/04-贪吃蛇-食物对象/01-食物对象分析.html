@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 构造函数创建食物
+    // function Food(width, height, bgc, x, y) {
+    //   this.width = width || 20;
+    //   this.height = height || 20;
+    //   this.bgc = bgc || 'blue';
+    //   this.x = x || 0;
+    //   this.y = y || 0;
+    // }
+    // var food = new Food(30, 30);
+
+    // 参数改为对象
+    function Food(options) {
+      // 防止没有传递 options
+      options = options || {}
+
+      this.width = options.width || 20;
+      this.height = options.height || 20;
+      this.bgc = options.bgc || 'blue';
+      this.x = options.x || 0;
+      this.y = options.y || 0;
+    }
+    var food = new Food();
+
+    console.log(food);
+
+  </script>
+</body>
+
+</html>
