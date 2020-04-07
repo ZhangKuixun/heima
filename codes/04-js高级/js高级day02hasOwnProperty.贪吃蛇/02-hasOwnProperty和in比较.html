@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    hasOwnProperty&&in比较
+
+    in 在for...in中使用
+    in 单独使用
+    语法：
+      属性名 in 对象
+    作用：
+      检查对象是否可以使用该属性，如果可以，返回true，无论该属性是对象自身的还是原型链上的，只要能够使用，都返回true
+    hasOwnProperty 作用：判断属性是否是自身的
+
+    使用场景：for...in 循环中过滤出对象自身的属性
+
+     */
+    function Person(name) {
+      this.name = name;
+    }
+    Person.prototype.gender = 'mal';
+    var p = new Person('zs')
+    for (const key in p) {
+      if (p.hasOwnProperty(key)) {
+        const element = p[key];
+        console.log(element);
+      }
+    }
+  </script>
+</body>
+
+</html>
