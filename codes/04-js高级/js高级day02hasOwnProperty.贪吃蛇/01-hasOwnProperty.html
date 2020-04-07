@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    hasOwnProperty
+      检测一个属性是不是对象自身的，如果是，返回true，否则返回false
+    对象.hasOwnProperty('属性名')
+      p.hasOwnProperty('name')
+     */
+    function Person(name) {
+      this.name = name;
+    }
+    var p = new Person('zs');
+    console.log(p);
+
+    Person.prototype.age = 23
+
+    console.log(p.hasOwnProperty('name'));
+    console.log(p.hasOwnProperty('age'));
+
+    /* 
+    检查p对象自身有没有hasOwnProperty属性
+    该方法时来源于Object.prototype原型上的p实例对象可以访问hasOwnProperty方法
+     */
+     console.log(p.hasOwnProperty('hasOwnProperty'));
+
+    /* 
+    数值本身有没有push
+     */
+     console.log([].hasOwnProperty('push'));
+     
+     
+  </script>
+</body>
+
+</html>
