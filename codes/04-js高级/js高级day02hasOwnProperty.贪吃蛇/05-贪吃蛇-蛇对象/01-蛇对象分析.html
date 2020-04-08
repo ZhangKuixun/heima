@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #map {
+      width: 800px;
+      height: 600px;
+      background-color: #ccc;
+      margin: 50px auto;
+      /* 蛇和食物需要相对于地图定位 */
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="food.js"></script>
+  <script>
+    var map = document.querySelector('#map')
+
+    var f = new Food();
+    f.render(map);
+    /* 
+    蛇的代码
+
+    蛇的属性：
+      width：蛇一节的宽度
+      height：蛇一节的宽度
+      headBgc：蛇头的背景色
+      bodyBgc：身体的颜色
+      body: [
+              通过数组能得到蛇的长度，数组中的每一节是一个对象，通过这个对象可以得到这一节的坐标信息。
+              注意点：数组中第一项永远都是蛇头
+              {w:2,y=0},// 蛇头的坐标信息
+              {w:1,y=0},// 蛇中间一节的坐标信息
+              {w:0,y=0} // 蛇尾巴一节的坐标信息
+            ]
+    蛇的方法：
+    */
+
+    // 创建蛇对象
+    function Snake(options) {
+      options = options || {};
+
+      this.width = options.width || 20;
+      this.height = options.height || 20;
+      this.headBgc = options.headBgc || 'red';
+      this.bodyBgc = options.bodyBgc || 'green';
+      this.body = this.body || [
+        { w: 2, y: 0 },// 蛇头的坐标信息
+        { w: 1, y: 0 },// 蛇中间一节的坐标信息
+        { w: 0, y: 0 } // 蛇尾巴一节的坐标信息
+      ]
+    }
+    var s = new Snake();
+    console.log(s);
+
+  </script>
+</body>
+
+</html>
