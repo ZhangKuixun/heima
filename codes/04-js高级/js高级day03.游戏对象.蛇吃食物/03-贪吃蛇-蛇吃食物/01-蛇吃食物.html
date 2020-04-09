@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #map {
+      width: 800px;
+      height: 600px;
+      background-color: #ccc;
+      margin: 50px auto;
+      /* 蛇和食物需要相对于地图定位 */
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="food.js"></script>
+  <script src="snack.js"></script>
+  <script>
+    var map = document.querySelector('#map')
+
+    // 游戏对象
+    function Game(target) {
+      this.snack = new Snake();
+      this.food = new Food();
+      this.map = target;
+    }
+
+    Game.prototype.startGame = function () {
+      this.food.render(this.map);
+      this.snack.render(this.map);
+
+      var that = this;
+      var timerId = setInterval(function () {
+        // 定时器中的this，指向了window
+        that.snack.move(that.map, that.food);
+
+        // 蛇撞墙
+        var head = that.snack.body[0];
+
+        if (head.x > that.map.offsetWidth / that.snack.width - 1 ||
+          head.x < 0 ||
+          head.y < 0 ||
+          head.y > that.map.offsetHeight / that.snack.height - 1) {
+          clearInterval(timerId)
+        }
+      }, 100)
+
+      // 控制蛇移动
+      document.onkeyup = function (e) {
+        console.log(this);
+
+        switch (e.keyCode) {
+          case 37:
+            that.snack.direction = 'left'
+            break;
+          case 38:
+            that.snack.direction = 'up'
+            break;
+          case 39:
+            that.snack.direction = 'right'
+            break;
+          case 40:
+            that.snack.direction = 'down'
+            break;
+        }
+      }
+    }
+    var g = new Game(this.map);
+    g.startGame();
+
+    /*
+    蛇吃食物：
+      判断依据是：判断蛇头的坐标和食物的坐标是否重合（x,y坐标都要相同）
+      蛇移动一次，需要判断一次
+      代码逻辑写在哪？
+        蛇吃食物是蛇自己做的判断，所以，代码需要写在snack.js的move方法里。
+    */
+
+  </script>
+</body>
+
+</html>
