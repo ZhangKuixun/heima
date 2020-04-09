@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #map {
+      width: 800px;
+      height: 600px;
+      background-color: #ccc;
+      margin: 50px auto;
+      /* 蛇和食物需要相对于地图定位 */
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="food.js"></script>
+  <script src="snack.js"></script>
+  <script>
+    var map = document.querySelector('#map')
+
+    // var f = new Food();
+    // f.render(map);
+
+    // var s = new Snake();
+    // s.render(map);
+    // setInterval(function () {
+    //   s.move(map);
+    // }, 300)
+
+    /* 
+    游戏对象：理解成裁判
+      能够管理和整个游戏相关的对象（蛇、食物对象、地图对象）
+      属性：
+        1.蛇对象
+        2.食物对象
+        3.地图
+      方法：
+        让游戏开始、游戏结束
+    */
+    function Game(target) {
+      this.snack = new Snake();
+      this.food = new Food();
+      this.map = target;
+    }
+    Game.prototype.startGame = function () {
+      this.food.render(this.map);
+      this.snack.render(this.map);
+
+      var that = this;
+      setInterval(function () {
+        // 定时器中的this，指向了window
+        that.snack.move(that.map);
+      }, 300)
+
+    }
+    var g = new Game(this.map);
+    g.startGame();
+
+  </script>
+</body>
+
+</html>
