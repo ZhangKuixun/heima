@@ -43,7 +43,10 @@ function Snake(options) {
   ]
 }
 
-// target：装载蛇的容器
+/* 
+创建蛇到地图上
+  target：装载蛇的容器
+*/
 Snake.prototype.render = function (target) {
   for (let i = 0; i < this.body.length; i++) {
     var span = document.createElement('span')
@@ -96,21 +99,23 @@ Snake.prototype.move = function (target, food) {
   newHead ==> 在这里是最新的坐标，是移动后的坐标
     newHead.x == 食物的x坐标
   */
- console.log(food);
   if (newHead.x == food.x && newHead.y == food.y) {
     console.log('蛇迟到食物了');
     /* 
       1.把地图中的食物删除，再重新渲染一份添加到地图中
       2.把蛇变长一节
     */
-    console.log(target);
+    var oldFood = target.querySelector('div');
+    target.removeChild(oldFood)
+    food.render(target);
+  } else {// 没有迟到食物
+    
+    // 4.删除蛇尾。删除蛇尾有条件，没有吃到食物删除蛇尾
+    this.body.pop()
   }
 
   // 3.将复制出的蛇头添加到蛇的body数组中
   this.body.unshift(newHead)
-
-  // 4.删除蛇尾
-  this.body.pop()
 
   // 5.把地图中原来的蛇的每一节找到，从地图中删除掉
   var spans = target.querySelectorAll('span');

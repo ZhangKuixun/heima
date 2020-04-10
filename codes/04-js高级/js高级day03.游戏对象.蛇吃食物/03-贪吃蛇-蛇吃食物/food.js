@@ -8,6 +8,7 @@ function Food(options) {
   this.y = options.y || 0;
 }
 
+// 创建食物到地图上
 Food.prototype.render = function (map) {
   var div = document.createElement('div')
 
@@ -17,8 +18,8 @@ Food.prototype.render = function (map) {
   div.style.backgroundColor = this.bgc
   div.style.position = 'absolute'
 
-  var x = parseInt(Math.random() * map.offsetWidth / this.width)
-  var y = parseInt(Math.random() * map.offsetHeight / this.height)
+  var x = this.x = parseInt(Math.random() * map.offsetWidth / this.width)
+  var y = this.y = parseInt(Math.random() * map.offsetHeight / this.height)
 
   div.style.left = x * this.width + 'px'
   div.style.top = y * this.height + 'px'
