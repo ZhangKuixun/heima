@@ -7,6 +7,8 @@
   <title>Document</title>
   <style>
     #map {
+      width: 800px;
+      height: 600px;
       background-color: #ccc;
       margin: 50px auto;
       /* 蛇和食物需要相对于地图定位 */
@@ -40,12 +42,21 @@
 
         // 蛇撞墙
         var head = that.snack.body[0];
-
         if (head.x > that.map.offsetWidth / that.snack.width - 1 ||
           head.x < 0 ||
           head.y < 0 ||
           head.y > that.map.offsetHeight / that.snack.height - 1) {
           clearInterval(timerId)
+        }
+
+        // 蛇撞到自己，判读蛇头和蛇身体
+        // 优化，i从4开始循环
+        for (let i = 4; i < that.snack.body.length; i++) {
+          var temp = that.snack.body[i];
+          if (temp.x == head.x
+            && temp.y == head.y) {
+            clearInterval(timerId)
+          }
         }
       }, 100)
 
@@ -70,7 +81,15 @@
     var g = new Game(this.map);
     g.startGame();
 
-    
+    /*
+    蛇撞到自己
+      判断依据是：蛇头和蛇身体坐标
+      1.for循环遍历蛇身体，判断每一节蛇身体坐标是否和蛇头坐标重合
+      2.移动一次后，判断一次
+      3.蛇头撞到自己，游戏结束
+      代码逻辑写在哪？
+        写在定时器里，而且是在move方法之后。
+    */
   </script>
 </body>
 

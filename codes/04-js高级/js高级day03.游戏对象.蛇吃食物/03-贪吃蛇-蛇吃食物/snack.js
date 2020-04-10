@@ -37,6 +37,16 @@ function Snake(options) {
   this.headBgc = options.headBgc || 'red';
   this.bodyBgc = options.bodyBgc || 'green';
   this.body = this.body || [
+    { x: 11, y: 0 },// 蛇头的坐标信息
+    { x: 10, y: 0 },// 蛇头的坐标信息
+    { x: 9, y: 0 },// 蛇头的坐标信息
+    { x: 8, y: 0 },// 蛇头的坐标信息
+    { x: 8, y: 0 },// 蛇头的坐标信息
+    { x: 7, y: 0 },// 蛇头的坐标信息
+    { x: 6, y: 0 },// 蛇头的坐标信息
+    { x: 5, y: 0 },// 蛇头的坐标信息
+    { x: 4, y: 0 },// 蛇头的坐标信息
+    { x: 3, y: 0 },// 蛇头的坐标信息
     { x: 2, y: 0 },// 蛇头的坐标信息
     { x: 1, y: 0 },// 蛇中间一节的坐标信息
     { x: 0, y: 0 } // 蛇尾巴一节的坐标信息
@@ -53,12 +63,15 @@ Snake.prototype.render = function (target) {
 
     span.style.width = this.width + 'px'
     span.style.height = this.height + 'px'
+    span.innerText = i;
 
     span.style.backgroundColor = i == 0 ? this.headBgc : this.bodyBgc
 
     span.style.position = 'absolute';
     span.style.left = this.body[i].x * this.width + 'px';
     span.style.top = this.body[i].y * this.height + 'px';
+
+    span.style.zIndex = i == 0 ? 999 : 1;// 蛇吃到身体后，让蛇头显示在上面
 
     target.appendChild(span)
   }
@@ -99,8 +112,7 @@ Snake.prototype.move = function (target, food) {
   newHead ==> 在这里是最新的坐标，是移动后的坐标
     newHead.x == 食物的x坐标
   */
-  if (newHead.x == food.x && newHead.y == food.y) {
-    console.log('蛇迟到食物了');
+  if (newHead.x == food.x && newHead.y == food.y) {// 蛇吃到食物
     /* 
       1.把地图中的食物删除，再重新渲染一份添加到地图中
       2.把蛇变长一节
@@ -109,7 +121,7 @@ Snake.prototype.move = function (target, food) {
     target.removeChild(oldFood)
     food.render(target);
   } else {// 没有迟到食物
-    
+
     // 4.删除蛇尾。删除蛇尾有条件，没有吃到食物删除蛇尾
     this.body.pop()
   }
