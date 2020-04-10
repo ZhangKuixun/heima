@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #map {
+      background-color: #ccc;
+      margin: 50px auto;
+      /* 蛇和食物需要相对于地图定位 */
+      position: relative;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <script src="food.js"></script>
+  <script src="snack.js"></script>
+  <script>
+    var map = document.querySelector('#map')
+
+    // 游戏对象
+    function Game(target) {
+      this.snack = new Snake();
+      this.food = new Food();
+      this.map = target;
+    }
+
+    Game.prototype.startGame = function () {
+      this.food.render(this.map);
+      this.snack.render(this.map);
+
+      var that = this;
+      var timerId = setInterval(function () {
+        // 定时器中的this，指向了window
+        that.snack.move(that.map, that.food);
+
+        // 蛇撞墙
+        var head = that.snack.body[0];
+
+        if (head.x > that.map.offsetWidth / that.snack.width - 1 ||
+          head.x < 0 ||
+          head.y < 0 ||
+          head.y > that.map.offsetHeight / that.snack.height - 1) {
+          clearInterval(timerId)
+        }
+      }, 100)
+
+      // 控制蛇移动
+      document.onkeyup = function (e) {
+        switch (e.keyCode) {
+          case 37:
+            that.snack.direction = 'left'
+            break;
+          case 38:
+            that.snack.direction = 'up'
+            break;
+          case 39:
+            that.snack.direction = 'right'
+            break;
+          case 40:
+            that.snack.direction = 'down'
+            break;
+        }
+      }
+    }
+    var g = new Game(this.map);
+    g.startGame();
+
+    
+  </script>
+</body>
+
+</html>
