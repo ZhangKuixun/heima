@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    伪数组与数组
+      伪数组不能使用数组的方法，如果要用数组的方法，让伪数组借数组的方法
+     */
+    var obj = {
+      0: '大葱哥',
+      1: '莲妹',
+      2: '堂哥',
+      length: 3
+    }
+    /* 
+    需求：给obj伪数组添加一项 'kite'
+
+    借用push方法：
+      Array.prototype.push ==> 从数组的原型拿到push方法
+
+    好处：
+      push方法可以帮我们实现添加项
+      push方法会自动的维护length属性长度
+     */
+    Array.prototype.push.call(obj, 'kite')// 从数组的原型拿到push方法
+
+    // 简写
+    // [].push.call(obj, '班班')
+
+    console.log(obj);
+
+  </script>
+</body>
+
+</html>

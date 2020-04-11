@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var kevin = {
+      name: 'ke',
+      car: '劳斯莱斯',
+      liaomei: function () {
+        console.log(this.car + "接你回家");
+      }
+    }
+    var xw = {
+      car: "mobile"
+    }
+    kevin.liaomei.call(xw);
+
+    /* 
+    call 方法借用
+    kevin.liaomei ==> 借用的是撩妹方法，从kevin对象获取到。
+    xw 没有撩妹的方法，向kevin借来的，通过call把liaomei方法的this指向了xw
+     */
+    console.log(xw);
+
+  </script>
+</body>
+
+</html>
