@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <textarea name="" id="txt" cols="600" rows="100"></textarea>
+  <script>
+    /* 
+    思路：
+      1.找对象
+      2.注册onkeyup
+      3.把文本域的内容当作js执行
+     */
+    var txt = document.querySelector('#txt')
+    txt.onkeyup = function () {
+      // 实时预览效果
+      var f = new Function(this.value)
+      f();
+    }
+  </script>
+</body>
+
+</html>
