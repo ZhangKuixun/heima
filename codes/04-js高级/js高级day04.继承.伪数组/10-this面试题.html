@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      this如何分析
+        1.分析的this是属于哪个函数
+        2.这个函数的调用模式是哪一种
+    */
+
+    // 测试1
+    // var age = 38;
+    // var obj = {
+    //   age: 18,
+    //   getAge: function () {
+    //     console.log(this.age);
+
+    //   }
+    // }
+    // var f = obj.getAge;
+    // // 函数调用模式，this指向widow
+    // f();// 38
+
+
+    // 测试2
+    // var age = 38;
+    // var obj = {
+    //   age: 18,
+    //   getAge: function () {
+    //     console.log(this.age);//
+
+    //     function foo() {
+    //       console.log(this.age);//
+    //     }
+    //     foo();
+    //   }
+    // }
+    // obj.getAge();//18 38
+    // obj['getAge']();// 18 38
+
+
+    // 测试3
+    // var length = 10;
+    // var age = 18;
+    // function fn() {
+    //   console.log(this.length);
+    // }
+    // var arr = [fn, "222"]
+    // fn();// 10
+    // arr[0]();// 2
+
+
+    // 测试4
+    var length = 10;
+
+    function fn() {
+      console.log(this.length);
+    }
+    var obj = {
+      length: 5,
+      method: function (fn) {
+        // 函数调用模式 window
+        fn()
+
+        // arguments 伪数组，实参列表[fn, 10, 5]
+        // 方法调用模式
+        arguments[0]()
+      }
+    }
+    // obj.method(fn, 10, 5)
+    obj.method(fn, 10, 5, 10, 8)
+  </script>
+</body>
+
+</html>

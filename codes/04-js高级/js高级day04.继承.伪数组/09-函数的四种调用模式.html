@@ -20,17 +20,46 @@
       1.分析的this是属于哪个函数
       2.这个函数的调用模式是哪一种
 
-    函数的四种调用模式
-      1.函数调用模式：函数名()，this指向为window
-        function fn() {
-        }
-        fn()
-      
+    函数的四种调用模式:
      */
+
+    // 1.函数调用模式：函数名()，this指向为window
     function fn() {
       console.log(this);
     }
     fn()
+
+    /* 
+    2.方法调用模式：对象.方法()，方法内的this指向了调用方法的对象
+        以后看见点语法、中括号语法，就是属于方法调用模式
+     */
+    var obj = {
+      fn: function () {
+        console.log(this);
+      }
+    }
+    obj.fn();
+    // obj['fn']();
+
+    // 练习：
+    function fn() {
+      console.log(this);
+    }
+    var arr = [fn, 10, 20]
+    arr[0]()// this指向arr --> arr.0() --> arr.fn()
+
+    /* 
+    3.构造函数模式：new 构造函数()，构造函数内的this指向了实例对象
+     */
+    function Person() {
+      console.log(this);
+    }
+    var p = new Person();
+
+    /*
+    4.上下文模式（借用方法模式）
+     */
+
   </script>
 </body>
 
