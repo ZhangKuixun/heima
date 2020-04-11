@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    (function (window) {
+      function fn() {
+        console.log(1);
+      }
+      function fn2() {
+        console.log(2);
+      }
+      /* 
+      如果外部需要访问沙箱内的属性，将这个属性暴露到window上
+      一个js文件，通常暴露一个核心功能，目的是为了减少全局污染
+
+      给window添加fn属性，属性值fn函数。
+      */
+      window.fn = fn;
+    })(window)
+
+    // 需求：在自调用函数的外部能调用到fn函数
+    fn();
+
+    /* 
+    沙箱内部的代码不会影响沙箱外的环境，同理，函数自调用，在自调用函数内部的变量不会影响到外部，函数自调用也叫做沙箱。
+    */
+  </script>
+</body>
+
+</html>
