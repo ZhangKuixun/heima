@@ -36,11 +36,11 @@
     // fn.call([10, 20]);
 
     // 3.call有若干个参数，第一个参数用来改变this指向，其他参数都是传递的实参
-    // function fn(n1, n2) {
-    //   console.log(this);
-    //   console.log(n1 + n2);
-    // }
-    // fn.call([10, 20], 1, 2);
+    function fn(n1, n2) {
+      console.log(this);
+      console.log(n1 + n2);
+    }
+    fn.call([10, 20], 1, 2);
 
   </script>
 </body>
