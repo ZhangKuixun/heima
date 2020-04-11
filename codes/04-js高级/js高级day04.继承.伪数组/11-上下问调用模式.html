@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    上下调用模式 ==> 借用方法模式
+
+    方法有call apply bind
+
+    任何函数都可以调用call、apply、bind方法。
+
+    call
+      1.除了使用小括号来调用函数，call也可以调用函数
+      2.call除了可以调用函数，还可以 改变函数内的this指向，call方法的第一个参数可以改变this指向
+      3.call有若干个参数，第一个参数用来改变this指向，其他参数都是传递的实参
+     */
+
+    // 1.除了使用小括号来调用函数，call也可以调用函数
+    // function fn() {
+    //   console.log(1);
+    // }
+    // fn.call();
+
+    // 2.call除了可以调用函数，还可以 改变函数内的this指向，call方法的第一个参数可以改变this指向
+    // function fn() {
+    //   console.log(1);
+    //   console.log(this);
+    // }
+    // fn.call([10, 20]);
+
+    // 3.call有若干个参数，第一个参数用来改变this指向，其他参数都是传递的实参
+    // function fn(n1, n2) {
+    //   console.log(this);
+    //   console.log(n1 + n2);
+    // }
+    // fn.call([10, 20], 1, 2);
+
+  </script>
+</body>
+
+</html>
