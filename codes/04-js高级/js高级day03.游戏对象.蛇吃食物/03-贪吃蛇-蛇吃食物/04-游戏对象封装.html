@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #map {
+      width: 800px;
+      height: 600px;
+      background-color: #ccc;
+      margin: 50px auto;
+      /* 蛇和食物需要相对于地图定位 */
+      position: relative;
+    }
+    #btn {
+      display: block;
+      margin: 10px auto;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">开始游戏</button>
+  <div id="map"></div>
+  <script src="game.js"></script>
+  <script src="food.js"></script>
+  <script src="snack.js"></script>
+  <script>
+    var map = document.querySelector('#map')
+    var btn = document.querySelector('#btn')
+
+    var g = new Game(this.map);
+    g.render();
+    btn.onclick = function(){
+      g.startGame();
+    }
+
+  </script>
+</body>
+
+</html>

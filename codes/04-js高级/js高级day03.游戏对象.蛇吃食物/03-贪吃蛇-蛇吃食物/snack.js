@@ -37,16 +37,6 @@ function Snake(options) {
   this.headBgc = options.headBgc || 'red';
   this.bodyBgc = options.bodyBgc || 'green';
   this.body = this.body || [
-    { x: 11, y: 0 },// 蛇头的坐标信息
-    { x: 10, y: 0 },// 蛇头的坐标信息
-    { x: 9, y: 0 },// 蛇头的坐标信息
-    { x: 8, y: 0 },// 蛇头的坐标信息
-    { x: 8, y: 0 },// 蛇头的坐标信息
-    { x: 7, y: 0 },// 蛇头的坐标信息
-    { x: 6, y: 0 },// 蛇头的坐标信息
-    { x: 5, y: 0 },// 蛇头的坐标信息
-    { x: 4, y: 0 },// 蛇头的坐标信息
-    { x: 3, y: 0 },// 蛇头的坐标信息
     { x: 2, y: 0 },// 蛇头的坐标信息
     { x: 1, y: 0 },// 蛇中间一节的坐标信息
     { x: 0, y: 0 } // 蛇尾巴一节的坐标信息
