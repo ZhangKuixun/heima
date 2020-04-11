@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 定义函数的三种方式
+    // 1.函数申明，fn()可以放在上面，因为预解析
+    fn();
+    function fn(){
+
+    }
+
+    // 2.函数表达式，fn()不行，因为预解析，提示的仅仅是变量名
+    // fn2();
+    var fn2 = function(){
+
+    }
+
+    /* 
+    3. 函数也是对象，函数也是通过构造函数new出来
+    构造函数function
+    语法：var newFn = new Function(args1, args2, args3, ... bodyFn)
+    参数：
+      Function的参数是若干个，而且参数的类型都是字符串格式
+      除了最后一个参数，其他的参数都是新创建的函数形参
+      最后一个参数：是创建的函数的函数体
+     */
+    var f = new Function('n1','n2','n3','console.log(n1+n2+n3)');
+    // console.log(f);
+    f(1,2,3)
+
+    // 如果Function的参数只有一个，该参数作为创建的函数的函数体
+    var f2 = new Function('alert(1)')
+    console.log(f2);
+    f2(1)
+    
+  </script>
+</body>
+
+</html>
