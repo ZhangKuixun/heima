@@ -1,4 +1,6 @@
 (function (window) {
+  'use stict'
+
   /* 
 蛇的代码
 

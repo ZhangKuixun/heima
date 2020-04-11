@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 
+    严格模式（strict mode）
+      不是新的语法，是特殊的写法
+    ES5提出来的一种代码运行模式
+    严格模式通常是搭配沙箱模式一起使用的
+    
+    如何开启严格模式：
+      "use strict";
+      这句话后面所有的js代码都要遵循严格模式，在严格模式中，不规范的代码直接报错。
+
+    严格模式规定：
+      变量必须用var申明
+      函数参数不能重名
+      禁止使用8进制
+      不能使用保留字作为变量名称：implement、interface、let、package、private、protected、public、static、yield
+    
+    注意：
+      不要在全局中（script标签）开启严格模式，建议配合沙箱一起使用。
+        原因：在项目中，如果有同事，或者引用了第三方的js代码，如果这个js文件没有遵循严格模式，那么代码在我们的文件中运行会直接报错。
+      这句代码，"use strict"，必须写在最顶部，否则开启严格模式失败。
+
+    */
+
+    // 如何开启严格模式：
+    "use strict";
+
+   // 不好的规范，如：隐式全局变量
+   function fn(){
+     str = '哈哈'
+   }
+   fn();
+   console.log(str);
+   
+  </script>
+</body>
+</html>

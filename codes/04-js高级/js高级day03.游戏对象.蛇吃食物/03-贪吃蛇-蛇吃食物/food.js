@@ -1,4 +1,6 @@
 (function (window) {
+  'use stict'
+
   function Food(options) {
     options = options || {}
 

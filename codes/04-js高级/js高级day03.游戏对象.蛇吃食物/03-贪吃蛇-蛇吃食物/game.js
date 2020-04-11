@@ -1,4 +1,6 @@
 (function (window) {
+  'use stict'
+  
   // 游戏对象
   function Game(target) {
     this.snack = new Snake();
