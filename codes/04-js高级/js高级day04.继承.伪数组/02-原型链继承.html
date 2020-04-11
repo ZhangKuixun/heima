@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Person() {
+
+    }
+
+    // 原型上添加对象
+    // Person.prototype.color = 'lime'
+
+    /* 
+    原型替换：
+      给原型添加多个成员，可以把多个成员放到一个对象中，再交给prototype对象。
+    bug：constructor属性丢失
+      解决：手动添加constructor属性
+    */
+    Person.prototype = {
+      constructor: Person,
+
+      color: 'lime',
+      sayHi: function () {
+        console.log('sayHi');
+      },
+      move: function () {
+        console.log("move");
+      }
+    }
+
+    var p = new Person();
+    /* 
+    P的原型链：
+      没有原型替换的原型链：
+      p ==> Person.prototype(默认的原型对象{constructor:Person}) ==> Object.prototype ==> null
+      原型替换后的原型链：
+      p ==> Person.prototype(新的对象) ==> Object.prototype ==> null
+                                          constructor ==> Object
+    */
+
+    // 原型替换后，p.constructor得到的结果是Object，因为替换后的原型上没有constructor属性。
+    console.log(p.__proto__);
+    console.log(p.constructor);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    继承：
+       
+    */
+    var kevin = {
+      money: 12000000,
+      house: '海景房'
+    }
+
+    var lianjie = {
+      son: '儿子'
+    }
+
+    var agou = {
+      name: 'agou'
+    }
+
+    Object.prototype.gender = 'male'
+
+    agou.extend = function (object){
+      for (const key in object) {
+        // if (object.hasOwnProperty(key)) {
+          this[key] = object[key];
+        // }
+      }
+    }
+    agou.extend(kevin)
+    agou.extend(lianjie)
+
+    console.log(agou)
+  </script>
+</body>
+
+</html>
