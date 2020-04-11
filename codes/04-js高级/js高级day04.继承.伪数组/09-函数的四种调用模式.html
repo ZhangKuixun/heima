@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    函数的四种调用模式，就是this的指向，每一个函数都有自己的this指向
+    
+    this的指向和函数的调用模式有关：
+      1.this的指向只有在函数调用的时候才能确定下来，声明函数不能确定this的指向
+      2.this的指向和函数在哪调用没有关系
+
+    this如何分析
+      1.分析的this是属于哪个函数
+      2.这个函数的调用模式是哪一种
+
+    函数的四种调用模式
+      1.函数调用模式：函数名()，this指向为window
+        function fn() {
+        }
+        fn()
+      
+     */
+    function fn() {
+      console.log(this);
+    }
+    fn()
+  </script>
+</body>
+
+</html>
