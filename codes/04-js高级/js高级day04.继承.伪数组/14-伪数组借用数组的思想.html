@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    需求：把obj每一项拼接到一个字符串 "大哥-小弟-堂弟"
+     */
+    var obj = {
+      0: '大哥',
+      1: '小弟',
+      2: '堂弟',
+      length: 3
+    }
+    var ret = [].join.call(obj, "-")
+    console.log(ret);
+
+    /*
+    需求2：把伪数组转换成真数组，快速
+     */
+    var ret1 = [].slice.call(obj)
+    console.log(ret1);
+    
+  </script>
+</body>
+
+</html>
