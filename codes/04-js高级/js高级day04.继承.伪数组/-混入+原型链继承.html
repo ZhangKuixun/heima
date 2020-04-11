@@ -9,6 +9,31 @@
 
 <body>
   <script>
+    function Person() {
+    }
+    
+    Person.prototype.extend = function(object){
+      for (const key in object) {
+        if (object.hasOwnProperty(key)) {
+          this[key] = object[key];
+        }
+      }
+    }
+
+    var lw = {
+      skill: '翻墙',
+      height: 188
+    }
+    var kevin = {
+      monney: 12000000000,
+      hose: '海景房'
+    }
+
+    Person.prototype.extend(lw)
+    Person.prototype.extend(kevin)
+
+    console.log(Person.prototype);
+    
 
   </script>
 </body>
