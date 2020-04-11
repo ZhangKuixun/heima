@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /* 
+    今典继承--Object.create
+
+    语法：
+      var o = Object.create(obj)
+    作用：该方法可以创建一个空对象，该空对象的原型为参数obj
+     */
+    var kevin = {
+      money:1200000000000000,
+      house:'海景房'
+    }
+    
+    var o = Object.create(kevin);
+    console.log(o);
+    console.log(o.__proto__==kevin);
+    
+    console.log(o.money);
+    
+  </script>
+</body>
+</html>
