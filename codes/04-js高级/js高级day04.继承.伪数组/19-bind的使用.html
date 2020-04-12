@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var kk = {
+      name: '厄加特',
+      sayLove: function () {
+        // that = this;
+        // setInterval(function () {
+        //   console.log('Dear' + that.name + '，出来玩');
+        // }, 1000)
+
+        var fn = function () {
+          console.log(this.name + '，出来玩');
+        }.bind(this);
+        console.log(fn);// fn内的this被固定成了bind的参数（kk）
+
+        setInterval(fn, 1000);
+      }
+
+      // 简写
+      // setInterval(function () {
+      //   console.log(this.name + '，出来玩');
+      // }.bind(this), 1000)
+    }
+    kk.sayLove();
+  </script>
+</body>
+
+</html>
