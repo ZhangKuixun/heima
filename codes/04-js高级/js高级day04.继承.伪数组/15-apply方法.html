@@ -15,6 +15,27 @@
         thisArg：用来修改函数内的this指向
         arg：实参列表，是一个数组或者是伪数组
      */
+    // var kevin = {
+    //   name: 'ke',
+    //   car: '劳斯莱斯',
+    //   liaomei: function () {
+    //     console.log(this.car + "接你回家");
+    //   }
+    // }
+    // var xw = {
+    //   car: "mobile"
+    // }
+    // kevin.liaomei.call(xw);// 
+    // kevin.liaomei.apply(xw);// apply一样
+
+    function fn(n1, n2) {
+      console.log(this);
+      console.log(n1 + n2);
+    }
+    fn.call({ name: 'kk' }, 10, 20);
+    fn.apply({ name: 'kk' }, [100, 200]);
+    // apply的平铺性：把apply的第二个参数中的每一项取出来作为借用方法的实参
+    
   </script>
 </body>
 
