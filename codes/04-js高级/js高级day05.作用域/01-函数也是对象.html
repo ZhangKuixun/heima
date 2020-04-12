@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+     函数也是对象
+
+     function fn(){
+     }
+     内部还是通过Function创建出来的
+     var fn = new Function();
+
+     函数fn的原型链：
+     构造函数 Function
+     原型对象 Function.prototype
+     实例对象 fn
+     fn ==> Function.prototype ==> Object.prototype ==> null
+
+     只要是函数就可以访问call、apply、bind方法。
+     */
+    function fn() {
+    }
+    console.log(fn.__proto__ == Function.prototype);// true
+    console.log(Function.prototype.__proto__);// 找爸爸
+    console.log(Function.prototype.__proto__.constructor);// 找妈妈
+    
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    介绍Function.prototype原型成员
+
+    奇葩：在js中函数是一等公民
+     */
+    console.log(Function.prototype);// 是个函数类型
+
+    /*
+    1.argments 是 Function.prototype 原型中的一个属性。
+    废弃：标准中已经删除了该属性，但是有些浏览器可能还支持
+     */
+    function fn() {
+      console.log(fn.arguments);// 废弃，老版本的写法
+
+      // argments == 内置对象
+      console.log(arguments);// 推荐的写法来获取实参列表
+    }
+    fn(10, 20, 30);
+
+    /* 
+    2.caller 废弃，可以获取函数是在哪个函数内被调用的。
+     */
+    function fn() {
+      function foo() {
+        console.log(foo.caller);// 3
+      }
+      foo();
+    }
+    fn();
+
+
+    /* 
+    3.length 获取函数形参的个数
+     */
+    function fn(a, b, c) {
+    }
+    console.log(fn.length);
+
+    // 需求：只有在实参的个数等于形参个数的时候，才执行打印
+    function sum(n1, n2, n3) {
+      // 如果形参和实参的个数不同，return
+      if (arguments.length != sum.length) {
+        return;
+      }
+      console.log(n1 + n2 + n3);
+    }
+    sum(10, 40, 20)// 70
+
+    /* 
+    4.name：可以用来获取函数名，只读
+     */
+    function fn2(){
+    }
+    console.log(fn2.name);// fn2
+    
+    /* 
+    5.toString 转字符串
+     */
+    function fn3(){
+      console.log(1);
+    }
+    console.log(fn3.toString());
+    
+  </script>
+</body>
+
+</html>
