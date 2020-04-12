@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    完整版原型链
+     */
+
+    /* 
+    1.把fn函数当作是构造函数
+      function Fn() {
+      }
+      var f = new Fn();
+      绘制原型三角关系：
+        构造函数：Fn
+        原型对象：Fn.prototype
+        实例对象：f
+     */
+    function Fn() {
+    }
+    var f = new Fn();
+    console.log(Fn.prototype.__proto__);// 爸爸：Object.prototype
+
+    /*
+    2.把Fn当作实例对象看，Fn怎么来的？
+      var Fn = new Function();// js内部是这样创建出Fn对象（函数）
+      绘制原型三角关系：
+        构造函数：Function
+        原型对象：Function.prototype
+        实例对象：Fn
+     */
+    console.log(Fn.__proto__ == Function.prototype);// true
+
+    /*
+    3.把Object当作是构造函数
+      var obj = new Object();
+      绘制原型三角关系：
+        构造函数：Object
+        原型对象：Object.prototype
+        实例对象：obj
+     */
+    var obj = new Object();
+
+    /*
+    4.把Object当作实例对象看，Object怎么来的？
+      任何函数都是Function的实例对象 ==> 任何函数都是Function创建出来的
+      var Object = new Object();// js内部是这样创建出Object对象（函数）
+      绘制原型三角关系：
+        构造函数：Object
+        原型对象：Object.prototype
+        实例对象：Object
+     */
+    console.log(Object.__proto__ == Function.prototype);
+
+
+    /*
+    5.把Function当作实例对象看，Function怎么来的？
+      任何函数都是Function的实例对象 ==> 任何函数都是Function创建出来的
+      var Function = new Function();// js内部，Function把自己创建出来
+      绘制原型三角关系：
+        构造函数：Function
+        原型对象：Function.prototype
+        实例对象：Function
+     */
+    console.log(Function.__proto__ == Function.prototype);
+
+
+    /*
+    js中，函数是一等公民（特殊）
+      1.typeof 用来判断类型，只能检测简单数据
+        使用typeof检查复杂数据类型，返回Object
+
+      2.Function.prototype的类型是函数
+     */
+    var arr = [10, 20];
+    console.log(typeof arr);
+    console.log(typeof new Date());
+    console.log(typeof function fn() { });
+
+  </script>
+</body>
+
+</html>

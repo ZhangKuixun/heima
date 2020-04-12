@@ -24,7 +24,8 @@
     功能2：在上面封装的函数继承上，需要每次打印的时候，在日志的前面加上“莲妹友情提示：”
      */
     function clg2() {
-      [].unshift.call(arguments, "莲妹友情提示：")
+      [].unshift.call(arguments, ["莲妹友情提示："]);
+      [].unshift.call(arguments, "莲妹友情提示：");
       // 相当于：argments.unshift( "莲妹友情提示：")
       
       console.log.apply(arguments, arguments);
