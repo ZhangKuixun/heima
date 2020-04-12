@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    bind
+      fn.bind(thisArg);
+      可以创建并返回一个新的函数，这个新的函数和fn函数一模一样，但是地址不同，返回的函数内的this指向被固定了，被固定成了thisArg参数。
+
+    bind 不会调用函数
+    call apply 都会调用函数，但是bind不会调用函数
+    */
+    function fn() {
+      console.log(this);
+    }
+    var f = fn.bind([10, 20, 1])
+    console.log(f);
+    console.log(f == fn);// f和fn地址不同
+
+    /* 
+    f函数是通过bind创建出来的，函数内的this被固定成了bind的参数。
+    固定：就是不论f函数的调用模式是何种，f内的this就是bind的参数。
+
+    虽然f是函数调用模式，但是f内的this被固定指向了[10,20]
+    */
+   f();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 封装一个函数，能够打印出所有的参数，打印的时候前面加上："莲妹友情提示："
+    function clg() {
+      console.log("莲妹友情提示：" + arguments[0]+ arguments[1]+ arguments[2]+ arguments[3]+ arguments[4]);
+    }
+    clg.apply(this, [1, 2, 3, 4])
+  </script>
+</body>
+
+</html>
