@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 借用构造函数继承
+
+    function Person(name, age, gender) {
+      this.name = name;
+      this.age = age;
+      this.gender = gender;
+    }
+
+    function Chinese(name, age, gender, skin) {
+      /* 
+      借用
+        借用Person构造函数内的name、age、gender属性
+      通过call方法，把this指向了 xm
+      */
+      Person.call(this, name, age, gender)
+
+      this.skin = skin || '黄'
+    }
+    var xm = new Chinese('xm', 20, 'male')
+    console.log(xm);
+
+
+    function Africa(name, age, gender, skin, teeth) {
+      Person.call(this, name, age, gender)
+      this.skin = skin || '黑色'
+      this.teeth = teeth || '白色'
+    }
+    var xiaohei = new Africa('对面的小黑', 20, '男', '忒黑', '忒白')
+    console.log(xiaohei);
+    
+  </script>
+</body>
+
+</html>
