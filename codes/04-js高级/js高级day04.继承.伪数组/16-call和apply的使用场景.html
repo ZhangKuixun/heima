@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    call和apply的使用场景：
+      传递的参数少，用call
+      传递的参数放在数组中，用apply
+    */
+    var arr = [15, 23, 46, 21, 90, 46, 34];
+    var ret = Math.max.apply(arr, arr)
+    console.log(ret);
+    
+  </script>
+</body>
+
+</html>
