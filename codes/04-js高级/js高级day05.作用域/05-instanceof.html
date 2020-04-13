@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    instanceof instance 实例对象 of
+    语法：对象 instanceof 构造函数
+    作用：判断构造函数的prototype属性是否在对象的原型链上。如果在，返回true
+     */
+    
+    var arr = [];
+    //arr的原型链：arr==>Array.prototype==>Object.prototype==>null
+
+    // 判断Array的prototype属性是否在arr的原型链上
+    console.log(arr instanceof Array);// true
+    
+    // 判断Object的prototype属性是否在arr的原型链上
+    console.log(arr instanceof Object);// true
+    
+  </script>
+</body>
+
+</html>

@@ -36,7 +36,7 @@
         原型对象：Function.prototype
         实例对象：Fn
      */
-    console.log(Fn.__proto__ == Function.prototype);// true
+    console.log(Fn.__proto__ == Function.prototype);// true  爸爸：Function.prototype
 
     /*
     3.把Object当作是构造函数
@@ -51,10 +51,10 @@
     /*
     4.把Object当作实例对象看，Object怎么来的？
       任何函数都是Function的实例对象 ==> 任何函数都是Function创建出来的
-      var Object = new Object();// js内部是这样创建出Object对象（函数）
+      var Object = new Function();// js内部是这样创建出Object对象（函数）
       绘制原型三角关系：
-        构造函数：Object
-        原型对象：Object.prototype
+        构造函数：Function
+        原型对象：Function.prototype
         实例对象：Object
      */
     console.log(Object.__proto__ == Function.prototype);
@@ -76,14 +76,22 @@
     js中，函数是一等公民（特殊）
       1.typeof 用来判断类型，只能检测简单数据
         使用typeof检查复杂数据类型，返回Object
+        typeof 检测是function，返回function
 
-      2.Function.prototype的类型是函数
+      2.Function.prototype原型对象的类型 是函数
      */
     var arr = [10, 20];
     console.log(typeof arr);
     console.log(typeof new Date());
     console.log(typeof function fn() { });
 
+    /*
+    小结：
+      任何对象的原型链上都有Object.prototype
+      任何函数的原型链上都有Function.prototype
+      Function.prototype的原型就是Object.prototype
+      函数有prototype属性，指向了原型对象。函数也是对象，就有__proto__属性。所有的函数既有prototype属性，也有__proto__属性。
+     */
   </script>
 </body>
 
