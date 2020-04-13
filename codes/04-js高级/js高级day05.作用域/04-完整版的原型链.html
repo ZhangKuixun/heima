@@ -92,6 +92,17 @@
       Function.prototype的原型就是Object.prototype
       函数有prototype属性，指向了原型对象。函数也是对象，就有__proto__属性。所有的函数既有prototype属性，也有__proto__属性。
      */
+
+
+    // 面试题
+
+    // 判断的是Function.prototype 属性是在Function的原型链上
+    console.log(Function instanceof Function);// true
+    console.log(Function instanceof Object);// true
+    console.log(Object instanceof Object);// true
+    console.log(Object instanceof Function);// true
+    
+    
   </script>
 </body>
 
