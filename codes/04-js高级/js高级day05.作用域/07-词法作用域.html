@@ -17,17 +17,17 @@
       自由变量：对于函数，没有申明该变量，但是却有使用该变量，对于这个函数来说，这个变量就是自由变量
     */
 
-    /*     var a = 10;
-        function fn() {
-          console.log(a);
-    
-          var b = 100;
-          console.log(b);
-          function inner() {
-            console.log(b);// 变量b相对于inner函数来说，就是自由变量
-          }
-        }
-        console.log(b); */
+    /* var a = 10;
+    function fn() {
+      console.log(a);
+
+      var b = 100;
+      console.log(b);
+      function inner() {
+        console.log(b);// 变量b相对于inner函数来说，就是自由变量
+      }
+    }
+    console.log(b); */
 
 
     /* 
@@ -39,19 +39,19 @@
         2.函数内的自由变量，要找自由变量的值，需要去创建这个函数的作用域中去查找自由变量的值
     */
 
-    /*     var a = 10;
-        function fn() {// 变量a相对于fn函数来说，就是自由变量
-          // fn 是在全局作用域中创建的，a就需要去全局作用域中找a的值
-          console.log(a);
-    
-          var b = 100;
-          console.log(b);
-          function inner() {
-            // 要找b，去创建inner函数的作用域中找（fn作用域）
-            console.log(b);// 变量b相对于inner函数来说，就是自由变量
-          }
-        }
-        console.log(b); */
+    /* var a = 10;
+    function fn() {// 变量a相对于fn函数来说，就是自由变量
+      // fn 是在全局作用域中创建的，a就需要去全局作用域中找a的值
+      console.log(a);
+
+      var b = 100;
+      console.log(b);
+      function inner() {
+        // 要找b，去创建inner函数的作用域中找（fn作用域）
+        console.log(b);// 变量b相对于inner函数来说，就是自由变量
+      }
+    }
+    console.log(b); */
 
 
     //面试题 f2() 打印什么
