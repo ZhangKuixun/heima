@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 需求：在fn函数的外面访问到num的值
+    // function fn() {
+    //   var num = 10
+    //   return num
+    // }
+    // var ret = fn();
+    // console.log(ret);
+
+
+    // 需求：在fn函数的外面修改到num的值
+    function fn() {
+      var num = 10
+      function inner(n) {
+        num = n;
+        console.log(num);
+      }
+
+      return inner;
+    }
+    var ret = fn();
+    ret(1000)
+
+    /* 
+    闭包：函数和申明该函数的词法环境的组合
+    */
+  </script>
+</body>
+
+</html>
