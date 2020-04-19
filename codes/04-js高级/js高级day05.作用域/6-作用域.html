@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    作用域：
+      变量的使用范围，指的是一个变量申明好了，可以在哪些范围内使用
+    
+    编程语言中：有两种作用域
+      1.词法作用域
+      2.块级作用域，js没有块级作用域
+    
+    块级作用域：{}形成的区域就是块级作用域
+    */
+    if (true) {
+      var a = 10;
+    }
+    console.log(a);
+
+    for (var i = 0; i < 10; i++) {
+      var str = 'abc';
+    }
+    console.log(str);
+
+
+    /* 
+    在es6中，可以使用let去模拟块级作用域
+    let 和var 一样，申明变量
+    */
+    if(true){
+      let s = 10;
+    }
+    console.log(s);// 找不到s变量
+    
+  </script>
+</body>
+
+</html>
