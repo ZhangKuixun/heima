@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    求出第十二个月的兔子对数
+    1 2 3 4 5 6  7
+    1 1 3 5 8 13 21
+    n是月份，求出该月份的兔子对数
+
+    fib(12) ==> fib(11)+fib(10)
+    fib(11) ==> fib(10)+fib(9)
+    ...
+    fib(3) ==> fib(3)+fib(2)
+    fib(2) ==> 1
+    fib(1) ==> 1
+    */
+
+    // var count = 0;
+    // function fib(n) {
+    //   count++
+
+    //   if (n == 1 || n == 2)
+    //     return 1
+
+    //   return fib(n - 1) + fib(n - 2)
+    // }
+    // var ret = fib(40);
+    // console.log("fib 函数调用了" + count + "次");
+    // console.log(ret);
+
+
+    /* 
+    fib函数调用的次数太多
+
+    缓存： cache
+      储存数据的容器
+
+    在js中，缓存可以使用数组、对象来表示，通过键来取值，而且通过键来存值。
+
+    缓存的思路：
+      1.首先在缓存容器中查看有没有结果，如果有，直接取出来使用
+      2.如果没有，首先去计算结果
+      3.然后把计算的结果添加到缓存中--方便下次复用
+    */
+
+    // 弄一个缓存来存储数据
+    var cache = {
+      // 演示
+      /* 1: 1,
+      2: 2,
+      3: 3,
+      4: 4 */
+    }
+    var count = 0;
+    function fib(n) {
+      count++
+      if (n == 1 || n == 2) {
+        return 1
+      }
+
+      // 在计算结果之前，线查看缓存
+      if (cache[n]) {
+        // if成立了，说明缓存数据中有这个月份对应的数量
+        // 直接从缓存容器中获取结果
+        return cache[n]
+      } else {
+        // 缓存中没有这个月对应的数量
+        
+        //计算结果
+        let ret = fib(n - 1) + fib(n - 2)
+
+        // 把结果储存到缓存中
+        cache[n] = ret
+        
+        // 把结果返回出去
+        return ret
+      }
+    }
+    var ret = fib(4);
+    console.log("fib 函数调用了" + count + "次");
+    console.log(ret);
+
+
+    /* 
+    月份    优化前的count次数   优化后
+    12        287               21
+    13        465               23
+    20        13529             37
+    21        21891             39
+    40        204668309         77
+    */
+
+  </script>
+</body>
+
+</html>
