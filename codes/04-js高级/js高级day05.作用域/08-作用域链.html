@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var a = 10;
+    function fn() {// 变量a相对于fn函数来说，就是自由变量
+      // fn 是在全局作用域中创建的，a就需要去全局作用域中找a的值
+      console.log(a);
+
+      var b = 100;
+      console.log(b);
+      function inner() {
+        // 要找b，去创建inner函数的作用域中找（fn作用域）
+        console.log(b);// 变量b相对于inner函数来说，就是自由变量
+      }
+    }
+    console.log(b);
+  </script>
+</body>
+
+</html>
