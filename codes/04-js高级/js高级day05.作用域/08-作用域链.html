@@ -10,18 +10,36 @@
 <body>
   <script>
     var a = 10;
-    function fn() {// 变量a相对于fn函数来说，就是自由变量
-      // fn 是在全局作用域中创建的，a就需要去全局作用域中找a的值
+    function fn() {
       console.log(a);
 
       var b = 100;
       console.log(b);
       function inner() {
-        // 要找b，去创建inner函数的作用域中找（fn作用域）
-        console.log(b);// 变量b相对于inner函数来说，就是自由变量
+        console.log(a);
+        console.log(b);
       }
     }
     console.log(b);
+
+    /* 
+    函数的作用域链：都是从自己的作用域开始，往外延伸
+
+    outer函数作用域链：outer作用域-->全局作用域
+    inner函数作用域：innter作用域-->outer作用域-->全局作用域
+    fn函数作用域：fn作用域-->inner作用域-->outer作用域-->全局作用域
+
+    找变量：沿着作用域链查找变量的值
+    */
+    var num = 10;
+    function outer() {
+      function inner() {
+        function fn() {
+          console.log(num);
+        }
+      }
+    }
+
   </script>
 </body>
 

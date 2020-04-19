@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1.
+    /* var num = 10;
+    fn1();
+    function fn1() {
+      console.log(num);// undefined
+      var num = 20;
+      console.log(num);// 20
+    }
+    console.log(num);// 10 */
+
+    // 2.
+    /* var num = 10;
+    fn1();
+    function fn1(){
+      console.log(num);
+      num = 20;
+      console.log(num);
+    }
+    console.log(num); */
+
+    // 3.
+    /* var num = 123
+    function f1(num) {
+      console.log(num);// 456
+    }
+    function f2() {
+      var num = 456
+      f1(num)
+    }
+    f2(); */
+
+    // 4.
+    var num1 = 10;
+    var num2 = 20;
+    function fn(num1) {
+      num1 = 100;
+      num2 = 200;
+      num3 = 300;
+      console.log(num1);
+      console.log(num2);
+      console.log(num3);
+      var num3;
+    }
+    fn();
+    console.log(num1);
+    console.log(num2);
+    console.log(num3);
+    // 100 200 300 10 200 not defined
+  </script>
+</body>
+
+</html>

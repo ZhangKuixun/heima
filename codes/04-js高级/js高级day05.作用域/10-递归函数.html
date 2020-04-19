@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function sum(n) {
+      if (n == 1)
+        return 1
+      return sum(n - 1) + n
+    }
+    console.log(sum(100));
+    /* 
+    公式：sum(n-1)+n
+
+    sum(100) ==> sum(99) + 100
+    sum(99) ==> sum(98) + 99
+    ...
+    sum(3) ==> sum(2) + 3
+    sum(2) ==> sum(1) + 2
+    sum(1) ==> 1
+    */
+
+    /* 
+    递归函数：函数内部调用自己
+    做法：
+      1.找公式（找规律）
+      2.留出口
+    */
+    
+  </script>
+</body>
+
+</html>
