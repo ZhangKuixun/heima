@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 1.
+    var num = 1;
+    function fn() {
+      var num = 100
+      num++
+      console.log(num);
+    }
+    fn();// 101
+    fn();// 101
+    console.log(num);//1
+
+    // 2.
+    var color = 'red'
+    function outer() {
+      var anotherColor = 'blue'
+      function inner() {
+        var tmpColor = color
+        color = anotherColor
+        anotherColor = tmpColor
+        console.log(anotherColor);
+      }
+
+      inner()
+    }
+    outer()// red
+    console.log(color);// blue
+    
+
+  </script>
+</body>
+
+</html>
