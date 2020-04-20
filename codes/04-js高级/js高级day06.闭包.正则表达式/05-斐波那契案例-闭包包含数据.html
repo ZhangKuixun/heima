@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    使用闭包保护缓存数据的安全
+
+    使用知识点：
+      递归
+      缓存
+      闭包
+    */
+
+    function outer() {
+
+      var cache = {
+      }
+
+      function fib(n) {
+        if (n == 1 || n == 2) {
+          return 1
+        }
+
+        if (cache[n]) {
+          return cache[n]
+        }
+        // else {
+        //   //计算结果
+        //   let ret = fib(n - 1) + fib(n - 2)
+        //   // 把结果储存到缓存中
+        //   cache[n] = ret
+        //   // 把结果返回出去
+        //   return ret
+        // }
+
+        return cache[n] = fib(n - 1) + fib(n - 2)
+      }
+
+      return fib;
+    }
+
+    var ret = outer();
+    console.log(ret(10));
+
+  </script>
+</body>
+
+</html>
