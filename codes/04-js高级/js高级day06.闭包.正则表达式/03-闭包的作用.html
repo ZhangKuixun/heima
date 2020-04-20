@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    闭包的作用：
+      1.保证数据的安全
+      2.持久化维持数据
+    */
+
+    /* 
+    例子：统计一个函数的调用次数
+      count变量不安全，可以被外部任意更改，使用闭包解决
+    */
+    // var count = 0;
+    // function fn() {
+    //   count++;
+    //   console.log("fn 函数调用了" + count + "次");
+    // }
+    // fn();
+
+    // 闭包
+    function outer() {
+      var count = 0;
+      return function () {
+        count++;
+        console.log("fn 函数调用了" + count + "次");
+      }
+    }
+    var ret = outer();
+    ret();
+
+    /* 
+    闭包把count给保护起来了，只有fn函数可以访问和修改count值，没有任何办法修改和访问count的值。
+    持久化了count值，始终在上一次的数据上增加
+
+
+    变量的声明：
+      全局作用域：在页面关闭的时候或者是浏览器退出的时候，全局作用域才会被销毁。
+      函数作用域：当函数执行结束的时候，这个函数作用域就会被销毁。
+
+    闭包占用的内存空间是不会被销毁的，因为把内部函数返回到外面去了，内部函数指向了外面的变量。
+    */
+
+  </script>
+</body>
+
+</html>
