@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    不安全，money 可以被随便访问
+    */
+    // var money = 0;
+    // function saveMoney(name, num) {
+    //   money += num;
+    //   console.log(name + "存了" + num + "人民币，" + "余额" + money);
+    // }
+    // function getMoney(name, num) {
+    //   money -= num;
+    //   console.log(name + "取了" + num + "元，余额" + money);
+    // }
+
+    /* 
+    闭包
+    */
+    function kaihu() {
+      var money = 0;
+      function saveMoney(name, num) {
+        money += num;
+        console.log(name + "存了" + num + "人民币，" + "余额" + money);
+      }
+      function getMoney(name, num) {
+        money -= num;
+        console.log(name + "取了" + num + "元，余额" + money);
+      }
+      return {
+        saveMoney: saveMoney,
+        getMoney: getMoney
+      }
+    }
+
+    var xm = kaihu();
+    xm.saveMoney('xm', 20000)
+
+    var xh = kaihu();
+    xh.saveMoney('xh', 15000)
+    /* 
+    xm、xh的money是互不影响。
+    只要调用了kaihu函数，会创建内存空间，各自的空间都有属于自己的money变量    
+    */
+
+  </script>
+</body>
+
+</html>
