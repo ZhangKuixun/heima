@@ -32,8 +32,35 @@
     ret(1000)
 
     /* 
-    闭包：函数和申明该函数的词法环境的组合
+    闭包：函数和申明该函数的词法环境的组合（closure）
+      函数：inner函数
+      申明该函数：fn函数
+      词法环境：作用域链
+      组合：是一个整体    
+    
+    闭包形成条件：
+      有两个函数，嵌套关系，内部函数必须要访问外部函数的变量。
     */
+
+    // 闭包的基本模型：
+    // function outer() {
+    //   var count = 0;
+    //   function inner() {
+    //     count++;
+    //     console.log(count);
+    //   }
+    //   return inner;
+    // }
+    
+    // 简写模型
+    function outer() {
+      var count = 0;
+      return function () {
+        count++;
+        console.log(count);
+      }
+    }
+
   </script>
 </body>
 
