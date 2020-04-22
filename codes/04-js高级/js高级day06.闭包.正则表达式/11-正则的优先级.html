@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    优先级
+      | 或，优先级最低
+      () 分组的概念，优先级最高
+     */
+    //  console.log(/a|b|c/.test('adef'));// true
+    //  console.log(/a|b|c/.test('b12'));// true
+    //  console.log(/a|b|c/.test('012'));// false
+
+    // 匹配的是 f 或者是 boot
+    // console.log(/f|boot/.test('fboo'));// true
+    // console.log(/f|boot/.test('boot'));// true
+    // console.log(/f|boot/.test('f'));// true
+    // console.log(/f|boot/.test('foot'));// true
+
+    // 匹配的是 foot 或者是 boot
+    console.log(/(f|b)oot/.test('fboo'));// false
+    console.log(/(f|b)oot/.test('boot'));// true
+    console.log(/(f|b)oot/.test('fboot'));// true
+    console.log(/(f|b)oot/.test('boot'));// true
+  </script>
+</body>
+
+</html>
