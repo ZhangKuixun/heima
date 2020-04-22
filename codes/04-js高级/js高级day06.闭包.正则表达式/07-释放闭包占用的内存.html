@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+    // 使用闭包改造
+
+    function kaihu() {
+      var money = 0;
+      function saveMoney(name, num) {
+        money += num;
+        console.log(name + "存了" + num + "人民币，" + "余额" + money);
+      }
+      function getMoney(name, num) {
+        money -= num;
+        console.log(name + "取了" + num + "元，余额" + money);
+      }
+      return {
+        saveMoney: saveMoney,
+        getMoney: getMoney
+      }
+    }
+
+    var xm = kaihu();
+    xm.saveMoney('xm', 20000)
+
+
+    // 当闭包的功能不在需要使用的时候，闭包占用的内存空间，手动释放。
+    xm = null;
+
+    /* 
+    闭包的作用强大，内存泄漏的问题。
+    闭包不要难用，当闭包功能不使用的时候，手动释放闭包占用的内存
+     */
+  </script>
+</body>
+
+</html>
