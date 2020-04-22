@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    正则表达式的组成
+      普通字符+元字符
+
+    普通字符：字母a-z、数字，没有实际的含义，就是匹配普通字符
+    元字符：在正则里面是有含义的
+    
+     */
+
+    // 1. \d：匹配数字 0-9
+    // console.log(/\d/.test('abc'));// false
+    // console.log(/\d/.test('a1bc'));// true
+
+    // 2.\D：匹配非数字
+    // console.log(/\D/.test('abc'));// true
+    // console.log(/\D/.test('a1bc'));// true
+    // console.log(/\D/.test('123'));// false
+
+    // 3. \w：匹配单词字符（a-z A-Z 0-9 _）
+    // console.log(/\w/.test('abc'));// true
+    // console.log(/\w/.test('*'));// false
+
+    // 4. \w：匹配非单词字符
+    // console.log(/\W/.test('_abc'));// false
+    // console.log(/\W/.test('_a c_'));// true
+    // console.log(/\W/.test('  '));// true
+    // console.log(/\W/.test('$%^&'));// true
+
+    // 5. \s：匹配不可见字符，包含空格（\f\r\n\t\v）
+    // console.log(/\s/.test(' '));// true
+    // console.log(/\s/.test(' \n '));// true
+    // console.log(/\s/.test('ab\tc'));// true
+    // console.log(/\s/.test('abc'));// false
+
+    // 6. \S：匹配可见字符
+    // console.log(/\S/.test('ab c'));// true
+    // console.log(/\S/.test('ab\nc'));// true
+    // console.log(/\S/.test('abc'));// true
+    // console.log(/\S/.test('  '));// false
+
+    // 7. 点 . 匹配除了换行和回车的任意字符
+    // console.log(/./.test('%^&*'));// true
+    // console.log(/./.test('  '));// true
+    // console.log(/./.test('\n'));// false
+
+    // 8. 匹配点，转义 \.
+    console.log(/\./.test('abc'));// false
+    console.log(/\./.test('ab.c'));// true
+    
+    
+  </script>
+</body>
+
+</html>
