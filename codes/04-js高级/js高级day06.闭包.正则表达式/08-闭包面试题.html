@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <button>按钮</button>
+  <script>
+    /*
+    点击按钮的时候打印除自己的下标
+     */
+    var btns = document.querySelectorAll('button')
+
+    // 错误 
+    // function fn() {
+    //   var element;
+    //   for (let i = 0; i < btns.length; i++) {
+    //     element = btns[i];
+    //     element.i = i;
+    //     element.onclick = function () {
+    //       console.log(element.i);
+    //     }
+    //   }
+    //   return element.onclick;
+    // }
+    // var ret = fn();
+    // ret();
+
+    // 推导过程
+    // 1
+    // for (let i = 0; i < btns.length; i++) {
+    //   console.log(i);
+    // }
+
+    // 2
+    // for (let i = 0; i < btns.length; i++) {
+    //   function fn(){
+    //     console.log(i);
+    //   }
+    //   fn()
+    // }
+
+    // 3
+    // for (let i = 0; i < btns.length; i++) {
+    //   function fn(j){
+    //     console.log(j);
+    //   }
+    //   fn(i)
+    // }
+
+    // 4.完成
+    for (let i = 0; i < btns.length; i++) {
+      function fn(j) {
+        btns[i].onclick = function () {
+          console.log(j);
+        }
+      }
+      fn(i)
+    }
+
+    // 5. 优化，沙箱模式
+    for (let i = 0; i < btns.length; i++) {
+      (function fn(j) {
+        btns[i].onclick = function () {
+          console.log(j);
+        }
+      })(i)
+    }
+
+  </script>
+</body>
+
+</html>
