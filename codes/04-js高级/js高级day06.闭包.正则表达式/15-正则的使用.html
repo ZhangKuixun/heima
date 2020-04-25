@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    验证座机号
+    
+    找规律：
+      0556-4970128
+      021-7878678
+    3-4位数字，-，7-8位数字
+
+    注意：校验需要精确匹配，^ $
+     */
+    console.log('----------------------验证座机号');
+    var reg = /^\d{3,4}-\d{7,8}$/;
+    console.log(reg.test('021-7878678'));// true
+    console.log(reg.test('0556-4970128'));// true
+    console.log(reg.test('a021-4970128'));// false
+
+    /* 
+    验证QQ号
+    
+    找规律：
+      全是数字
+      不能以0开头
+      4-12位数字
+     */
+    console.log('----------------------验证QQ号');
+    var reg2 = /^[1-9]\d{3,13}$/;
+    console.log(reg2.test('125843695'));// true
+    console.log(reg2.test('0125843695'));// false
+    console.log(reg2.test('a125843695'));// false
+
+    /* 
+    验证手机号
+    
+    找规律：
+      11位数字，1开头，第二位有限制，不能为012
+     */
+    console.log('----------------------验证手机号');
+    var reg3 = /^1[3-9]\d{9}$/;
+    console.log(reg3.test('13082065493'));// true
+    console.log(reg3.test('1308206593'));// false
+
+    // 严格的验证，以前没有147，后来政策改变，就把147放出来了，最好不要严格，严格就会失去一个用户
+    var reg4 = /^13[0-9]|147|15[0-9]|17[0178]|18[0-9]\d{8}$/;
+    console.log(reg4.test('15682065493'));// true
+
+    /* 
+    验证邮箱
+    
+    找规律：
+      数字 字母 _ @ 数字 字母 _ . 小写字母
+     */
+    console.log('----------------------验证邮箱');
+    var reg5 = /^\w+@\w+\.[a-z]+$/;
+    console.log(reg5.test('litaotao@itcast.cn'));// true
+    console.log(reg5.test('li4aotao@qq.com.cn'));// false
+
+    var reg5 = /^\w+@\w+(\.[a-z]+)+$/;
+    console.log(reg5.test('li4aotao@qq.com.cn'));// true
+
+    /* 
+    验证中文姓名
+    
+    找规律：
+      只能是汉字，汉字范围[\u4e00-\u9fa5]
+      长度在2-6之间
+     */
+     console.log('----------------------验证中文姓名');
+    var reg6 = /^[\u4e00-\u9fa5]{2,6}$/;// true
+    console.log(reg6.test('二愣子'));
+    console.log(reg6.test('关谷神奇.神奇'));// false
+  </script>
+</body>
+
+</html>
