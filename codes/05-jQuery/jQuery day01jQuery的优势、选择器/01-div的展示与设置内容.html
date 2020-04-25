@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 100px;
+      background-color: pink;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>展示</button>
+  <button>设置内容</button>
+  <div></div>
+  <div></div>
+  <div></div>
+  <script>
+    var btn = document.querySelectorAll("button")
+    var div = document.querySelectorAll('div')
+
+    btn[0].onclick = function () {
+      for (let index = 0; index < div.length; index++) {
+        const element = div[index];
+        element.style.display = 'block'
+      }
+    }
+
+    btn[1].onclick = function () {
+      for (let index = 0; index < div.length; index++) {
+        const element = div[index];
+        element.innerText = '内容'
+      }
+    }
+  </script>
+</body>
+
+</html>
