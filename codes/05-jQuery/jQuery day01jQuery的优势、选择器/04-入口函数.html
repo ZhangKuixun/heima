@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 100px;
+      background-color: pink;
+      margin: 10px;
+      display: none;
+    }
+  </style>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+
+    /* 
+    jq提供的入口函数
+    */
+    $(document).ready(function () {
+      // var btn1 = document.querySelectorAll("button")[0]
+      // var btn2 = document.querySelectorAll("button")[1]
+      // var div = document.querySelectorAll('div')
+      // btn1.onclick = function () {
+      //   for (let index = 0; index < div.length; index++) {
+      //     const element = div[index];
+      //     element.style.display = 'block'
+      //   }
+      // }
+      // btn2.onclick = function () {
+      //   for (let index = 0; index < div.length; index++) {
+      //     const element = div[index];
+      //     element.innerText = '内容'
+      //   }
+      // }
+    })
+
+    /* 
+    jq简洁的入口函数
+    */
+    $(function () {
+      var btn1 = document.querySelectorAll("button")[0]
+      var btn2 = document.querySelectorAll("button")[1]
+      var div = document.querySelectorAll('div')
+      btn1.onclick = function () {
+        for (let index = 0; index < div.length; index++) {
+          const element = div[index];
+          element.style.display = 'block'
+        }
+      }
+      btn2.onclick = function () {
+        for (let index = 0; index < div.length; index++) {
+          const element = div[index];
+          element.innerText = '内容'
+        }
+      }
+    })
+
+    /*
+    js的入口函数 window.onload = function(){}
+    执行时间：页面加载完成后再执行
+    */
+    window.onload = function () {
+      // var btn1 = document.querySelectorAll("button")[0]
+      // var btn2 = document.querySelectorAll("button")[1]
+      // var div = document.querySelectorAll('div')
+      // btn1.onclick = function () {
+      //   for (let index = 0; index < div.length; index++) {
+      //     const element = div[index];
+      //     element.style.display = 'block'
+      //   }
+      // }
+      // btn2.onclick = function () {
+      //   for (let index = 0; index < div.length; index++) {
+      //     const element = div[index];
+      //     element.innerText = '内容'
+      //   }
+      // }
+    }
+  </script>
+</head>
+
+<body>
+  <button>展示</button>
+  <button>设置内容</button>
+  <div></div>
+  <div></div>
+  <div></div>
+
+  <script>
+
+  </script>
+</body>
+
+</html>
