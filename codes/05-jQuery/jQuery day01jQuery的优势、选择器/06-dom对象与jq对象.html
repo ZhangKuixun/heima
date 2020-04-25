@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="box">123</div>
+  <div>123</div>
+  <div>123</div>
+  <div>123</div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /* 
+    jQuery对象与DOM对象
+
+    DOM对象：通过原生js方法获取到的元素
+    document.getElementById(id);
+    document.querySelector();
+    */
+    var dom = document.querySelectorAll("div")
+    console.dir(dom);
+
+    // dom对象不能使用jq提供的方法，只能使用dom对象自身的元素
+    // dom.text('修改div的内容')
+
+    /* 
+    jq对象：$()获取到的元素就是jq对象    
+    jq对象是一个伪数组，用下标的形式储存了获取到的每一个dom对象
+    */
+    var jq = $("div")
+    console.dir(jq);
+
+    // jq对象不能使用dom对象的元素，只能使用jq提供的方法
+    // jq.style.backgroundColor = 'red';
+
+    /* 
+    dom对象使用jq的方法，把dom对象转成jq对象
+    怎么转：花钱就行
+    $(dom对象)：把dom对象作为参数传递到$()，$(dom对象)整体就是jq对象
+    */
+    var jq1 = $(dom)
+    console.dir(jq1);
+    jq1.text("dom to jq1，修改成功")
+
+    /*
+    jq对象转dom对象
+    */
+    var dom1 = $('div')[0]
+    console.dir(dom1);
+    dom1.style.backgroundColor = 'red'
+  </script>
+</body>
+
+</html>
