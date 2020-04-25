@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /*
+    jq的入口函数和window.onload区别
+      1.覆盖
+          window.onload 有覆盖问题
+          jq的入口函数不存在覆盖问题
+      2.执行时机对的对比：
+          jq的入口函数先于window.onload执行
+          window.onload：要等页面加载完，还要等外部资源加载好
+          jq的入口函数：只需要等待页面加载完成就执行，推荐使用jq的入口函数
+   */
+
+    // 覆盖
+    window.onload = function () {
+      console.log(1);
+    }
+    window.onload = function () {
+      console.log(2);
+    }
+    $(function () {
+      console.log(3);
+    })
+    $(function () {
+      console.log(4);
+    })
+
+  </script>
+</body>
+
+</html>
