@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    replace(参数1,参数2)
+      参数1：原字符串需要替换的值，可以使用正则表达式
+      参数2：替换的字符串
+    
+    g：global 全局匹配搜索，写在正则后面：/\d/g
+    i：ignore 忽略大小写，写在正则后面：/ad/gi
+     */
+    // var str = 'abc';
+    // str = str.replace('b', 'xyz')
+    // console.log(str);
+
+    var str = '   123AD  adfa   adffds  adf  '
+    // 1.替换掉字符串中所有空白
+    // str = str.replace(/\s/g, '')
+    // console.log(str);
+
+    // 2.将所有的ad替换成xx
+    str = str.replace(/ad/g, "xx")
+    console.log(str);
+
+    // 3.将所有的ad/AD替换成xx
+    // str = str.replace(/ad|AD/g, "xx")
+    str = str.replace(/ad/gi, "xx")
+    console.log(str);
+
+    var str = 'abc,efg,123,add,234,a'
+    // 4.所有的逗号都替换成句号
+    str = str.replace(/,/g, '。')
+    console.log(str);
+
+    var jsonStr = '[{"name":"张三",score:80},{"name":"张三",score:90},{"name":"张三",score:81}]'
+    // 5.把所有成绩都修改成100分
+    jsonStr = jsonStr.replace(/\d{2}/g,100)
+    console.log(jsonStr);
+
+  </script>
+</body>
+
+</html>
