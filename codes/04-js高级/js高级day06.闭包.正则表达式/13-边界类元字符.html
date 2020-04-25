@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    边界类元字符，开始和结束
+
+    需求：匹配以a开头的字符
+
+    ^、$
+    ^ 在[]中代表非，但是不在[]中代表开始
+    $ 结束
+     */
+
+    // a开始
+    console.log('---------------------------------a开始');
+    console.log(/^a/.test('abc'));// true
+    console.log(/^a/.test('Abc'));// false
+    console.log(/^a/.test('bc'));// false
+
+    // a结束
+    console.log('---------------------------------a结束');
+    console.log(/a$/.test('abc'));// false
+    console.log(/a$/.test('bcA'));// false
+    console.log(/a$/.test('bca'));// true
+
+    // chuan开始
+    console.log('---------------------------------chuan开始');
+    console.log(/^chuan/.test("chuang"));// true
+    console.log(/^chuan/.test("dachuan"));// false
+    console.log(/^chuan/.test("chuangchuang"));// true
+
+    // chuan结束
+    console.log('---------------------------------chuan结束');
+    console.log(/chuan$/.test("chuang"));// false
+    console.log(/chuan$/.test("dachuan"));// true
+    console.log(/chuan$/.test("chuanchuan"));// true
+
+    // ^、$一起用，表示精确匹配，写啥匹配啥
+    console.log('---------------------------------^、$一起用');
+    console.log(/^chuan$/.test("chuang"));// false
+    console.log(/^chuan$/.test("dachuan"));// false
+    console.log(/^chuan$/.test("chuanchuan"));// false
+    console.log(/^chuan$/.test("chuan"));// true
+  </script>
+</body>
+
+</html>
