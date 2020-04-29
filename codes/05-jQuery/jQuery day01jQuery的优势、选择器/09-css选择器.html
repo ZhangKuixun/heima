@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li id="tangtang" class="handsome">堂哥</li>
+    <li class="congcong handsome">
+      大葱哥
+      <ol>
+        <li>小葱</li>
+        <li>小蒜</li>
+      </ol>
+    </li>
+    <li>莲妹</li>
+  </ul>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    // css选择器
+
+    /* 
+    css(name,value) 设置样式
+    name：样式名
+    value：样式值
+     */
+    // id
+    // $('#tangtang').css('color', 'lime')
+
+    // 标签
+    // $('li').css('fontSize', '50px')
+
+    // 类名
+    // $('.congcong').text('匆匆，好久不见')
+
+    // 子代
+    // $('.congcong>ol>li').css('color', 'pink')
+
+    // 后代
+    // $('.congcong li').text('聪聪的孩子')
+
+    // 交集
+    $('.congcong.handsome').css('color', 'lime')
+
+    // 并集
+    $('.congcong, #tangtang').css("height", "190px")
+  </script>
+</body>
+
+</html>
