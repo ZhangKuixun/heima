@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="over" style="background-color: lightgray;padding: 20px;width: 40%; float: left;">
+    <h2 style="background-color: white;">被触发的mouseover事件：<span></span></h2>
+  </div>
+  <div class="enter" style="background-color: lightgray;padding: 20px;width: 40%; float: right;">
+    <h2 style="background-color: white;">被触发的mouseover事件：<span></span></h2>
+  </div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /*
+    mouseover  mouseout
+    注册的事件，不仅会在当前元素自身上触发，而且也会在其子元素上触发，原理：事件冒泡
+
+    mouseenter 鼠标移入事件
+    mouseleave 鼠标离开事件
+    注册的事件只会在当前元素上触发，原理是因为不会事件冒泡。推荐
+     */
+
+    var v1 = 0;
+    var v2 = 0;
+    $(document).ready(function () {
+      $('div.over').mouseover(function () {
+        $(".over span").text(v1 += 1)
+      })
+      $('div.enter').mouseenter(function () {
+        $(".enter span").text(v2 += 1)
+      })
+    })
+
+  </script>
+</body>
+
+</html>
