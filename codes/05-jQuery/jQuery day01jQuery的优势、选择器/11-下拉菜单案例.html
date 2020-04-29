@@ -97,7 +97,7 @@
     var $lis = $('.wrap>ul>li')
 
     // 2.
-    $lis.mouseover(function(){
+    $lis.mouseenter(function(){
       // 3.
       // this 是一个dom对象
       // console.log(this);
@@ -109,7 +109,7 @@
     }) 
 
     // 4.
-    $lis.mouseout(function(){
+    $lis.mouseleave(function(){
       // 5.
       $(this).children('ul').hide();
 
