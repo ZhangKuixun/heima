@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /* 
+    $的来源：jquery
+    是什么：函数
+    作用：很强大，根据参数的不同作用不同
+
+      参数：选择器， 作用是获取元素  $('div')
+      参数：函数，   作用是入口函数  $(function(){})
+      参数：dom对象，作用是将dom对象转成jq对象  $(document)
+
+      在jq中，除了使用$符号来使用jq的功能，还可以用jQuery来使用
+
+      $和jQuery是同一个东西，都暴露在window上
+     */
+    console.log($ == jQuery);// true
+    console.dir(window);
+    
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    // var lis = document.querySelectorAll("li");
+    // for (let index = 0; index < lis.length; index++) {
+    //   if (index % 2 == 0) {
+    //     lis[index].style.backgroundColor = "blue"
+    //   } else{
+    //     lis[index].style.backgroundColor = "green"
+    //   }
+    // }
+    var lis = $('li')
+    console.dir(lis)
+    for (let index = 0; index < lis.length; index++) {
+      if (index % 2 == 0) {
+        lis[index].style.backgroundColor = "blue"
+      } else{
+        lis[index].style.backgroundColor = "green"
+      }
+    }
+  </script>
+</body>
+
+</html>
