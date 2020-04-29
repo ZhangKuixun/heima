@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /* 
+    过滤选择器
+     */
+
+    // :odd 从获取到元素中过滤出下标为奇数的元素
+    $('li:odd').css('backgroundColor', 'red')
+
+    // :even 从获取到元素中过滤出下标为偶数的元素
+    $('li:even').css('backgroundColor', 'lime')
+
+    // :first 从获取到元素中过滤出第一个元素
+    $('li:first').css('fontSize', '50px')
+
+    // :last 从获取到元素中过滤出最后一个元素
+    $('li:last').css('fontSize', '50px')
+
+    // :eq(下标) 从获取到元素中过滤出指定下标的元素
+    $('li:eq(4)').css('height', '100px')
+  </script>
+</body>
+
+</html>
