@@ -73,7 +73,8 @@
     // 2.
     $spans.click(function () {
       // 3.
-      $(this).siblings().slideDown(200)
+      // $(this).siblings().slideDown(200)
+      $(this).next().slideDown(200)
       
       // 4.
       $(this).parent().siblings().children('div').slideUp(200)
