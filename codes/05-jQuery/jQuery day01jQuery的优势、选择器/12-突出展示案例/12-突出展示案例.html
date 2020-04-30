@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #000000;
+    }
+
+    .wrap {
+      margin: 100px auto 0;
+      width: 630px;
+      height: 420px;
+      padding: 10px 0 0 10px;
+      background: #000000;
+      overflow: hidden;
+      border: 1px solid #ffffff;
+    }
+
+    .wrap li {
+      float: left;
+      margin: 0 10px 10px 0;
+    }
+
+    .wrap img {
+      display: block;
+      border: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <ul>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/4.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/5.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/6.jpg" alt=""></a></li>
+    </ul>
+  </div>
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    /* 
+    思路：
+      1.找对象
+      2.给li 加 mouseenter
+      3.给其他兄弟li元素变暗 opcity 0.5
+      4.把自己先变白，再把兄弟变暗
+
+      5.给wrap注册mouseleave
+      6.把所有的li变白
+     */
+    // 1.
+    var $lis = $('.wrap li')
+
+    // 2.
+    $lis.mouseenter(function () {
+      // jq提供了siblings()获取当前元素的所有兄弟元素，不包含自己
+
+      // 3.先把当前的li变白
+      // $(this).css('opacity', 1)
+
+      // 4.再把兄弟变黑
+      // $(this).siblings().css('opacity', .5)
+
+      // 优化
+      $(this).css('opacity', 1).siblings().css('opacity', .5)
+    })
+
+    // 5.
+    $('.wrap').mouseleave(function () {
+      // 6.
+      // find 找后代元素
+      $(this).find('li').css('opacity', 1)
+    })
+
+  </script>
+</body>
+
+</html>
