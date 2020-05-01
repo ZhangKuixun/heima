@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 400px;
+      height: 400px;
+      background-color: #ff9999;
+    }
+
+    .basic {
+      background-color: #ccc;
+      font-size: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>添加basic类名</button>
+  <button>移除basic类名</button>
+  <button>判断是否有basic类名</button>
+  <button>切换basic类名</button>
+  <div id="box" class="aa bb">jQuery好用</div>
+
+  <!-- <div class="dd"></div>
+  <div class="dd ff"></div>
+  <div class="dd"></div> -->
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /*
+    addClass(name)  添加类名
+    只负责添加，不会覆盖标签原有的类名
+    */
+    $('button').eq(0).click(function () {
+      $('#box').addClass("basic")
+    })
+
+
+    // removeClass(name) 移除
+    $('button').eq(1).click(function () {
+      $("#box").removeClass("basic")
+    })
+
+
+    /* 
+    hasClass(name) 判断元素是否有指定的类名，有就返回true
+    判断：只要元素有指定的类名，返回true
+          只要所有的元素都没有指定的类名，返回false
+    */
+    $('button').eq(2).click(function () {
+      console.log($('#box').hasClass('basic'));
+    })
+
+    // console.log($('div').hasClass("ff"));// true
+
+
+    /* 
+    toggleClass(namme) 切换类名，如果有，就移除掉，如果没有，就添加
+    */
+    $("button").eq(3).click(function () {
+      // toggle的内部实现
+      // if ($('#box').hasClass('basic')) {
+      //   $('#box').removeClass('basic')
+      // } else {
+      //   $('#box').addClass('basic')
+      // }
+
+      $("#box").toggleClass("basic")
+    })
+  </script>
+</body>
+
+</html>
