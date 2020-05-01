@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-family: 'Helevica', 'Arial', serif;
+      color: #333;
+      background-color: #ccc;
+      margin: 1em 10%;
+    }
+
+    h1 {
+      color: #333;
+      background-color: transparent;
+    }
+
+    a {
+      color: #c60;
+      background-color: transparent;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    ul {
+      padding: 0;
+    }
+
+    li {
+      float: left;
+      padding: 1em;
+      list-style: none;
+    }
+
+    #imagegallery {
+      list-style: none;
+    }
+
+    #imagegallery li {
+      margin: 0px 20px 20px 0px;
+      padding: 0px;
+      display: inline;
+    }
+
+    #imagegallery li a img {
+      border: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>美女画廊</h2>
+  <ul id="imagegallery">
+    <li><a href="images/1.jpg" title="美女1"><img src="images/1.jpg" width="100px" alt="美女1"></a></li>
+    <li><a href="images/2.jpg" title="美女2"><img src="images/2.jpg" width="100px" alt="美女2"></a></li>
+    <li><a href="images/3.jpg" title="美女3"><img src="images/3.jpg" width="100px" alt="美女3"></a></li>
+    <li><a href="images/4.jpg" title="美女4"><img src="images/4.jpg" width="100px" alt="美女4"></a></li>
+    <li><a href="images/5.jpg" title="美女5"><img src="images/5.jpg" width="100px" alt="美女5"></a></li>
+    <li><a href="images/6.jpg" title="美女6"><img src="images/6.jpg" width="100px" alt="美女6"></a></li>
+  </ul>
+  <div style="clear:both"></div>
+  <img id="image" src="images/1.jpg" alt="" width="450px">
+  <p id="des">美女1</p>
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    /* 
+    思路：
+      1.找对象 a
+      2.给a注册click
+      3.阻止a跳转
+      4.获取当前点击a的href属性值，设置给大图的src
+      5.获取当前点击的a的titile属性值，设置给说明信息的文字
+    */
+
+    // 1.
+    var $as = $('#iamgegallery a')
+    var $img = $('#image')
+    var $des = $('#des')
+
+    $(function () {
+      // 2.
+      $as.click(function () {
+
+        // 4.
+        var href = $(this).attr('href')
+        var title = $(this).attr('title')
+
+        // 5.
+        $img.attr('src', href)
+        $des.text(title)
+
+        // 3.
+        return false
+      })
+    })
+  </script>
+</body>
+
+</html>
