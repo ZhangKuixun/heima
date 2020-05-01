@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      font-size: 12px;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .wrapper {
+      width: 298px;
+      height: 248px;
+      margin: 100px auto 0;
+      border: 1px solid pink;
+      overflow: hidden;
+    }
+
+    .wrapper #left,
+    .wrapper #center,
+    .wrapper #right {
+      float: left;
+    }
+
+    .wrapper #left li,
+    .wrapper #right li {
+      width: 50px;
+      height: 27px;
+      border: 1px solid pink;
+      box-sizing: border-box;
+    }
+
+    .wrapper #left li a,
+    .wrapper #right li a {
+      display: block;
+      width: 48px;
+      line-height: 27px;
+      text-align: center;
+      color: #000;
+    }
+
+    /* .wrapper #center {
+       border-left: 1px solid pink; 
+     border-right: 1px solid pink;
+    } */
+    .wrapper #center img {
+      width: 198px;
+      height: 248px;
+    }
+
+    #left li a:hover,
+    #right li a:hover {
+      background-color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <ul id="left">
+      <li><a href="#">女靴</a></li>
+      <li><a href="#">雪地靴</a></li>
+      <li><a href="#">冬裙</a></li>
+      <li><a href="#">毛衣</a></li>
+      <li><a href="#">呢大衣</a></li>
+      <li><a href="#">棉服</a></li>
+      <li><a href="#">女裤</a></li>
+      <li><a href="#">羽绒服</a></li>
+      <li><a href="#">牛仔裤</a></li>
+    </ul>
+    <ul id="center">
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+    </ul>
+    <ul id="right">
+      <li><a href="#">女包</a></li>
+      <li><a href="#">男靴</a></li>
+      <li><a href="#">登山鞋</a></li>
+      <li><a href="#">皮带</a></li>
+      <li><a href="#">围巾</a></li>
+      <li><a href="#">皮衣</a></li>
+      <li><a href="#">男毛衣</a></li>
+      <li><a href="#">男围巾</a></li>
+      <li><a href="#">男包</a></li>
+    </ul>
+  </div>
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    /* 
+      1.找对象，左边的li $leftLis
+      2.给$left 注册 mousesenter
+      3.获取当前元素的下标
+      4.通过下标找到center中对应的li，显示
+      5.把兄弟li隐藏
+     */
+
+    // 1.
+    var $lieftLis = $('#left li')
+
+    // 2.
+    $lieftLis.mouseenter(function () {
+      // 3.
+      var index = $(this).index();
+      // 4.
+      // $("#center li:eq(" + index + ")").show().siblings().hide()
+      $("#center li").eq(index).show().siblings().hide()
+    })
+
+    var $rightLis = $('#right li')
+
+    $rightLis.mouseenter(function () {
+      var index = $(this).index() + 9;
+      console.log(index);
+      
+      $("#center li").eq(index).show().siblings().hide()
+    })
+  </script>
+</body>
+
+</html>
