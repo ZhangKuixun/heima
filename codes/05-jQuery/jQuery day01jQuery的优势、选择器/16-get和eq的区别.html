@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>ab1</li>
+    <li>ab2</li>
+    <li>ab3</li>
+  </ul>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    var $lis = ("li")
+    console.log($lis.eq(0));// eq拿到的是jq对象
+    console.log($lis.get(0));// get拿到的是dom对象
+
+    /*
+    jq对象转成dom对象，有两种写法：
+      1.通过中括号[]：$lis[0]
+      2.通过get()获取
+     */
+    console.log($lis[0]);
+    
+  </script>
+</body>
+
+</html>
