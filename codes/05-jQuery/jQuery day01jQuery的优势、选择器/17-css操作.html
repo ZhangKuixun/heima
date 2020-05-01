@@ -8,8 +8,49 @@
 </head>
 
 <body>
+  <ul>
+    <li>这是li的内容</li>
+    <li>这是li的内容</li>
+    <li>这是li的内容</li>
+  </ul>
+  <script src="jquery-1.12.4.js"></script>
   <script>
+    /*
+    css操作
 
+    获取和设置样式
+    css(name,value)：设置单个样式
+    css(obj)：设置多个样式
+    css(name)：获取样式，name是字符串形式的样式名
+
+    注意：
+      获取多个相同对象的样式，只会获取第一个样式对应的值
+      设置时，会把获取到的所有元素都设置上相同的样式
+    */
+
+    // 设置单个样式
+    // $('li').css('color', 'red')
+    // // $('li').css('fontSize','30px')
+    // $('li').css('fontSize', 50)
+    // $('li').css('backgroundColor', 'lime')
+
+    // // 设置多个样式
+    // $('li').css({
+    //   color: 'red',
+    //   // fontSize: '40px',
+    //   fontSize: 40,
+    //   backgroundColor: 'lime'
+    // })
+
+    // // 获取样式
+    // console.log($('li').css('fontSize'));
+
+    // 获取多个相同对象的样式
+    $('li').eq(0).css("fontSize", 20)
+    $('li').eq(1).css("fontSize", 22)
+    $('li').eq(2).css("fontSize", 24)
+
+    console.log($('li').css('fontSize'));
 
   </script>
 </body>
