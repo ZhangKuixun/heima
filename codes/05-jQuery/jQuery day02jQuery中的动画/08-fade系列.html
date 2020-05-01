@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <button>开始动画</button>
+  <button>隐藏动画</button>
+  <button>切换</button>
+  <div></div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /*
+    三个基本动画
+
+    fadeIn 淡入展示
+    fadeOut 淡出隐藏
+    fadeToggle 切换
+
+    fade使用方式和show系列一样，没有传参，也有动画效果
+     */
+
+    // fadeIn
+    $('button').eq(0).click(function () {
+      $('div').fadeIn(1000, function () {
+        console.log("fadeIn结束了");
+      });
+    })
+
+    // fadeOut
+    $('button').eq(1).click(function () {
+      $('div').fadeOut(1000, function () {
+        console.log("div隐藏了");
+      });
+    })
+
+    // fadeToggle
+    $('button').eq(2).click(function () {
+      $('div').fadeToggle(1000, function () {
+        console.log("toggle");
+      });
+    })
+
+  </script>
+</body>
+
+</html>

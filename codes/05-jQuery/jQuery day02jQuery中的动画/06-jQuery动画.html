@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <button>开始动画</button>
+  <button>隐藏动画</button>
+  <button>切换</button>
+  <div></div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /*
+    三个基本动画
+
+    show 展示
+      show(speed, easing, callback)
+        参数：可选，无参就是没有动画效果
+          speed：动画时长，单位ms
+              提供了默认的字符串：'fast'=200，'normal'=400，'slow'=600，如果写的字符串不是上面三者之一，取默认值nomal。
+          easing：动画效果，通常不写
+              动画：swing=（钟摆）慢-快-慢，默认值
+                    linear=匀速  
+          callback：动画结束后执行的回调函数
+    hide 隐藏
+    toggle 切换
+     */
+
+    // show
+    $('button').eq(0).click(function () {
+      $('div').show(1000, function () {
+        console.log("show展示出来了");
+        $('div').css('backgroundColor', 'yellow')
+      });
+    })
+
+    // hide
+    $('button').eq(1).click(function () {
+      $('div').hide(1000, function () {
+        console.log("div隐藏了");
+      });
+    })
+
+    // toggle
+    $('button').eq(2).click(function () {
+      $('div').toggle(1000, function () {
+        console.log("toggle");
+      });
+    })
+
+  </script>
+</body>
+
+</html>

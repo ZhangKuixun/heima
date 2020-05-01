@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .wrap {
+      width: 330px;
+      height: 30px;
+      margin: 100px auto 0;
+    }
+
+    .wrap>ul>li {
+      float: left;
+      margin-right: 10px;
+      position: relative;
+    }
+
+    .wrap a {
+      display: block;
+      height: 30px;
+      width: 100px;
+    }
+
+    .wrap li .ul {
+      position: absolute;
+      top: 30px;
+      display: none;
+      text-decoration: none;
+      color: #000;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .wrap li ul {
+      position: absolute;
+      top: 30px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <ul>
+      <li>
+        <a href="javascript:void(0);">一级菜单1</a>
+        <ul class="ul">
+          <li><a href="javascript:void(0);">二级菜单1</a></li>
+          <li><a href="javascript:void(0);">二级菜单2</a></li>
+          <li><a href="javascript:void(0);">二级菜单3</a></li>
+        </ul>
+      </li>
+      <li><a href="javascript:void(0);">一级菜单2</a>
+        <ul class="ul">
+          <li><a href="javascript:void(0);">二级菜单4</a></li>
+          <li><a href="javascript:void(0);">二级菜单5</a></li>
+          <li><a href="javascript:void(0);">二级菜单6</a></li>
+        </ul>
+      </li>
+      <li><a href="javascript:void(0);">一级菜单3</a>
+        <ul class="ul">
+          <li><a href="javascript:void(0);">二级菜单7</a></li>
+          <li><a href="javascript:void(0);">二级菜单8</a></li>
+          <li><a href="javascript:void(0);">二级菜单9</a></li>
+        </ul>
+      </li>
+      </li>
+    </ul>
+  </div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /*
+    下拉菜单
+
+    思路：
+      1.找一级菜单
+      2.给li注册鼠标移入事件
+      3.让当前li下的ul展示出来
+      4.给li注册onmouseout
+      5.让当前li下的ul隐藏起来
+     */
+
+    // 1.
+    // 建议：把需要经常使用的元素被保存起来，变量名前面加上$，表示获取到的是jq对象
+    var $lis = $('.wrap>ul>li')
+
+    // 2.
+    $lis.mouseenter(function(){
+      // 3.
+      // this 是一个dom对象
+      // console.log(this);
+
+      // this要使用jq方法，一定要转jq对象 $(this)
+      $(this).children('ul').slideDown();
+
+      console.log('mouseover');
+    }) 
+
+    // 4.
+    $lis.mouseleave(function(){
+      // 5.
+      $(this).children('ul').slideUp();
+
+      console.log('mouseout');
+    })
+  </script>
+</body>
+
+</html>
