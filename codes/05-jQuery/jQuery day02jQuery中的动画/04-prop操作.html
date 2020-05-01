@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <label>
+    <input type="checkbox" checked='checked'>点我切换
+  </label>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /* 
+    需求：点击input之后，获取input的选中状态（获取checked属性）
+    */
+    $('input').click(function () {
+      // 获取的是checked属性属性值，不是checked属性最终选中效果
+      console.log($(this).attr('checked'));// checked
+      console.log($(this).prop('checked'));// true、false
+      
+      /* 
+      对于表单元素的checked、selected、disabled属性，使用prop方法，使用方式和attr一样
+      除了表单元素的三个属性使用prop方法外，其他的都可以使用attr方法。
+
+      自定义属性，使用attr方法（abc、index）
+      对于固有属性，使用prop方法（title、id、style、checked、disabled）
+      */
+    })
+  </script>
+</body>
+
+</html>
