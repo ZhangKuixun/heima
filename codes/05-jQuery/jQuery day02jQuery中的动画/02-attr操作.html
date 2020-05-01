@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <img src="images/1.jpg" alt="将要展示图片" title="不知道是啥">
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    /* 
+    attr 操作属性
+    attr(name, value)：设置单个属性
+      name：属性名
+      value：属性值
+
+    attr(obj)：设置多个属性
+
+    attr(name)：获取属性
+
+    removeAttr(name)：移除属性
+
+    css() 设置style
+    attr() 设置属性
+    例如：img既有width属性，又有width样式
+    $('img').css('width', 600)// 设置width样式
+    $('img').attr('width', 800)// 设置width属性
+    */
+    $(function () {
+
+      // //设置单个属性
+      // $('img').attr('alt','程序员的事件')
+      // $('img').attr('title','年纪轻轻，别挠头')
+      // $('img').attr('width',300)
+
+
+      // // 设置多个属性
+      // $('img').attr({
+      //   alt:'程序员的世界02',
+      //   title:'年纪轻轻，别挠头，容易着凉'
+      // })
+
+      // // 获取属性
+      // console.log($('img').attr("alt"));
+
+      // // 移除属性
+      // $('img').removeAttr('title').removeAttr('alt')
+
+    })
+  </script>
+</body>
+
+</html>
