@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .wrapper {
+      width: 1000px;
+      height: 475px;
+      margin: 100px auto;
+    }
+
+    .tab {
+      width: 320px;
+      height: 34px;
+      border: 1px solid #ddd;
+    }
+
+    .tab li {
+      position: relative;
+      float: left;
+      width: 80px;
+      height: 34px;
+      line-height: 34px;
+      text-align: center;
+      cursor: pointer;
+      border-top: 4px solid #fff;
+    }
+
+    .products {
+      width: 1002px;
+      height: 476px;
+      border: 1px solid #ddd;
+    }
+
+    .products .main {
+      float: left;
+      display: none;
+    }
+
+    .products img {
+      width: 1002px;
+      height: 476px;
+    }
+
+    .products .main.selected {
+      display: block;
+    }
+
+    .tab li.active {
+      /* border-top: 4px solid red; */
+      border-color: red;
+      border-bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <ul class="tab">
+      <li class="tab-item active">tab1</li>
+      <li class="tab-item">tab2</li>
+      <li class="tab-item">tab3</li>
+      <li class="tab-item">tab4</li>
+    </ul>
+    <div class="products">
+      <div class="main selected"><a href="###"><img src="images/1.jpg" alt=""></a></div>
+      <div class="main"><a href="###"><img src="images/2.jpg" alt=""></a></div>
+      <div class="main"><a href="###"><img src="images/1.jpg" alt=""></a></div>
+      <div class="main"><a href="###"><img src="images/2.jpg" alt=""></a></div>
+    </div>
+  </div>
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    /*
+    思路：
+      1.找对象 导航li 内容main
+      2.给导航li 注册mouseenter
+      3.给当前的li添加active类名，让其他兄弟li移除掉active类名
+      4.获取当前li的下标
+      5.根据下标找到对应的main，让其添加selected，让其他兄弟div移除掉selected类名
+    */
+    // 1.
+    var $lis = $('.tab-item')
+    var $main = $('.main')
+
+    // 2.
+    $lis.mouseenter(function () {
+      // 3.
+      $(this).addClass('active').siblings().removeClass('active')
+
+      // 4.
+      var idx = $(this).index()
+
+      // 5.
+      $main.eq(idx).addClass('selected').siblings().removeClass('selected')
+    })
+
+
+
+  </script>
+</body>
+
+</html>
