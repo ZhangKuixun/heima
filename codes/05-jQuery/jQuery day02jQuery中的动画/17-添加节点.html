@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 300px;
+      width: 300px;
+      background-color: #f99;
+      padding: 10px;
+    }
+
+    p {
+      padding: 20px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <p>这是div内的p元素</p>
+  </div>
+  <p class="outerP">这是div外的p元素</p>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /*
+      append() 就是封装了appendChild()
+          语法：parent.append(child)
+          作用：把child添加到parent里面，在最后面
+      */
+      // $('div').append($('.outerP'))
+
+      /* 
+      appendTo
+      语法：child.appendTo(parent)
+      把子元素添加到父元素中去
+       */
+      // $('.outerP').appendTo($('div'))
+
+      // appendTo简写，parent参数可以直接写选择器，必须精确
+      // $('.outerP').appendTo('div')
+
+      /* 
+      prepend()
+      语法：parent.prepend(child)
+      作用：把child添加到parent里面，在parent的最前面
+      */
+      // $('div').prepend($('.outerP'))
+
+      /* 
+      prependTo()和prepend作用一样，写法相反
+       */
+      // $('.outerP').prependTo('div')
+
+      /* 
+      after()  before()
+
+      A.after(B) //把B元素放在A元素后面
+      B.before(A) //把B放在A的前面
+       */
+      // $('div').after($('div p'))
+      // $('div').before($('div p'))
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      创建节点
+
+      
+      原生js
+       */
+      // var a = document.createElement('a')
+      // a.href = 'http://www.baidu.com'
+      // a.target = '_blank'
+      // a.innerText = '百度一下'
+      // document.body.appendChild(a)
+
+      /* 
+      jQuery 创建节点
+      语法：$(html字符串) 
+      注意：html字符串用单引号包裹
+       */
+      var $a = $('<a href="http://www.baidu.com" target="_blank">百度一下，拉拉</a>')
+      $('body').append($a)
+    })
+
+    /*
+    $符号的作用：
+      1.参数为 选择器，获取元素
+      2.参数为 函数，入口函数
+      3.参数为 DOM对象，转成jq对象
+      4.参数为 HTML字符串
+     */
+  </script>
+</body>
+
+</html>
