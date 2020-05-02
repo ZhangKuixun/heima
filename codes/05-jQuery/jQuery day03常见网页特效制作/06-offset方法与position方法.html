@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .father {
+      width: 400px;
+      height: 400px;
+      background-color: #ff9999;
+      position: relative;
+      margin: 50px;
+    }
+
+    .son {
+      width: 100px;
+      height: 100px;
+      background-color: #fff;
+      position: relative;
+      left: 80px;
+      top: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="father">
+    <div class="son"></div>
+  </div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      offset方法与position方法
+
+      offset方法：获取元素到页面之间的距离
+      返回的是个对象{top:xx,left:xx}
+       */
+      // console.log($('.son').offset());
+      
+
+      /* 
+      position方法：获取元素到有定位的父元素之间的距离
+       */
+      console.log($('.son').position());
+      
+    })
+  </script>
+</body>
+
+</html>
