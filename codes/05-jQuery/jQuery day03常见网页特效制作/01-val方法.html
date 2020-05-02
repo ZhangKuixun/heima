@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" value="37期就业薪资">
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      val 方法，专门用来操作表单元素的value属性
+      */
+      // 获取--不传参
+      console.log($('input').val());
+      
+      // 设置--传参
+      $('input').val('37期10个工作日就业100%')
+
+      
+    })
+  </script>
+</body>
+
+</html>
