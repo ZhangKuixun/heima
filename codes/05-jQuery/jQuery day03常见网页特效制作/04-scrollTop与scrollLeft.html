@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 4000px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+
+    $(function () {
+      /* 
+      scrollTop与scrollLeft：获取页面卷曲距离
+      */
+
+      // 获取垂直方向的卷曲距离
+      // $(window).scrollTop()
+
+      // 设置卷曲距离--传参
+      $('button').click(function () {
+        $(window).scrollTop()
+      })
+
+      // 实时获取页面的卷曲距离
+      $(window).scroll(function () {
+        console.log($(window).scrollTop());
+      })
+    })
+  </script>
+</body>
+
+</html>

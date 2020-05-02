@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      vertical-align: top;
+      width: 100%;
+    }
+
+    .main {
+      margin: 10px auto 0;
+      width: 1000px;
+    }
+
+    .fixed {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top" id="topPart"><img src="iamges/top.jpg" alt=""></div>
+  <div class="nav" id="navBar"><img src="iamges/nav.jpg" alt=""></div>
+  <div class="main" id="mainPart"><img src="iamges/main.jpg" alt="" width="1000px" height="1000px"></div>
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    /*
+    思考：
+      1.给window注册onscroll
+      2.获取页面垂直方向的卷曲距离 scrollTop
+      3.卷曲距离 topPart 的高度做比较
+      4.卷曲距离 >= topPart 的高度，让navBar固定定位
+        卷曲距离 < toPart 的高度，让navBar取消固定定位
+    */
+
+    var $topPart = $('#topPart')
+    var $navBar = $('#navBar')
+    var $mainPart = $('#mainPart')
+
+    $(window).scroll(function () {
+      var $top = $(this).scrollTop()
+
+      if ($top >= $topPart.height()) {
+        $navBar.addClass('fixed')
+        $mainPart.css('marginTop', 10 + $navBar.height())
+      } else {
+        $navBar.removeClass('fixed')
+        $mainPart.css('marginTop', 10 )
+      }
+    })
+
+
+
+
+    // var navBar = document.querySelector('#navBar')
+    // var topPart = document.querySelector('#topPart')
+    // var mainPart = document.querySelector('#mainPart')
+
+    // // 2
+    // window.onscroll = function () {
+    //   // 3
+    //   var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+    //   // 4
+    //   if (scrollTop >= topPart.offsetHeight) {
+    //     navBar.className = 'nav fixed'
+    //     mainPart.style.marginTop = 10 + navBar.offsetHeight + 'px'
+    //   } else {
+    //     navBar.className = 'nav'
+    //     mainPart.style.marginTop = 10 + 'px'
+    //   }
+    // }
+  </script>
+</body>
+
+</html>
