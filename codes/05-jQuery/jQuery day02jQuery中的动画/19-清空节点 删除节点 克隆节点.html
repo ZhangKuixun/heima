@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 300px;
+      width: 300px;
+      background-color: #f99;
+      padding: 10px;
+    }
+
+    p {
+      padding: 20px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <p>这是div内的p元素</p>
+  </div>
+  <p class="outerP">这是div外的p元素</p>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      清空节点：empty()   清理门户
+      删除节点：remove()  自杀
+      克隆节点：clone()
+
+      empty()清空div的所有内容（推荐）
+      html("")使用html方法清空元素，不推荐使用，会造成内存泄漏，绑定的事件不会被清除
+
+      clone()默认是深拷贝
+      clone(参数)：参数表示是否克隆元素的事件，默认不拷贝事件
+
+       */
+      // $('div').empty()
+      // $('div').remove()
+      var $p = $('.outerP').clone()
+      $('div').append($p)
+    })
+  </script>
+</body>
+
+</html>
