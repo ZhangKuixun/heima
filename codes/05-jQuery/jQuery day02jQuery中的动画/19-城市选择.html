@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    select {
+      width: 200px;
+      height: 200px;
+      background-color: teal;
+      font-size: 20px;
+    }
+
+    .btn-box {
+      width: 30px;
+      display: inline-block;
+      vertical-align: top;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>城市选择：</h1>
+  <select name="src-city" id="src-city" multiple>
+    <option value="1">北京</option>
+    <option value="2">上海</option>
+    <option value="3">天津</option>
+    <option value="4">深圳</option>
+    <option value="5">西安</option>
+  </select>
+  <div class="btn-box">
+    <button id="btn1"> &gt;&gt; </button>
+    <button id="btn2"> &lt;&lt; </button>
+    <button id="btn3"> &gt; </button>
+    <button id="btn4"> &lt; </button>
+  </div>
+  <select name="tar-city" id="tar-city" multiple></select>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      // 把左边所有的option移到右边
+      $('#btn1').click(function () {
+        $('#tar-city').append($('#src-city option'))
+      })
+
+      // 把右边所有的option移到左边
+      $('#btn2').click(function () {
+        $('#tar-city option').appendTo($('#src-city'))
+      })
+
+      // 把左边所有选中的option移到右边下拉框中
+      $('#btn3').click(function () {
+        // :checked ==> 单选，多选
+        // :selected ==> 下拉框
+        $('#tar-city').append($('#src-city option:selected'))
+      })
+
+      // 把右边所有选中的option移到左边下拉框中
+      $('#btn4').click(function () {
+        $('#tar-city option:selected').appendTo($('#src-city'))
+      })
+    })
+  </script>
+</body>
+
+</html>
