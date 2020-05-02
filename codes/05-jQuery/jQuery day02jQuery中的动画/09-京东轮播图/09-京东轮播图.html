@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .slider {
+      width: 790px;
+      height: 340px;
+      margin: 100px auto;
+      position: relative;
+    }
+
+    .slider li {
+      position: absolute;
+      display: none;
+    }
+
+    .slider li:first-child {
+      display: block;
+    }
+
+    .arrow {
+      display: none;
+    }
+
+    .slider:hover .arrow {
+      display: block;
+    }
+
+    .arrow-left,
+    .arrow-right {
+      font-family: "SimSun", '宋体';
+      width: 30px;
+      height: 60px;
+      background-color: rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 50%;
+      margin-top: -30px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 60px;
+      color: #fff;
+      font-weight: 700;
+      font-size: 30px;
+    }
+
+    .arrow-left:hover,
+    .arrow-right:hover {
+      background-color: rgba(0, 0, 0, .5);
+    }
+
+    .arrow-left {
+      left: 0;
+    }
+
+    .arrow-right {
+      right: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider">
+    <ul>
+      <li><a href="#"><img src="images/1.jpg" width="790px" height="340px" alt=""></a></li>
+      <li><a href="#"><img src="images/2.jpg" width="790px" height="340px" alt=""></a></li>
+      <li><a href="#"><img src="images/3.jpg" width="790px" height="340px" alt=""></a></li>
+      <li><a href="#"><img src="images/4.jpg" width="790px" height="340px" alt=""></a></li>
+      <li><a href="#"><img src="images/5.jpg" width="790px" height="340px" alt=""></a></li>
+      <li><a href="#"><img src="images/6.jpg" width="790px" height="340px" alt=""></a></li>
+    </ul>
+    <!-- 箭头 -->
+    <div class="arrow">
+      <span class="arrow-left">&lt;</span>
+      <span class="arrow-right">&gt;</span>
+    </div>
+  </div>
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    /*
+    思路：
+      1.声明一个变量 index = 0;// 当前展示的图片的下标
+      2.给右箭头注册click
+      3.index++
+      4.根据下标index找到对应的li，让其淡入fadeIn，其他的兄弟li fadeOut
+    */
+
+    var index = 0;
+    var $btnRight = $('.arrow-right')
+    var $btnLeft = $('.arrow-left')
+    var $lis = $('li')
+
+    $btnRight.click(function () {
+      index++
+      if (index > $lis.length - 1) {
+        // 此时展示的就是最后一张，需要让其展示第一张
+        index = 0
+      }
+      $lis.eq(index).fadeIn().siblings().fadeOut();
+    })
+
+    $btnLeft.click(function () {
+      index--
+      if (index < 0) {
+        // 此时展示的就是最后一张，需要让其展示第一张
+        index = $lis.length - 1
+      }
+      $lis.eq(index).fadeIn().siblings().fadeOut();
+    })
+  </script>
+</body>
+
+</html>
