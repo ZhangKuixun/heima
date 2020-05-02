@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #f99;
+      padding: 10px;
+      border: 10px solid #cccccc;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      width方法与height方法
+
+      css方法获取宽高会返回px单位，参与运算不方便
+      
+      */
+      // console.log($('#box').css('width'));// 200px
+
+      // 获取，只是获取的内容宽width，没有padding
+      // console.log($('#box').width());
+      // console.log($('#box').height());
+
+      // 设置
+      $('#box').width(500)
+      $('#box').height(500)
+
+      // innerWidth() == width + padding
+      console.log($('#box').innerWidth());
+
+      // outerWidth() == width + padding + border
+      console.log($('#box').outerWidth());
+
+      // outerWidth(true) == width + padding + border + margin
+      // 参数用来决定，是否获取margin部分的值，默认false，不获取marging
+      console.log($('#box').outerWidth(true));
+
+      // 获取页面可视区的大小
+      console.log($(window).width());
+      console.log($(window).height());
+    })
+  </script>
+</body>
+
+</html>
