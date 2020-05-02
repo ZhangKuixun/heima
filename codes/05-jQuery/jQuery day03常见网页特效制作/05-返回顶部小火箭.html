@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 8000px;
+    }
+
+    a {
+      color: #fff;
+    }
+
+    .actGotop {
+      position: fixed;
+      bottom: 50px;
+      right: 50px;
+      width: 150px;
+      height: 195px;
+      display: none;
+      z-index: 100;
+    }
+
+    .actGotop a,
+    .actGotop a:link {
+      width: 150px;
+      height: 195px;
+      display: inline-block;
+      background-color: green;
+      outline: none;
+    }
+
+    .actGotop a:hover {
+      width: 150px;
+      height: 195px;
+      background-color: red;
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="actGotop">
+    <a href="javascript:;" title="Top"></a>
+  </div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      功能1：控制小火箭的显示和隐藏
+      功能2：点击小火箭返回顶部（动画效果）
+
+      功能1：思路
+        1.给window注册滚动事件
+        2.获取到页面的卷曲距离
+        3.卷曲距离>=1800,显示小火箭
+          否则，隐藏小火箭
+      */
+
+      var $actGotop = $('.actGotop')
+
+      $(window).scroll(function () {
+        var top = $(window).scrollTop()
+        if (top >= 1800) {
+          $actGotop.fadeIn(1000)
+        } else {
+          $actGotop.fadeOut(1000)
+        }
+      })
+
+      $actGotop.click(function () {
+        // 缓慢的返回顶部
+
+        // 无效
+        // $(window).animate({scrollTop:0},1000)
+
+
+        // $(window).scrollTop(0),内部封了什么
+        // window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+        // window.pageYOffset 只读属性
+
+        // $(document.documentElement, document.body).animate({
+        //   scrollTop: 0
+        // }, 1000)
+
+        // 简化，兼容更多的浏览器，返回顶部就这么写
+        $('html,body').animate({
+          scrollTop:0
+        },1000)
+      })
+    })
+  </script>
+</body>
+
+</html>
