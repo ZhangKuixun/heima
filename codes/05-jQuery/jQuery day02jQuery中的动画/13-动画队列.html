@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      background-color: #f99;
+      position: relative;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>动画队列--分析图</p>
+  <img src="动画队列的bug.jpg" alt="">
+  <div></div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      动画队列
+
+      像链式编程一样，通过一直往下调用动画，按照书写的顺序，依次执行动画
+
+      优点：先后顺序的动画
+      坏处：bug：鼠标在需要做动画的控件上，快速移入移出
+
+      bug分析：
+       */
+      
+      $('div')
+        .animate({
+          left: 800
+        }, 1000)
+        .animate({
+          top: 300
+        }, 1000)
+        .animate({
+          borderRadius: '50%'
+        }, 1000)
+
+      // // 错误的写法：
+      // $('div').animate({
+      //   left: 800
+      // }, 1000, function () {
+      //   $('div').animate({
+      //     top: 300
+      //   }, 1000, function () {
+      //     borderRadius: '50%'
+      //   }, 1000)
+      // })
+    })
+
+  </script>
+</body>
+
+</html>

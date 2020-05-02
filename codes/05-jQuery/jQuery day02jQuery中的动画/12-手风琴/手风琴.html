@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      width: 1300px;
+      list-style: none;
+    }
+
+    #box {
+      width: 1200px;
+      height: 400px;
+      border: 2px solid pink;
+      margin: 100px auto;
+      /* position: relative; */
+      /* overflow: hidden; */
+    }
+
+    #box li {
+      width: 240px;
+      height: 400px;
+      float: left;
+      /* position: absolute; */
+      /* top: 0; */
+      /* left: 0; */
+      /* background-size: 1200px 400px; */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <script src="../jquery-1.12.4.js"></script>
+  <script>
+    /* 
+    功能1：给每一个li设置背景图片
+      1.for循环找到所有li元素
+      2.for循环，给每一个li都要设置背景图片
+
+    功能2：鼠标移入li，li的宽变成800,其他变100
+
+    功能3：鼠标离开li
+     */
+
+    // 1.
+    var $lis = $('li')
+    for (let index = 0; index < $lis.length; index++) {
+      $lis.eq(index).css('backgroundImage', 'url(images/' + (index + 1) + '.jpg)')
+    }
+
+    //2.
+    // stop() 解决鼠标在做动画的元素上快速移入移除
+    $lis.mouseenter(function () {
+      $(this).stop().animate({ width: 800 }).siblings().stop().animate({ width: 100 })
+    })
+
+    //3.
+    $('#box').mouseleave(function () {
+      $lis.stop().animate({ width: 240 })
+    })
+
+
+    // var lis = document.querySelectorAll('#accordion li')
+    // var accordion = document.querySelector('#accordion')
+
+    // for (let i = 0; i < lis.length; i++) {
+    //   // 功能1：给每一个li设置背景图片
+    //   lis[i].style.backgroundImage = 'url(images/' + (i + 1) + '.jpg)'
+
+    //   // 功能2：给li设置left，排布位置
+    //   lis[i].style.left = i * 240 + 'px'
+
+    //   // 功能3：鼠标移入li，li的left改变
+    //   lis[i].index = i;
+    //   lis[i].onmouseover = function () {
+    //     console.log(this.index);
+    //     for (let i = 0; i < lis.length; i++) {
+    //       if (i <= this.index) {
+    //         animate(lis[i], { 'left': i * 100 })
+    //       } else {
+    //         animate(lis[i], { 'left': i * 100 + 700 })
+    //       }
+    //     }
+    //   }
+    // }
+
+    // // 功能4：鼠标离开，恢复成原来的样子
+    // accordion.onmouseout = function () {
+    //   for (let i = 0; i < lis.length; i++) {
+    //     animate(lis[i], { 'left': i * 240 })
+    //   }
+    // }
+  </script>
+</body>
+
+</html>
