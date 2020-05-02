@@ -103,7 +103,7 @@
       // console.log(this);
 
       // this要使用jq方法，一定要转jq对象 $(this)
-      $(this).children('ul').slideDown();
+      $(this).children('ul').stop().slideDown();// stop解决快速移入移除bug
 
       console.log('mouseover');
     }) 
@@ -111,7 +111,7 @@
     // 4.
     $lis.mouseleave(function(){
       // 5.
-      $(this).children('ul').slideUp();
+      $(this).children('ul').stop().slideUp();
 
       console.log('mouseout');
     })
