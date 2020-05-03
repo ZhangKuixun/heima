@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .boxDom {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      /* overflow: hidden; */
+    }
+
+    .idDom {
+      width: 100%;
+      height: 100px;
+      background-color: #ccc;
+      position: fixed;
+      left: 0;
+      bottom: 0;
+    }
+
+    .content {
+      display: inline-block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .title,
+    .text,
+    .button {
+      float: left;
+      font-size: 20px;
+    }
+
+    .button {
+      line-height: 1em;
+    }
+
+    .span {
+      width: 300px;
+      height: 40px;
+      position: absolute;
+      display: block;
+      overflow: hidden;
+      /* color: #000; */
+      /* font-size: 4em; */
+      /* line-height: 1.5em; */
+      cursor: pointer;
+      /* white-space: nowrap; */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="boxDom" id="boxDom">
+    <!-- 文字输入框 -->
+    <div class="idDom" id="idDom">
+      <div class="content">
+        <p class="title">吐槽：</p>
+        <input type="text" class="text" id="text">
+        <button type="button" class="btn" id="btn">发射</button>
+      </div>
+    </div>
+  </div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      // 文字颜色
+      var colors = ['red', 'green', 'hotpink', 'pink', 'cyan', 'yellowgreen', 'purple', 'deepskyblue']
+      /*
+      思路
+        1.找对象 btn text
+        2.给btn注册click
+        3.获取text的内容
+        4.创建一个span标签，设置为 text 的内容
+        5.添加到boxDom
+        6.给span随机颜色
+        7.给span随机位置，top、left  在可视区的宽度
+        8.让span做动画，效果animate left=-span.width
+        9.最后删除自己
+      */
+      var $text = $('#text')
+      var $boxDom = $('#boxDom')
+
+      // 1
+      $('#btn').on('click', function () {
+        // 3
+        var txt = $text.val()
+
+        // 清除文本框的内容
+        $text.val('')
+
+        // 判断是否有内容
+        if (txt.trim().length == 0) {
+          return
+        }
+        // 4
+        var $span = $('<span>' + txt + '</span>')
+        // $span.text(txt)
+        $span.addClass('span')
+
+        // 5
+        $boxDom.append($span)
+
+        // 6 随机下标
+        var idx = parseInt(Math.random() * colors.length)
+        var color = colors[idx]
+
+        // 6 随机top
+        var ranH = parseInt(Math.random() * $(window).height() / 2)
+
+        // 7
+        $span.css({
+          color: color,
+          top: ranH,
+          left: $(window).width()
+        })
+
+        // 8
+        $span.animate({
+          left: -$span.width()
+        }, 8000, 'linear', function () {
+          // 9 动画结束，移除自身
+          $span.remove();
+        })
+
+        /* 
+        注意：
+        append方法一定不能写在最后，因为如果获取创建出来的span的宽度，获取的是0，刚刚创建出来的span在内存里，没有大小
+
+        $boxDom.append($span)
+        */
+      })
+    })
+  </script>
+</body>
+
+</html>
