@@ -116,6 +116,11 @@
       }
       $lis.eq(index).fadeIn().siblings().fadeOut();
     })
+
+    setInterval(() => {
+      // $btnRight.click()// 调用$btnRight的click事件
+      $btnRight.trigger('click')// trigger：调用$btnRight的click事件
+    }, 2000);
   </script>
 </body>
 

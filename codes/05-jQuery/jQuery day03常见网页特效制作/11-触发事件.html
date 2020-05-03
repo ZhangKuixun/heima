@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      float: left;
+      margin: 20px;
+      background-color: #cccccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box1"></div>
+  <div id="box2"></div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      触发事件：点击box2，把box1点击了
+
+      1.type()-->click()
+      2.trigger(type) //触发
+      */
+      $('#box1').on('click', function () {
+        alert(1)
+      })
+
+      $('#box2').on('click', function () {
+        // 调用box1的点击事件
+        // $('#box1').click()
+        $('#box1').trigger('click')
+      })
+      
+    })
+  </script>
+</body>
+
+</html>

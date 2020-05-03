@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 300px;
+      width: 300px;
+      background-color: #f99;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    p {
+      padding: 20px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">点击绑定div事件</button>
+  <button>点击创建p元素添加到div内</button>
+
+  <div id="box">
+    <p>这是div内的p1</p>
+    <p>这是div内的p2</p>
+  </div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      off 解绑事件
+       */
+      // $('#box').on('click mouseenter', function () {
+      //   alert(1)
+      // })
+      $('#box').on('click', function () {
+        alert(1)
+      })
+
+      /* 
+      off()：不传参，解绑元素所有事件
+      off(type)：解绑元素指定事件
+      off(type, selector)：解绑元素事件委托
+      */
+      // $("#btn").on('click', function () {
+      //   $('#box').off('mouseenter')
+      // })
+
+ 
+      /* 
+      解绑on事件委托
+      */
+      $('#box').on('click', 'p', function () {
+        alert(2)
+      })
+
+      $('#btn').on('click', function () {
+        $('#box').off('click', 'p')
+      })
+
+    })
+  </script>
+</body>
+
+</html>
