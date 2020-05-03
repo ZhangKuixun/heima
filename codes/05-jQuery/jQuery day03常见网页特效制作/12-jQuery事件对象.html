@@ -5,12 +5,42 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #ff9;
+    }
+  </style>
 </head>
 
 <body>
+  <div>
+    <a href="http://www.baidu.com">明网</a>
+  </div>
   <script src="jquery-1.12.4.js"></script>
   <script>
-    
+    $(function () {
+
+      var obj = { name: 'w', age: 19, sex: 'male' }
+      // data 携带的数据，用于在事件处理函数中使用，不太实用
+      $('div').on('click', obj, function (e) {
+        /* 
+        e：jQuery的事件对象
+        */
+        // console.log(e.data);
+        // console.log(obj);
+        alert(1)
+      })
+      $('a').on('click', obj, function (e) {
+        alert(2)
+
+        // e.preventDefault();// 阻止浏览器的默认行为
+        e.stopPropagation();// 阻止事件冒泡行为
+        // return false //在jquery中既能阻止事件冒泡，又能阻止浏览器默认行为
+        //在原生js中，return false，阻止浏览器的默认行为
+      })
+    })
   </script>
 </body>
 
