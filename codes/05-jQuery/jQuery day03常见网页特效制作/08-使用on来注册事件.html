@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 300px;
+      width: 300px;
+      background-color: #f99;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    p {
+      padding: 20px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <button>点击绑定div事件</button>
+  <button>点击创建p元素添加到div内</button>
+
+  <div id="box">
+    <p>这是div内的p1</p>
+    <p>这是div内的p2</p>
+  </div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      on 来注册事件
+      on(type, selector, data, fn)
+        type：事件类名
+        selector：选择器，由指定的子元素触发，可选
+                  有值，表示on注册的事件是事件委托
+                  没有值，就是注册的简单事件
+        data：携带的数据，用于在世界处理函数内部使用，可选
+        fn：事件处理函数
+       */
+
+      $('#box').on('click', function () {
+        alert(1)
+      })
+      $('#box').on('click', 'p', function () {
+        alert(2)
+      })
+    })
+  </script>
+</body>
+
+</html>
