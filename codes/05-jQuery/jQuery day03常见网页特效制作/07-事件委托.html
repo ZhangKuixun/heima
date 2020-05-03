@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 300px;
+      width: 300px;
+      background-color: #f99;
+      padding: 10px;
+    }
+
+    p {
+      padding: 20px;
+      background-color: #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <p>这是div内的p1</p>
+    <p>这是div内的p2</p>
+  </div>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+
+    // 注册事件代理--支持动态绑定
+    // 把点击事件注册给了div，让子元素p触发
+    $('div').delegate('p', 'click', function () {
+      alert(3)
+    })
+
+    // 解绑事件：undelegate
+    // undelegate()==>解绑元素的所有的委托事件
+    // undelegate(selector, type)==>解绑元素的指定的委托事件
+    $('#btn').click(function () {
+      $('div').undelegate();
+    })
+
+  </script>
+</body>
+
+</html>

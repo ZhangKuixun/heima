@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul,
+    li {
+      list-style: none;
+    }
+
+    ul {
+      padding: 20px;
+      background-color: #f99;
+    }
+
+    li {
+      padding: 10px;
+      background-color: #ccc;
+      margin: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <button>创建li元素</button>
+  <br>
+  <br>
+  <ul>
+    <li>这是第1个元素</li>
+    <li>这是第2个元素</li>
+    <li>这是第3个元素</li>
+    <li>这是第4个元素</li>
+    <li>这是第5个元素</li>
+    <li>这是第6个元素</li>
+    <li>这是第7个元素</li>
+    <li>这是第8个元素</li>
+    <li>这是第9个元素</li>
+    <li>这是第10个元素</li>
+  </ul>
+
+  <script>
+    /* 
+    事件代理
+    原理：事件冒泡
+    好处：
+      1.减少内存浪费
+      2.支持动态绑定
+    做法：
+      把事件注册给父辈（只要是它的上层），然后让其子元素触发
+     */
+
+    var ul = document.querySelector('ul')
+    ul.onclick = function (e) {
+      // 只能让子元素li去触发alert(1)
+      // console.log(e);// target: li
+
+      if (e.target.nodeName == 'LI') {
+        // 说明点击了li元素
+        alert(1)
+      }
+    }
+
+    var btn = document.querySelector('button')
+    btn.onclick = function () {
+      var li = document.createElement('li')
+      li.innerText = '创建的p元素'
+
+      ul.appendChild(li)
+    }
+
+  </script>
+
+</body>
+
+</html>
