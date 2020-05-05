@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="jquery-1.12.4.js"></script>
+  <script src="dacongge.js"></script>
+  <script>
+    /*
+    两个库都有 $ ,他们会互相冲突
+
+    jq提供了方法 noConflict()，让jq释放$符号的功能，该方法有返回值，返回了jq中的$符号的功能
+    */
+    var a = jQuery.noConflict();
+    console.log(a);// jq的入口函数
+
+    a(function () {
+      a('body').css('backgroundColor', '#ccc')
+    })
+
+    // $ 调用dacongge.js内的方法
+    $.liaomei()
+
+  </script>
+</body>
+
+</html>

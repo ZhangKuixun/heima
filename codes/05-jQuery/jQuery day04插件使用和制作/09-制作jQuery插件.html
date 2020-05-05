@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      插件的原理：
+        lazyload 插件做了啥，让jq对象可以去调用lazyload()
+        
+        $('img.lazyload')：jq对象是jq的实例对象，new 构造函数
+
+        jq插件的核心思想：把插件提供的方法放在了jq的原型中
+
+        jq原型的写法：
+          1.jQuery.prototype
+          2.jQuery.fn(简写)
+          3.$.prototype
+          4.$.fn  (最简单)
+      */
+      // $('img.lazyload').lazyload();
+
+      // console.log(jQuery.prototype);
+
+      // 给jq的原型添加了alt方法
+      $.fn.alt = function (msg) {
+        alert(msg)
+      }
+      $('body').alt('哈哈')
+    })
+  </script>
+</body>
+
+</html>

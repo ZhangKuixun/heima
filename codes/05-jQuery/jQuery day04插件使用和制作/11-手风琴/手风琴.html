@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      width: 1300px;
+      list-style: none;
+    }
+
+    #box,
+    #box2 {
+      width: 1200px;
+      height: 400px;
+      border: 2px solid pink;
+      margin: 100px auto;
+    }
+
+    #box li,
+    #box2 li {
+      width: 240px;
+      height: 400px;
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <div id="box2">
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+  <script src="../jquery-1.12.4.js"></script>
+  <script src="jquery.accordion.js"></script>
+  <script>
+    $(function () {
+      $('#box').accordion({
+        maxW: 900,
+        imgsList: ['images/1.jpg', 'images/2.jpg', 'images/3.jpg', 'images/4.jpg', 'images/5.jpg']
+      });
+      $('#box2').accordion({
+        imgsList: ['images/1.jpg', 'images/2.jpg', 'images/3.jpg', 'images/4.jpg', 'images/5.jpg']
+      });
+    })
+  </script>
+</body>
+
+</html>

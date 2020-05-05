@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: #f99;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <!-- 
+    先写jquery.js，再写jquery.color.js
+   -->
+  <script src="jquery-1.12.4.js"></script>
+  <script src="jquery.color.js"></script>
+  <script>
+
+    // animate 仅支持数字型动画，不支持色值型动画
+    // $('div').animate({
+    //   width: 800,
+    //   backgroundColor: 'blue'
+    // }, 1000)
+
+    /* 
+    jQuery插件:jquery.color.js
+      jq插件，其实就是个js文件，js文件还依赖了jquery，必须先引用jq，才能使用jq插件
+      注意点：一定要先引用jq，再引用jq插件
+
+    jquery.color.js 插件的作用：让animate支持色值型动画。
+    */
+
+    $('div').animate({
+      width: 800,
+      // backgroundColor: 'pink'// 色值写rgb、16进制，不要写颜色的单词名
+      backgroundColor:'#ffc0cb'
+    }, 1000)
+
+  </script>
+</body>
+
+</html>

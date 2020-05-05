@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 400px;
+      background-color: #f99;
+      margin: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+  <div></div>
+  <img class="lazyload" data-src='lazyloadimgs/1.jpg'>
+  <div></div>
+  <div></div>
+  <img class="lazyload" data-src='lazyloadimgs/2.jpg'>
+  <div></div>
+  <div></div>
+  <img class="lazyload" data-src='lazyloadimgs/3.jpg'>
+  <div></div>
+  <div></div>
+  <img class="lazyload" data-src='lazyloadimgs/4.jpg'>
+  <div></div>
+  <div></div>
+  <img class="lazyload" data-src='lazyloadimgs/5.jpg'>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script src="jquery.lazyload.js"></script>
+  <script>
+    $(function () {
+      /* 
+      该插件不是引用就能实现效果，还需要配置
+      
+      使用步骤：
+        1.引用jq、lazyload插件
+        2.修改img标签：
+            src-->data-src
+            添加类名，方便找到需要懒加载的图片
+            最后加上width、height，不是必须
+        3.$('img.lazyload').lazyload();
+      */
+      // $("img.lazyload").lazyload();
+
+      $("img.lazyload").lazyload({
+        // 添加占位图等等
+      });
+    })
+  </script>
+</body>
+
+</html>
