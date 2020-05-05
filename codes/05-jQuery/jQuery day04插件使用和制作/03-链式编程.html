@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  链式编程测试
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      链式编程的条件：
+        对于设置性操作，返回当前的jq对象，后面可以继续链式编程
+        对于获取性操作，返回具体的值，值不是jq对象，后面不能再链式编程
+       */
+
+      console.log($('body').css('backgroundColor', '#f99'));
+      console.log($('body').css('backgroundColor', '#f99').css('fontSize'));
+
+      // erro
+      // $('body').css('backgroundColor', '#f99').css('fontSize').text('我修改了内容')
+      $('body').css('backgroundColor', '#f99').text('我修改了内容').css('fontSize')
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      each 遍历jq对象
+      语法：
+        jq对象.each(function(index, ele)){
+            index：遍历的当前元素的下标
+            ele：当前遍历的元素，是个dom对象
+        }
+       */
+
+      // 如果需要给每一个元素设置上不同的操作，就需要遍历
+      var arr = ['red', 'yellow', 'blue']
+      // for (let i = 0; i < $('li').length; i++) {
+      //   $('li').eq(i).css('backgroundColor', arr[i])
+      // }
+
+      $('li').each(function (index, ele) {
+        // $(ele).css("backgroundColor", arr[index])
+        $(this).css("backgroundColor", arr[index])
+      })
+
+    })
+  </script>
+</body>
+
+</html>

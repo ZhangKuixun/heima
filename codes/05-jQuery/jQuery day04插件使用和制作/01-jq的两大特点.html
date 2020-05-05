@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      /* 
+      特点：
+        1.隐式迭代(遍历)
+          设置类型的操作，会把获取到的所有元素都设置上相同的操作
+          获取类型的操作，只会返回第一个元素对应的值
+          给每一个元素设置上不同的操作，需要遍历
+        2.
+      */
+
+      // css方法内部做了遍历操作
+      // $('li').css('color', 'red')
+
+      // 只返回第一个元素的值
+      // console.log($('li').css('color', 'red'));
+
+      // 如果需要给每一个元素设置上不同的操作，就需要遍历
+      var arr = ['red', 'yellow', 'blue']
+      for (let i = 0; i < $('li').length; i++) {
+        $('li').eq(i).css('backgroundColor', arr[i])
+      }
+    })
+  </script>
+</body>
+
+</html>

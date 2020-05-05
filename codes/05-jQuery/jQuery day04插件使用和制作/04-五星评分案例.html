@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+      font-size: 40px;
+      color: #ff16cf;
+    }
+
+    li {
+      float: left;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+  </ul>
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+
+      var $uls = $('ul')
+      var $lis = $('li')
+
+      // 移入
+      $lis.on('mouseenter', function () {
+        // 当前的 和 前面所有的
+        // $(this).text('★').prevAll().text('★')
+        // 后面所有的
+        // $(this).nextAll().text('☆')
+
+        // $(this).text('★').prevAll().text('★').nextAll().text('☆')// 链式调用失败，最后面 nextAll().text('☆') 调用失败
+        // console.log($(this).text('★'));// $(this)
+        // console.log($(this).text('★').prevAll().text('★'));// $(this).prevAll()
+        /* 
+        $(this).prevAll()里面有一个prevObject
+        prevObject：找到上一次返回的jq对象（$(this)），是个属性，不能加括号。
+        end()：把prevObject属性给封装成方法
+        */
+        
+        // 不好的点：属性和方法混写
+        // $(this).text('★').prevAll().text('★').prevObject.nextAll().text('☆')
+        $(this).text('★').prevAll().text('★').end().nextAll().text('☆')
+      })
+      // 移除
+      $uls.on('mouseleave', function () {
+        $lis.text('☆')
+        $('li.current').text('★').prevAll().text('★')
+      })
+      /* 
+      点击
+
+      加标记：
+        1.点击的时候，给当前点击的li元素加一个current类名
+        2.当鼠标离开ul的时候，找到刚才点击的li元素
+        3.找到li和前面多有的li，设置成实心
+      可以用下标做标记
+      */
+      $lis.on('click', function () {
+        $(this).addClass('current').siblings().removeClass('current')
+      })
+
+
+      // var open = false;
+      // $('li').click(function () {
+      //   open = true;
+      // })
+      // $('li').mouseenter(function () {
+      //   open = false
+      //   var index = $(this).index()
+      //   $('li').each(function (i, ele) {
+      //     $(this).text('☆')
+      //     if (index >= i) {
+      //       $(this).text('★')
+      //     }
+      //   })
+      // })
+      // $('ul').mouseleave(function () {
+      //   if (!open) {
+      //     $('li').each(function (i, ele) {
+      //       $(this).text('☆')
+      //     })
+      //   }
+      // })
+    })
+  </script>
+</body>
+
+</html>
