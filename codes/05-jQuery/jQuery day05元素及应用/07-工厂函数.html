@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 工厂函数
+
+    function Person(name, age) {
+      this.name = name;
+      this.age = age;
+    }
+    // var xm = new Person('xm', 20)
+    // console.log(xm);
+    // var xm = new Person('xh', 20)
+    // console.log(xm);
+
+    // 省去new得到Person的实例对象，把new Person这个操作给封装起来
+    // 工厂模式：批量创建对象
+    function $(name, age) {
+      return new Person(name, age);
+    }
+
+    var xm = $('xm', 21)
+    console.log(xm);
+
+    var xh = $('xh', 19)
+    console.log(xh);
+  </script>
+</body>
+
+</html>

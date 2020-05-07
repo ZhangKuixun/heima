@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <p>1</p>
+  <p>2</p>
+  <p>3</p>
+  <p>4</p>
+  <p>5</p>
+  <p>6</p>
+  <script>
+    /* 
+    jq 是一个沙箱模式
+    好处：减少全局污染
+
+    参数的目的：
+      window：
+        1.减少对window的搜索过程
+        2.利于代码压缩
+      undefined:
+        防止undefined数据类型再IE678中被修改了，然后沙箱内访问undefined是修改后的值
+    */
+    /* (function(w){
+      function fn(){
+        console.log(1);
+      }
+      w.fn = fn;
+    })(window) */
+
+    (function (window, undefined) {
+      // jQuery 暂且理解成构造函数
+      var jQuery = function (selector) {
+        // 1.已经可以根据selector参数获取到页面中的元素
+        var eles = document.querySelectorAll(selector)
+
+        Array.prototype.push.apply(this, eles)
+        // 相当于：this.push(eles中的每一项)
+      }
+      // 将jQuery函数暴露到window上的jQuery属性、$属性
+      window.jQuery = window.$ = jQuery;
+    })(window)
+
+    // 得到jq的实例对象
+    var j = new $('div')
+    console.log(j);
+
+    // 得到jq的实例对象
+    var j = new $('p')
+    console.log(j);
+  </script>
+</body>
+
+</html>

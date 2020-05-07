@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <script>
+
+    // 目的：在得到jq的实例对象的时候，不需要带上new
+    (function (window, undefined) {
+      // jQuery 不是构造函数，而是工厂函数
+      // 做啥：return new 构造函数
+      var jQuery = function (selector) {
+
+        return new jQuery.fn.init(selector)
+      }
+
+      // jQuery.prototype.css = function () {
+      // }
+      // jQuery.prototype.html = function () {
+      // }
+      // 上面的写法很麻烦，重复，采取原型替换的方式给原型添加方法
+      jQuery.fn = jQuery.prototype = {
+        constructor: jQuery,
+
+        init: function (selector) {
+          // 这个init才是真正的构造函数
+          var eles = document.querySelectorAll(selector)
+          // this指向： this ==> init 的实例对象
+          Array.prototype.push.apply(this, eles)
+        },
+
+        css: function () {
+          console.log('css is finished');
+        }
+      }
+
+      window.jQuery = window.$ = jQuery;
+    })(window)
+
+    // 得到jq的实例对象
+    var $divs = $('div')
+    console.log($divs);
+    console.log($divs.constructor);
+
+  </script>
+</body>
+
+</html>
