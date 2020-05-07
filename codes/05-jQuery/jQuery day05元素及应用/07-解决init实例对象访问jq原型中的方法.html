@@ -38,9 +38,13 @@
         },
 
         css: function () {
-          console.log('css is finished');
+          console.log('css is finished')
         }
       }
+
+      // 把init构造函数的原型修改成jq的原型
+      // 目的：让init的实例对象可以访问jq原型中的方法
+      jQuery.fn.init.prototype = jQuery.fn;
 
       window.jQuery = window.$ = jQuery;
     })(window)
