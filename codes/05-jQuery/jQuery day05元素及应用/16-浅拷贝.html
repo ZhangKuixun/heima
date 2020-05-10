@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    需求：得到一个完全一模一样的对象，并且两个完全独立
+
+    浅拷贝：只拷贝对象的一层属性，拷贝对象的简单属性没有问题，如果对象立马又复杂数据类型，比如对象，复杂数据类型就没有独立，拷贝对象和原对象之间的修改还是会互相影响
+    */
+    var cc = {
+      money: 10000,
+      handsome: 'just so so',
+      car: {
+        name: '保时捷',
+        color: 'green'
+      }
+    }
+    // 1. 把cc的地址赋值给cc2，不行
+    // var cc2 = cc;
+
+
+    // 2. 创建一个对象给cc2
+    var cc2 = {};
+    for (const k in cc) {
+      cc2[k] = cc[k]
+    }
+    // console.log(cc2);
+
+    // 修改cc2的car对象，依然会把cc的属性修改
+    cc2.car.name = 'mobile'
+    console.log(cc);// mobile
+    console.log(cc2);// mobile
+
+  </script>
+</body>
+
+</html>

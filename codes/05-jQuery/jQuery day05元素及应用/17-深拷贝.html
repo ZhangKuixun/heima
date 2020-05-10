@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    深拷贝：拷贝对象的所有层级的属性
+    */
+    var cc = {
+      money: 10000,
+      handsome: 'just so so',
+      car: {
+        name: '保时捷',
+        color: 'green'
+      }
+    }
+
+    // 把浅拷贝的代码封装成copy函数，在浅拷贝的基础上实现深拷贝
+    function copy(o) {
+      var obj = {};
+      for (const k in o) {
+        // 不管属性值是复杂数据类型还是简单数据类型，直接添加到obj对象
+        // obj[k] = o[k]
+        // 需要做判断，判断如果是复杂数据类型，把复杂数据类型再次拷贝
+        if (typeof o[k] == "object") {
+          obj[k] = copy(o[k])
+        } else {
+          obj[k] = o[k]
+        }
+      }
+      return obj
+    }
+
+    var cc2 = copy(cc)
+    cc2.car.name = 'mobile'
+    console.log(cc);// 保时捷
+    console.log(cc2);// mobile
+
+  </script>
+</body>
+
+</html>
