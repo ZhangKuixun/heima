@@ -1,0 +1,18 @@
+/* pages/01-components/01-components.wxss */
+/* view {
+  width: 100px;
+  height: 100px;
+  background: yellow;
+} */
+
+.red {
+  width: 200px;
+  height: 200px;
+  background: red;
+}
+
+.w {
+  width: 150px;
+  height: 150px;
+  background: red;
+}

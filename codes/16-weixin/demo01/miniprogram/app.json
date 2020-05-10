@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/01-components/01-components",
+    "pages/index/index",
+    "pages/demo01/demo01"  
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "第一个demo",
+    "backgroundColor": "#eeeeee",
+    "backgroundTextStyle": "light",
+    "navigationStyle": "default"
+  },
+  "tabBar": {
+    "color": "#00f",
+    "selectedColor": "#f00",
+    "borderStyle":"black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "./assets/icontabbarhomeup.png",
+        "selectedIconPath": "./assets/tabbarhomeselect.png"
+      },
+      {
+        "pagePath": "pages/demo01/demo01",
+        "text": "demo",
+        "fontSize": "30rpx",
+        "iconPath": "./assets/TABbar.png",
+        "selectedIconPath": "./assets/TABbar-fill.png"
+      }
+    ]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "debug": true,
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

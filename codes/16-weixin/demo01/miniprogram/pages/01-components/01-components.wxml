@@ -1,0 +1,64 @@
+<!--pages/01-components/01-components.wxml-->
+<!-- view text icon button checkbox -->
+<!-- 
+  1. view容器组件，相当于div
+  hover-class：按下去的样式
+ -->
+<!-- <view hover-class="red">哈哈</view> -->
+
+<!-- 
+  2.text文本组件，相当于span
+ -->
+<!-- <text>春</text>
+<text>二</text> -->
+
+<!-- 
+  3.icon图标
+  type：图标的类型： success, success_no_circle, info, warn, waiting, cancel, download, search, clear
+  size：23
+  color
+ -->
+<!-- <icon type="success"></icon>
+<icon type="success_no_circle"></icon>
+<icon type="info"></icon>
+<icon type="warn"></icon>
+<icon type="waiting"></icon>
+<icon type="cancel"></icon>
+<icon type="download"></icon>
+<icon type="search"></icon>
+<icon type="clear"></icon> -->
+<!-- <icon size="100" type="success" color="red"></icon> -->
+
+<!-- 
+  4.button按钮
+  默认居中，如果外面嵌套一个view，就跟着view的位置走，并占满整个父元素
+  type：样式 primary(绿色) success(白色) warn(红色)
+ -->
+<!-- <button type="primary">按钮</button>
+<button type="success">按钮</button>
+<button size="mini" type="warn">按钮</button>
+<view class="w"> -->
+	<!-- 占满整个父元素 -->
+	<!-- <button>按钮100</button>
+</view> -->
+
+<!-- 
+  5.checkbox 多选框
+ -->
+<!-- <checkbox color="red"></checkbox> -->
+
+<!-- 
+  6.image 默认320x240
+    mode：裁剪、缩放的模式
+      scaleToFill：不保持横纵比，拉伸填满
+      aspectFit：保持横纵比，保证长边显示，将图片居中
+      aspectFill：保持横纵比，保证短边显示，将图片居中
+ -->
+<!-- <image mode="scaleToFill" src="../../assets/tabbarhomeselect.png"></image> -->
+<view>scaleToFill</view>
+<image mode="scaleToFill" class="w" src="https://pic1.zhimg.com/80/v2-834679c9a8607c10b725cf04d87cbc2a_720w.jpg"></image>
+<view>aspectFit</view>
+<image mode="aspectFit" class="w" src="https://pic1.zhimg.com/80/v2-834679c9a8607c10b725cf04d87cbc2a_720w.jpg"></image>
+<view>aspectFill</view>
+<image mode="aspectFill" class="w" src="https://pic1.zhimg.com/80/v2-834679c9a8607c10b725cf04d87cbc2a_720w.jpg"></image>
+
