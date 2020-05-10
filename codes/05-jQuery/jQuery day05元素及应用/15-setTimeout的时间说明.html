@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    setTimeout 中的第二个参数用来指定延时时间，
+    这个时间是不准确的时间，最少需要这么长的时间
+
+    setTimeout这个异步代码，当它执行时，把里面的函数添加到事件队列里面去，没有执行，
+    让同步代码执行完之后，才执行setTimeout里面的回调函数
+    */
+    setTimeout(() => {
+      console.log(1);
+    }, 10);
+
+    var start = new Date();
+    for (let i = 0; i < 10000; i++) {
+      // console.log(i);
+      var li = document.createElement('li')
+      li.innerText = i;
+      document.body.appendChild(li)
+    }
+    var end = new Date();
+    console.log(end - start);
+
+  </script>
+</body>
+
+</html>
