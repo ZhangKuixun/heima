@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>
+  <script>
+
+    /* 
+    目的：封装css方法
+    css(name, value)// 设置单个样式
+    css(obj)        // 设置多个样式
+    css(name)       // 获取样式
+    */
+    (function (window, undefined) {
+      var jQuery = function (selector) {
+        return new jQuery.fn.init(selector)
+      }
+
+      jQuery.fn = jQuery.prototype = {
+        constructor: jQuery,
+
+        init: function (selector) {
+          var eles = document.querySelectorAll(selector)
+          Array.prototype.push.apply(this, eles)
+        },
+
+        css: function (name, value) {
+          // 需要根据形参的个数以及参数的类型，确定css方法到底是何种作用
+          // css(name, value) // 设置单个样式
+          if (arguments.length === 2) {
+            // 设置单个样式
+            // this ==> $divs，需要给每一个原生设置上样式（重要，搞清this指向谁）
+            for (let i = 0; i < this.length; i++) {
+              // this[i] ==> 对应的就是每一个元素
+              // name 是形参 "color"，坑[name] 
+              // this[i].style.name = value
+              this[i].style[name] = value
+            }
+          }
+        }
+      }
+      jQuery.fn.init.prototype = jQuery.fn;
+
+      window.jQuery = window.$ = jQuery;
+    })(window)
+
+    var $divs = $('div')
+
+    $divs.css('color', 'red')
+  </script>
+</body>
+
+</html>
