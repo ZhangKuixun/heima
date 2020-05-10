@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 成功
+    /* 
+    第一个括号的作用：不是用来提升优先级，()是让函数在js中被解析的时候，解析成了函数表达式
+    常用1：
+    */
+    (function () {
+      alert(1)
+    })()
+
+
+    /* 
+    自调用函数的其他写法
+    常用2:
+    */
+    (function () {
+      alert(123)
+    }())
+
+
+    /* 
+    !取反，取反就是函数转成函数表达式
+    常用3：
+    */
+    !function () {
+      alert(123)
+    }()
+
+
+    /* 
+    4
+    */
+    +function () {
+      alert(123)
+    }()
+
+
+    /* 
+    5
+    */
+    -function () {
+      alert(123)
+    }()
+
+
+    /*
+    error
+    匿名函数不能这样写，缺了一个函数名
+    */
+    // function () {
+    // alert(1)
+    // }()
+
+
+    /*
+    函数表达式后面可以直接跟括号调用
+    */
+    // var f = function(){
+    //   alert(2)
+    // }()
+  </script>
+</body>
+
+</html>
