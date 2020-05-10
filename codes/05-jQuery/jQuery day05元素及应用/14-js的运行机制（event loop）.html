@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    同步和异步的问题，js式一门单线程语言
+
+    涉及到了和js相关的浏览器线程
+      1.主线程：执行所有的js代码
+      2.ui渲染线程：渲染页面
+      3.事件循环线程：查看事件队列有没有需要执行的回调函数，如果有，把回调函数从事件队列取出来，交给主线程去执行
+    */
+
+    console.log(1);// 同步
+    setTimeout(() => {
+      console.log(2);// 异步
+    }, 0);
+    console.log(3);// 同步
+    // 打印：1 3 2
+
+
+    // 例子
+    for (let i = 0; i < 4; i++) {
+      setTimeout(function () {
+        console.log(i);
+        // 打印：4个4
+      }, 0)
+    }
+  </script>
+</body>
+
+</html>
