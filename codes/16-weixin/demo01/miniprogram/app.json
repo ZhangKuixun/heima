@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/03-for/03-for",
     "pages/02-databind/02-databind",
     "pages/01-components/01-components",
     "pages/index/index",

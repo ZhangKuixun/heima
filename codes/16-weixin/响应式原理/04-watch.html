@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <button @click='fn'>按钮</button>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        arr: ['春', '春媳妇']
+      },
+      methods: {
+        fn() {
+          // 底层：拦截器（七个方法：push pop unshift splice reverse sort）
+          // this.arr.push('mage')
+          // 有两个地方 监听不到
+          // 1.通过索引修改值
+          // this.arr[1] = '马哥'
+          // this.$set(this.arr, 1, '马哥')
+          // 底层：this.arr.splice(1, 1, '马哥')
+
+          // 2.修改长度
+          // this.arr.length = 0
+          this.arr.splice(0, this.arr.length)
+
+          /* 
+          总结：this.$set(target,key,value)
+                target：不能是vue实例，也不能是根数据对象
+
+            1.vue监听不到对象里添加新属性 => js限制 => 无法检测到
+              解决办法：this.$set(this.obj,'name','zs')
+              底层：把新加的属性，通过defineReactive转化成setter/getter形式
+            2.vue监听不到数组通过索引修改值 => 数组底层处理的原理和对象不一样，通过拦截器里的7个方法：push pop unshift splice reverse sort
+              解决办法：this.$set(this.arr,1,'马哥')
+              底层：this.arr.splice(1,1,'马哥')
+                    this.arr.splice(key,1,value)
+           */
+        }
+      },
+      watch: {
+        arr(newVal) {
+          console.log(newVal);
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

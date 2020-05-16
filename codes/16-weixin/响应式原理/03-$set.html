@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model='obj.name'>
+    <!-- <input type="text" v-model='name'> 错误 -->
+    <button @click='fn'>按钮</button>
+  </div>
+  <script src="vue.js"></script>
+  <script>
+    // 实例vue
+    const vm = new Vue({
+      el: '#app',
+      data: {
+        obj: {
+          name: 'zs'
+        }
+        // name:'zs'
+      },
+      methods: {
+        fn() {
+          // js的限制，无法检测到
+          // this.obj.name = 'zs'
+          // 解决办法：
+          // this.$set(target,key,value)
+          this.$set(this.obj, 'name', 'zs')
+          // 底层：把新加的属性，每次通过defineReactive转化为setter/getter形式的，就可以被监听
+          // target：不能是vue实例，也不能是根数据对象
+          // _isVue || (ob && ob.vmCount){
+          //   warn(Avoid adding reactive properties to a Vue instance or its root $data)
+          // }
+
+          // this.$set(this, 'name', 'zs') this = Vue instance
+          // this.$set(this.$data, 'name', 'zs')
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

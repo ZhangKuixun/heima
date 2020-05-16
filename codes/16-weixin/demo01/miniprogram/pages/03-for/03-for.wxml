@@ -1,0 +1,64 @@
+<!-- 
+  列表渲染 for v-for wx:for
+ -->
+<!-- 1.wx:for的基本使用 -->
+<!-- 这种写法是把list1转化成了[l,i,s,t,1]，所以会打印5次123 -->
+<!-- <view wx:for='list1'>123</view> -->
+
+<view wx:for='{{ list1 }}'>123</view>
+
+<view>-----------</view>
+
+<!-- 
+  2.获取元素：
+    index 索引 
+    item 元素
+  给index、item使用别名
+ -->
+<view wx:for='{{ list1 }}'>{{index}}-{{item}}</view>
+<view wx:for='{{ list1 }}' wx:for-index='i' wx:for-item='it'>{{i}}-{{it}}</view>
+
+<view>-----------</view>
+
+<!-- 
+  3.block 不会渲染的容器，保证结构的完整性
+ -->
+<block wx:for='{{list1}}'>
+	<view>{{ index }}</view>
+	<view>{{ item }}</view>
+</block>
+<!-- 
+    结构：
+      <view></view>
+      <view></view>
+ -->
+
+<!-- <view wx:for='{{list1}}'>
+  <view>{{index}}</view>
+  <view>{{item}}</view>
+</view> -->
+<!-- 
+    结构：
+      <view>
+        <view></view>
+        <view></view>
+      </view>
+-->
+
+
+<!-- 
+  4.添加key属性
+    如果数组元素是一个对象，key取对象里面唯一的属性
+    如果数组是一个简单类型，取*this = item自身
+ -->
+ <view>-----------------如果数组元素是一个对象，key取对象里面唯一的属性</view>
+<block wx:for='{{ list2 }}' wx:key='id'>
+	<view>{{item.id}}</view>
+	<view>{{item.name}}</view>
+</block>
+
+<view>-----------------如果数组是一个简单类型，取*this = item自身</view>
+<block wx:for='{{ list1 }}' wx:key='*this'>
+	<view>{{index}}</view>
+	<view>{{item}}</view>
+</block>
