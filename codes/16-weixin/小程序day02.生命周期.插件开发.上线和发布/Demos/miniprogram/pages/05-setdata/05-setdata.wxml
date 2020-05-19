@@ -1,0 +1,4 @@
+<!-- 操作数据 -->
+<view>{{msg}}</view>
+<!-- 点击按钮获取数据 -->
+<button bindtap="fn">获取数据</button>

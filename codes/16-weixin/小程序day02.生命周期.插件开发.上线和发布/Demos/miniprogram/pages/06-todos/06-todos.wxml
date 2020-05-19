@@ -1,0 +1,13 @@
+<text>todos案例</text>
+<input bindinput="valueChange" value="{{todoName}}"></input>
+<button type="primary" bindtap="addTodo">添加任务</button>
+<!-- 任务 -->
+<block wx:for='{{ list }}'>
+	<view>
+		<text>{{ item.name }}</text>
+		<icon bindtap="delTodo" type="clear" data-id='{{item.id}}'></icon>
+	</view>
+</block>
+
+<!-- list.length > 0 显示出来 -->
+<view hidden="{{ list.length > 0 }}">没有任何任务可操作了</view>

@@ -1,0 +1,11 @@
+// tool.js
+
+// 每一个wxs里面都有一个module
+// 截取
+function ml_slice(str) {
+  return str.slice(1)
+}
+
+// 用exports，把module把函数导出去
+module.exports.ml_slice = ml_slice
+

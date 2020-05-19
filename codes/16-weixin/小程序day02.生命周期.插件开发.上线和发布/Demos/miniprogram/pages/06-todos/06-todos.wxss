@@ -1,0 +1,8 @@
+input {
+  border: 1px solid #ccc;
+}
+
+icon {
+  position: absolute;
+  right: 0;
+}

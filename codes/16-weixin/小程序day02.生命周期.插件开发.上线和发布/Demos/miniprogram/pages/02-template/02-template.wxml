@@ -1,0 +1,15 @@
+<!-- 
+  模板的具体使用
+    1.定义模板
+    2.使用模板的地方引入模板
+ -->
+<!-- 
+  2.引入模板并使用
+    import 引入template部分
+ -->
+<import src='common.wxml' />
+<template is="test" data='{{ name:"春哥", age:30, sex:"不详" }}'></template>
+<template is="test" data="{{ name:'马哥', age:20, sex:'爷们' }}"></template>
+
+<!-- include 引入除了template的部分 -->
+<include src='./common.wxml'/>

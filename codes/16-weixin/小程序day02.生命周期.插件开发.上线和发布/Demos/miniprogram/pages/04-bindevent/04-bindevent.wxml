@@ -1,0 +1,20 @@
+<!-- 绑定事件 -->
+
+<!-- 1.bindtap -->
+<button bindtap="fn1">按钮</button>
+
+<!-- 2.catchtap 阻止冒泡 -->
+<view bindtap="fn1">
+	<button bindtap="fn2">测试bindtap</button>
+	<button catchtap="fn3">测试catchtap</button>
+</view>
+
+<!-- 3.传值 -->
+<!-- 错误写法 -->
+<!-- <button bindtap="send(123)">传值按钮</button> -->
+<!-- 
+  正确写法 通过h5的属性传递 data-开头
+  点击 data-开头 的属性，都会传递到 e.currentTarget.dataset
+  data-后面跟着的单词不能有大写，用"-"连接
+ -->
+<button bindtap="send" data-msg="春春" data-age='{{30}}' data-is-shuai='{{false}}'>传值按钮</button>

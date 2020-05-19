@@ -1,0 +1,8 @@
+<!-- 1.定义模板 -->
+<template name="test">
+	<view>{{name}}</view>
+	<view>{{age}}</view>
+	<view>{{sex}}</view>
+</template>
+
+<text>我不是template的部分</text>
