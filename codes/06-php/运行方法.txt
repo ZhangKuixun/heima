@@ -1,0 +1,10 @@
+
+这是服务器的代码，放在服务器中运行
+
+我的服务器安装路径
+D:\phpstudy_pro
+
+代码的存放路径
+D:\phpstudy_pro\WWW\day01
+
+

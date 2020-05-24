@@ -24,20 +24,20 @@ empty();
 
 // 删除
 $name = 'zs';
-unset( $name );
+unset($name);
 echo $name;
 
 // 判断是否赋值
+// $test;
 $test = null;
-if ( isset( $test ) ) {
+if (isset($test)) {// false
     echo $test;
 }
 
 // 是否为空
 $test = false;
-if ( empty( $test ) ) {
+if (empty($test)) {// true
     echo 'empty!';
 } else {
     echo 'not empty!';
 }
-?>
