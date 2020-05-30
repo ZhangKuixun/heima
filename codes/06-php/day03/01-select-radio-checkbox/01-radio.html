@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+  <!-- 
+    一组单选框name属性必须相同
+    表单必须设置value，向服务器提交也是value值
+    默认选中：checked
+   -->
+  <form action="./test.php" method="get">
+    <input type="radio" name="gender" checked value="m">男
+    <br>
+    <input type="radio" name="gender" value="f">女
+    <br>
+    <input type="radio" name="gender" value="w">弯
+    <br>
+    <input type="submit" value="提交">
+
+  </form>
+</body>
+
+</html>
