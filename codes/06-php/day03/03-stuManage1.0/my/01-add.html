@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/add.css">
+</head>
+
+<body>
+    <form action="01-add.php" method="post" enctype="multipart/form-data">
+        姓名：<br>
+        <input type="text" name="username"><br> 昵称：
+        <br>
+        <input type="text" name="nickname"><br> 年龄：
+        <br>
+        <input type="text" name="age"><br> 电话：
+        <br>
+        <input type="text" name="tel"><br> 性别：
+        <br>
+        <input type="radio" name="sex" value="m" checked>男
+        <input type="radio" name="sex" value="f">女
+        <br> 班级：<br>
+        <select name="class">
+      <option value="1">黑马01</option>
+      <option value="2">黑马02</option>
+      <option value="3">黑马03</option>
+    </select>
+        <br> 头像：
+        <input type="file" name="photo">
+        <input type="submit" value="添加信息">
+    </form>
+</body>
+
+</html>

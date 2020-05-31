@@ -1,0 +1,1 @@
+[{"username":"123","nickname":"wer","age":"we","tel":"sadfsasafdfasd","sex":"m","class":"1","photo":".\/upload\/50091590933648.jpg"}]
