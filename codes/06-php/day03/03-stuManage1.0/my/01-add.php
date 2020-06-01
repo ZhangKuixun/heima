@@ -11,6 +11,7 @@
 $info = $_POST;
 
 // 2.保存上传头像
+$photo = '';
 //   图片回再服务中单独储存
 $file = $_FILES['photo'];
 if ($file['error'] === 0) {
@@ -41,7 +42,6 @@ $arr = json_decode($str, true);
 if (!empty($info)) {
     $arr[] = $info;
 }
-$arr[] = $info;
 // echo '<pre>';
 // print_r($arr);
 // echo '</pre>';

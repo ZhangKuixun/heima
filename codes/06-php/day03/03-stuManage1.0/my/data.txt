@@ -1,1 +1,1 @@
-[{"username":"zx","nickname":"wer","age":"25","tel":"110","sex":"m","class":"1","photo":".\/upload\/68701591019650.jpg"},{"username":"zx","nickname":"wer","age":"25","tel":"110","sex":"m","class":"1","photo":".\/upload\/11931591019907.jpg"},{"username":"zx","nickname":"wer","age":"25","tel":"110","sex":"m","class":"1","photo":".\/upload\/11931591019907.jpg"}]
+[]
