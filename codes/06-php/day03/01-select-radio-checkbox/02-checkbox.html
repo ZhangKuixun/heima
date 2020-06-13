@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="form.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="form.css">
 </head>
+
 <body>
-  <!-- 
+    <!-- 
     1.一组数据name属性相同，并且name属性后面要跟[]，表示一组数据
     2.必须设置value值
     3.默认选中 checked
    -->
-  <form action="test.php" method="get">
-    爱好:
-    <br>
-    <input type="checkbox" name="hobby[]" value="s" checked>看书
-    <br>
-    <input type="checkbox" name="hobby[]" value="d">代码
-    <br>
-    <input type="checkbox" name="hobby[]" value="b">找bug
-    <br>
-    <input type="checkbox" name="hobby[]" value="d">打游戏
-    <input type="submit" value="提交">
-  </form>
+    <form action="test.php" method="get">
+        爱好:
+        <br>
+        <input type="checkbox" name="hobby[]" value="s" checked>看书
+        <br>
+        <input type="checkbox" name="hobby[]" value="d">代码
+        <br>
+        <input type="checkbox" name="hobby[]" value="b">找bug
+        <br>
+        <input type="checkbox" name="hobby[]" value="d">打游戏
+        <input type="submit" value="提交">
+    </form>
 </body>
+
 </html>

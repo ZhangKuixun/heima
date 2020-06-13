@@ -3,7 +3,7 @@
 define("HOST", "127.0.0.1");
 define("USER", "root");
 define("PWD", "root");
-define('DB', 'z_test');
+define('DB', 'z_stu');
 
 
 // 添加、删除、修改的逻辑基本一样，封成公共的方法
@@ -28,8 +28,6 @@ function my_exec($sql)
 
     return $result;
 }
-// $sql = "delete from stu where id = 6";
-// my_exec($sql);
 
 
 // 封装执行查询语句方法
@@ -61,7 +59,3 @@ function my_query($sql)
 
     return $data;
 }
-$sql = "select * from stu";
-echo '<pre>';
-print_r(my_query($sql));
-echo '</pre>';

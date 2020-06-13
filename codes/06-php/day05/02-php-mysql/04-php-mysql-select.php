@@ -25,6 +25,8 @@ $id = 3;
   失败：返回false
   成功：返回结果集，要处理查询到的结果  适用查询语句
 
+  mysqli_close($link); 关闭数据库
+
   mysqli_num_rows(); 获取结果集的行数
   mysqli_fetch_assoc(); 从结果中获取数据
     一次只取一条数据，以关联数据的形式返回

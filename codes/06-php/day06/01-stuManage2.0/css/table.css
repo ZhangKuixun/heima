@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    width: 500px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    border: 1px solid #c0c0c0;
+    margin: 100px auto;
+}
+
+th,
+td {
+    border: 1px solid #d0d0d0;
+    color: #404060;
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+tr:nth-child(odd) {
+    /* odd 偶数 */
+    background-color: rgb(221, 223, 230);
+}
+
+tr:nth-child(even) {
+    /* even 奇数 */
+    background-color: rgb(255, 255, 255);
+}
+
+tbody tr:hover {
+    background-color: rgb(134, 134, 134);
+}
+
+img {
+    width: 100px;
+    height: 100px;
+}
+
+a {
+    width: 200px;
+    background-color: tomato;
+    color: white;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    padding: 6px 6px;
+    font-size: 14px;
+    font-weight: 700;
+    font-family: "Microsoft soft";
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+}
