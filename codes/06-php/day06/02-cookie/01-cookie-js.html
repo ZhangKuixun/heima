@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 向cookie中存储数据
+        document.cookie = 'name=zs';
+        document.cookie = 'sex=m';
+        document.cookie = 'age=18';
+
+        // 获取数据
+        console.log(document.cookie);
+
+        // 取值本质就是利用字符串截取
+        var arr = document.cookie.split(';');
+        console.log(arr);
+        console.log(arr[1].split('=')[1]);
+
+        // 在实际工作中，原生js操作cookie，比较麻烦，推荐使用jquery.cookie.js
+    </script>
+</body>
+
+</html>

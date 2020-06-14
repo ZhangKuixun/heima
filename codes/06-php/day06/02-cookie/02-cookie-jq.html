@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./jquery-1.12.4.js"></script>
+    <script src="./jquery.cookie.js"></script>
+    <script>
+        // 获取：$.cookie("get", {name: 'login'});
+        // 设置：$.cookie("set", {duration: 365,name: 'login',value: 'John'});（以天为单位的持续时间）
+        // 删除：$.cookie("delete", {name: 'login'});
+        // 验证Cookie是否存在，返回true或false
+        // $.cookie("exist", {
+        //   name: 'login'
+        // });
+        $.cookie('set', {
+            name: 'jqname',
+            value: 'xiaoming'
+        });
+        $.cookie('set', {
+            name: 'jqage',
+            value: '13'
+        });
+        $.cookie('set', {
+            duration: -1,
+            name: 'jqsex',
+            value: 'm'
+        });
+        console.log($.cookie("get", {
+            name: 'jqname'
+        }));
+        // $.cookie("delete", {
+        //     name: 'jqsex'
+        // });
+    </script>
+</body>
+
+</html>
