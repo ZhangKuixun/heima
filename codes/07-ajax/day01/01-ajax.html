@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        .info {
+            width: 500px;
+            height: 200px;
+            border: 1px solid red;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ajax</h1>
+    <p>不刷新页面的情况下，请求服务器，可以局部更新页面的数据</p>
+    <input type="text"> <button>发送请求</button>
+    <div class="info"></div>
+    <script>
+        var info = document.querySelector('.info');
+
+        document.querySelector('button').onclick = function() {
+
+            // 1.创建要给XMLHttpRequest实例
+            var xhr = new XMLHttpRequest();
+
+            // 2.把请求报文设置好
+            // 2.1.请求行
+            xhr.open('get', './01-ajax.php');
+            // 2.2.请求头
+            xhr.setRequestHeader('content-type', 'text/html');
+            // 2.3.请求主体
+            xhr.send(null);
+
+            // 3.接受服务器响应内容
+            // 服务器何时响应，是不确定的，会受到各种外界因素影响，所以一直等待服务器响应，用事件监听
+            // 监听服务器的状态，js所有的事件都是小写的
+            xhr.onreadystatechange = function() {
+                // readyState
+                // 0：请求为初始化，还未调用open
+                // 1：请求已经建立，但还未发送，还没有调用send
+                // 2；请求已发送，正在处理中
+                // 3：请求在处理中，通常响应中，有一部分数据可以用了，但在服务器还没有完成响应的生成
+                // 4：响应已完成，可以获取并使用服务器的响应了
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    //如果服务器响应完成，并成功处理请求，获取服务响应的结果
+                    var r = xhr.responseText;
+                    console.log(r);
+                    info.innerHTML = r;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
