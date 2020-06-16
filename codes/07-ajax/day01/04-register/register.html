@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+    <form action="./login.php" method="get">
+        用户名：
+        <br>
+        <input type="text" id="username"><br> 密码：
+        <br>
+        <input type="password" name="password"><br> 电话：
+        <br>
+        <input type="text" name="tel"><br> 邮箱：
+        <br>
+        <input type="text" name="email"><br> 昵称：
+        <br>
+        <input type="text" name="nicename"><br>
+        <input type="submit" value="登录">
+    </form>
+    <script>
+        // 当失去焦点的时候，获取输入框的值，使用ajax传递给后台服务器
+
+        document.querySelector('#username').onblur = function() {
+            var txt = this.value; // 获取输入框的值
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', './register.php?name=' + txt);
+            xhr.setRequestHeader('content-type', 'text/html');
+            xhr.send(null);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var r = xhr.responseText;
+                    console.log(r);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

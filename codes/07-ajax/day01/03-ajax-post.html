@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        
+        .info {
+            width: 500px;
+            height: 200px;
+            border: 1px solid red;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>ajax - get</h1>
+    <p>不刷新页面的情况下，请求服务器，可以局部更新页面的数据</p>
+    <input type="text"> <button>发送请求</button>
+    <div class="info"></div>
+    <script>
+        document.querySelector('button').onclick = function() {
+            // 利用ajax发送数据到后台
+            var txt = document.querySelector('input').value;
+
+            // 1.创建要给XMLHttpRequest实例
+            var xhr = new XMLHttpRequest();
+
+            // 2.把请求报文设置好
+            // 2.1.请求行
+            xhr.open('get', './03-ajax-post.php');
+            // 2.2.请求头
+            xhr.setRequestHeader('content-type', 'application/x-www-from-urlencoded');
+            // 2.3.请求主体
+            xhr.send('name=' + txt + '&sex=m');
+
+            // 3.接受服务器响应内容
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    //如果服务器响应完成，并成功处理请求，获取服务响应的结果
+                    var r = xhr.responseText;
+                    console.log(r);
+                    document.querySelector('.info').innerHTML = r;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
