@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+
+<body>
+    <h3>简单的Ajax实例</h3>
+    <!-- 聊天内容 -->
+    <div class="messages">
+        <div class="self">
+            <h5>我说</h5>
+            <p>你好</p>
+        </div>
+        <div class="other">
+            <h5>对方说</h5>
+            <p>你好</p>
+        </div>
+    </div>
+    <!-- 表单 -->
+    <div class="from">
+        <!-- 输入框 -->
+        <div class="input">
+            <textarea></textarea>
+        </div>
+        <!-- 按钮 -->
+        <div class="btn">
+            <input type="button" value="发送">
+        </div>
+    </div>
+    <script>
+        var messages = document.querySelector('.messages');
+        var textarea = document.querySelector('textarea');
+        // 聊天案例思路:
+        // 1.点击发送按钮,获取输入框的值,添加到消息窗口
+        document.querySelector('input').onclick = function() {
+            var txt = textarea.value;
+            // 包装消息
+            var div = document.createElement('div');
+            var h5 = document.createElement('h5');
+            var p = document.createElement('p');
+
+            // 设置样式
+            div.className = 'self';
+            h5.innerHTML = '我说:';
+            p.innerHTML = txt;
+
+            // 建立父子关系
+            div.appendChild(h5);
+            div.appendChild(p);
+
+            // 添加到消息窗口
+            messages.appendChild(div);
+
+            textarea.value = '';
+        }
+
+        // 2.将聊天内容发送给服务器,接收服务器返回的消息
+        // 3.将服务器返回的内容,添加到消息窗口中
+    </script>
+</body>
+
+</html>

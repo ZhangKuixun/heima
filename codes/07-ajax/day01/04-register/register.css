@@ -11,6 +11,7 @@ form {
     padding: 10px;
     box-sizing: border-box;
     font-family: "Microsoft soft";
+    position: relative;
 }
 
 form input {
@@ -38,4 +39,12 @@ input:last-child {
     margin-top: 10px;
     background-color: tomato;
     color: white;
+}
+
+.msg {
+    float: left;
+    position: absolute;
+    left: 90%;
+    line-height: 30px;
+    text-align: center;
 }
