@@ -1,2 +1,2 @@
 <?php
-echo 'ajax';
+// echo 'ajax';

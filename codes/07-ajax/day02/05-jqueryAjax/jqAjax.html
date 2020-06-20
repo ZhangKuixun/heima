@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>发送请求</button>
+    <script src="../../jquery-1.12.4.js"></script>
+    <script>
+        // jq-ajax的详细语法格式
+        $('button').click(function() {
+            $.ajax({
+                type: 'get', // 请求方式
+                url: './jqAjax.php', // 请求地址
+                data: { // 传递的数据，内部进行转换 name=zs&age=18
+                    name: 'zs'
+                },
+                timeout: 2000, // 超时时间，等待服务器响应时间，超过指定时间，自动终止请求
+                dataType: 'json', // 数据类型，告诉$.ajax返回的数据，以那种类型进行处理,'text','json','xml','script'
+                // 如果设置了dataType:'json'，jq内部会自动将json数组转成js对象或者数组
+                beforeSend: function() {
+                    // 请求发送之前
+                    // alert(1);
+                },
+                success: function(info) {
+                    // 服务器成功响应回调函数
+                    // alert(2);
+                    console.log(info);
+                },
+                error: function() {
+                    // alert(3);
+                    console.log('请求出错了');
+                },
+                complete: function() {
+                    // 请求完成的回调函数
+                    // alert(4);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

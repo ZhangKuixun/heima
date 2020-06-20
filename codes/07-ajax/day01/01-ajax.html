@@ -55,6 +55,12 @@
                     var r = xhr.responseText;
                     console.log(r);
                     info.innerHTML = r;
+
+                    // 获取全部响应头
+                    var head = xhr.getAllResponseHeaders();
+                    console.log(head);
+                    // 获取指定响应头信息
+                    console.log(xhr.getResponseHeader('Content-Length'));
                 }
             }
         }

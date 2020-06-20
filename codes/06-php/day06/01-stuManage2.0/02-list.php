@@ -24,9 +24,9 @@ $arr = my_query($sql);
         <tr>
             <th>用户名</th>
             <th>昵称</th>
-            <th>性别</th>
             <th>年龄</th>
             <th>电话</th>
+            <th>性别</th>
             <th>班级</th>
             <th>头像</th>
             <!-- <th>班级id</th> -->

@@ -5,15 +5,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./list.css">
 </head>
 
 <body>
     <button>获取学生数据</button>
     <table>
-        <!-- 动态渲染 -->
+        <!-- 动态渲染数据 -->
     </table>
     <script>
-        // 点击按钮，去后台获取学生数据，动态渲染在页面中
+        document.querySelector('button').onclick = function() {
+            // 1.新建一个XMLHttpRequest对象
+            var xhr = new XMLHttpRequest();
+            // 2.设置请求报文
+            // 2-1.请求行
+            xhr.open('get', './stu.php');
+            // 2-2.请求头
+            xhr.setRequestHeader('content-type', 'text/html');
+            // 2-2.请求主体
+            xhr.send(null);
+            // 3.监听服务器响应
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var r = xhr.responseText;
+                    // console.log(r);
+                    // 把返回的json字符串转成js数据
+                    r = JSON.parse(r);
+                    console.log(r); // 数组
+                    // 渲染数据
+                    // 每个元素是一个人的信息，遍历数组动态生成元素
+                    var str = '';
+                    r.forEach(element => {
+                        str += '<tr>';
+                        str += '<td>' + element.id + '</td>';
+                        str += '<td>' + element.name + '</td>';
+                        str += '<td>' + element.nickname + '</td>';
+                        str += '<td>' + element.age + '</td>';
+                        str += '<td>' + element.tel + '</td>';
+                        str += '<td>' + element.sex + '</td>';
+                        str += '<td>' + element.photo + '</td>';
+                        str += '<td>' + element.classid + '</td>';
+                        str += '</tr>';
+                    });
+                    document.querySelector('table').innerHTML = str;
+                }
+            }
+        }
     </script>
 </body>
 

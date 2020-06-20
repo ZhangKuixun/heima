@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="list.css">
+</head>
+
+<body>
+    <button>获取数据</button>
+    <table>
+        <!-- 动态渲染 -->
+    </table>
+    <script src="../../jquery-1.12.4.js"></script>
+    <script>
+        $('button').click(function() {
+            $.ajax({
+                type: 'get',
+                url: './stu.php',
+                success: function(info) {
+                    info = JSON.parse(info);
+                    // console.log(info);
+
+                    var str = '';
+                    info.forEach(element => {
+                        str += '<tr>';
+                        str += '<td>' + element.id + '</td>';
+                        str += '<td>' + element.name + '</td>';
+                        str += '<td>' + element.nickname + '</td>';
+                        str += '<td>' + element.age + '</td>';
+                        str += '<td>' + element.tel + '</td>';
+                        str += '<td>' + element.sex + '</td>';
+                        str += '<td>' + element.photo + '</td>';
+                        str += '<td>' + element.classid + '</td>';
+                        str += '</tr>';
+                    });
+
+                    $('table').html(str);
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>

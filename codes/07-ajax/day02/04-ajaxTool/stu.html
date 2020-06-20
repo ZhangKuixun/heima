@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>获取数据</button>
+    <script src="./ajax.js"></script>
+    <script>
+        // 点击按钮，去后台获取学生数据
+        document.querySelector('button').onclick = function() {
+            // 向后台发送请求，获取数据
+            itcast.ajax({
+                url: './stu.php',
+                callback: function(result) { // result：服务器返回的数据
+                    result = JSON.parse(result);
+                    console.log(result);
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
