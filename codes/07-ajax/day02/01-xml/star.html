@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./star.css">
+</head>
+
+<body>
+    <button>获取数据</button>
+    <table>
+        <!-- 
+        动态渲染：
+       -->
+    </table>
+    <script>
+        // 1.点击按钮向后台发数据，获取明星数据
+        // 2.把后台返回的xml数据，动态渲染在页面中
+        document.querySelector('button').onclick = function() {
+            // 1.创建一个XMLHttRequest对象
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('get', './star.php');
+            xhr.send(null);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    // var r = xhr.responseText; // 获取响应文本，以字符串形式获取
+                    var r = xhr.responseXML; // 获取后台返回的xml数据，以document对象返回
+                    // console.log(r);
+
+                    var item = r.querySelectorAll('item');
+                    console.log(item);
+
+                    var str = ''; // 用于存储生成表格结构
+
+                    for (let i = 0; i < item.length; i++) {
+                        var name = item[i].querySelector('name').innerHTML;
+                        var age = item[i].querySelector('age').innerHTML;
+                        var book = item[i].querySelector('book').innerHTML;
+
+                        // 把一个人的信息拼接成表格的一行
+                        str += '<tr>';
+                        str += '<td>' + name + '</td>';
+                        str += '<td>' + age + '</td>';
+                        str += '<td>' + book + '</td>';
+                        str += '</tr>';
+                        console.log(str);
+                    }
+
+                    document.querySelector('table').innerHTML = str;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
