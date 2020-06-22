@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: gray;
+        }
+        
+        ul {
+            margin: 0;
+            padding: 50px;
+            list-style: none;
+        }
+        
+        .register {
+            width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        li {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        label,
+        input {
+            display: block;
+            float: left;
+            height: 46px;
+            line-height: 46px;
+            font-size: 24px;
+            box-sizing: border-box;
+            color: #333;
+        }
+        
+        input {
+            width: 320px;
+            padding: 8px;
+            line-height: 1;
+            outline: none;
+            position: relative;
+        }
+        
+        input.code {
+            width: 120px;
+        }
+        
+        input.verify {
+            width: 190px;
+            margin-left: 10px;
+        }
+        
+        input.disabled {
+            background-color: #ccc !important;
+        }
+        
+        input[type=button] {
+            border: none;
+            color: #fff;
+            background-color: #e64145;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        .tips {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 40px;
+            text-align: center;
+        }
+        
+        .tips p {
+            min-width: 300px;
+            max-width: 400px;
+            line-height: 40px;
+            margin: 0 auto;
+            color: #FFF;
+            display: none;
+            background-color: #c91623;
+        }
+        
+        input.gray {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register">
+        <form id="ajaxForm">
+            <ul>
+                <li>
+                    <label for="">用户名</label>
+                    <input type="text" name="name" class="name">
+                </li>
+                <li>
+                    <label for="">设置密码</label>
+                    <input type="password" name="pass" class="pass">
+                </li>
+                <li>
+                    <label for="">确认密码</label>
+                    <input type="password" name="repass" class="repass">
+                </li>
+                <li>
+                    <label for="">验证手机</label>
+                    <input type="text" name="mobile" class="mobile">
+                </li>
+                <li>
+                    <label for="">短信验证码</label>
+                    <input type="text" name="code" class="code">
+                    <input type="button" value="获取短信验证码" class="verify">
+                </li>
+                <li>
+                    <label for=""></label>
+                    <input type="button" class='btn' value="立即注册">
+                </li>
+            </ul>
+        </form>
+    </div>
+    <!-- 提示信息 -->
+    <div class="tips">
+        <p>用户名不能为空</p>
+    </div>
+    <script src="../../jquery-1.12.4.js"></script>
+    <script>
+        // 1.点击注册按钮，获取表单数据
+        $('.btn').click(function() {
+            // 获取表单数据
+            // jquery提供了表单序列化
+            var formData = $('#ajaxForm').serialize();
+            // console.log(formData);
+
+
+            // 2.验证表单数据是否合理，在数据合理的情况，向后台发送请求进行注册
+            $.ajax({
+                type: 'post',
+                url: './register.php',
+                data: formData, // 可以直接传递字符串
+                timeout: 10000, // 超时
+                dataType: 'json', // 把返回数据以何种类型进行处理
+                beforeSend: function() {
+                    // 请求发送之前，做数据验证，如果数据不合理，程序到此结束
+
+                    if ($('.name').val().length == 0) {
+                        return hint('用户名不能为空');
+                    }
+                    if ($('.pass').val().length < 6 || $('.repass').val().length < 6) {
+                        return hint('密码不能小于6位');
+                    }
+                    if ($('.pass').val() != $('.repass').val()) {
+                        return hint('两次密码不同');
+                    }
+                    var regTel = /^1[3-9]\d{9}$/;
+                    if (!regTel.test($('.mobile').val())) {
+                        return hint('手机号错误');
+                    }
+                    if ($('.code').val().length != 4) {
+                        return hint('验证码必须是4位');
+                    }
+
+                    // 禁用注册按钮，改变按钮颜色和文字，给用户提示
+                    // disabled checked selected ==> prop()
+                    $('.btn').addClass('gray').val('正在注册...').prop('disabled', true);
+                },
+                success: function(info) {
+                    // 注册成功，显示注册结果
+                    if (info.code == 200) {
+                        hint(info.msg)
+                    }
+                },
+                error: function() {
+                    console.log('请求出错了');
+
+                },
+                complete: function() {
+                    // 请求完成后，清空表单
+
+                    // 恢复注册按钮
+                    $('.btn').removeClass('gray').val('立即注册').prop('disabled', false);
+                }
+            })
+        });
+
+        // 3.监听服务器响应，获取注册结果，并显示
+
+        function hint(s) {
+            // 显示提示信息
+            $('.tips p').fadeIn(500)
+                .delay(1000) // 动画显示出来之后，暂停1秒
+                .fadeOut(500)
+                .text(s);
+            return false;
+        }
+    </script>
+</body>
+
+</html>

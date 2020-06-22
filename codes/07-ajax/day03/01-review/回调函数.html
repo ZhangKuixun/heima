@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 回调函数1
+        function test(callback) {
+            callback();
+        }
+
+        function fn() {
+            alert(100);
+        }
+
+        /* 
+        test(fn()){
+          fn(){
+            alert(100);
+          }
+        }
+         */
+        test(fn);
+
+        // 回调函数2
+        function test(callback) {
+            callback(100);
+        }
+
+        function fn(a) {
+            console.log(a * a);
+        }
+
+        test(fn);
+    </script>
+</body>
+
+</html>

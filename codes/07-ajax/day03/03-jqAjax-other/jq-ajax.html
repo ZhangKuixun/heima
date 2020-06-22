@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>$.get()</button>
+    <button>$.post()</button>
+    <button>$.getJSON()</button>
+    <button>$.getScript()</button>
+    <button>load()</button>
+    <div style="height: 100px; width: 400px; border:1px solid gold;"></div>
+    <script src="../../jquery-1.12.4.js"></script>
+    <script>
+        //get
+        $('button').eq(0).click(function() {
+            $.get('./test.php', function(data) {
+                console.log(data);
+            });
+        });
+        //post
+        $('button').eq(1).click(function() {
+            $.post('./test.php', function(info) {
+                console.log(info);
+            });
+        });
+        $('button').eq(2).click(function() {
+            $.getJSON('./test.php', function(info) {
+                console.log(info);
+            });
+        });
+        //getScript
+        $('button').eq(3).click(function() {
+            $.getScript('./test.php', function(info) {
+                sing();
+            });
+        });
+        //load
+        $('button').eq(4).click(function() {
+            $.getScript('./test.php', function(info) {
+                $('div').load('./test.html')
+            });
+        });
+    </script>
+</body>
+
+</html>
