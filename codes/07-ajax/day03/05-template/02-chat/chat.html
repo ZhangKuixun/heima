@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="chat.css">
+</head>
+
+<body>
+    <h3>简单的Ajax实例</h3>
+    <!-- 聊天内容 -->
+    <div class="messages">
+    </div>
+    <!-- 表单 -->
+    <div class="from">
+        <!-- 输入框 -->
+        <div class="input">
+            <textarea></textarea>
+        </div>
+        <!-- 按钮 -->
+        <div class="btn">
+            <input type="button" value="发送">
+        </div>
+    </div>
+    <!-- 模板引擎 -->
+    <script type="text/html" id="tmp">
+        {{ if flag == 'self' }}
+        <div class='self'>
+            <h5>我说</h5>
+            <p>{{ msg }}</p>
+        </div>
+        {{ else }}
+        <div class='other'>
+            <h5>对方说</h5>
+            <p>{{ msg }}</p>
+        </div>
+        {{ /if }}
+    </script>
+    <script src="../../../jquery-1.12.4.js"></script>
+    <script src="../../../template.js"></script>
+    <script>
+        // 聊天案例思路:
+        // 1.点击发送按钮,获取输入框的值,添加到消息窗口
+        // 2.将聊天内容发送给服务器,接收服务器返回的消息
+        // 3.将服务器返回的内容,添加到消息窗口中
+        $('input').click(function() {
+            var txt = $('textarea').val();
+            // 包装消息
+            var obj = {
+                flag: 'self',
+                msg: txt
+            };
+            // 绑定数据和模板
+            var str = template('tmp', obj);
+            // 把消息放入聊天窗口
+            $('.messages').append(str);
+            // 清空输入框
+            $('textarea').val('');
+
+            $.ajax({
+                url: './chat.php',
+                dataType: 'text',
+                success: function(info) {
+                    // 3.准备数据
+                    // 给模板的数据必须是对象,{},  info是数组,需要包装
+                    var obj = {
+                        flag: 'other',
+                        msg: info
+                    };
+                    // 把数据和模板进行绑定
+                    var str = template('tmp', obj);
+                    $('.messages').append(str);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

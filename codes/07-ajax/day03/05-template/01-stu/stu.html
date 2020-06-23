@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>获取数据</button>
+    <table>
+        <!-- 动态渲染 -->
+    </table>
+    <!-- 准备模板 -->
+    <script type="text/html" id="tmp">
+        {{each list v i}}
+        <tr>
+            <td> {{ v.name }} </td>
+            <td> {{ v.age }} </td>
+            <td> {{ v.sex }} </td>
+            <td> {{ v.tel }} </td>
+            <td> {{ v.photo }} </td>
+            <td> {{ v.nickname }} </td>
+        </tr>
+        {{/each}}
+    </script>
+    <script src="../../../jquery-1.12.4.js"></script>
+    <script src="../../../template.js"></script>
+    <script>
+        // 点击按钮,获取后台数据,使用模板渲染页面
+        $('button').click(function() {
+            $.ajax({
+                url: './stu.php',
+                dataType: 'json',
+                success: function(info) { // info是数组
+                    // 3.准备数据
+                    // 给模板的数据必须是对象,{},  info是数组,需要包装
+                    var obj = {
+                        list: info
+                    };
+                    // 把数据和模板进行绑定
+                    var str = template('tmp', obj);
+                    $('table').html(str);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

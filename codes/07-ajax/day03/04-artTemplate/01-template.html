@@ -8,7 +8,36 @@
 </head>
 
 <body>
+    <!-- 2.准备模板 -->
+    <script type="text/html" id="tmp">
+        <h1>{{title}}</h1>
+        <ul>{{each nav v i}}
+            <li>{{v}}</li>
+            {{/each}}
+        </ul>
+    </script>
+
+    <script src="../../template.js"></script>
     <script>
+        // 模板引擎使用步骤
+        // 1.引入插件
+        // 2.准备模板
+        // 3.准备数据
+        // 4.绑定数据和模板，生成结果
+
+        // 模板语法:
+        // js代码用{{}}
+        // php用 <?php ?>
+
+        var obj = {
+            title: '传智播客',
+            nav: ['大前端', 'java', '大数据', 'python']
+        };
+        var str = template('tmp', obj);
+
+        console.log(str);
+
+        document.body.innerHTML = str;
     </script>
 </body>
 
