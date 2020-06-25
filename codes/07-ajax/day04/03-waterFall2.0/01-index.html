@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>瀑布流静态页面</title>
+    <style>
+        .box {
+            width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .items {
+            position: relative;
+            border: 1px solid red;
+        }
+        
+        .item {
+            position: absolute;
+            width: 230px;
+            left: 0;
+            right: 0;
+        }
+        
+        img {
+            width: 100%;
+        }
+        
+        .tips {
+            width: 280px;
+            height: 40px;
+            line-height: 40px;
+            margin: 30px auto 0;
+            text-align: center;
+            line-height: 40px;
+            background-color: #ccc;
+            border-radius: 6px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        .tips.loading {
+            background-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <!-- 瀑布流的图片 -->
+        <div class="items"></div>
+    </div>
+
+    <!-- 准备模板 -->
+    <!-- 原始高/原始宽=现在高/现在宽 ==> 现在高=原始高/原始宽*现在宽 -->
+    <script type="text/html" id="tmp">
+        {{ each items v i }}
+        <div class='item'>
+            <!-- 如果加载图片比较慢，会出现图片错乱，先给图片设置一个默认的宽高 -->
+            <img src="{{ v.path }}" height="{{v.height/v.width*320}}">
+            <p>{{ v.text }}</p>
+        </div>
+        {{ /each }}
+    </script>
+    <p class="tips">加载更多...</p>
+    <script src="../../jquery-1.12.4.js"></script>
+    <script src="./js/jquery.waterFall.js"></script>
+    <script src="../../template.js"></script>
+    <script>
+        function rander(page) {
+            /* 
+            功能：
+                1.在页面打开后，获取第一页的数据，渲染在页面上
+                2.点击加载更多，加载下一屏
+                3.滚动到底部，加载下一屏
+            */
+            $.ajax({
+                type: 'post',
+                url: './data.php',
+                data: {
+                    page: page || 1
+                },
+                dataType: 'json',
+                beforeSend: function() {
+                    // 请求发送之前
+                    // 在请求发送前添加loading类名，请求完成后删除loading类名，如果tips又loading，说明上次请求还没有完成，点击无效
+                    if ($('tips').hasClass('loading')) {
+                        return false;
+                    }
+                    $('.tips').addClass('loading').text('正在加载...');
+                },
+                success: function(info) {
+                    console.log(info);
+                    var str = template('tmp', info);
+                    $('.items').append(str);
+                    $('.items').waterFall();
+
+                    // 保存下一页的页码
+                    $('.tips').attr('data-type', info.page);
+                },
+                complete: function() {
+                    // 请求完成，让按钮样式恢复
+                    $('.tips').removeClass('loading').text('加载更多');
+                }
+            });
+        }
+
+        // 2.点击加载更多，加载下一页
+        $('.tips').click(function() {
+            var page = $(this).attr('data-type');
+            rander(page);
+        });
+
+        // 3.滚动到底部，加载下一屏
+        $(window).on('scroll', function() {
+            // 原理： ./window和tiems的距离.jpg
+            var max = $('.items').height() + $('.items').offset().top;
+            var min = $(window).scrollTop() + $(window).scrollTop();
+            if ((max - min) < 0) {
+                var page = $('.tips').attr('data-type');
+                rander(page);
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script src="../../jquery-1.12.4.js"></script>
+    <script>
+        $('div').addClass();
+        // $('div').waterFall();
+        // jQuery.prototype == $.fn
+        // 拓展jquery插件，本质就是给$.fn添加方法
+        $.fn.setBg = function(color) {
+            this.css('background', color);
+        }
+        $('div').setBg('pink');
+    </script>
+</body>
+
+</html>

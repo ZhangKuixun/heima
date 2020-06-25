@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    用户名：
+    <input type="text"> 密码：
+    <input type="password">
+    <!-- <input type="submit" value="登录" class="submit"> -->
+    <!-- <button>我是button按钮</button> -->
+    <input type="button" value="登录按钮">
+    <script>
+        // 按钮注意点：
+        // submit按钮和双标签button按钮，默认行为都会刷新页面，如果发送ajax请求，就需要阻止他们的默认行为
+        // 点击按钮，向后台发送请求
+        document.querySelector('input[type="button"]').onclick = function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('get', './timeout.php');
+            xhr.timeout = 2000;
+            xhr.ontimeout = function() {
+                alert('网络超时');
+            }
+            xhr.send(null);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var r = xhr.responseText;
+                    console.log(r);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
