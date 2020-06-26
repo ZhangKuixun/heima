@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+p {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+.messages {
+    margin: 10px auto;
+    margin-top: 10px;
+    overflow: scroll;
+    width: 400px;
+    height: 300px;
+    background-color: rgb(238, 240, 241);
+    border: 1px solid gray;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.self {
+    text-align: left;
+}
+
+.other {
+    text-align: right;
+}
+
+.from {
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.from textarea {
+    width: 400px;
+    height: 150px;
+    border: 1px solid grey;
+    resize: none;
+}
+
+.btn {
+    width: 400px;
+    margin: 0 auto;
+    padding: 2px;
+    height: 30px;
+    border: 1px solid gray;
+    box-sizing: border-box;
+}
+
+input[type='button'] {
+    width: 80px;
+    text-align: center;
+    float: right;
+}

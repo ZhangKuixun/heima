@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+
+    在跨域的情况，发送ajax请求会受到浏览器的限制。
+    在跨域的时候，通过XMLHttpRequest请求服务器会受到浏览器的限制，在跨域的情况XMLHttpRequest无法成功请求服务器，就算设置了dataType:jsonp，也不行；
+    在跨域的情况下，$.ajax方法内部并没有使用XMLHttpRequest对象请求，而是使用其他方式来实现的；
+    jsonp和XMLHttpRequest对象无关！！！
+    jsonp本质是使用script的src属性跨域请求服务器
+    
+    在跨域的情况下，$.ajax内部如何请求服务器？
+
+jsonp请求服务器的步骤：
+  1.前端需要先定义好一个方法，利用script把方法名传递给后台
+  2.后台获取方法名，然后在方法名后面拼接括号，再向括号中填充json数据
+  3.后台会返回填充好数据的方法，如：say({'name':'zs','age':18})
+  4.前端接收到返回的方法调用，会当作js执行，可以获取后台填充的参数，进行使用
+  -->
+    <!-- 跨域能请求图片 -->
+    <!-- <img src="https://static.boxuegu.com/subject/pc-semweb-01/semweb-01/img/banner-left.b2d254e.png" alt=""> -->
+    <!-- 跨域能请求js文件 -->
+    <!-- <script src="../test/test.js"></script> -->
+
+    <!-- 标签src、href都具备跨域请求资源的能力 -->
+
+    <!-- src能跨域请求php程序 -->
+    <!-- <script src="http://127.0.0.1/ajax/day05/03-jsonp/test.php"></script> -->
+    <!-- script、src 能跨域向后台传递数据 -->
+    <!-- <script src="http://127.0.0.1/ajax/day05/03-jsonp/test.php?name=zs"></script> -->
+
+    <script>
+        // 前端有渲染数据的方法，缺数据
+        function say(obj) {
+            alert('你好 ' + obj.name);
+        }
+    </script>
+    <!-- 利用script标签将方法名传递给后台 -->
+    <script src="./test1.php?callback=say"></script>
+</body>
+
+</html>

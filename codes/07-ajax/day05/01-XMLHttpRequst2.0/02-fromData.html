@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../form.css">
+    <style>
+        .info {
+            width: 500px;
+            min-height: 200px;
+            border: 1px solid red;
+            margin: 0 auto;
+        }
+        
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        用户名：
+        <br><input type="text" name="username"><br> 密码：
+        <br><input type="password" name="password"><br> 头像：
+        <br><input type="file" name="photo"><br>
+        <input type="button" value="注册" class="btn">
+    </form>
+    <div class="info">
+
+    </div>
+    <script>
+        // 点击按钮，获取表单数据和图片，使用ajax发送给服务器
+        // 表单序列化：
+        //    1.是jquery的方法
+        //    2.只能序列化表单基本数据，不能序列号文件
+        // xhr2.0中新增了一个FormData对象，用于管理表单数据和文件
+        // 注意点：
+        //    1.formData要求必须使用post方式进行提交
+        //    2.formData不需要手动设置请求头，浏览器会自动设置一个合适的请求头
+        document.querySelector('.btn').onclick = function() {
+            // 获取表单数据
+            var form = document.querySelector('form');
+            // 将form表单数据，交给fd实例进行管理
+            var fd = new FormData(form);
+
+            // 使用ajax向后台发送请求
+            var xhr = new XMLHttpRequest();
+            // 请求报文
+            xhr.open('post', './02-fromData.php');
+            xhr.send(fd); // 只需要发送FromData实例
+
+            // 监听
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText);
+                    var r = xhr.responseText;
+                    document.querySelector('.info').innerHTML = r;
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

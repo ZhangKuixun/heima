@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../form.css">
+    <style>
+        .out {
+            width: 800px;
+            height: 20px;
+            border: 1px solid red;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .in {
+            width: 5%;
+            height: 100%;
+            background-color: hotpink;
+        }
+        
+        span {
+            position: absolute;
+            left: 48%;
+            top: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        用户名：
+        <br><input type="text" name="username"><br> 密码：
+        <br><input type="password" name="password"><br> 头像：
+        <br><input type="file" name="photo"><br>
+        <input type="button" value="注册" class="btn">
+    </form>
+    <div class="out">
+        <div class="in"></div>
+        <span></span>
+    </div>
+    <script>
+        // 点击按钮，上传文件给后台，并且监听上传文件进度，显示在进度条中
+        // 表单序列化：
+        //    1.是jquery的方法
+        //    2.只能序列化表单基本数据，不能序列号文件
+        // xhr2.0中新增了一个FormData对象，用于管理表单数据和文件
+        // 注意点：
+        //    1.formData要求必须使用post方式进行提交
+        //    2.formData不需要手动设置请求头，浏览器会自动设置一个合适的请求头
+        document.querySelector('.btn').onclick = function() {
+            // 获取表单数据
+            var fd = new FormData(document.querySelector('form'));
+            fd.append('num', 100);
+
+            // 通过ajax发送
+            var xhr = new XMLHttpRequest();
+            // 请求报文
+            xhr.open('post', './03-progress.php');
+            // 注册监听文件上传事件，注册事件必须在请求发送之前
+            xhr.upload.onprogress = function(e) {
+                // e：事件对象，存储的是当前事件相关信息
+                // 获取文件上传进度
+                // e.total 文件总大小
+                // e.loaded 已经上传大小
+
+                var value = e.loaded / e.total;
+                console.log(value);
+                // 把进度设置给进度条
+                document.querySelector('.in').style.width = value * 100 + '%';
+                document.querySelector('span').innerHTML = parseInt(value * 100) + '%';
+            }
+            xhr.send(fd);
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

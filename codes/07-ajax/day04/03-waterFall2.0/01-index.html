@@ -58,7 +58,7 @@
         {{ each items v i }}
         <div class='item'>
             <!-- 如果加载图片比较慢，会出现图片错乱，先给图片设置一个默认的宽高 -->
-            <img src="{{ v.path }}" height="{{v.height/v.width*320}}">
+            <img src="{{ v.path }}" height="{{v.height/v.width*230}}">
             <p>{{ v.text }}</p>
         </div>
         {{ /each }}
@@ -68,13 +68,11 @@
     <script src="./js/jquery.waterFall.js"></script>
     <script src="../../template.js"></script>
     <script>
+        //动态加载功能：
+        //  1.在页面打开后，获取第一页的数据，渲染在页面上
+        //  2.点击加载更多，加载下一屏
+        //  3.滚动到底部，加载下一屏
         function rander(page) {
-            /* 
-            功能：
-                1.在页面打开后，获取第一页的数据，渲染在页面上
-                2.点击加载更多，加载下一屏
-                3.滚动到底部，加载下一屏
-            */
             $.ajax({
                 type: 'post',
                 url: './data.php',
@@ -105,6 +103,8 @@
                 }
             });
         }
+        // 1.在页面打开后，获取第一页的数据，渲染在页面上
+        rander(0);
 
         // 2.点击加载更多，加载下一页
         $('.tips').click(function() {
@@ -115,8 +115,10 @@
         // 3.滚动到底部，加载下一屏
         $(window).on('scroll', function() {
             // 原理： ./window和tiems的距离.jpg
+            // （items的高度 + items距离顶部的距离）-（页面卷曲的高度 + 窗口的高度）
             var max = $('.items').height() + $('.items').offset().top;
-            var min = $(window).scrollTop() + $(window).scrollTop();
+            var min = $(window).scrollTop() + $(window).height();
+
             if ((max - min) < 0) {
                 var page = $('.tips').attr('data-type');
                 rander(page);

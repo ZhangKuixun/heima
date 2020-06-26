@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>获取</button>
+    <script src="../../jquery-1.12.4.js"></script>
+    <script>
+        $('button').click(function() {
+            $.ajax({
+                url: 'http://api.com.douban.com/v2/movie/top250',
+                dataType: 'jsonp',
+                success: function(info) {
+                    console.log(info);
+                }
+            })
+        })
+    </script>
+</body>
+
+</html>

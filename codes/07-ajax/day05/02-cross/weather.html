@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>获取天气</button>
+    <script src="../../jquery-1.12.4.js"></script>
+    <script src="../../template.js"></script>
+    <script>
+        // 跨域访问
+        // 1.点击按钮，请求百度天气预报接口，获取天气数据
+        // 解决跨域使用jsonp
+        $('button').click(function() {
+            $.ajax({
+                type: 'get',
+                url: 'http://api.map.baidu.com/weather/v1/',
+                data: {
+                    district_id: 510104,
+                    data_type: 'all',
+                    ak: 'FN253oQPH4xZPHhe2kngrjf11UAI9aEb',
+                    output: 'json'
+                },
+                dataType: 'jsonp', // 解决跨域
+                success: function(info) {
+                    console.log(info);
+                },
+                error: function(XMLHttpRequest, textStatus, errorThrown) {
+                    console.log(XMLHttpRequest);
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
