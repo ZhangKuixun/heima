@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+  在h5之前，网页使用插件播放音频：flash
+    h5：video、audio、img
+ -->
+    <!-- <audio src="./music/hlw.mp3" controls></audio> -->
+
+    <!-- 
+      兼容ie678写法
+      文件格式是有版权问题，不同浏览器支持视频、音频格式不一样
+
+     -->
+    <audio controls>
+      <source src="./music/yinyue.mp3">
+      <source src="./music/yinyue.wav">
+      <source src="./music/yinyue.ogg">
+      亲，浏览器版本过低，请更新！
+    </audio>
+</body>
+
+</html>

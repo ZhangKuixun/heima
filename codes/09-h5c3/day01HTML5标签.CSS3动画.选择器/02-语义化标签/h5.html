@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body * {
+            width: 100px;
+            height: 50px;
+            border: 1px solid red;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<!-- 引入htmlshiv.js可以解决语义标签兼容 -->
+<!-- ie浏览器 条件注释
+    1.只有id能够识别
+    2.满足条件就执行，不满足还是一个注释
+-->
+<!-- [if lt ie 9]>
+    <script src="../html5shiv.min.js"></script>
+<!endif]-->
+
+<body>
+    <!-- 
+      语法规范：简介、宽松
+          1.单标签省略关闭符号
+          2.双标签省略结束标签
+          3.骨架可以全部省略
+          实际开发不要太随意！！
+
+      html5新增语义标签：
+          header 头部
+          nav 导航
+          section 区域
+          aside 侧边栏
+          article 文章
+          tooter 底部
+          面都是盒子，优点：有语义；
+      
+      -->
+
+    <head>头部</head>
+    <nav>导航</nav>
+    <section>区域</section>
+    <aside>侧边栏</aside>
+    <article>文章</article>
+    <footer>底部</footer>
+
+</body>
+
+</html>

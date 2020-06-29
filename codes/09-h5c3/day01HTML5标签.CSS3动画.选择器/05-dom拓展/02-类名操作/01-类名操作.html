@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 200px;
+            border: 1px solid red;
+        }
+        
+        .three {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box one two"></div>
+    <button>添加类名</button>
+    <button>删除类名</button>
+    <button>判断类名</button>
+    <button>切换类名</button>
+    <script>
+        // jq:
+        //   addClass();
+        //   removeClass();
+        //   hasClass();
+        //   toggleClass();
+        // js:
+        //   div.className='test';
+        //   div.className='one';
+        //   h5中提供了jq一样好用的方法
+        //   h5中每个元素新增classList属性，classList属性将元素所有类名以为数组的形式进行储存；
+        //   如果操作只需要对这个为数组增删改查即可；
+        //   div.classList.add(); 添加类名
+        //   div.classList.remove(); 删除类名
+        //   div.classList.contains(); 判断是否包含指定类名
+        //   div.classList.toggle(); 切换指定类名
+        var div = document.querySelector('div');
+
+        var button = document.querySelectorAll('button');
+        //添加类名
+        button[0].onclick = function() {
+            div.classList.add('three');
+            console.log(div.classList);
+        };
+        //删除类名
+        button[1].onclick = function() {
+            div.classList.remove('three');
+            console.log(div.classList);
+        };
+        //判断类名
+        button[2].onclick = function() {
+            // div.classList.contains('one');
+            div.classList.contains('three');
+            console.log(div.classList.contains('one'));
+            console.log(div.classList.contains('three'));
+        };
+        //切换类名
+        button[3].onclick = function() {
+            div.classList.toggle('three');
+            console.log(div.classList);
+        };
+    </script>
+</body>
+
+</html>

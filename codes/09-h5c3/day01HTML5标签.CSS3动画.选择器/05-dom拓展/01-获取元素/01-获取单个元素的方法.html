@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 40px;
+            border: 1px solid black;
+            margin: 0 auto;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box box1" id="box1"></div>
+    <div class="box box2" id="box2"></div>
+    <div class="box box3" id="box3"></div>
+    <div class="box box4" id="box4"></div>
+    <script>
+        // 获取符合条件的第一个元素
+        document.querySelector('div').style.background = 'pink';
+
+        // querySelectorAll返回的是为数组，可以用它原型上的forEach方法
+        var divs = document.querySelectorAll('div');
+        console.log(divs);
+
+        divs.forEach(function(v, i) {
+            v.style.background = 'red';
+        })
+    </script>
+</body>
+
+</html>
