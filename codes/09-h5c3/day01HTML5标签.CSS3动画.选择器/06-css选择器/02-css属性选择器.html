@@ -33,6 +33,18 @@
         $ 结束
         * 包含
          */
+        
+        div[title^='cc'] {
+            background-color: blue;
+        }
+        
+        div[title$='bb'] {
+            background-color: gold;
+        }
+        
+        div[title*='dd'] {
+            background-color: darkcyan;
+        }
     </style>
 </head>
 
@@ -41,6 +53,7 @@
     <div title="aabb">aabb</div>
     <div title="aacc">aacc</div>
     <div title="aadd">aadd</div>
+    <div title="dd">dd</div>
     <div>xxx</div>
 </body>
 
