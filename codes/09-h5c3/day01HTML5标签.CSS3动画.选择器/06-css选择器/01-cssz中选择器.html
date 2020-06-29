@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div+p {
+            color: red;
+        }
+        
+        div~p {
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    div p   后代选择器
+    div > p 子代选择器
+    div,p   并集选择器
+    div.box 交集选择器
+    div+p 选中div后面第一个兄弟p标签
+    div~p 选中div后面所有的兄弟p标签
+   -->
+
+    <div>ppppppppppp</div>
+    <p>ppppppppppp</p>
+    <p>ppppppppppp</p>
+    <p>ppppppppppp</p>
+    <p>ppppppppppp</p>
+    <p>ppppppppppp</p>
+</body>
+
+</html>
