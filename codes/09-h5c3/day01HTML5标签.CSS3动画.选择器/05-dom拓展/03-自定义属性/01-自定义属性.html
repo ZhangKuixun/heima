@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- h5中自定义属性语法规范：所有自定义属性需要以data-开头 -->
+    <div id="box" class="box" class1='boxa' data-id="30" data-age='13' data-my-name="goudan"></div>
+    <script>
+        // 获取自定义属性
+        // getAttribute(k);
+        // setAttribute(k, v);
+        var div = document.querySelector('div');
+        console.log(div.getAttribute('data-age'));
+        console.log(div.getAttribute('data-my-name'));
+        console.log(div.getAttribute('id'));
+        // 在h5中，所有以data-开头自定义属性，都会被包装到一个dataset对象中，dataset也是元素的一个属性
+        console.log(div.dataset.id);
+        console.log(div.dataset.age);
+        console.log(div.dataset.myName);
+
+        // 设置定义属性
+        div.dataset.id = 999;
+    </script>
+</body>
+
+</html>
