@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 50px;
+            margin: 50px auto;
+            text-align: center;
+            line-height: 50px;
+        }
+        /* 
+        属性选择器：
+        符号：[]
+         */
+        /* 筛选带有title属性的div */
+        
+        div[title] {
+            background-color: red;
+        }
+        /* 筛选带有title属性的div，并且值为aabb */
+        
+        div[title='aabb'] {
+            background-color: red;
+        }
+        /* 
+        模糊匹配 ^ $ * 
+        ^ 开始
+        $ 结束
+        * 包含
+         */
+    </style>
+</head>
+
+<body>
+    <div title="aa">aa</div>
+    <div title="aabb">aabb</div>
+    <div title="aacc">aacc</div>
+    <div title="aadd">aadd</div>
+    <div>xxx</div>
+</body>
+
+</html>
