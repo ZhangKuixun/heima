@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 300px;
+            margin: 100px auto;
+            /* background-color: red; */
+            /* background-color: hsla(0, 50%, 50%, 1); */
+        }
+        
+        input {
+            margin: 0 auto;
+        }
+        /* 
+        hsla:
+          h:色调 0-360
+          s:饱和度 0-100% 颜色的鲜艳程度
+          l:亮度 0-100%
+          a:alpha透明度 0-1
+         */
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <input type="range" value="0" min="0" max="360">
+    <script>
+        document.querySelector('input').oninput = function() {
+            var v = this.value;
+            document.querySelector('div').style.background = 'hsla(' + v + ', 50%, 50%, 1)';
+        }
+    </script>
+</body>
+
+</html>
