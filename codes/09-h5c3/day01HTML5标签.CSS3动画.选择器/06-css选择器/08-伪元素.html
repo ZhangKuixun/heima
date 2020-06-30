@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+        伪元素：假的标签
+        符号："::"
+          1.伪元素默认是行内元素，不能设置宽高，如果需要设置宽高增加：display: inline-block;
+          2.伪元素是当前元素子元素，分别在盒子内部前后模拟出来两个标签
+          2.伪元素必须要有 "content: ' ';"，就算为空也要写
+        
+        作用：
+          1.伪元素没有语义，用于没有语义修饰效果的地方；
+          2.伪元素可以简化页面结构
+         */
+        
+        span::before {
+            content: '今天';
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 如果需要设置宽高增加：inline-block */
+            display: inline-block;
+        }
+        
+        span::after {
+            content: '好帅啊';
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+        
+        span {
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <span>春哥</span>
+</body>
+
+</html>
