@@ -13,9 +13,11 @@
             padding: 30px;
             background: url('../../rb.jpg') no-repeat;
             /* 背景原点 */
-            background-origin: padding-box;
-            background-origin: content-box;
             background-origin: border-box;
+            /* 背景裁剪 */
+            /* background-clip: padding-box; */
+            /* background-clip: content-box; */
+            background-clip: border-box;
         }
         /* 背景裁剪：用于指定背景图片从盒子哪个位置开始平铺
             padding-box 默认值
