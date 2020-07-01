@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 150px;
+            height: 150px;
+            background-color: green;
+            margin: 10px;
+        }
+        
+        div:nth-child(1),
+        div:nth-child(3) {
+            border: 25px solid red;
+            padding: 25px;
+        }
+        
+        div:nth-child(1) {
+            box-sizing: content-box;
+        }
+        
+        div:nth-child(3) {
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+
+</html>

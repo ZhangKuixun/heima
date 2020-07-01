@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 400px;
+            height: 400px;
+            border: 1px solid red;
+            background: url('../../rb.jpg') no-repeat;
+            /* 背景尺寸
+                具体像素
+                百分比
+                cover 覆盖：背景图片一定会等比例最大化的把盒子完全覆盖，有可能图片不完全显示
+                contain 包含：背景图片一定会等比例最大化完整显示在盒子中，有可能图片不会铺满盒子
+             */
+            /* background-size: 400px 400px; */
+            /* background-size: 50%; */
+            /* background-size: cover; */
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
