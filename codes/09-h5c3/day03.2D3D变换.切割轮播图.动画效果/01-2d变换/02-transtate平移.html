@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 1000px;
+            height: 150px;
+            margin: 100px auto;
+        }
+        
+        .box>div {
+            width: 300px;
+            float: left;
+            height: 150px;
+            background-color: green;
+            margin: 0 10px;
+        }
+        
+        div:nth-child(2) {
+            background-color: hotpink;
+            /* 过渡 */
+            transition: transform 1s;
+        }
+        
+        .box:hover>div:nth-child(2) {
+            /* 用宽高放大，会影响布局 */
+            /* transform: translate(-100px, -100px); */
+            transform: translate(-50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>

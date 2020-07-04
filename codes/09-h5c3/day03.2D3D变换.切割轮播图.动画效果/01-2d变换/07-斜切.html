@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 400px;
+            height: 200px;
+            border: 1px solid black;
+            margin: 100px auto;
+            box-sizing: border-box;
+        }
+        
+        .box div {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            transform-origin: left top;
+        }
+        
+        .box:nth-child(1) div {
+            /* 斜切 skewX() skewY() */
+            transform: skewX(30deg);
+        }
+        
+        .box:nth-child(2) div {
+            /* 斜切 skewX() skewY() */
+            transform: skewY(30deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div></div>
+    </div>
+    <div class="box">
+        <div></div>
+    </div>
+</body>
+
+</html>

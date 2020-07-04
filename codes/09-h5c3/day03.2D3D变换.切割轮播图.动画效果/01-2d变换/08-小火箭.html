@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: skyblue;
+            overflow: hidden;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body:hover img {
+            /* rotate(45deg)，一边移动，一边保持45度角，并且慢慢变大 */
+            transform: translate(500px, -500px) rotate(45deg) scale(1.5);
+            /* 过渡 入场有动画，瞬间出场 */
+            transition: transform 1s;
+        }
+        
+        img {
+            width: 50px;
+            height: 80px;
+            position: absolute;
+            left: 0;
+            bottom: -150px;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <img src="../../rocket.jpg" alt="">
+</body>
+
+</html>
