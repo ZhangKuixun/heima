@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            margin: 0 auto;
+            width: 310px;
+            height: 438px;
+        }
+        
+        img {
+            box-shadow: 0 0 5px 0 #999;
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* 过渡 */
+            transition: transform 1s;
+            /* 变换中心点 */
+            transform-origin: center bottom;
+        }
+        
+        .box:hover img:nth-child(11) {
+            transform: rotate(50deg);
+        }
+        
+        .box:hover img:nth-child(10) {
+            transform: rotate(40deg);
+        }
+        
+        .box:hover img:nth-child(9) {
+            transform: rotate(30deg);
+        }
+        
+        .box:hover img:nth-child(8) {
+            transform: rotate(20deg);
+        }
+        
+        .box:hover img:nth-child(7) {
+            transform: rotate(10deg);
+        }
+        
+        .box:hover img:nth-child(5) {
+            transform: rotate(-10deg);
+        }
+        
+        .box:hover img:nth-child(4) {
+            transform: rotate(-20deg);
+        }
+        
+        .box:hover img:nth-child(3) {
+            transform: rotate(-30deg);
+        }
+        
+        .box:hover img:nth-child(2) {
+            transform: rotate(-40deg);
+        }
+        
+        .box:hover img:nth-child(1) {
+            transform: rotate(-50deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+        <img src="../../pk.jpg" alt="">
+    </div>
+</body>
+
+</html>
