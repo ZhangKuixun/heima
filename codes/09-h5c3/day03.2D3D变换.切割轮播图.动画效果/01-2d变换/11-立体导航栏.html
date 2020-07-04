@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        body {
+            background-color: #ccc;
+        }
+        
+        ul {
+            position: relative;
+            width: 900px;
+            height: 80px;
+            margin: 100px auto;
+        }
+        
+        ul::before,
+        ul::after {
+            position: absolute;
+            left: -80px;
+            top: 0;
+            content: "";
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+        }
+        
+        ul::after {
+            /* left:auto; left属性不控制盒子位置，由right控制 */
+            left: auto;
+            right: -80px;
+        }
+        
+        li {
+            float: left;
+            width: 180px;
+            height: 80px;
+        }
+        
+        span {
+            float: left;
+            width: 30px;
+            height: 80px;
+            background-color: #fff;
+        }
+        
+        .center {
+            width: 120px;
+            background-color: #fff;
+            text-align: center;
+            line-height: 80px;
+        }
+        
+        li:hover .left {
+            transform: skewY(-30deg);
+            transform-origin: left center;
+            background-color: #f1f1f1;
+        }
+        
+        li:hover .right {
+            transform: skewY(30deg);
+            background-color: #f1f1f1;
+            transform-origin: right center;
+        }
+        
+        li:hover .center {
+            transform: translate(0, -17px);
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <span class="left"></span>
+            <span class="center">黑马前端</span>
+            <span class="right"></span>
+        </li>
+        <li>
+            <span class="left"></span>
+            <span class="center">黑马前端</span>
+            <span class="right"></span>
+        </li>
+        <li>
+            <span class="left"></span>
+            <span class="center">黑马前端</span>
+            <span class="right"></span>
+        </li>
+        <li>
+            <span class="left"></span>
+            <span class="center">黑马前端</span>
+            <span class="right"></span>
+        </li>
+        <li>
+            <span class="left"></span>
+            <span class="center">黑马前端</span>
+            <span class="right"></span>
+        </li>
+    </ul>
+</body>
+
+</html>
