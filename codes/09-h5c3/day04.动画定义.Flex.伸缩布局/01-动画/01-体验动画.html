@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+      在css3中，动画使用和js的函数使用比较类似
+      函数：先定义，再调用，一次定义多次调用
+      定义：function say() {函数体}
+      调用：say();
+
+      动画定义：
+      @keyframes 动画名称 {
+        from{}
+        to{}
+        或者
+        0%{}
+        10%{}
+        24%{}
+        74%{}
+        100%{}
+      }
+      调用：animation:动画名称 执行时间;
+       */
+        
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            margin: 100px;
+            /* 调用动画 */
+            animation: gun 2s 3 alternate;
+        }
+        
+        @keyframes gun {
+            from {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            to {
+                transform: translate(500px, 0) rotate(720deg);
+                border-radius: 50%;
+                background-color: green;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

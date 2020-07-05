@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            margin: 100px;
+            animation: move 4s 4 alternate;
+        }
+        /* 定义动画 */
+        
+        @keyframes move {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(800px, 0) rotate(50deg);
+                background-color: green;
+            }
+            50% {
+                transform: translate(800px, 300px) rotate(500deg);
+                background-color: pink;
+            }
+            75% {
+                transform: translate(0px, 300px) rotate(400deg);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            margin: 100px;
+            /* 调用动画 */
+            /* 复合写法 */
+            /* animation-name: move 1s alternate infinite 1s; */
+            /* 动画名称 */
+            /* animation-name: move; */
+            /* 持续时间 */
+            /* animation-duration: 1s; */
+            /* 执行次数 */
+            /* animation-iteration-count: 1; */
+            /* 无限执行 */
+            /* animation-iteration-count: infinite; */
+            /* 动画方向 alertnate 反复 */
+            /* animation-direction: alternate; */
+            /* 动画延迟 */
+            /* animation-delay: 2s; */
+            /* 动画结束时保持状态 */
+            /* 
+            backwards: 动画结束后，会回到动画开始的状态
+            forwards:动画结束后，会保持动画结束后的状态不动
+             */
+            /* animation-fill-mode: backwards; */
+            /* 动画的运动方式 linear ease-in-out steps()*/
+            /* steps(n)让动画分n步完成，构成帧动画效果 */
+            /* animation-timing-function: steps(20); */
+            /* 前两个参数是必须的，后面可以省略，并且顺序随意 */
+            animation: move 2s 1 alternate 1s forwards steps(17);
+        }
+        
+        @keyframes move {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            100% {
+                transform: translate(700px, 0) rotate(700deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
