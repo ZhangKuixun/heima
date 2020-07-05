@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        html,
+        body {
+            height: 100%;
+            border: 1px solid red;
+        }
+        
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            margin: 250px auto;
+            transition: transform 1s;
+        }
+        
+        body:hover div {
+            /* transform: translate(500px) rotate(500deg); */
+            transform: rotate(500deg) translate(500px);
+            /* 
+            变换如果写多个，后面的变换会在前面基础值进行变换。
+            旋转会改变盒子坐标系方向！尽量将rotate放在最后面。
+             */
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .out {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            background-color: green;
+            margin: 50px auto;
+            transform-style: preserve-3d;
+            /* 辅助查看3d效果 */
+            transform: rotateY(10deg);
+        }
+        /* 
+          如果子盒子保持真正3d效果，需要给父元素添加一个属性：
+          transform-style: preserve-3d;
+         */
+        
+        .in {
+            width: 200px;
+            height: 200px;
+            background-color: greenyellow;
+            margin: 100px;
+            /* 沿着x轴旋转 */
+            transform: rotateX(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="out">
+        <div class="in"></div>
+    </div>
+</body>
+
+</html>

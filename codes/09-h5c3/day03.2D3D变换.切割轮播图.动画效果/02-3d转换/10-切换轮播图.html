@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        div {
+            position: relative;
+            width: 560px;
+            height: 300px;
+            /* border: 1px solid green; */
+            margin: 100px auto;
+        }
+        
+        li {
+            position: relative;
+            width: 112px;
+            height: 300px;
+            float: left;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            /* 辅助 */
+            /* transform: rotateX(10deg) rotateY(-10deg); */
+        }
+        
+        span {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 80px;
+            text-align: center;
+        }
+        
+        span:nth-child(1) {
+            background-color: skyblue;
+            transform: translateZ(150px);
+        }
+        
+        span:nth-child(2) {
+            background-color: pink;
+            transform: translateY(-150px) rotateX(90deg);
+        }
+        
+        span:nth-child(3) {
+            background-color: green;
+            transform: translateZ(-150px) rotateX(180deg);
+        }
+        
+        span:nth-child(4) {
+            background-color: yellow;
+            transform: translateY(150px) rotateX(-90deg);
+        }
+        /* 给立方体贴图片 */
+        /* 规律一：所有li标签的同一个span背景图片是相同的 */
+        
+        li span:nth-child(1) {
+            background: url('../../lbt.jpg');
+        }
+        
+        li span:nth-child(2) {
+            background: url('../../lbt.jpg');
+        }
+        
+        li span:nth-child(3) {
+            background: url('../../lbt.jpg');
+        }
+        
+        li span:nth-child(4) {
+            background: url('../../lbt.jpg');
+        }
+        /* 规律二：不同的li，背景定位不一样 */
+        
+        li:nth-child(2) span {
+            background-position: -112px top;
+        }
+        
+        li:nth-child(3) span {
+            background-position: -224px top;
+        }
+        
+        li:nth-child(4) span {
+            background-position: -336px top;
+        }
+        
+        li:nth-child(5) span {
+            background-position: -448px top;
+        }
+        
+        .arrow {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 30px;
+            height: 50px;
+            background-color: red;
+            text-align: center;
+            line-height: 50px;
+            text-decoration: none;
+            font-family: '宋体';
+            font-size: 50px;
+            color: #fff;
+        }
+        
+        .right {
+            left: auto;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+            <li>
+                <span>1</span>
+                <span>2</span>
+                <span>3</span>
+                <span>4</span>
+            </li>
+        </ul>
+        <a href="#" class="arrow left">
+            <</a>
+                <a href="#" class="arrow right">></a>
+    </div>
+    <script>
+        var right = document.querySelector('.right')
+        var li = document.querySelectorAll('li');
+        var index = 1;
+        right.onclick = function() {
+            li.forEach(function(v, i) {
+                v.style.transform = "rotateX(" + -90 * index + "deg)";
+            })
+            index++;
+        }
+    </script>
+</body>
+
+</html>

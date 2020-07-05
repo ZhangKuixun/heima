@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            /* 让盒子构成真正3d盒子 */
+            transform-style: preserve-3d;
+            /* 辅助 */
+            transform: rotateX(10deg) rotateY(10deg);
+            /* 过渡 */
+            transition: transform 8s;
+        }
+        
+        .box:hover {
+            transform: rotateX(360deg) rotateY(360deg);
+        }
+        
+        span {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 250px;
+            font-size: 100px;
+        }
+        
+        .left {
+            background-color: red;
+            transform: translate(-50%) rotateY(-90deg);
+        }
+        
+        .right {
+            background-color: orange;
+            transform: translate(50%) rotateY(90deg);
+        }
+        
+        .top {
+            background-color: yellow;
+            transform: translateY(-50%) rotateX(-90deg);
+        }
+        
+        .bottom {
+            background-color: green;
+            transform: translateY(50%) rotateX(-90deg);
+        }
+        
+        .front {
+            background-color: blue;
+            /* 盒子没有厚度，不能用百分比 */
+            transform: translateZ(125px);
+        }
+        
+        .back {
+            background-color: purple;
+            transform: translateZ(-125px) rotateY(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span class="top">上</span>
+        <span class="bottom">下</span>
+        <span class="front">前</span>
+        <span class="back">后</span>
+        <span class="left">左</span>
+        <span class="right">右</span>
+    </div>
+</body>
+
+</html>

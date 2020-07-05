@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .out {
+            width: 400px;
+            height: 400px;
+            border: 1px solid #000;
+            background-color: green;
+            margin: 50px auto;
+            /* 透视 */
+            perspective: 500px;
+        }
+        
+        .in {
+            width: 200px;
+            height: 200px;
+            background-color: greenyellow;
+            margin: 100px;
+            /* 过渡 */
+            transition: transform 1s;
+            /* 变换动画中心点 */
+            transform-origin: right;
+        }
+        
+        .out:hover .in {
+            transform: rotateY(100deg);
+        }
+        /* 
+        小结：透视知识一种视觉上呈现，有近大远小的效果，还是在一个平面中，
+        不是正真的3d盒子，无法构成真正3d空间
+         */
+    </style>
+</head>
+
+<body>
+    <div class="out">
+        <div class="in"></div>
+    </div>
+</body>
+
+</html>

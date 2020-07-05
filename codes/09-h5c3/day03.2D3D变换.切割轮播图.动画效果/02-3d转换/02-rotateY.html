@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 170px;
+            height: 215px;
+            border: 1px solid #000;
+            margin: 100px auto;
+            /* 透视 */
+            perspective: 400px;
+        }
+        /* 
+        透视：可以呈现出近大远小效果
+          perspective：数值
+          1.透视需要设置给变换元素的父盒子
+          2.透视的值越小效果越明显！
+        透视本质：设置的是用户眼睛（虚拟）和屏幕的距离；距离越小效果越明显
+         */
+        
+        img {
+            transition: transform 1s;
+        }
+        
+        div:hover img {
+            transform: rotateY(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <img src="../../rotateY.jpg" alt="">
+    </div>
+</body>
+
+</html>
