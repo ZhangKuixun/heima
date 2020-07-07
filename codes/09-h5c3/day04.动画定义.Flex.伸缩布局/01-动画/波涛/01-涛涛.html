@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 太阳的扩散效果伪元素做 */
+        
+        body {
+            background-color: deepskyblue;
+        }
+        
+        .sun {
+            position: absolute;
+            left: 150px;
+            top: 150px;
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+        
+        .sun::before,
+        .sun::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #fff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            animation: change 1.5s infinite;
+            transform-origin: center center;
+        }
+        
+        .sun::after {
+            animation-delay: 0.75s;
+        }
+        
+        @keyframes change {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        /* 波涛 */
+        
+        .wav {
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 110px;
+        }
+        
+        .wav::before,
+        .wav::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./wav.jpg') left bottom;
+            opacity: .3;
+            animation: wav 2s infinite linear alternate;
+        }
+        
+        .wav::after {
+            background: url('./wav.jpg') left bottom;
+            animation-delay: 3s;
+        }
+        /* 上下移动 */
+        
+        @keyframes wav {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(30px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sun"></div>
+    <div class="wav"></div>
+</body>
+
+</html>

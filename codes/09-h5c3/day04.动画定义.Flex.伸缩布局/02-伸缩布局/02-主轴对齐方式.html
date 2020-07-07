@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        
+        .box {
+            width: 100%;
+            height: 360px;
+        }
+        
+        ul {
+            border: 1px solid red;
+            height: 500px;
+        }
+        
+        li {
+            width: 100px;
+            /* height: 100px; */
+            margin: 10px;
+            background-color: pink;
+        }
+        
+        .box:nth-child(1) ul {
+            /* 伸缩布局 */
+            display: flex;
+            /* 
+            侧轴对齐方式：
+              alig-item:
+                flex-start: 起点对齐
+                flex-end: 终点对齐
+                center: 居中
+                stretch: 拉伸，默认值，不能给子元素设置高，如果不设置宽，宽是0
+            默认情况下，侧轴方向是被拉伸的，和高和父盒子一样，主轴方向不设置宽，宽为0
+            */
+            align-items: flex-start;
+            align-items: flex-end;
+            align-items: center;
+            /* 内容居中 */
+            /* justify-content: center; */
+            align-items: stretch;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h4>伸缩布局</h4>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+</body>
+
+</html>
