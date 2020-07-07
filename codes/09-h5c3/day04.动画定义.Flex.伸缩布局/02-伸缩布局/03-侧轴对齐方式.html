@@ -31,19 +31,22 @@
         
         .box:nth-child(1) ul {
             /* 伸缩布局 */
-            /* 
-            justify-content:
-                flex-start: 起点对齐
-                center: 居中
-                flex-end: 终点对齐
-                space-around: 平分父盒子空间，先平分盒子，然后再把盒子居中放入平分的空间
-                space-between: 两端对齐，先保证两端对齐，剩下的平分
-             */
             display: flex;
-            justify-content: flex-start;
-            justify-content: flex-end;
-            justify-content: space-around;
-            justify-content: space-between;
+            /* 
+            侧轴对齐方式：
+              alig-item:
+                flex-start: 起点对齐
+                flex-end: 终点对齐
+                center: 居中
+                stretch: 拉伸，默认值，不能给子元素设置高，如果不设置宽，宽是0
+            默认情况下，侧轴方向是被拉伸的，和高和父盒子一样，主轴方向不设置宽，宽为0
+            */
+            align-items: flex-start;
+            align-items: flex-end;
+            align-items: center;
+            /* 内容居中 */
+            /* justify-content: center; */
+            align-items: stretch;
         }
     </style>
 </head>
