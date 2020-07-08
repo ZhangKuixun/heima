@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/font-awesome.min.css">
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        a,
+        a:hover {
+            text-decoration: none;
+            /* 权重不够不能写大小 */
+        }
+        
+        .box {
+            width: 800px;
+            height: 500px;
+            border: 1px solid red;
+            margin: 100px auto;
+            display: flex;
+        }
+        
+        .main {
+            flex: 5;
+            background-color: #333;
+            display: flex;
+            overflow: hidden;
+            flex-direction: column;
+        }
+        
+        .player {
+            flex: 5;
+            background-color: #000;
+            overflow: hidden;
+        }
+        
+        .video {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .controls {
+            flex: 1;
+            background-color: #f99;
+            /* 伸缩布局 */
+            display: flex;
+            /* 侧轴居中，让一行内容水平居中 */
+            align-items: center;
+        }
+        
+        .btn-play {
+            flex: 1;
+        }
+        
+        .progress {
+            height: 10px;
+            background-color: blue;
+            flex: 8;
+            overflow: hidden;
+        }
+        
+        .in {
+            width: 5%;
+            height: 10px;
+            background-color: yellowgreen;
+        }
+        
+        .volume {
+            flex: 3;
+        }
+        
+        .btn-full {
+            flex: 1;
+        }
+        
+        .list {
+            flex: 1;
+            background-color: #222;
+            list-style: none;
+        }
+        
+        .list li {
+            text-align: center;
+            color: #fff;
+            margin: 5px;
+            height: 40px;
+            line-height: 40px;
+            background-color: skyblue;
+            cursor: pointer;
+        }
+        
+        a.fa {
+            font-size: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="main">
+            <div class="player">
+                <video src="./videos/1.mp4"></video>
+            </div>
+            <div class="controls">
+                <!-- 播放按钮 -->
+                <a href="#" class="btn-play fa fa-play"></a>
+                <!-- 进度条 -->
+                <div class="progress">
+                    <div class="in"></div>
+                </div>
+                <!-- 音量 -->
+                <input type="range" class="volume" value="50" min="0" max="100">
+                <!-- 全屏 -->
+                <a href="#" class="btn-full fa fa-arrows-alt"></a>
+            </div>
+        </div>
+        <ul class="list">
+            <li>视频1</li>
+            <li>视频2</li>
+            <li>视频3</li>
+            <li>视频4</li>
+        </ul>
+    </div>
+    <script>
+        // 播放器功能
+        // 1.点击按钮，播放、暂停
+        // 2.播放视频，进度条同步更新
+        // 3.点击进度条，切换进度
+        // 4.调整音量
+        // 5.全屏播放
+        // 6.列表切换视频
+
+        var play = document.querySelector('.btn-play');
+        var video = document.querySelector('video');
+        var pin = document.querySelector('.in');
+        var progress = document.querySelector('.progress');
+        var volume = document.querySelector('.volume');
+
+        // 1.点击按钮，播放、暂停
+        play.onclick = function() {
+            click();
+        }
+        video.onclick = function() {
+            click();
+        }
+
+        function click() {
+            if (video.paused) {
+                video.play(); // 播放
+            } else {
+                video.pause(); // 暂停
+            }
+        }
+
+        // 视频播放和暂停时，变换播放和暂停按钮
+        video.onplay = function() {
+            play.classList.remove('fa-play');
+            play.classList.add('fa-pause');
+        }
+        video.onpause = function() {
+            play.classList.add('fa-play');
+            play.classList.remove('fa-pause');
+        }
+
+        // 2.播放视频，进度条同步更新
+        video.ontimeupdate = function() {
+            // 小进度条的宽=当前播放时间/视频总时间(秒)
+            var width = (video.currentTime / video.duration) * 100;
+            pin.style.width = width + "%";
+        }
+
+        // 3.点击进度条，切换进度
+        // 鼠标点击x坐标/进度条总长度 = 当前播放时间/视频总时间
+        progress.onclick = function(e) {
+            // 鼠标点击x坐标
+            var x = e.offsetX;
+            // 进度条宽
+            var w = progress.offsetWidth;
+            // 视频总时长
+            var tTime = video.duration;
+            // 当前播放位置
+            var cTime = x / w * tTime;
+            video.currentTime = cTime;
+        };
+
+        // 4.调整音量
+        volume.oninput = function() {
+            console.log(this.value);
+            video.volume = this.value / 100;
+        }
+    </script>
+</body>
+
+</html>
