@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box,
+        .target {
+            width: 200px;
+            height: 200px;
+            border: 1px solid red;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        
+        .target {
+            position: absolute;
+            left: 300px;
+            top: 300px;
+        }
+        
+        span {
+            width: 50px;
+            height: 50px;
+            background-color: purple;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <span draggable="true">1</span>
+        <span draggable="true">2</span>
+        <span draggable="true">3</span>
+        <span draggable="true">4</span>
+        <span draggable="true">5</span>
+        <span draggable="true">6</span>
+        <span draggable="true">7</span>
+        <span draggable="true">8</span>
+    </div>
+    <div class="target"></div>
+    <script>
+        var box = document.querySelector('.box');
+        var target = document.querySelector('.target');
+        // 如果span标签被拖动到了target盒子，将元素添加到target中
+        // 1.有盒子被拖拽时，要记录当前被拖拽的盒子
+        var current = null;
+        // 2.如果在目标元素上松开鼠标，把拖拽元素添加给target
+        document.querySelectorAll('span').forEach(function(v, i) {
+            v.ondragstart = function() {
+                current = this; // 记录当前被拖拽的盒子
+                console.log(current);
+            }
+        })
+        target.ondragover = function(e) {
+            e.preventDefault();
+        }
+        target.ondrop = function() {
+            this.appendChild(current);
+            // 不需要删除，this指向current，current指向target
+            // box.removeChild(current);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .info {
+            min-width: 500px;
+            min-height: 200px;
+            border: 1px solid red;
+        }
+        
+        pre {
+            color: red;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file">
+    <div class="info"></div>
+    <script>
+        // h5新增了文件操作功能，网页可以之间读取文件内容
+        // 1.当文件域标签选中文件后，获取选中文本文件，读取文件内容，显示在网页
+        document.querySelector('input').onchange = function() {
+            // 获取选中第一个文件
+            var file = this.files[0];
+            console.log(file);
+
+            // h5新增读取文件内容功能 FileReader
+            var fr = new FileReader();
+            // fr有各种读取方法
+            // fr.readAsText(); 以字符串读取文件
+            // fr.readAsDataURL(); 以url形式读取文件 读图片、视频路径
+
+            fr.readAsText(file, 'utf-8'); // 注意：第二个参数时编码格式，写入和读取必须时同一个编码
+            // 读文件不知道何时完成，用事件进行监听
+            fr.onload = function() { // 当文件读完的监听
+                var r = fr.result;
+                console.log(r);
+                // 渲染
+                document.querySelector('.info').innerHTML = '<pre>' + r + '</pre>';
+            }
+        }
+    </script>
+</body>
+
+</html>

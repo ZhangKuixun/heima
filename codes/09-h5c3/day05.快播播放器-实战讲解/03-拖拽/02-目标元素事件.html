@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+        
+        .target {
+            position: absolute;
+            left: 300px;
+            top: 300px;
+            width: 400px;
+            height: 400px;
+            border: 1px solid green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+目标元素事件：
+  ondragover 当拖拽元素在目标元素上方时触发
+  ondrop 当在目标元素上松开鼠标时
+默认：浏览器会禁止把一个元素拖拽到另一个元素，在 ondragover 需要阻止浏览器默认行为
+ -->
+    <div class="box" draggable="true"></div>
+    <div class="target"></div>
+    <script>
+        var target = document.querySelector('.target');
+        target.ondragover = function(e) {
+            e.preventDefault();
+            console.log('你来了');
+        }
+        target.ondrop = function() {
+            console.log('你掉了');
+        }
+    </script>
+</body>
+
+</html>

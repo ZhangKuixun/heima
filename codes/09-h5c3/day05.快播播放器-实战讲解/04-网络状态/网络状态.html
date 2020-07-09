@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // h5中提供了两个可以监听网络状态变化事件
+        // ononline 连网
+        // onoffline 断网
+        window.ononline = function() {
+            console.log("连接网络");
+        }
+        window.onoffline = function() {
+            console.log("断开网络");
+        }
+    </script>
+</body>
+
+</html>

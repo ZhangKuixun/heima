@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+  h5中新增了拖拽事件，原则上有所有元素都可以被拖拽，默认情况下只有图片和链接可以拖拽
+  如果需要被拖拽，设置一个属性：draggable = 'true';
+  拖拽元素事件：
+      ondragstart 开始拖拽
+      ondrag 拖拽中
+      ondragend 拖拽结束
+  目标元素事件：
+      ondragover 当拖拽元素在目标元素上方时触发
+      ondrop 当在目标元素上松开鼠标时
+ -->
+    <div draggable="true"></div>
+    <script>
+        var div = document.querySelector('div');
+        div.ondragstart = function() {
+            console.log("开始拖拽");
+        }
+        div.ondrag = function() {
+            console.log("拖拽中");
+        }
+        div.ondragend = function() {
+            console.log("拖拽结束");
+        }
+    </script>
+</body>
+
+</html>

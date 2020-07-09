@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+  本地存储：
+      cookie:
+          1.容量小
+          2.操作不方便
+          3.cookie中数据会自动发送给服务器
+  h5本地存储容器：
+      localStorage 本地存储：永久存储，除非手动删除
+      sessionStorage 会话存储：页面关闭，数据销毁，临时存储
+      不会自动发送给服务器，容量：大约5M，只能存储字符串
+      
+  相同的操作API：
+      setItem(k, v);// 设置数据
+      getItem(k);// 获取
+      removeItem(k);// 删除指定数据
+      clear();// 清空
+ -->
+    <button>localStorage设置</button>
+    <button>localStorage获取</button>
+    <button>localStorage删除</button>
+    <button>localStorage清空</button>
+    <script>
+        var btns = document.querySelectorAll("button");
+        // 添加
+        btns[0].onclick = function() {
+            localStorage.setItem('name', '狗蛋');
+        };
+        // 获取数据
+        btns[1].onclick = function() {
+            localStorage.getItem('name');
+        };
+        // 删除指定数据
+        btns[2].onclick = function() {
+            localStorage.removeItem('name');
+        };
+        // 清空数据
+        btns[3].onclick = function() {
+            localStorage.clear();
+        };
+    </script>
+</body>
+
+</html>

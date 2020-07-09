@@ -122,10 +122,11 @@
             </div>
         </div>
         <ul class="list">
-            <li>视频1</li>
-            <li>视频2</li>
-            <li>视频3</li>
-            <li>视频4</li>
+            <!-- 以data-开头的数据都被保存在dataset中 -->
+            <li data-src='./videos/1.mp4'>视频1</li>
+            <li data-src='./videos/2.mp4'>视频2</li>
+            <li data-src='./videos/3.mp4'>视频3</li>
+            <li data-src='./videos/4.mp4'>视频4</li>
         </ul>
     </div>
     <script>
@@ -142,6 +143,7 @@
         var pin = document.querySelector('.in');
         var progress = document.querySelector('.progress');
         var volume = document.querySelector('.volume');
+        var full = document.querySelector('.btn-full');
 
         // 1.点击按钮，播放、暂停
         play.onclick = function() {
@@ -161,12 +163,24 @@
 
         // 视频播放和暂停时，变换播放和暂停按钮
         video.onplay = function() {
-            play.classList.remove('fa-play');
-            play.classList.add('fa-pause');
+            pauseImg();
         }
         video.onpause = function() {
-            play.classList.add('fa-play');
-            play.classList.remove('fa-pause');
+            startImg();
+        }
+
+        function pauseImg() {
+            if (play.classList.contains('fa-play')) {
+                play.classList.remove('fa-play');
+                play.classList.add('fa-pause');
+            }
+        }
+
+        function startImg() {
+            if (play.classList.contains('fa-pause')) {
+                play.classList.remove('fa-pause');
+                play.classList.add('fa-play');
+            }
         }
 
         // 2.播放视频，进度条同步更新
@@ -195,6 +209,26 @@
             console.log(this.value);
             video.volume = this.value / 100;
         }
+
+        // 5.全屏播放
+        full.onclick = function() {
+            // h5提供的全屏，任何元素都可以调用这个方法
+            video.requestFullscreen();
+        }
+
+        // 6.列表切换视频
+        document.querySelectorAll('li').forEach(function(v, i) {
+            v.onclick = function() {
+                // 获取自己data-src属性负值给video的src
+                video.src = this.dataset.src;
+
+                pauseImg();
+                pin.style.width = 0 + "%";
+
+                video.load(); // 重新加载资源
+                video.play(); // 播放视频
+            }
+        });
     </script>
 </body>
 

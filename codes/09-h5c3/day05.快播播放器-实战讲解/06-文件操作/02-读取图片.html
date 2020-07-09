@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .info {
+            min-width: 500px;
+            min-height: 200px;
+            border: 1px solid red;
+        }
+        
+        pre {
+            color: red;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="file">
+    <div class="info"><img src="" alt=""></div>
+    <script>
+        // h5新增了文件操作功能，网页可以之间读取文件内容
+        // 1.当文件域标签选中文件后，获取选图片，显示在网页
+        document.querySelector('input').onchange = function() {
+            // 获取选中的第一个文件
+            var file = this.files[0];
+            // 读取文件url
+            var fr = new FileReader();
+            // 读取文件url地址
+            fr.readAsDataURL(file);
+            // 当读取完成后，获取读取结果
+            fr.onload = function() {
+                var url = fr.result;
+                // 给img赋值src属性
+                document.querySelector('img').src = url;
+            }
+        }
+    </script>
+</body>
+
+</html>
