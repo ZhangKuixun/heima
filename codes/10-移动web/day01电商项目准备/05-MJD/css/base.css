@@ -1,0 +1,84 @@
+/* 样式重置 */
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* 去掉移动端点击高亮效果 */
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  font-size: 14px;
+  font-family: 'Microsoft Yahei', 'Courier New', Courier, monospace;
+}
+ul,
+ol {
+  list-style: none;
+}
+a,
+a:hover {
+  text-decoration: none;
+  color: #333;
+}
+input {
+  /* 边框 */
+  border: none;
+  /* 轮廓线 */
+  outline: none;
+  /* 去除表单在移动端的阴影、3D效果 */
+  -webkit-appearance: none;
+}
+/* 公共样式 */
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+/* 清除浮动 */
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+  /* 让为元素在页面中看不见 */
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+}

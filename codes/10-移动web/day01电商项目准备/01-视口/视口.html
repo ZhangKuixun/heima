@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- 
+    设置移动端视口:
+        在移动浏览器上，当页面宽度超出了设备，浏览器内部虚拟一个页面容器，将页面容器缩放到设备那么大，再进行展示。
+    -->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no">
+    <!-- 
+        width=device-width：视口的宽度，设为与设备的宽一样
+        height=device-height：视口的高度，设为与设备的高一样
+        initial-scale=1.0：初始化缩放默认0.4
+        user-scalable=no：是否允许用户手动缩放页面，yes/no  1/0，默认值 yes
+        下面两个属性必须user-scalable必须设置为yes才有意义
+            minimum-scale=1：缩小最小比例，小于或等于maximum-scale
+            maximum-scale=1：放大最大比例，它必须大于或等于minimum-scale
+
+        注意：
+            viewport 标签只对移动端浏览器有效，对 PC 端浏览器是无效的
+            当缩放比例为 100% 时，dip 宽度 = CSS 像素宽度 = 理想视口的宽度 = 布局视口的宽度
+            单独设置 initial-scale 或 width 都会有兼容性问题，所以设置布局视口为理想视口的最佳方法是同时设置这两个属性
+            即使设置了 user-scalable = no，在 Android Chrome 浏览器中也可以强制启用手动缩放
+     -->
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div {
+            width: 100%;
+            background: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</div>
+</body>
+
+</html>

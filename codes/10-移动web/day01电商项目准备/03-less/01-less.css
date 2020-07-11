@@ -1,0 +1,74 @@
+/* 变量 */
+.box {
+  width: 200px;
+  background-color: #2323ee;
+}
+.box1 {
+  color: #2323ee;
+}
+.box2 {
+  color: #2323ee;
+}
+/* 混入 */
+.box3 {
+  margin: 100px;
+  padding: 100px;
+}
+.box4 {
+  font-size: 40px;
+  border-radius: 50%;
+}
+.box5 {
+  color: #2323ee;
+  margin: 100px;
+  padding: 100px;
+  font-size: 40px;
+  border-radius: 50%;
+}
+/* 函数 */
+/* 
+传参：
+    @r 圆角角度
+    :5px 默认值
+*/
+.box6 {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  border: 3px solid pink;
+}
+.box7 {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.box8 {
+  width: 2397.66666667px;
+  height: 219px;
+}
+/* 嵌套 */
+.nav {
+  width: 1000px;
+}
+.nav ul {
+  list-style: none;
+}
+.nav ul li {
+  float: left;
+  width: 100px;
+  height: 100px;
+}
+.nav ul li:hover {
+  background-color: green;
+}
+.nav ul li::before {
+  content: "";
+  position: absolute;
+}
+.nav ul li:hover {
+  color: red;
+}

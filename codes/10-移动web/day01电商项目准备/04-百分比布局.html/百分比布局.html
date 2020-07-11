@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 80%;
+            height: 200px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+        
+        .box>div {
+            width: 33.33%;
+            height: 100%;
+            background-color: #f99;
+            float: left;
+        }
+        
+        .box>div:nth-child(2) {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+    百分比布局也叫流式布局，主要用于宽度自适应布局
+    高度自适应：rem
+   -->
+    <div class="box">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body>
+
+</html>
