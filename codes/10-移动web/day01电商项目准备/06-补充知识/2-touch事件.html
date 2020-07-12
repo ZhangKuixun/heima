@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 200px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        // touchstart：触屏开始
+        // touchmove：触屏移动
+        // touchend：触屏结束
+        // touchcancel：系统取消触屏时触发，比如来了电话
+
+        var box = document.querySelector('.box');
+
+        // 可以通过事件对象获取该事件相关的信息
+        // event对象中，可以有三个对象可以获取触屏的数据：
+        //     targetTouches：目标元素上的触屏数据，如：把触屏事件帮给box就记录box；
+        //     touches：记录屏幕上所有触屏数据，如：一根手指在屏上面滑，一根手指在屏下面滑，会记录两个手指的数据；
+        //     changedTouches：记录触屏状态改变时的触屏数据；
+        // 上面三个都是伪数组
+        box.ontouchstart = function(e) {
+            console.log('触屏开始');
+            // console.log(e);
+            // targetTouches是一个伪数组，可以放n个手指的数据
+            console.log(e.targetTouches[0].clientX);
+            console.log(e.targetTouches[0].clientY);
+        }
+        box.ontouchmove = function() {
+            console.log("触屏移动");
+        }
+        box.ontouchend = function() {
+            console.log('触屏结束');
+        }
+    </script>
+</body>
+
+</html>
