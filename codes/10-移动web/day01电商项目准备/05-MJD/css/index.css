@@ -83,7 +83,6 @@ body {
 .jd-banner ol {
   position: absolute;
   left: 50%;
-  bottom: 10px;
   transform: translateX(-50%);
 }
 .jd-banner ol li {
