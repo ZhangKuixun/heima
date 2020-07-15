@@ -211,29 +211,24 @@ function banner() {
         setTranslateX(x);
     }
     banner.ontouchend = function(e) {
-        if (distanceX > w / 3) {
+        if (Math.abs(distanceX) > w / 3) {
             //切换图片
             if (distanceX < 0) {
                 //左滑 下一张
                 index++;
-                var x = -index * w;
-                setTranslateX(x);
-            } else {
+            } else if (distanceX > 0) {
                 //右滑 上一张
                 index--;
-                var x = -index * w;
-                setTranslateX(x);
             }
         }
 
-        if (distanceX < w / 3) {
-            //不切换
-            var x = -index * w;
-            setTranslateX(x);
-        }
+        removeTransition();
+        // 添加过渡
+        setTransition();
+        // 根据index的变化，让ul移动
+        var x = -index * w;
+        setTranslateX(x);
     }
-
-
 
     function setPoint(i) {
         points.forEach(function(v, i) {

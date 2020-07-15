@@ -82,3 +82,16 @@ input {
   height: 0;
   visibility: hidden;
 }
+.jd-sprite {
+  background-image: url('../images/jl.jpg');
+}
+body {
+  background-color: #ccc;
+}
+.layout {
+  height: 1000px;
+  max-width: 640px;
+  min-width: 320px;
+  background-color: #fff;
+  margin: 0 auto;
+}
