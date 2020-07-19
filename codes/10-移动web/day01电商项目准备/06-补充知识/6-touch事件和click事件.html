@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100%;
+            height: 200px;
+            background-color: #f99;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script>
+        var box = document.querySelector('.box');
+        // box.onclick = function() {
+        //     console.log('click');
+        // }
+        // box.ontouchstart = function() {
+        //     console.log('start');
+        // }
+        // box.ontouchmove = function() {
+        //     console.log('move');
+        // }
+        // box.ontouchend = function() {
+        //     console.log('end');
+        // };
+        // 输出: start-end-click; start-move-end
+
+        /* 用touch事件来做click */
+        var move = false; // 是否移动
+        var startT = 0; // 起始时间
+        box.ontouchstart = function() {
+            startT = Date.now();
+        }
+        box.ontouchmove = function() {
+            move = true;
+        }
+        box.ontouchend = function() {
+            var t = Date.now() - startT;
+            console.log(t);
+            if (t < 100 && !move) {
+                console.log("click");
+            }
+            move = false;
+            startT = 0;
+        };
+    </script>
+</body>
+
+</html>

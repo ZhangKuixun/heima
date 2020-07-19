@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 50%;
+            height: 100px;
+            background-color: green;
+            margin: 100px auto;
+            /* 调用 */
+            animation: down 1s;
+        }
+        
+        @keyframes down {
+            0% {
+                transform: translateY(-2000px);
+            }
+            75% {
+                transform: translateY(20px);
+            }
+            85% {
+                transform: translateY(-10px);
+            }
+            93% {
+                transform: translateY(5px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

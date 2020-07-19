@@ -1,7 +1,7 @@
 /* 样式重置 */
 body,div,ul,li,ol,h1,h2,h3,h4,h5,h6,input,textarea,select,p,dl,dt,dd,a,
 img,button,form,table,th,tr,td,tbody,article,aside,details,figcaption,figure,
-footer,header,menu,nav,section{
+footer,header,menu,nav,section,span{
 	margin:0;
   padding:0;
   -webkit-box-sizing: border-box;
@@ -40,6 +40,14 @@ input{
 .fr{
   float: right;
 }
+
+.hide{
+  display: none!important;
+}
+.show{
+  display: block!important;
+}
+
 /* 清除浮动 */
 .clearfix::before,
 .clearfix::after{
@@ -54,15 +62,48 @@ input{
 
 .jd-sprite{
   background-image: url('../images/jl.jpg');
+  background-size: 200px 200px;
 }
 
+/* 公共布局 */
 body{
   background-color: #ccc;
 }
+
+/* 公共页面大小 */
 .layout{
   height: 1000px;
   max-width: 640px;
   min-width: 320px;
   background-color: #fff;
   margin: 0 auto;
+}
+
+/* 公共头部 */
+.header{
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 44px;
+  background-image: linear-gradient(#eee, #bbb);
+  .back,
+  .menu{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 44px;
+    height: 44px;
+    padding: 11px;
+    background-position: -21px 0;
+    /* 背景原点 */
+    background-origin: content-box;
+    /* 背景裁剪 */
+    background-clip: content-box;
+  }
+  .menu{
+    left: auto;
+    right: 0;
+    background-position: -60px 0;
+  }
+  
 }

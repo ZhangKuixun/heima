@@ -144,7 +144,7 @@ function banner() {
         setTranslateX(x);
     }, 2000);
 
-    // 在每次ul移动结束瞬间进行判断
+    // 每次动画结束后，判断index值是否月结
     ul.addEventListener('transitionend', function() {
         check();
     })
@@ -235,6 +235,17 @@ function banner() {
             v.classList.remove('current');
         })
         points[i].classList.add('current');
+    }
+
+    // 当屏幕宽度变换时，动态设置w的宽度
+    // onresize 当浏览可以是区域宽度发生改变时触发
+    window.onresize = function() {
+        w = banner.offsetWidth;
+        // 添加过渡
+        removeTransition();
+        // 根据index的变化，让ul移动
+        var x = -index * w;
+        setTranslateX(x);
     }
 
     // 添加过渡

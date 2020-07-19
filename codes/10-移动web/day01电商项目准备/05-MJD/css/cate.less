@@ -8,14 +8,10 @@ html,body{
   padding-top: 44px;
 }
 
+/* 头部 */
 .cate-header{
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 44px;
-  background-image: linear-gradient(#eee, #bbb);
-  /* 如果一个盒子设置overflow:hidden，它不会和浮动元素产生重叠，不会有交集 */
+  /* 如果一个盒子设置 overflow:hidden ，它不会和浮动元素产生重叠，不会有交集 */
   form{
     width: 100%;
     height: 100%;
@@ -27,40 +23,56 @@ html,body{
       padding-left: 5px;
     }
   }
-  .back,.menu{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 44px;
-    height: 44px;
-    padding: 11px;
-    background-position: -31px 0;
-    /* 背景原点 */
-    background-origin: content-box;
-    /* 背景裁剪 */
-    background-clip: content-box;
-  }
-  .menu{
-    left: auto;
-    right: 0;
-    background-position: -86px 0;
-  }
-  
 }
 
-
+/* 主体 */
 .cate-main{
   height: 100%;
-  background-color: skyblue;
+  // 左边
   .m-left{
     float: left;
     width: 90px;
     height: 100%;
-    background: #fff;
+    // overflow: auto;// 上下滚动
+    overflow: hidden;
+    ul{
+      li{
+        a{
+          display:block;
+          width: 90px;
+          height: 50px;
+          text-align: center;
+          line-height: 50px;
+          border-right: 1px solid red;
+          border-bottom: 1px solid red;
+        }
+      }
+    }
   }
+  
+  // 右边
   .m-right{
     height: 100%;
-    background-color: slategrey;
-    overflow: hidden;
+    /* 用iscroll插件 */
+    // overflow: auto;
+    overflow: hidden;// 如果一个盒子设置overflow:hidden，它不会和浮动元素产生重叠，不会有交集
+    padding: 5px;
+    .cate-banner{
+      width: 100%;
+      height: 100px;
+    }
+    h4{
+      font-size: 24px;
+    }
+    ul{
+      li{
+        float: left;
+        width: 33.33%;
+        text-align: center;
+        img{
+          width: 70%;
+        }
+      }
+    }
   }
 }

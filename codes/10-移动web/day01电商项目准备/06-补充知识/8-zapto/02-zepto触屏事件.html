@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            /* width: 200px; */
+            height: 200px;
+            background-color: red;
+            /* margin: 20px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <script src="./src/zepto.js"></script>
+    <script src="./src/event.js"></script>
+    <script src="./src/touch.js"></script>
+    <script>
+        // touch
+        $('.box').tap(function() {
+            console.log('tap我了');
+        });
+        // 长按
+        $('.box').longTap(function() {
+            console.log('longTap我了');
+        });
+
+        // 滑动
+        $('.box').swipe(function() {
+            console.log('swipe我了');
+        });
+        $('.box').swipeLeft(function() {
+            console.log('swipeLeft我了');
+        });
+        $('.box').swipeRight(function() {
+            console.log('swipeRight我了');
+        });
+        $('.box').swipeUp(function() {
+            console.log('swipeUp我了');
+        });
+        $('.box').swipeDown(function() {
+            console.log('swipeDown我了');
+        });
+    </script>
+</body>
+
+</html>

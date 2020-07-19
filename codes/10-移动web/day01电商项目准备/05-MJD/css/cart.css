@@ -1,0 +1,165 @@
+/* 头部 */
+.cart-header {
+  position: relative;
+}
+.cart-header h4 {
+  text-align: center;
+  line-height: 44px;
+  font-size: 22px;
+}
+/* 安全模块 */
+.cart-safe {
+  height: 33px;
+  border-bottom: 1px solid #ccc;
+  line-height: 33px;
+  text-align: center;
+}
+.cart-safe p {
+  padding-left: 30px;
+  display: inline-block;
+  background: url('../images/salfe.jpg') no-repeat;
+  background-size: 18px 18px;
+  background-position: 7px 7px;
+}
+/* 商品模块 */
+.cart-product {
+  position: relative;
+  margin-top: 10px;
+}
+.cart-product .chk {
+  position: absolute;
+  left: 7px;
+  top: 7px;
+  width: 20px;
+  height: 20px;
+  background-position: -180px -89px;
+}
+.cart-product .p-title {
+  height: 34px;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  padding-left: 34px;
+  line-height: 32px;
+  font-size: 12px;
+  color: #999;
+}
+.cart-product .p-title .logo {
+  margin-top: 9px;
+  margin-right: 10px;
+  width: 20px;
+  height: 15px;
+}
+.cart-product .p-title .free {
+  margin-right: 10px;
+}
+.cart-product .p-main .item {
+  position: relative;
+  padding-left: 34px;
+  height: 100px;
+  border-bottom: 1px solid #ccc;
+}
+.cart-product .p-main .item .content {
+  height: 100px;
+  padding: 10px;
+}
+.cart-product .p-main .item .content .detail {
+  width: 80px;
+  height: 80px;
+  float: left;
+}
+.cart-product .p-main .item .content .info {
+  height: 100%;
+  overflow: hidden;
+  padding: 0 10px;
+}
+.cart-product .p-main .item .content .info .text {
+  font-size: 14px;
+  line-height: 16px;
+  height: 32px;
+}
+.cart-product .p-main .item .content .info .option {
+  margin-top: 17px;
+}
+.cart-product .p-main .item .content .info .option .num > * {
+  float: left;
+  width: 36px;
+  height: 30px;
+  border: 1px solid #999;
+  text-align: center;
+  line-height: 28px;
+  color: #999;
+  cursor: pointer;
+}
+.cart-product .p-main .item .content .info .option .num input {
+  border-left: none;
+  border-right: none;
+}
+.cart-product .p-main .item .content .info .option .del {
+  width: 18px;
+  height: 22px;
+  cursor: pointer;
+  margin-top: 3px;
+}
+.cart-product .p-main .item .content .info .option .del .del-up {
+  width: 18px;
+  height: 4px;
+  float: left;
+  background: url('../images/del_up.jpg') no-repeat;
+  background-size: 100% 100%;
+  /* 过渡 */
+  transition: transform 0.5s;
+}
+.cart-product .p-main .item .content .info .option .del .del-down {
+  width: 18px;
+  height: 18px;
+  float: left;
+  background: url('../images/del_down.jpg') no-repeat;
+  background-size: 100% 100%;
+}
+.cart-product .p-main .item .content .info .option .open .del-up {
+  transform: rotate(30deg);
+  transform-origin: right center;
+}
+.cart-product .p-main .item .content .info .option .shatDown .del-up {
+  transform: rotate(0deg);
+  transform-origin: right center;
+}
+/* 模态框 */
+.win-box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: none;
+}
+.win-box .del-box {
+  position: absolute;
+  left: 10%;
+  top: 30%;
+  width: 80%;
+  background-color: #fff;
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+}
+.win-box .del-box p {
+  font-size: 20px;
+  line-height: 80px;
+  border-bottom: 1px solid #ccc;
+}
+.win-box .del-box .btn-box {
+  padding-top: 10px;
+}
+.win-box .del-box .btn-box a {
+  width: 46%;
+  height: 40px;
+  border: 1px solid #2c2929;
+  border-radius: 10px;
+  line-height: 38px;
+}
+.win-box .del-box .btn-box .btn-ok {
+  background-color: red;
+  color: #fff;
+}
