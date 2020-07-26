@@ -20,12 +20,121 @@
       <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
     <![endif]-->
+    <style>
+        .wjs-navbar {
+            background-color: #fff;
+            border-color: #e7e7e7;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid #ccc;
+        }
+        
+        .wjs-navbar .navbar-brand {
+            color: #777;
+            height: 80px;
+            line-height: 50px;
+        }
+        
+        .wjs-navbar .navbar-brand .wjs_icon_logo {
+            color: #ff0000;
+            font-weight: 700;
+            font-size: 40px;
+            vertical-align: middle;
+        }
+        
+        .wjs-navbar .navbar-brand .wjs_icon_word {
+            color: #000;
+            font-weight: 700;
+            font-size: 30px;
+        }
+        
+        .wjs-navbar .navbar-brand:hover,
+        .wjs-navbar .navbar-brand:focus {
+            color: #5e5e5e;
+            background-color: transparent;
+        }
+        
+        .wjs-navbar .navbar-text {
+            color: #777;
+        }
+        
+        .wjs-navbar .navbar-nav>li>a {
+            color: #777;
+            height: 80px;
+            line-height: 50px;
+        }
+        
+        .wjs-navbar .navbar-nav>li>a:hover,
+        .wjs-navbar .navbar-nav>li>a:focus {
+            color: #333;
+            background-color: transparent;
+            border-bottom: 3px solid red;
+        }
+        
+        .wjs-navbar .navbar-nav>.active>a,
+        .wjs-navbar .navbar-nav>.active>a:hover,
+        .wjs-navbar .navbar-nav>.active>a:focus {
+            color: #555;
+            background-color: #e7e7e7;
+        }
+        
+        .wjs-navbar .navbar-nav>.disabled>a,
+        .wjs-navbar .navbar-nav>.disabled>a:hover,
+        .wjs-navbar .navbar-nav>.disabled>a:focus {
+            color: #ccc;
+            background-color: transparent;
+        }
+        
+        .wjs-navbar .navbar-toggle {
+            border-color: #ddd;
+        }
+        
+        .wjs-navbar .navbar-toggle:hover,
+        .wjs-navbar .navbar-toggle:focus {
+            background-color: #ddd;
+        }
+        
+        .wjs-navbar .navbar-toggle .icon-bar {
+            background-color: #888;
+        }
+        
+        .wjs-navbar .navbar-collapse,
+        .wjs-navbar .navbar-form {
+            border-color: #e7e7e7;
+        }
+        /* 移动端行高缩小 */
+        
+        @media screen and (max-width:768px) {
+            .wjs-navbar .navbar-brand {
+                color: #777;
+                height: 50px;
+                line-height: 20px;
+            }
+            .wjs-navbar .navbar-brand .wjs_icon_logo {
+                color: #ff0000;
+                font-size: 33px;
+                vertical-align: middle;
+            }
+            .wjs-navbar .navbar-brand .wjs_icon_word {
+                color: #000;
+                font-size: 24px;
+            }
+            .wjs-navbar .navbar-nav>li>a {
+                color: #777;
+                height: 50px;
+                line-height: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- 在bootstrap中，所有data-自定义属性，都和js效果相关，不要动它 -->
+    <!-- 
+        在bootstrap中，所有data-自定义属性，都和js效果相关，不要动它;
+        所有的class可以不用管他
+     -->
     <!-- navbar navbar-default: 导航条的基本样式 -->
-    <nav class="navbar navbar-default">
+    <nav class="navbar wjs-navbar">
         <!-- 响应式版心容器 -->
         <div class="container-fluid">
             <!-- 导航的头部 -->
@@ -44,7 +153,10 @@
           <span class="icon-bar"></span>
         </button>
                 <!-- 导航logo -->
-                <a class="navbar-brand" href="#">kevin</a>
+                <a class="navbar-brand" href="#">
+                    <span class="wjs_icon_logo">👏</span>
+                    <span class="wjs_icon_word">Kevin</span>
+                </a>
             </div>
 
             <!-- 导航主体，在电脑屏上显示 -->
