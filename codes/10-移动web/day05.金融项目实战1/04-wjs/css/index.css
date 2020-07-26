@@ -1,0 +1,21 @@
+a,
+a:hover {
+  color: #333;
+  text-decoration: none;
+}
+.wjs-header {
+  height: 40px;
+  border: 1px solid #ccc;
+}
+.wjs-header .row > div {
+  height: 40px;
+  border-right: 1px solid #ccc;
+  text-align: center;
+  line-height: 40px;
+}
+.wjs-header .row > div:last-child {
+  border-right: none;
+}
+.wjs-header .row > div btn-register {
+  padding: 0 10px;
+}
