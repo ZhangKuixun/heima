@@ -156,25 +156,25 @@ a:hover {
   /* 产品导航栏 */
   /* 产品内容 */
 }
-.wjs-product .wjs-tabs {
+.wjs-product .news-tabs {
   border-bottom: 1px solid #aaa;
   width: 800px;
   overflow: hidden;
 }
-.wjs-product .wjs-tabs > li {
+.wjs-product .news-tabs > li {
   float: left;
 }
-.wjs-product .wjs-tabs > li > a {
+.wjs-product .news-tabs > li > a {
   height: 50px;
   line-height: 30px;
 }
-.wjs-product .wjs-tabs > li > a:hover {
+.wjs-product .news-tabs > li > a:hover {
   border-bottom: 2px solid red;
   background: transparent;
 }
-.wjs-product .wjs-tabs > li.active > a,
-.wjs-product .wjs-tabs > li.active > a:hover,
-.wjs-product .wjs-tabs > li.active > a:focus {
+.wjs-product .news-tabs > li.active > a,
+.wjs-product .news-tabs > li.active > a:hover,
+.wjs-product .news-tabs > li.active > a:focus {
   color: #333;
   border-bottom: 2px solid red;
   background: transparent;
@@ -242,6 +242,7 @@ a:hover {
   border-bottom: 1px solid #ccc;
   border-top: 1px solid #ccc;
   padding: 40px 0;
+  /* table头部 */
 }
 .wjs-news h4 {
   position: relative;
@@ -257,5 +258,27 @@ a:hover {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  border: 1px solid red;
+  border: 1px solid #ccc;
+}
+.wjs-news .row .news-tabs > li {
+  float: left;
+  margin-bottom: 60px;
+}
+.wjs-news .row .news-tabs > li > a {
+  display: block;
+  width: 60px;
+  height: 60px;
+  background-color: #ccc;
+  border-radius: 50%;
+  line-height: 40px;
+  text-align: center;
+}
+.wjs-news .row .news-tabs > li > a:hover {
+  background-color: red;
+}
+.wjs-news .row .news-tabs > li.active > a,
+.wjs-news .row .news-tabs > li.active > a:hover,
+.wjs-news .row .news-tabs > li.active > a:focus {
+  background-color: red;
+  color: #fff;
 }
