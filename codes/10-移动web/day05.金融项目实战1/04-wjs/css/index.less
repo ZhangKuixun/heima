@@ -1,10 +1,18 @@
 body{
   height: 2500px;
 }
+/* 文字单行益处，加省略号 */
+.cut-one{
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 a,a:hover{
   color: #333;
   text-decoration: none;
 }
+
 // 头部
 .wjs-header{
   height: 40px;
@@ -19,6 +27,21 @@ a,a:hover{
     }
     btn-register{
      padding: 0 10px; 
+    }
+  }
+  .m-wjs{
+    position: relative;
+    .code{
+      position: absolute;
+      left: -20px;
+      top: 32px;
+      z-index: 999;
+      display: none;
+    }
+  }
+  .m-wjs:hover{
+    .code{
+      display: block;
     }
   }
 }
@@ -301,11 +324,12 @@ a,a:hover{
 
   /* table头部 */
   .row {
-    .news-tabs {
-    }
     .news-tabs > li {
       float: left;
       margin-bottom: 60px;
+      &:last-child{
+        margin-bottom: 0;
+      }
     }
     .news-tabs > li > a {
       display: block;
@@ -326,4 +350,90 @@ a,a:hover{
       color: #fff;
     }
   }
+
+  /* 引导线 */
+  .line{
+    width: 1px;
+    height: 100%;
+    border-right: 1px dashed #000;
+    position: absolute;
+    left: 44px;
+    top: 0;
+  }
+
+  /* 导航主体 */
+  .tab-content{
+    ul{
+      li{
+        line-height: 40px;
+        .cut-one;
+      }
+    }
+  }
+}
+
+/* 通过媒体查询来设置新闻导航样式，小于992px，就这样做 */
+@media screen and (max-width: 992px) {
+  .wjs-news{
+    .row{// 只写row，权重不够
+      .news-tabs > li{
+        margin-bottom: 0;
+        width: 25%;
+        a{
+          margin: 0 auto;
+        }
+      }
+    }
+  }
+}
+
+/* 合伙人 */
+.wjs-partner{
+  padding: 30px 0;
+  h4{
+    font-size: 60px;
+    text-align: center;
+  }
+  ul{
+    li{
+      list-style: none;
+      display: inline-block;
+      font-size: 60px;
+      margin: 0 auto;
+      color:#f99;
+      padding:0 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .wjs-partner{
+    h4{
+      font-size: 40px;
+    }
+    ul{
+      li{
+        font-size: 40px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wjs-partner{
+    h4{
+      font-size: 24px;
+    }
+    ul{
+      li{
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+// 模态框
+.panel.panel-primary{
+  margin-bottom: 0;
+  border:none;
 }

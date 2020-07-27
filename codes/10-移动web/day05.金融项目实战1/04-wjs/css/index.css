@@ -1,6 +1,12 @@
 body {
   height: 2500px;
 }
+/* 文字单行益处，加省略号 */
+.cut-one {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 a,
 a:hover {
   color: #333;
@@ -21,6 +27,19 @@ a:hover {
 }
 .wjs-header .row > div btn-register {
   padding: 0 10px;
+}
+.wjs-header .m-wjs {
+  position: relative;
+}
+.wjs-header .m-wjs .code {
+  position: absolute;
+  left: -20px;
+  top: 32px;
+  z-index: 999;
+  display: none;
+}
+.wjs-header .m-wjs:hover .code {
+  display: block;
 }
 .wjs-nav {
   /* 移动端行高缩小 */
@@ -243,6 +262,8 @@ a:hover {
   border-top: 1px solid #ccc;
   padding: 40px 0;
   /* table头部 */
+  /* 引导线 */
+  /* 导航主体 */
 }
 .wjs-news h4 {
   position: relative;
@@ -264,6 +285,9 @@ a:hover {
   float: left;
   margin-bottom: 60px;
 }
+.wjs-news .row .news-tabs > li:last-child {
+  margin-bottom: 0;
+}
 .wjs-news .row .news-tabs > li > a {
   display: block;
   width: 60px;
@@ -281,4 +305,64 @@ a:hover {
 .wjs-news .row .news-tabs > li.active > a:focus {
   background-color: red;
   color: #fff;
+}
+.wjs-news .line {
+  width: 1px;
+  height: 100%;
+  border-right: 1px dashed #000;
+  position: absolute;
+  left: 44px;
+  top: 0;
+}
+.wjs-news .tab-content ul li {
+  line-height: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+/* 通过媒体查询来设置新闻导航样式，小于992px，就这样做 */
+@media screen and (max-width: 992px) {
+  .wjs-news .row .news-tabs > li {
+    margin-bottom: 0;
+    width: 25%;
+  }
+  .wjs-news .row .news-tabs > li a {
+    margin: 0 auto;
+  }
+}
+/* 合伙人 */
+.wjs-partner {
+  padding: 30px 0;
+}
+.wjs-partner h4 {
+  font-size: 60px;
+  text-align: center;
+}
+.wjs-partner ul li {
+  list-style: none;
+  display: inline-block;
+  font-size: 60px;
+  margin: 0 auto;
+  color: #f99;
+  padding: 0 10px;
+}
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  .wjs-partner h4 {
+    font-size: 40px;
+  }
+  .wjs-partner ul li {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .wjs-partner h4 {
+    font-size: 24px;
+  }
+  .wjs-partner ul li {
+    font-size: 24px;
+  }
+}
+.panel.panel-primary {
+  margin-bottom: 0;
+  border: none;
 }

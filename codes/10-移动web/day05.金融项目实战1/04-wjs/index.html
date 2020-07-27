@@ -29,7 +29,9 @@
             <div class="row">
                 <div class="col-md-2">
                     <span class="glyphicon glyphicon-phone"></span>
-                    <a href="#">手机微金所</a>
+                    <a href="#" class="m-wjs">手机微金所
+                        <img class="code" src="./images/app.png" alt="">
+                    </a>
                     <span class="glyphicon glyphicon-menu-down"></span>
                 </div>
                 <div class="col-md-5">
@@ -42,7 +44,7 @@
                 </div>
                 <div class="col-md-3">
                     <a href="#" class="btn btn-danger btn-xs btn-register">免费注册</a>
-                    <a href="#">登录</a>
+                    <a href="#" data-target=".login-box" data-toggle="modal">登录</a>
                 </div>
             </div>
         </div>
@@ -438,18 +440,31 @@
                     <div></div>
                 </div>
                 <div class="col-md-1">
+                    <div class="line hidden-sm hidden-xs"></div>
                     <!-- tab 导航 -->
                     <ul class="nav news-tabs">
-                        <li class="active"><a href="#1" data-toggle="tab"><span class="glyphicon glyphicon-dashboard"></span></a></li>
+                        <li class="active"><a href="#1" data-toggle="tab"><span
+                                    class="glyphicon glyphicon-dashboard"></span></a></li>
                         <li><a href="#2" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span></a></li>
                         <li><a href="#3" data-toggle="tab"><span class="glyphicon glyphicon-bell"></span></a></li>
-                        <li><a href="#4" data-toggle="tab"><span class="glyphicon glyphicon-certificate"></span></a></li>
+                        <li><a href="#4" data-toggle="tab"><span class="glyphicon glyphicon-certificate"></span></a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col-md-7">
                     <!-- tab 内容 -->
                     <div class="tab-content">
-                        <div class="tab-pane active" id="1">..1.</div>
+                        <div class="tab-pane active" id="1">
+                            <ul>
+                                <li><a href="#">2020-7-27还款，一周还款公告，不还款，将强行催债</a></li>
+                                <li><a href="#">2020-7-27还款，一周还款公告，不还款，将强行催债</a></li>
+                                <li><a href="#">2020-7-27还款，一周还款公告，不还款，将强行催债</a></li>
+                                <li><a href="#">2020-7-27还款，一周还款公告，不还款，将强行催债</a></li>
+                                <li><a href="#">2020-7-27还款，一周还款公告，不还款，将强行催债</a></li>
+                                <li><a href="#">2020-7-27还款，一周还款公告，不还款，将强行催债</a></li>
+                                <li><a href="#">2020-7-27还款，一周还款公告，不还款，将强行催债</a></li>
+                            </ul>
+                        </div>
                         <div class="tab-pane" id="2">..2.</div>
                         <div class="tab-pane" id="3">..3.</div>
                         <div class="tab-pane" id="4">..4.</div>
@@ -458,6 +473,54 @@
             </div>
         </div>
     </div>
+
+    <!-- 合作伙伴 -->
+    <div class="wjs-partner">
+        <h4>合作伙伴</h4>
+        <ul>
+            <li><span>伙伴1</span></li>
+            <li><span>伙伴2</span></li>
+            <li><span>伙伴3</span></li>
+            <li><span>伙伴4</span></li>
+            <li><span>伙伴5</span></li>
+        </ul>
+    </div>
+
+    <!-- 模态框 -->
+    <div class="modal fade login-box" tabindex="-1">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <!-- 面板 -->
+                <div class="panel panel-primary">
+                    <div class="panel-heading">用户登录</div>
+                    <div class="panel-body">
+                        <!-- 表单 -->
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label for="email" class="col-xs-3 control-label">邮箱:</label>
+                                <div class="col-xs-9">
+                                    <input type="email" class="form-control" id="email" placeholder="邮箱">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="col-xs-3 control-label">密码:</label>
+                                <div class="col-xs-9">
+                                    <input type="password" class="form-control" id="password" placeholder="密码">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="panel-footer clearfix">
+                        <div class="col-xs-12">
+                            <a href="#" class="btn btn-danger pull-left">登录</a>
+                            <a href="#" class="btn btn-primary pull-right" data-dismiss="modal">取消</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
     <script src="./lib/jquery-1.12.4/jquery.min.js"></script>
