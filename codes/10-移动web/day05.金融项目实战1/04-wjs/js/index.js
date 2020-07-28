@@ -10,4 +10,32 @@ function touchBanner() {
     var moveX = 0;
     var distanceX = 0;
 
+    var banner = $('.wjs-banner');
+    banner.on('touchstart', function(e) {
+        // console.log(e.originalEvent); // 获取原始dom事件对象；
+        // 记录实际位置，停止定时器；
+        startX = e.originalEvent.targetTouches[0].clientX;
+        // console.log(startX);
+        $('.carousel').carousel('pause');
+    });
+    banner.on('touchmove', function(e) {
+        moveX = e.originalEvent.targetTouches[0].clientX;
+        distanceX = moveX - startX;
+    });
+    banner.on('touchend', function(e) {
+        if (distanceX > 0) {
+            // 右滑，上一张
+            $('.carousel').carousel('prev');
+        }
+        if (distanceX < 0) {
+            // 左滑，下一张
+            $('.carousel').carousel('next');
+        }
+
+        startX = 0;
+        moveX = 0;
+        distanceX = 0;
+
+        $('.carousel').carousel('cycle');
+    });
 }
