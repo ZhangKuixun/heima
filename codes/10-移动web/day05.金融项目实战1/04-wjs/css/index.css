@@ -175,25 +175,27 @@ a:hover {
   /* 产品导航栏 */
   /* 产品内容 */
 }
-.wjs-product .news-tabs {
-  border-bottom: 1px solid #aaa;
-  width: 800px;
-  overflow: hidden;
+.wjs-product .cut {
+  border: 1px solid red;
+  overflow: auto;
 }
-.wjs-product .news-tabs > li {
+.wjs-product .wjs-tabs {
+  border-bottom: 1px solid #aaa;
+}
+.wjs-product .wjs-tabs > li {
   float: left;
 }
-.wjs-product .news-tabs > li > a {
+.wjs-product .wjs-tabs > li > a {
   height: 50px;
   line-height: 30px;
 }
-.wjs-product .news-tabs > li > a:hover {
+.wjs-product .wjs-tabs > li > a:hover {
   border-bottom: 2px solid red;
   background: transparent;
 }
-.wjs-product .news-tabs > li.active > a,
-.wjs-product .news-tabs > li.active > a:hover,
-.wjs-product .news-tabs > li.active > a:focus {
+.wjs-product .wjs-tabs > li.active > a,
+.wjs-product .wjs-tabs > li.active > a:hover,
+.wjs-product .wjs-tabs > li.active > a:focus {
   color: #333;
   border-bottom: 2px solid red;
   background: transparent;

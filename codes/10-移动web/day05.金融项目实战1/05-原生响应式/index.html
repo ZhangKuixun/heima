@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原生响应式</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <!-- 头部 -->
+    <div class="header container hide-sm hide-xs">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+
+    <!-- 导航 -->
+    <div class="nav container">
+        <ul class="left fl hide-xs">
+            <li>导航</li>
+            <li>导航</li>
+            <li>导航</li>
+            <li>导航</li>
+            <li>导航</li>
+            <li>导航</li>
+        </ul>
+        <ul class="right rg hide-sm hide-xs">
+            <li>导航</li>
+            <li>导航</li>
+            <li>导航</li>
+        </ul>
+        <span class="btn">三</span>
+    </div>
+
+    <!-- 轮播图 -->
+    <div class="banner">
+        <div class="pc-img hide-xs"></div>
+        <div class="m-img"></div>
+    </div>
+
+    <!-- 产品 -->
+    <div class="product">
+        <div class="col">
+            <div class="in"></div>
+        </div>
+        <div class="col">
+            <div class="in"></div>
+        </div>
+        <div class="col">
+            <div class="in"></div>
+        </div>
+        <div class="col">
+            <div class="in"></div>
+        </div>
+        <div class="col">
+            <div class="in"></div>
+        </div>
+        <div class="col">
+            <div class="in"></div>
+        </div>
+    </div>
+
+    <!-- 新闻模块 -->
+    <div class="news">
+        <div class="col"></div>
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+
+    <script>
+        document.querySelector('.btn').onclick = function() {
+            document.querySelector('.left').classList.toggle('hide-xs');
+        }
+    </script>
+</body>
+
+</html>

@@ -204,27 +204,28 @@ a,a:hover{
 .wjs-product{
   background-color: #ccc;
   padding: 30px 0;
-
-  /* 产品导航栏 */
-  .news-tabs {
-    border-bottom: 1px solid #aaa;
-    width: 800px;
-    overflow: hidden;
+  .cut{
+    border: 1px solid red;
+    overflow: auto;
   }
-  .news-tabs > li {
+  /* 产品导航栏 */
+  .wjs-tabs {
+    border-bottom: 1px solid #aaa;
+  }
+  .wjs-tabs > li {
     float: left;
   }
-  .news-tabs > li > a {
+  .wjs-tabs > li > a {
     height: 50px;
     line-height: 30px;
   }
-  .news-tabs > li > a:hover {
+  .wjs-tabs > li > a:hover {
     border-bottom: 2px solid red;
     background: transparent;
   }
-  .news-tabs > li.active > a,
-  .news-tabs > li.active > a:hover,
-  .news-tabs > li.active > a:focus {
+  .wjs-tabs > li.active > a,
+  .wjs-tabs > li.active > a:hover,
+  .wjs-tabs > li.active > a:focus {
     color: #333;
     border-bottom: 2px solid red;
     background: transparent;

@@ -1,6 +1,9 @@
 // 触屏轮播图
 touchBanner();
 
+// 给ul设置宽度
+setWidth();
+
 // 实现触屏轮播图
 //  1.触屏开始，记录起始位置，停止定时器
 //  2.触屏移动，记录移动后位置，计算距离差值
@@ -38,4 +41,18 @@ function touchBanner() {
 
         $('.carousel').carousel('cycle');
     });
+}
+
+// 累加所有产品模块导航li长度；
+// jqery获取各种宽度：
+// width();           content
+// innerWidth();      content+padding
+// outerWidth();      content+padding+border
+// outerWidth(true);  content+padding+border+margin
+function setWidth() {
+    var w = 0;
+    $('.wjs-tabs li').each(function(index, ele) {
+        w += $(ele).outerWidth(true);
+    });
+    $('.wjs-tabs').width(w);
 }
