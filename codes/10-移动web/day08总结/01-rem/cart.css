@@ -1,0 +1,67 @@
+html {
+  font-size: 64px;
+}
+body {
+  background-color: #ccc;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+.cart-layout {
+  max-width: 10rem;
+  min-width: 5rem;
+  background-color: #fff;
+  height: 23.4375rem;
+}
+.cart-header {
+  position: relative;
+  height: 0.9375rem;
+  border-bottom: 1px solid #ccc;
+  padding: 0 0.9375rem;
+}
+.cart-header h4 {
+  height: 0.9375rem;
+  text-align: center;
+  line-height: 0.9375rem;
+  font-size: 0.46875rem;
+}
+.cart-header .back,
+.cart-header .menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.9375rem;
+  height: 0.9375rem;
+  text-align: center;
+  line-height: 0.9375rem;
+}
+.cart-header .menu {
+  left: auto;
+  right: 0;
+}
+.cart-main {
+  text-align: center;
+  padding-top: 0.9375rem;
+}
+.cart-main img {
+  width: 2.8125rem;
+  height: 2.8125rem;
+}
+.cart-main p {
+  margin-top: 0.625rem;
+  font-size: 0.375rem;
+}
+.cart-main .button {
+  display: block;
+  margin: 0.625rem auto;
+  border: 1px solid red;
+  width: 1.5625rem;
+  height: 0.78125rem;
+  text-align: center;
+  line-height: 0.78125rem;
+  border-radius: 0.15625rem;
+  color: red;
+  font-size: 0.375rem;
+  text-decoration: none;
+}
