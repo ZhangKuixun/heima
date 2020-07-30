@@ -35,6 +35,7 @@ body {
   height: 0.9375rem;
   text-align: center;
   line-height: 0.9375rem;
+  font-size: 0.3125rem;
 }
 .cart-header .menu {
   left: auto;
