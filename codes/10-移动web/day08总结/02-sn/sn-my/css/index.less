@@ -1,0 +1,132 @@
+html{
+  font-size: 64px;
+}
+body{
+  background-color: #ccc;
+}
+
+// 最外层
+.sn-layout{
+  height: 1500px;
+  max-width: 11.71875rem /* 750/64 */;
+  min-width: 5rem /* 320/64 */;
+  background-color: #fff;
+  margin: 0 auto;
+}
+
+//头部
+.sn-header{
+  /* 一个盒子只有定位，没有边偏移，就会在原来的位置变换不动，如果设置了left，就会跑去左边 */
+  position: fixed;
+  // left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  max-width: 11.71875rem /* 750/64 */;
+  background-color: #fabc09;
+  height: 1.40625rem /* 90/64 */;
+  padding: 0 1.40625rem /* 90/64 */;
+  form{
+    position: relative;
+    height: 100%;
+    padding-top: .234375rem /* 15/64 */;
+    &::before{
+      content: "";
+      position: absolute;
+      left: 0;
+      top: .234375rem /* 15/64 */;
+      width: .78125rem /* 50/64 */;
+      height: .9375rem /* 60/64 */;
+      background: url('../images/search.jpg') no-repeat center center;
+      background-size: .421875rem /* 27/64 */ .4375rem /* 28/64 */;
+    }
+    input{
+      width: 100%;
+      height: .9375rem /* 60/64 */;
+      line-height: .9375rem /* 60/64 */;
+      border-radius: .15625rem /* 10/64 */;
+      font-size: .375rem /* 24/64 */;
+      padding-left: .78125rem /* 50/64 */;
+    }
+  }
+  .cate,
+  .cart{
+    width: 1.40625rem /* 90/64 */;
+    height: 1.40625rem /* 90/64 */;
+    position: absolute;
+    left: 0;
+    top:0;
+    line-height: 1.40625rem /* 90/64 */;
+    text-align: center;
+    font-size: .375rem /* 24/64 */;
+  }
+  .cart{
+    left: auto;
+    right:0;
+  }
+}
+
+// 轮播图
+.sn-banner{
+  .img{
+    width: 100%;
+  }
+}
+
+// 导航
+.sn-nav{
+  ul{
+    li{
+      float: left;
+      width: 20%;
+      text-align: center;
+      margin-top: .46875rem /* 30/64 */;
+      img{
+        width: 1.40625rem /* 90/64 */;
+        height: 1.40625rem /* 90/64 */;
+      }
+      p{
+        font-size: .4375rem /* 28/64 */;
+      }
+    }
+  }
+}
+
+//信息
+.sn-info {
+  margin-top: .234375rem /* 15/64 */;
+  a{
+    float: left;
+    width: 50%;
+  }
+  img{
+    width: 100%;
+    display: block;
+  }
+}
+
+// 底部
+.sn-footer{
+  width: 100%;
+  height: 1.5625rem /* 100/64 */;
+  background-color: #fabc09;
+  position: fixed;
+  // left: 0;
+  bottom: 0;
+  max-width: 11.71875rem /* 750/64 */;
+  ul{
+    li{
+      float: left;
+      width: 20%;
+      text-align: center;
+      padding-top: .15625rem /* 10/64 */;
+      img{
+        width: .78125rem /* 50/64 */;
+        height: .78125rem /* 50/64 */;
+      }
+      p{
+        font-size: .3125rem /* 20/64 */;
+      }
+    }
+  }
+}

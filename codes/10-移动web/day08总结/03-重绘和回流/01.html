@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 200px;
+            height: 100px;
+        }
+        
+        p {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <span></span>
+        <p></p>
+    </div>
+    <div>
+        <span></span>
+        <span></span>
+    </div>
+    <!-- 
+      渲染引擎解析页面过程：
+        1.解析html，得到一个dom树；
+        2.通过解析样式，配合dom树，得到一个渲染树；
+          没有<head>、隐藏的元素(display:none)；
+        3.计算渲染树大小、位置，进行布局；别名：回流、重排
+        4.显示，把渲染树绘制到页面中；别名：重绘
+      重排必定重绘
+     -->
+</body>
+
+</html>

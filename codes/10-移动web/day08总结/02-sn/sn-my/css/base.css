@@ -1,0 +1,134 @@
+/* 样式重置 */
+body,
+div,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+input,
+textarea,
+select,
+p,
+dl,
+dt,
+dd,
+a,
+img,
+button,
+form,
+table,
+th,
+tr,
+td,
+tbody,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section,
+span {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* 去掉移动端点击高亮效果 */
+  -webkit-tap-highlight-color: transparent;
+}
+body {
+  font-size: 14px;
+  font-family: 'Microsoft Yahei', 'Courier New', Courier, monospace;
+}
+ul,
+ol {
+  list-style: none;
+}
+a,
+a:hover {
+  text-decoration: none;
+  color: #333;
+}
+input {
+  /* 边框 */
+  border: none;
+  /* 轮廓线 */
+  outline: none;
+  /* 去除表单在移动端的阴影、3D效果 */
+  -webkit-appearance: none;
+}
+/* 公共样式 */
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+.hide {
+  display: none!important;
+}
+.show {
+  display: block!important;
+}
+/* 清除浮动 */
+.clearfix::before,
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+  /* 让为元素在页面中看不见 */
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+}
+.jd-sprite {
+  background-image: url('../images/jl.jpg');
+  background-size: 200px 200px;
+}
+/* 公共布局 */
+body {
+  background-color: #ccc;
+}
+/* 公共页面大小 */
+.layout {
+  height: 1000px;
+  max-width: 640px;
+  min-width: 320px;
+  background-color: #fff;
+  margin: 0 auto;
+}
+/* 公共头部 */
+.header {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 44px;
+  background-image: linear-gradient(#eee, #bbb);
+}
+.header .back,
+.header .menu {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 44px;
+  height: 44px;
+  padding: 11px;
+  background-position: -21px 0;
+  /* 背景原点 */
+  background-origin: content-box;
+  /* 背景裁剪 */
+  background-clip: content-box;
+}
+.header .menu {
+  left: auto;
+  right: 0;
+  background-position: -60px 0;
+}
