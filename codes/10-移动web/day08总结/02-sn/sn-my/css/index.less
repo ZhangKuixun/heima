@@ -68,8 +68,15 @@ body{
 
 // 轮播图
 .sn-banner{
-  .img{
-    width: 100%;
+  .swiper-container{
+    .swiper-wrapper{
+      .swiper-slide{
+        img {
+          width:100%; 
+          height: 6.25rem /* 100/16 */;
+        }
+      }
+    }
   }
 }
 
@@ -113,6 +120,7 @@ body{
   position: fixed;
   // left: 0;
   bottom: 0;
+  z-index: 999;
   max-width: 11.71875rem /* 750/64 */;
   ul{
     li{

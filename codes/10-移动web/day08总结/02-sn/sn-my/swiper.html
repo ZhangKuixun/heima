@@ -53,10 +53,20 @@
     <!-- 4.初始化Swiper -->
     <script>
         var mySwiper = new Swiper('.swiper-container', {
-            // direction: 'vertical',
-            autoplay: 2000, //可选选项，自动滑动
-            loop: true, // 无缝滚动
-            longSwipesRatio: 0.3, // 触发swiper所需要的最小拖动距离比例
+            // 自动滑动
+            autoplay: 1000,
+
+            // 滑动时间
+            speed: 1000,
+
+            // 无缝滚动
+            loop: true,
+
+            // 触发swiper所需要的最小拖动距离比例
+            longSwipesRatio: 0.3,
+
+            //用户操作swiper之后，是否禁止autoplay.默认为true：停止。
+            autoplayDisableOnInteraction: false,
 
             // 如果需要分页器
             pagination: '.swiper-pagination',
