@@ -15,6 +15,15 @@
             display: none;
         }
     </style>
+    <style>
+        .test {
+            color: red;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 20px;
+            width: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -35,6 +44,58 @@
         4.显示，把渲染树绘制到页面中；别名：重绘
       重排必定重绘
      -->
+
+    <!-- 优化 -->
+    <div class="test"></div>
+    <script>
+        var div = document.querySelector('div');
+        // div.style.color = red; //重绘一次
+        // div.style.padding = '20px'; //一次重排+重绘
+        // div.style.margin = '20px'; //一次重排+重绘
+        // div.style.borderRadius = '20px'; //一次重排+重绘
+        // div.style.width = '20px'; //一次重排+重绘
+        // div.style.height = '20px'; //一次重排+重绘
+
+        // 优化一:使用类名方式
+        div.classList.add('test'); //一次重排+重绘
+
+
+        // 优化二：要把操作元素从渲染树移除掉，再操作
+        div.style.display = 'none'; //一次重排+重绘
+        // div.style.color = red; //重绘一次
+        // div.style.padding = '20px'; //一次重排+重绘
+        // div.style.margin = '20px'; //一次重排+重绘
+        // div.style.borderRadius = '20px'; //一次重排+重绘
+        // div.style.width = '20px'; //一次重排+重绘
+        // div.style.height = '20px'; //一次重排+重绘
+
+
+        // 优化三：尽量使用transform、position做动画，避免使用table布局，让经常动的盒子脱标，不影响其他元素
+
+        // 优化四：
+        var ul = document.querySelector('ul');
+        for (let i = 0; i < 100; i++) {
+            var li = document.createElement('li');
+            li.innerHTML = i;
+            // ul.appendChild(li); //100次重排+重绘
+
+            // 拼接字符串
+            str += '<li>' + i + '</li>';
+        }
+        //优化：
+        ul.innerHTML = str; //一次重排+重绘
+
+
+        var ul = document.querySelector('ul');
+        var fg = document.createDocumentFragment(); // 创建一个虚拟的dom容器，不是在dom树里面
+        for (let i = 0; i < 100; i++) {
+            var li = document.createElement('li');
+            li.innerHTML = i;
+            fg.appendChild(li);
+        }
+        // 优化：
+        ul.appendChild(fg);
+    </script>
 </body>
 
 </html>
