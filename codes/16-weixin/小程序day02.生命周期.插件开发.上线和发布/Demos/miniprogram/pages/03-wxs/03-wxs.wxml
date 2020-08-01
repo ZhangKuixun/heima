@@ -1,22 +1,28 @@
 <!-- 
-  小程序无法使用插值表达式
+  小程序的插值表达式，是无法调用js方法的
   wxs => js 
   WXS（WeiXin Script） 是小程序的一套脚本语言，结合 WXML，可以构建出页面的结构。
+-->
 
-  方式1：单独创建一个.wxs文件，通过module.exports导出一个对象，对象里有方法，再通过<wxs></wxs>通过src引入这个模块，用module接收模块对象
-        <wxs src='tool.wxs' module='tool' />
-    场景：全局使用
- -->
-<!-- 错误 -->
+<!-- 需求：截取msg字符串从0-1的位置 -->
 <!-- <view>{{ msg.toUpperCase() }}</view> -->
+<!-- 报错：差值表达式中，不能使用js方法 -->
+
 <!-- 
-  引入tool.wxs里面的方法
-  tool对象里面有个ml_slice方法
+  解决：
+    方式1：
+      单独创建一个.wxs文件，通过module.exports导出一个对象，对象里有方法ml_slice，在.wxml中通过<wxs></wxs>引入.wxs文件，用module接收模块tool对象
+        <wxs src='tool.wxs' module='tool' />
+      场景：全局使用
  -->
 <!-- <wxs src='tool.wxs' module='tool' />
 <view> {{ tool.ml_slice(msg) }} </view> -->
 
-<!-- 方式2：可以在当前的wxml里面定义wxs模块，仅在当前页面使用 -->
+
+<!-- 
+  方式2：
+    仅在当前页面使用，可以在当前的wxml里面定义wxs模块
+-->
 <wxs module='tool'>
 	function ml_slice(str) {
 		return str.slice(2)

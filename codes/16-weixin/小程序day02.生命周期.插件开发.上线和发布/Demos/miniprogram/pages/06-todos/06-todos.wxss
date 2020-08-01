@@ -1,5 +1,6 @@
 input {
   border: 1px solid #ccc;
+  background: #eee;
 }
 
 icon {

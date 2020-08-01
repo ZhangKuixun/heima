@@ -1,7 +1,7 @@
 Page({
-  data: {
-    age: 30,
-    isShow: true,
-    isHidden: false
+  data:{
+    isShow:true,
+    age:32,
+    isHidden:false,
   }
 })

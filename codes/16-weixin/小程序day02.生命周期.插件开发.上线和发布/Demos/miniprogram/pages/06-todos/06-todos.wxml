@@ -1,13 +1,17 @@
 <text>todos案例</text>
-<input bindinput="valueChange" value="{{todoName}}"></input>
+<!--value="{{ todoName }}"：控制modle到view的数据；
+	  bindinput="valueChange"：控制view到modle的数据；-->
+<input bindinput="valueChange" value="{{ todoName }}"></input>
 <button type="primary" bindtap="addTodo">添加任务</button>
 <!-- 任务 -->
-<block wx:for='{{ list }}'>
+<block wx:for='{{ list }}' wx:key='id'>
 	<view>
 		<text>{{ item.name }}</text>
-		<icon bindtap="delTodo" type="clear" data-id='{{item.id}}'></icon>
+		<!-- 删除任务：
+				data-id='{{ item.id }}：用h5的属性，传递id -->
+		<icon bindtap="delTodo" type="clear" data-id='{{ item.id }}'></icon>
 	</view>
 </block>
 
-<!-- list.length > 0 显示出来 -->
+<!-- 最后，没有任务了，list.length>0显示出来 -->
 <view hidden="{{ list.length > 0 }}">没有任何任务可操作了</view>

@@ -1,6 +1,8 @@
 //app.js
 App({
+  // 生命周期
   onLaunch: function () {
+    // 只会执行一次
     console.log('小程序初始化');
     
     // if (!wx.cloud) {
@@ -17,5 +19,15 @@ App({
     // }
 
     // this.globalData = {}
+  },
+  onShow(){
+    // 只要看见都会执行
+    console.log('显示')
+  },
+  onHide(){
+    // 只要隐藏都会执行
+    console.log('隐藏');
+    
   }
+
 })

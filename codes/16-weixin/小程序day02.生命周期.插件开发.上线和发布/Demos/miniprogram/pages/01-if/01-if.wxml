@@ -5,7 +5,7 @@
 <!-- <view wx:if='{{isShow}}'>测试代码</view> -->
 
 <!-- 2.条件渲染 多个条件 -->
-<!-- <view wx:if="{{age > 30}}">春</view>
+<!-- <view wx:if="{{age >= 30}}">春</view>
 <view wx:elif="{{age > 20}}">马</view>
 <view wx:else>聪</view> -->
 
@@ -17,16 +17,16 @@
 </block> -->
 
 <!-- 4.wx:if 和 hidden -->
-<!-- vue：v-if和v-show的区别，切换是否频繁 -->
+<!-- vue：v-if和v-show的区别，频繁切换用v-show -->
 <!-- 
-  wx:if 是否显示 true=显示 false=不显示
+  wx:if是否显示，true=显示，false=不显示
   通过不断的创建节点和删除节点
  -->
-<view wx:if='{{ isShow }}'>大傻春</view>
+<!-- <view wx:if='{{ isShow }}'>大傻春</view> -->
 
 <!-- 
-  wx:if 是否隐藏 true=隐藏 false=显示
-  通过display来实现显示与隐藏
+  hidden是否隐藏，true=隐藏，false=显示
+  通过display来实现显示与隐藏，切换显示与隐藏频率比较高的时候，使用hidden
  -->
 <view hidden='{{ isHidden }}'>小傻春</view>
 
