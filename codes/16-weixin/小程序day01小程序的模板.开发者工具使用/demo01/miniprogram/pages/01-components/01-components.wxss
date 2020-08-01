@@ -1,9 +1,10 @@
 /* pages/01-components/01-components.wxss */
-/* view {
+view {
   width: 100px;
   height: 100px;
   background: yellow;
-} */
+  line-height: 100px;
+}
 
 .red {
   width: 200px;

@@ -7,17 +7,19 @@
     "pages/demo01/demo01"  
   ],
   "window": {
-    "navigationBarBackgroundColor": "#ffffff",
-    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#f00",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "第一个demo",
-    "backgroundColor": "#eeeeee",
+    "navigationStyle": "default",
+    "backgroundColor": "#00f",
     "backgroundTextStyle": "light",
-    "navigationStyle": "default"
+    "backgroundcolorTop":"#fff",
+    "backgroundColorBottom":"#fff",
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance":50,
+    "pageOrientation":"portrait"
   },
   "tabBar": {
-    "color": "#00f",
-    "selectedColor": "#f00",
-    "borderStyle":"black",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -32,7 +34,11 @@
         "iconPath": "./assets/TABbar.png",
         "selectedIconPath": "./assets/TABbar-fill.png"
       }
-    ]
+    ],
+    "color": "#00ff",
+    "selectedColor": "#f00",
+    "backgroundColor": "#bf9220",
+    "borderStyle":"white"
   },
   "networkTimeout": {
     "request": 10000,

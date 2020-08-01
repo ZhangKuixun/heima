@@ -1,24 +1,25 @@
 <!-- 读取数据 -->
 <view>{{msg}}</view>
 <view>{{'运算: '+msg+'媳妇'}}</view>
-<view>{{'三元: '+ false ? '春' : msg+'媳妇'}}</view>
+<view>三元: {{false ? '春' : msg + '媳妇'}}</view>
 
 <!-- 无效 -->
-<view>{{'不能调用方法:'+msg.toUpperCase() }}</view>
+<view>不可以调用方法：</view>
+<view>{{msg.toUpperCase() }}</view>
 <view>{{[1,2,3].join('-')}}</view>
 
 <!-- 多选框 -->
-<checkbox checked="false"></checkbox>
-<checkbox checked="true"></checkbox>
-<checkbox checked="{{ true }}"></checkbox>
-<checkbox checked="{{ false }}"></checkbox>
+    <checkbox checked="false"></checkbox>
+    <checkbox checked="true"></checkbox>
+    <checkbox checked="{{ true }}"></checkbox>
+    <checkbox checked="{{ false }}"></checkbox>
 
 <!-- 
   1.{{}} 小胡子语法，插值表达式
     支持运算，三元
-    不能调用方法、使用语句
-    可以用在属性值上，不能用在view上
+    不可以调用方法、使用语句
+    可以用在属性值上，不可以用在view上
   2.多选框选中状态（举例）
-    checked='false' 和 checked='true'，都是true，因为值是字符串
-    如果想读取的是布尔类型，{{true}}读取的是boolean类型的值
+    读取布尔类型，用{{true}}，不能用checked='false'、checked='true'，它俩都是true，因为值是字符串
+    小程序里面的{{}}，可以用在属性值上，vue不可以
  -->

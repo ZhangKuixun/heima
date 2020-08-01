@@ -26,8 +26,9 @@
 <icon type="cancel"></icon>
 <icon type="download"></icon>
 <icon type="search"></icon>
-<icon type="clear"></icon> -->
-<!-- <icon size="100" type="success" color="red"></icon> -->
+<icon type="clear"></icon>
+<icon size="100" type="success"></icon>
+<icon size="100" type="success" color="red"></icon> -->
 
 <!-- 
   4.button按钮
@@ -36,16 +37,18 @@
  -->
 <!-- <button type="primary">按钮</button>
 <button type="success">按钮</button>
-<button size="mini" type="warn">按钮</button>
-<view class="w"> -->
-	<!-- 占满整个父元素 -->
-	<!-- <button>按钮100</button>
+<button size="mini" type="warn">按钮</button> -->
+
+<!-- 靠左，占满整个父元素150px -->
+<!-- <view class="w">
+	<button>按钮100</button>
 </view> -->
 
 <!-- 
   5.checkbox 多选框
  -->
 <!-- <checkbox color="red"></checkbox> -->
+
 
 <!-- 
   6.image 默认320x240
@@ -54,11 +57,16 @@
       aspectFit：保持横纵比，保证长边显示，将图片居中
       aspectFill：保持横纵比，保证短边显示，将图片居中
  -->
-<!-- <image mode="scaleToFill" src="../../assets/tabbarhomeselect.png"></image> -->
+
+ <!-- 指定图片大小 -->
+<!-- <image class="w" src="../../assets/tabbarhomeselect.png"></image> -->
+
 <view>scaleToFill</view>
 <image mode="scaleToFill" class="w" src="https://pic1.zhimg.com/80/v2-834679c9a8607c10b725cf04d87cbc2a_720w.jpg"></image>
+
 <view>aspectFit</view>
 <image mode="aspectFit" class="w" src="https://pic1.zhimg.com/80/v2-834679c9a8607c10b725cf04d87cbc2a_720w.jpg"></image>
+
 <view>aspectFill</view>
 <image mode="aspectFill" class="w" src="https://pic1.zhimg.com/80/v2-834679c9a8607c10b725cf04d87cbc2a_720w.jpg"></image>
 

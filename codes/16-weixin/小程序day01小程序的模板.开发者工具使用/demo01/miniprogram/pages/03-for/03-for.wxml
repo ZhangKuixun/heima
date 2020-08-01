@@ -2,7 +2,7 @@
   列表渲染 for v-for wx:for
  -->
 <!-- 1.wx:for的基本使用 -->
-<!-- 这种写法是把list1转化成了[l,i,s,t,1]，所以会打印5次123 -->
+<!-- 这种写法是把list1转化成了[l, i, s, t, 1]，所以会打印5次123 -->
 <!-- <view wx:for='list1'>123</view> -->
 
 <view wx:for='{{ list1 }}'>123</view>
@@ -13,22 +13,24 @@
   2.获取元素：
     index 索引 
     item 元素
-  给index、item使用别名
+  给index、item起别名
  -->
-<view wx:for='{{ list1 }}'>{{index}}-{{item}}</view>
-<view wx:for='{{ list1 }}' wx:for-index='i' wx:for-item='it'>{{i}}-{{it}}</view>
+        <view wx:for='{{ list1 }}'>{{index}}-{{item}}</view>//正常
+        <view wx:for='{{ list1 }}' wx:for-index='i' wx:for-item='it'>
+          {{i}}-{{it}}//别名
+        </view>
 
 <view>-----------</view>
 
 <!-- 
   3.block 不会渲染的容器，保证结构的完整性
  -->
-<block wx:for='{{list1}}'>
+<!-- <block wx:for='{{list1}}'>
 	<view>{{ index }}</view>
 	<view>{{ item }}</view>
-</block>
+</block> -->
 <!-- 
-    结构：
+    输出结构：
       <view></view>
       <view></view>
  -->
@@ -38,7 +40,7 @@
   <view>{{item}}</view>
 </view> -->
 <!-- 
-    结构：
+    输出结构：
       <view>
         <view></view>
         <view></view>

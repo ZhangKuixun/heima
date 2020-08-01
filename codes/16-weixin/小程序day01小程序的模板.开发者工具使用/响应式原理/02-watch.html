@@ -1,63 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
+
 <body>
-  <div id="app">
-    <input type="text" v-model='obj.name'>
-    <button @click='fn'>按钮</button>
-  </div>
-  <script src="vue.js"></script>
-  <script>
-    // vue实例
-    const vm = new Vue({
-      el:'#app',
-      data:{
-        // 下面两个，底层的做法是：setter:oldvalue = newVal
-        num:'123',
-        obj:{
-          name:'zs'
-        },
-        // 下面这个，底层的做法是：Array.isArray()
-        // 底层监听：拦截器(push pop shift unshift reverse sort)
-        arr:['chun','chunxifu']
-      },
-      methods:{
-        fn(){
-          this.arr.push('马哥')
-        }
-      },
-      watch:{
-        // 监听属性
-        // num(newVal){
-        //   console.log(newVal);
-        // }
+    <!-- watch监听单个数据、对象、数组 -->
+    <div id="app">
+        <input type="text" v-model='obj.name'>
+        <button @click='fn'>点击按钮，把‘马哥’添加到数组中</button>
+    </div>
+    <script src="vue.js"></script>
+    <script>
+        // vue实例
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                // 变量和对象底层的做法是，在setter方法中，把oldvalue和newVal做比较
+                num: '123', // 监听单个数据
+                obj: { // 监听对象
+                    name: 'zs'
+                },
+                // 数组底层做法是：通过拦截器监听，只要数组用了这几个方法中的一个(push pop shift unshift reverse sort splice)，拦截器就能监听
+                arr: ['chun', 'chunxifu'] // 监听数组
+            },
+            methods: {
+                fn() { // 点击按钮，把‘马哥’添加到数组中。
+                    this.arr.push('马哥')
+                        // this.arr.pop()
+                }
+            },
+            watch: {
+                // 监听单个数据
+                // num(newVal) {
+                //     console.log(newVal);
+                // }
 
-        // 监听对象
-        // obj:{
-        //   deep:true,
-        //   handler(newVal){
-        //     console.log(newVal.name);
-        //   }
-        // }
+                // 监听对象
+                // obj: {
+                //     deep: true,
+                //     handler(newVal) {
+                //         console.log(newVal.name);
+                //     }
+                // }
 
-        // 监听数组
-        // 方式1：
-        // arr:{
-        //   deep:true,
-        //   handler(newVal){
-        //     console.log(newVal);
-        //   }
-        // }
-        // 方式2：
-        arr(newVal){
-          console.log(newVal);
-        }
-      }
-    })
-  </script>
+                // 监听数组
+                // 方式1：
+                // arr: {
+                //     deep: true,
+                //     handler(newVal) {
+                //         console.log(newVal);
+                //     }
+                // }
+
+                // 方式2：
+                arr(newVal) {
+                    console.log(newVal);
+                }
+            }
+        })
+    </script>
 </body>
+
 </html>
