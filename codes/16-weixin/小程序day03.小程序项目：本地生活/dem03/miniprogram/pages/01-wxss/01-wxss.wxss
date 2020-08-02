@@ -1,0 +1,10 @@
+/* pages/01-wxss/01-wxss.wxss */
+@import './common.wxss';
+
+.w{
+  /* width: 375px;
+  height: 375px; */
+  /* width: 750rpx; */
+  height: 750rpx;
+  background: red;
+}

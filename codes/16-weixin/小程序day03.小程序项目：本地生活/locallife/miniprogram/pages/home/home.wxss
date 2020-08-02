@@ -1,0 +1,52 @@
+page{
+  background: #ccc;
+}
+swiper,
+swiper image {
+  width: 750rpx;
+  height: 360rpx;
+}
+
+/* 九宫格 */
+.grids {
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.grids .grids-item {
+  width: 33.33%;
+  height: 250rpx;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  box-sizing: border-box;
+  /* 图片和文字上下排列，居中 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grids .grids-item image {
+  width: 102rpx;
+  height: 102rpx;
+}
+
+/* 链接 */
+.links {
+  background: #fff;
+  margin-top: 10rpx;
+  padding: 10rpx;
+  display: flex;
+  justify-content: space-around;
+
+}
+
+.links image {
+  width: 330rpx;
+  height: 180rpx;
+  vertical-align: middle;
+}

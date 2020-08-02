@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/message/message",
+    "pages/contact/contact",
+    "pages/profile/profile",
+    "pages/detail/detail",
+    "pages/list/list"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#3a4861",
+    "navigationBarTitleText": "本地生活",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "首页",
+      "iconPath": "./assets/tabs/zhuye.png",
+      "selectedIconPath": "./assets/tabs/zhuye-active.png"
+    },
+    {
+      "pagePath": "pages/message/message",
+      "text": "消息",
+      "iconPath": "./assets/tabs/xiaoxi.png",
+      "selectedIconPath": "./assets/tabs/xiaoxi-active.png"
+    },
+    {
+      "pagePath": "pages/contact/contact",
+      "text": "我的",
+      "iconPath": "./assets/tabs/wode.png",
+      "selectedIconPath": "./assets/tabs/wode-active.png"
+    },
+    {
+      "pagePath": "pages/profile/profile",
+      "text": "联系我们",
+      "iconPath": "./assets/tabs/lianxiwomen.png",
+      "selectedIconPath": "./assets/tabs/lianxiwomen-active.png"
+    }]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

@@ -1,0 +1,17 @@
+<!--pages/01-wxss/01-wxss.wxml-->
+<!-- 
+wxss比css拓展两个特性
+  1.单位尺寸rpx
+  2.引入
+
+  单位尺寸rpx：
+    1 rpx：自适应尺寸，根据屏幕大小自适应，类似rem
+    2 规定屏幕宽为750rpx，建议iPhone6作为视觉稿，在iphone6上(w:375px)，1px=2rpx
+    3 在较小的屏幕上不可避免的会有一些毛刺，比如：375.53x2=751.6px，小数点算出来会不太精准
+
+  引入样式：
+    1 外部样式引入，只能在wxss里引入，比如：common.wxss只能在01-wxss.wxss的头部引入
+      01-wxss.wxss: @import './common.wxss';
+ -->
+<view class="w"></view>
+ 

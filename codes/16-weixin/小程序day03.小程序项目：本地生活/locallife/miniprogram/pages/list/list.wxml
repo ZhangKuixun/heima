@@ -1,0 +1,17 @@
+<!--pages/list/list.wxml-->
+<view class="cells">
+	<block wx:for='{{list}}' wx:key="id">
+		<navigator class="item" url="/page/detail/detail?item=1">
+			<image src="{{item.images[0]}}" mode="aspectFill"></image>
+			<view class="meta">
+				<text class="name">{{item.name}}</text>
+				<text class="phone">{{item.phone}}</text>
+				<text class="address">{{item.address}}</text>
+				<text class="hours">{{item.businessHours}}</text>
+			</view>
+			<view class="score">{{item.score}}</view>
+		</navigator>
+	</block>
+</view>
+<!-- <view class="loadmore loading">正在加载...</view>
+<view class="loadmore">没有更多内容了</view> -->
