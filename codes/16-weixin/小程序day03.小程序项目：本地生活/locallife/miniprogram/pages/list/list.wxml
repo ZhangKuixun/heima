@@ -1,7 +1,7 @@
 <!--pages/list/list.wxml-->
 <view class="cells">
 	<block wx:for='{{list}}' wx:key="id">
-		<navigator class="item" url="/page/detail/detail?item=1">
+		<navigator class="item" url="/page/detail/detail?item={{item.id}}">
 			<image src="{{item.images[0]}}" mode="aspectFill"></image>
 			<view class="meta">
 				<text class="name">{{item.name}}</text>
@@ -13,5 +13,5 @@
 		</navigator>
 	</block>
 </view>
-<!-- <view class="loadmore loading">正在加载...</view>
-<view class="loadmore">没有更多内容了</view> -->
+<view wx:if="{{hasMore}}" class="loadmore loading">正在加载...</view>
+<view wx:else class="loadmore">没有更多内容了</view>

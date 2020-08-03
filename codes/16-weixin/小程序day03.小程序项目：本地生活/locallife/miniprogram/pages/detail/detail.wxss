@@ -1,1 +1,53 @@
 /* pages/detail/detail.wxss */
+swiper,
+swiper image {
+  width: 750rpx;
+  height: 360rpx;
+}
+
+.heading text {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 10rpx 0;
+  font-size: 26rpx;
+}
+
+.heading .name {
+  color: #234;
+  font-size: 40rpx;
+}
+
+.introduction {
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.comments .name {
+  color: #234;
+  font-size: 30rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx 0;
+}
+
+.comments .date,
+.comments .rating {
+  display: flex;
+  flex-direction: column;
+  padding: 10rpx 0;
+  font-size: 26rpx;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.comments .conent{
+  display: flex;
+  flex-wrap: wrap;
+}
+.comments image{
+  width: 33.33%;
+  height: 250rpx;
+  padding: 10rpx;
+  vertical-align: middle;
+}

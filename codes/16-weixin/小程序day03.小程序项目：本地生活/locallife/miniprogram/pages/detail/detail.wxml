@@ -1,2 +1,56 @@
 <!--pages/detail/detail.wxml-->
-<text>pages/detail/detail.wxml</text>
+<swiper class="slides" autoplay="{{true}}" circular="{{true}}" interval="{{2000}}" duration="{{500}}" indicator-dots="{{2}}" indicator-color="#bcc0c9" indicator-active-color="#3a4861">
+	<block wx:for="{{toll.ml_slice(detail.images)}}" wx:key="*this">
+		<swiper-item>
+			<image src="{{item}}" mode="aspectFill"></image>
+		</swiper-item>
+	</block>
+</swiper>
+
+<!-- 头部 -->
+<view class="heading">
+	<text class="name">{{detail.name}}</text>
+	<text class="phone">{{detail.phone}}</text>
+	<text class="addres">{{detail.addres}}</text>
+	<text class="hours">{{detail.hours}}</text>
+	<text class="score">{{detail.score}}</text>
+</view>
+
+<view class="introduction">
+	<text>----------------------</text>
+</view>
+
+<!-- 评论 -->
+<view class="comments">
+	<block wx:for="{{detail.comments}}" wx:key="name">
+		<view class="item">
+			<text class="name">{{item.name}}</text>
+			<text class="date">{{item.date}}</text>
+			<text class="rating">{{item.rating}}</text>
+			<text class="conent">{{item.content}}</text>
+			<view class="images">
+				<block wx:for="{{item.iamges}}" wx:key="*this" wx:for-itme='it' wx:for-index='i'></block>
+				<image bindtap="previewImg" data-current='it' data-urls="item.iamges" src="{{tool.ml_replace(it)}}"></image>
+			</view>
+		</view>
+	</block>
+</view>
+
+<!-- 
+  本地wxs-当前页面
+  注意：wxs里面不能写注释
+ -->
+<wxs module='tool'>
+
+  // 截取
+	function ml_slice(arr) {
+		return arr.slice(0, 5)
+	}
+
+  // 替换
+	function ml_replace(str) {
+		return str.replace('w.h', '100,100')
+	}
+	module.exports.ml_replace = ml_replace
+	module.exports.ml_slice = ml_slice
+</wxs>

@@ -1,18 +1,47 @@
 // pages/detail/detail.js
+import fetch from "../../utils/fetch.js"
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    id: 0
+    detail: {}
   },
-  
+
   // query接收其他页面传递过来的参数
   onLoad: function (options) {
     console.log(options.id);
     this.setData({
       id: options.id
+    })
+    fetch({
+      url: `https://locally.uieee.com/shops/{{options.id}}`,
+    }).then(res => {
+      this.setData({
+        detail: res.data
+      })
+    })
+  },
+  previewImg: function (e) {
+
+    //  1.获取current和urls
+    let {
+      current,
+      urls
+    } = e.currentTarget.dataset;
+
+    // 2.替换'w.h'换成'1000,1000'
+    current = current.replace('w.h', '1000,1000')
+    urls.map(item=>{// 遍历urls，修改图片的地址
+      return item.replace('w.h','1000,1000')
+    })
+
+    // 3.预览
+    wx.previewImage({
+      urls, // 需要预览图片http链接列表
+      current // 当前显示图片的http链接
     })
   },
 
