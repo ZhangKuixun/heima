@@ -1,0 +1,25 @@
+<style lang="less">
+</style>
+<template>
+  <div class="container">
+    我的
+  </div>
+</template>
+
+<script>
+import wepy from '@wepy/core';
+
+wepy.page({
+  fonfig: {
+    navigationBarTitleText: '我的'
+  },
+  onLoad() {
+    console.log('onLoad');
+  }
+});
+</script>
+<config>
+{
+    navigationBarTitleText: 'test'
+}
+</config>

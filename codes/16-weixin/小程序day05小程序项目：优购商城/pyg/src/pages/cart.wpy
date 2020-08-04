@@ -1,0 +1,25 @@
+<style lang="less">
+</style>
+<template>
+  <div class="container">
+    购物车
+  </div>
+</template>
+
+<script>
+import wepy from '@wepy/core';
+
+wepy.page({
+  fonfig: {
+    navigationBarTitleText: '购物车'
+  },
+  onLoad() {
+    console.log('onLoad');
+  }
+});
+</script>
+<config>
+{
+    navigationBarTitleText: 'test'
+}
+</config>

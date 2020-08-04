@@ -1,0 +1,55 @@
+<script>
+import wepy from '@wepy/core';
+
+wepy.app({
+  onLaunch() {
+    console.log('on launch');
+  }
+});
+</script>
+<config>
+{
+    pages: [
+      'pages/index',
+      'pages/category',
+      'pages/cart',
+      'pages/me'
+    ],
+    window: {
+      navigationBarBackgroundColor: '#ff2d4a',
+      navigationBarTitleText: '优购',
+      navigationBarTextStyle: 'white'
+    },
+    tabBar:{
+      list:[
+        {
+          pagePath:'pages/index',
+          text:'首页',
+          iconPath:'./assets/tabs/zhuye.png',
+          selecteIconPath:'./assets/tabs/zhuye-active.png'
+        },
+        {
+          pagePath:'pages/category',
+          text:'分类',
+          iconPath:'./assets/tabs/lianxiwomen.png',
+          selecteIconPath:'./assets/tabs/lianxiwomen-active.png'
+        },
+        {
+          pagePath:'pages/cart',
+          text:'购物车',
+          iconPath:'./assets/tabs/xiaoxi.png',
+          selecteIconPath:'./assets/tabs/xiaoxi-active.png'
+        },
+        {
+          pagePath:'pages/me',
+          text:'我的',
+          iconPath:'./assets/tabs/wode.png',
+          selecteIconPath:'./assets/tabs/wode-active.png'
+        }
+      ]
+    }
+  }
+</config>
+
+<style lang="less">
+</style>

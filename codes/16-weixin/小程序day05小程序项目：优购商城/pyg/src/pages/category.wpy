@@ -1,0 +1,25 @@
+<style lang="less">
+</style>
+<template>
+  <div class="container">
+    分类
+  </div>
+</template>
+
+<script>
+import wepy from '@wepy/core';
+
+wepy.page({
+  fonfig: {
+    navigationBarTitleText: '分类'
+  },
+  onLoad() {
+    console.log('onLoad');
+  }
+});
+</script>
+<config>
+{
+    navigationBarTitleText: 'test'
+}
+</config>

@@ -13,15 +13,26 @@ Page({
   // query接收其他页面传递过来的参数
   onLoad: function (options) {
     console.log(options.id);
+
+
     this.setData({
       id: options.id
     })
+
+    // 请求详情页数据
     fetch({
       url: `https://locally.uieee.com/shops/{{options.id}}`,
     }).then(res => {
+      // 保存
       this.setData({
         detail: res.data
+      });
+    
+      // 设置标签
+      wx.setNavigationBarTitle({
+        title: res.data.name
       })
+
     })
   },
   previewImg: function (e) {

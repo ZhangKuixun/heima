@@ -15,6 +15,12 @@ Page({
   // query接收其他页面传递过来的参数
   onLoad: function (options) {
     console.log(options.id);
+
+    // 设置标题
+    wx.setNavigationBarTitle({
+      title: options.name
+    })
+
     this.setData({
       id: options.id
     })
