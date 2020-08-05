@@ -10,9 +10,6 @@
 import wepy from '@wepy/core';
 
 wepy.page({
-  fonfig: {
-    navigationBarTitleText: '分类'
-  },
   onLoad() {
     console.log('onLoad');
   }
@@ -20,6 +17,6 @@ wepy.page({
 </script>
 <config>
 {
-    navigationBarTitleText: 'test'
+    navigationBarTitleText: '分类'
 }
 </config>

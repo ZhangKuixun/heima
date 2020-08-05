@@ -2,7 +2,7 @@
 </style>
 <template>
   <div class="container">
-    Hello world
+    优购
   </div>
 </template>
 
@@ -10,9 +10,6 @@
 import wepy from '@wepy/core';
 
 wepy.page({
-  fonfig: {
-    navigationBarTitleText: '优购'
-  },
   onLoad() {
     console.log('onLoad');
   }
@@ -20,6 +17,6 @@ wepy.page({
 </script>
 <config>
 {
-    navigationBarTitleText: 'test'
+    navigationBarTitleText: '优购'
 }
 </config>

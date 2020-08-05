@@ -25,26 +25,26 @@ wepy.app({
         {
           pagePath:'pages/index',
           text:'首页',
-          iconPath:'./assets/tabs/zhuye.png',
-          selecteIconPath:'./assets/tabs/zhuye-active.png'
+          iconPath:'static/assets/tabs/zhuye.png',
+          selectedIconPath:'static/assets/tabs/zhuye-active.png'
         },
         {
           pagePath:'pages/category',
           text:'分类',
-          iconPath:'./assets/tabs/lianxiwomen.png',
-          selecteIconPath:'./assets/tabs/lianxiwomen-active.png'
+          iconPath:'static/assets/tabs/lianxiwomen.png',
+          selectedIconPath:'static/assets/tabs/lianxiwomen-active.png'
         },
         {
           pagePath:'pages/cart',
           text:'购物车',
-          iconPath:'./assets/tabs/xiaoxi.png',
-          selecteIconPath:'./assets/tabs/xiaoxi-active.png'
+          iconPath:'static/assets/tabs/xiaoxi.png',
+          selectedIconPath:'static/assets/tabs/xiaoxi-active.png'
         },
         {
           pagePath:'pages/me',
           text:'我的',
-          iconPath:'./assets/tabs/wode.png',
-          selecteIconPath:'./assets/tabs/wode-active.png'
+          iconPath:'static/assets/tabs/wode.png',
+          selectedIconPath:'static/assets/tabs/wode-active.png'
         }
       ]
     }
