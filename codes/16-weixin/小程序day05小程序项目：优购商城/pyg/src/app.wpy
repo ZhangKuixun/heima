@@ -21,6 +21,7 @@ wepy.app({
       navigationBarTextStyle: 'white'
     },
     tabBar:{
+      selctedColor:'#f00',
       list:[
         {
           pagePath:'pages/index',

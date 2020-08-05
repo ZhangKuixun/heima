@@ -1,8 +1,29 @@
 <style lang="less">
+swiper {
+  width: 750rpx;
+  height: 340rpx;
+  image {
+    width: 750rpx;
+    height: 340rpx;
+  }
+}
 </style>
 <template>
   <div class="container">
-    优购
+    <!-- 轮播图 -->
+      <swiper
+       indicator-dots="{{true}}"
+       autoplay="{{true}}"
+       interval="{{3000}}"
+       duration="{{1000}}"
+       current="{{0}}"
+       circular="{{true}}">
+       <block wx:for="{{imgUrls}}" wx:key="*this">
+        <swiper-itme>
+          <image src="{{ item }}"/>
+        </swiper-itme>
+       </block>
+      </swiper>
   </div>
 </template>
 
@@ -10,6 +31,16 @@
 import wepy from '@wepy/core';
 
 wepy.page({
+  config: {
+    navigationBarTitleText: '优购'
+  },
+  data: {
+    imgUrls: [
+      '../static/assets/images/banner1.png',
+      '../static/assets/images/banner2.png',
+      '../static/assets/images/banner3.png'
+    ]
+  },
   onLoad() {
     console.log('onLoad');
   }
