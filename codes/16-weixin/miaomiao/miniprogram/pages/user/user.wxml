@@ -1,0 +1,7 @@
+<!--miniprogram/pages/user/user.wxml-->
+<view class="user">
+	<view class="user-info">
+    <image src="{{userPhoto}}"></image>
+    <text>欢迎主人：{{nickName}}</text>
+  </view>
+</view>

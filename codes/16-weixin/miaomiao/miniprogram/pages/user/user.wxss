@@ -1,0 +1,13 @@
+/* miniprogram/pages/user/user.wxss */
+.user-info {
+  height: 150rpx;
+  border-bottom: 1rpx solid #b4b5b6;
+  align-items: center;
+  display: flex;
+}
+
+.user-info image {
+  width: 100rpx;
+  height: 100rpx;
+  overflow: hidden;
+}
