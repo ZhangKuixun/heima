@@ -3,7 +3,16 @@
     "pages/index/index",
     "pages/near/near",
     "pages/message/message",
-    "pages/user/user"
+    "pages/user/user",
+    "pages/editUserInfo/editUserInfo",
+    "pages/friendList/friendList",
+    "pages/detail/detail",
+    "pages/editUserInfo/head/head",
+    "pages/editUserInfo/name/name",
+    "pages/editUserInfo/signature/signature",
+    "pages/editUserInfo/location/location",
+    "pages/editUserInfo/phone/phone",
+    "pages/editUserInfo/weixin/weixin"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -14,31 +23,31 @@
   },
   "tabBar": {
     "color": "#b4b5b6",
-    "selectedColor":"#937bf5",
+    "selectedColor": "#937bf5",
     "list": [
       {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "images/tabber/home.png",
-        "selectedIconPath":"images/tabber/home_action.png"
+        "selectedIconPath": "images/tabber/home_action.png"
       },
       {
         "pagePath": "pages/near/near",
         "text": "附近",
         "iconPath": "images/tabber/near.png",
-        "selectedIconPath":"images/tabber/near_action.png"
+        "selectedIconPath": "images/tabber/near_action.png"
       },
       {
         "pagePath": "pages/message/message",
         "text": "消息",
         "iconPath": "images/tabber/message.png",
-        "selectedIconPath":"images/tabber/message_action.png"
+        "selectedIconPath": "images/tabber/message_action.png"
       },
       {
         "pagePath": "pages/user/user",
         "text": "我的",
         "iconPath": "images/tabber/me.png",
-        "selectedIconPath":"images/tabber/me_action.png"
+        "selectedIconPath": "images/tabber/me_action.png"
       }
     ]
   },

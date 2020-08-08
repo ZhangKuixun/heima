@@ -1,7 +1,31 @@
 <!--miniprogram/pages/user/user.wxml-->
 <view class="user">
 	<view class="user-info">
-    <image src="{{userPhoto}}"></image>
-    <text>欢迎主人：{{nickName}}</text>
-  </view>
+		<image src="{{userPhoto}}"></image>
+		<text wx:if="{{logined}}">欢迎主人：{{nickName}}</text>
+		<!-- 需要使用 button 来授权登录 -->
+		<button wx:else disabled="{{disabled}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">微信登录</button>
+	</view>
+
+	<!-- 编辑 -->
+	<view wx:if="{{logined}}" class="user-list">
+		<navigator url="../editUserInfo/editUserInfo" open-type="navigate">
+			<view class="user-list-itme">
+				<text>编辑个人信息</text>
+				<text class="iconfont iconyoujiantou"></text>
+			</view>
+		</navigator>
+		<navigator url="../friendList/friendList" open-type="navigate">
+			<view class="user-list-itme">
+				<text>查看好友列表</text>
+				<text class="iconfont iconyoujiantou"></text>
+			</view>
+		</navigator>
+		<navigator url="../detail/detail" open-type="navigate">
+			<view class="user-list-itme">
+				<text>个人主页</text>
+				<text class="iconfont iconyoujiantou"></text>
+			</view>
+		</navigator>
+	</view>
 </view>

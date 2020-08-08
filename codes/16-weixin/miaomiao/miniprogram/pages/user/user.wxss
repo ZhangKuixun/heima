@@ -10,4 +10,29 @@
   width: 100rpx;
   height: 100rpx;
   overflow: hidden;
+  margin-left: 10rpx;
+  border-radius: 50%;
+}
+
+.user-info text {
+  margin-left: 10rpx;
+}
+
+.user-info button {
+  margin: 0;
+  margin-left: 10rpx;
+}
+
+/* 编辑 */
+.user-list {
+  margin-top: 40rpx;
+}
+
+.user-list .user-list-itme {
+  height: 100rpx;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1rpx dashed #b4b5b6;
+  padding: 10rpx;
 }
