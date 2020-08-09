@@ -17,24 +17,18 @@
 
 	<!-- list -->
 	<view class="index-list">
-		<view class="index-list-item">
-			<image mode="aspectFill" src="https://pic1.zhimg.com/80/v2-f61cdc49eddd69e9bd2b06587d3e094e_720w.jpg?source=1940ef5c"></image>
+		<!-- <block wx:for="{{listData}}" wx:key="*this"> -->
+		<view class="index-list-item" wx:for="{{listData}}" wx:key="*this">
+			<image mode="aspectFill" src="{{item.userPhoto}}"></image>
 			<view class="index-list-text">
-				<text>小喵喵</text>
-				<text>
-					<text class="iconfont icondianzan"></text>
-					<text>100</text>
+				<text>{{item.nickName}}</text>
+				<text data-id="{{item._id}}" bindtap="handleLinks">
+						<!-- 把当前数据的id挂载到自定义属性 -->
+						<text class="iconfont icondianzan"></text>
+				<text>{{item.likes}}</text>
 				</text>
 			</view>
 		</view>
-		<view class="index-list-item">
-			<image mode="aspectFill" src="https://pic1.zhimg.com/80/v2-f61cdc49eddd69e9bd2b06587d3e094e_720w.jpg?source=1940ef5c"></image>
-		</view>
-		<view class="index-list-item">
-			<image mode="aspectFill" src="https://pic1.zhimg.com/80/v2-f61cdc49eddd69e9bd2b06587d3e094e_720w.jpg?source=1940ef5c"></image>
-		</view>
-		<view class="index-list-item">
-			<image mode="aspectFill" src="https://pic1.zhimg.com/80/v2-f61cdc49eddd69e9bd2b06587d3e094e_720w.jpg?source=1940ef5c"></image>
-		</view>
+		<!-- </block> -->
 	</view>
 </view>

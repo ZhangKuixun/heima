@@ -1,11 +1,13 @@
 // pages/editUserInfo/name/name.js
+const app = getApp();
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    nickName: ""
   },
 
   /**
@@ -19,7 +21,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      nickName: app.userInfo.nickName
+    })
   },
 
   /**
@@ -62,5 +66,51 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handleText(ev) {
+    // 更新页面
+    let {
+      nickName
+    } = this.data;
+    this.setData({
+      nickName: ev.detail.value
+    })
+  },
+  handleBtn() {
+    this.updataNickName();
+  },
+  updataNickName() {
+    // 更新数据库
+    wx.showLoading({
+      title: '更新中',
+    });
+    db.collection('users').doc(app.userInfo._id).update({
+      data: {
+        nickName: this.data.nickName
+      }
+    }).then(res => {
+      wx.hideLoading()
+      wx.showToast({
+        title: '更新完成',
+      })
+    });
+    app.userInfo.nickName = this.data.nickName
+  },
+  bindGetUserInfo(ev) {
+    // console.log(app.userInfo.nickName);
+    // 更新页面
+    let {
+      nickName
+    } = this.data;
+    // ev获取到微信的信息
+    let userInfo = ev.detail.userInfo;
+    if (userInfo) {
+      this.setData({
+        nickName: userInfo.nickName
+      }, () => {
+        // 在setData回调方法中，更新数据库
+        this.updataNickName();
+      })
+    }
   }
 })

@@ -1,1 +1,6 @@
 /* pages/editUserInfo/weixin/weixin.wxss */
+input{
+  border-bottom: 1rpx solid #b4b5b6;
+  padding: 10rpx;
+  margin: 10rpx 0;
+}

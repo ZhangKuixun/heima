@@ -7,7 +7,8 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"enhance": true
+		"enhance": true,
+		"checkSiteMap": false
 	},
 	"appid": "wx4c2551045c55d056",
 	"projectname": "miaomiao",
@@ -62,6 +63,13 @@
 					"id": -1,
 					"name": "pages/editUserInfo/signature/signature",
 					"pathName": "pages/editUserInfo/signature/signature",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/editUserInfo/head/head",
+					"pathName": "pages/editUserInfo/head/head",
 					"scene": null
 				}
 			]

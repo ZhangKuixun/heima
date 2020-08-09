@@ -1,6 +1,8 @@
 // pages/editUserInfo/signature/signature.js
 // 获取app
 const app = getApp();
+// 获取云函数的数据库
+const db = wx.cloud.database();
 
 Page({
 
@@ -73,11 +75,30 @@ Page({
     // 1 保存input输入的内容
     let value = ev.detail.value;
     // 2 边输入边更新
+    let {
+      signature
+    } = this.data;
     this.setData({
-      signature:value
+      signature: value
     })
   },
-  handleBtn(ev){
-    this.handleBtn();
+  handleBtn(ev) {
+    this.updateSignature();
+  },
+  updateSignature() {
+    wx.showLoading({
+      title: '更新中',
+    }),
+    db.collection('users').doc(app.userInfo._id).update({
+      data: {
+        signature: this.data.signature
+      }
+    }).then(res=>{
+      wx.hideLoading(),
+      wx.showToast({
+        title: '更新成功',
+      }),
+      app.userInfo.signature = this.data.signature
+    })
   }
 })

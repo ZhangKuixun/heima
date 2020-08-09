@@ -29,7 +29,7 @@ Page({
   onReady: function () {
     wx.cloud.callFunction({
       name: 'login', // 云函数的名字
-      data: {} //要上传的数据 
+      data: {} // 要上传的数据 
     }).then(res => { // res是登录相关的信息
       // console.log(res);
       // 查询数据库
@@ -60,7 +60,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    // console.log(app.userInfo.userPhoto);
+    this.setData({
+      userPhoto: app.userInfo.userPhoto,
+      nickName: app.userInfo.nickName
+    })
   },
 
   /**
@@ -114,7 +118,8 @@ Page({
           phoneNumber: "",
           wxNumber: "",
           likes: 0,
-          time: new Date()
+          time: new Date(),
+          isLocation: true
         }
       }).then((res) => {
         // es6的promise方式，作为添加是否成功的回调

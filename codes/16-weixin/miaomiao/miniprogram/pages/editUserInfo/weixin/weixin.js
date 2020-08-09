@@ -1,11 +1,14 @@
 // pages/editUserInfo/weixin/weixin.js
+const app = getApp();
+const db = wx.cloud.database();
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    wxNumber: ''
   },
 
   /**
@@ -19,7 +22,9 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.setData({
+      wxNumber: app.userInfo.wxNumber
+    })
   },
 
   /**
@@ -62,5 +67,31 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  handleText(ev) {
+    let value = ev.detail.value;
+    let wxNumber = this.data.wxNumber;
+    this.setData({
+      wxNumber: value
+    })
+  },
+  handleBtn() {
+    this.updateWxNumber();
+  },
+  updateWxNumber() {
+    wx.showLoading({
+      title: '更新中',
+    })
+    db.collection('users').doc(app.userInfo._id).update({
+      data: {
+        wxNumber: this.data.wxNumber
+      }
+    }).then(res => {
+      wx.hideLoading(),
+      wx.showToast({
+        title: '更新成功',
+      }),
+      app.userInfo.wxNumber = this.data.wxNumber
+    })
   }
 })
