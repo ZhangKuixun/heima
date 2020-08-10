@@ -84,15 +84,27 @@ Page({
     let id = ev.target.dataset.id;
     wx.cloud.callFunction({
       // 配置：
-      name: "update",// 云函数名称
-      data: {// 上传的数据
-        collection: 'users',// 表名
-        doc: id,// id
-        // 需要更新的数据，把这些运算操作传递到传递
+      name: "update", // 云函数名称
+      data: { // 上传的数据
+        collection: 'users', // 表名
+        doc: id, // id
+        // 需要更新的数据，把这些运算操作传递到云端
         data: '{likes: _.inc(1)}'
       }
     }).then(res => {
-      console.log(res);
+      // console.log(res);
+      let updated = res.result.stats.updated;
+      if (updated) { // 已经更新了数据
+        let cloneListData = [...this.data.listData]// 克隆一份数组，不要直接对数组操作
+        for (let i = 0; i < cloneListData.length; i++) {
+          if (cloneListData[i]._id == id) {
+            cloneListData[i].likes++;
+          }
+        }
+        this.setData({
+          listData: cloneListData
+        })
+      }
     })
 
     // 小程序限制：客户端的开发者不能修改别人的数据，需要在云平台做修改所有用户数据的功能
