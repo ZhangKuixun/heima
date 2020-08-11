@@ -12,7 +12,8 @@ Page({
       "https://pic3.zhimg.com/80/v2-e1459355307e881617127f2d185cc3b2_720w.jpg?source=1940ef5c",
       "https://pic1.zhimg.com/80/v2-4417a6b4921f30316f73af60b57596cb_720w.jpg?source=1940ef5c"
     ],
-    listData: []
+    listData: [],
+    current: 'likes',
   },
 
   /**
@@ -26,16 +27,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    db.collection('users').field({
-      userPhoto: true,
-      nickName: true,
-      likes: true
-    }).get().then(res => {
-      // console.log(res);
-      this.setData({
-        listData: res.data
-      })
-    })
+    this.getListData();
   },
 
   /**
@@ -95,7 +87,7 @@ Page({
       // console.log(res);
       let updated = res.result.stats.updated;
       if (updated) { // 已经更新了数据
-        let cloneListData = [...this.data.listData]// 克隆一份数组，不要直接对数组操作
+        let cloneListData = [...this.data.listData] // 克隆一份数组，不要直接对数组操作
         for (let i = 0; i < cloneListData.length; i++) {
           if (cloneListData[i]._id == id) {
             cloneListData[i].likes++;
@@ -115,5 +107,33 @@ Page({
     // }).then(res => {
     //   console.log(res);
     // })
+  },
+  handleCurrent(ev) {
+    let current = ev.target.dataset.current;
+    if (current == this.data.current) {
+      return
+    }
+    this.setData({
+      current
+    }, () => {
+      this.getListData();
+    })
+  },
+  getListData() {
+    console.log(this.data.current);
+    db.collection('users')
+      .field({
+        userPhoto: true,
+        nickName: true,
+        likes: true
+      })
+      .orderBy(this.data.current, 'desc')
+      .get()
+      .then(res => {
+        console.log(res);
+        this.setData({
+          listData: res.data
+        })
+      })
   }
 })

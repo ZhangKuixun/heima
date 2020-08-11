@@ -1,4 +1,7 @@
 <!--miniprogram/pages/index/index.wxml-->
+<wxs src="../../utils/wordSplit.wxs" module="m1" />
+<wxs src="../../utils/untilFormat.wxs" module="m2" />
+
 <!-- 轮播图 -->
 <view class="index">
 	<swiper class="index-swiper" indicator-dots="{{true}}" indicator-active-color="#937bf5" autoplay="{{false}}" interval="{{3000}}" duration="{{200}}" circular="{{true}}">
@@ -10,9 +13,9 @@
 	</swiper>
 
 	<!-- table -->
-	<view class="index-tab">
-		<view class="action">推荐</view>
-		<view>最新</view>
+	<view class="index-tab" >
+		<view class="{{ current=='likes' ? 'action' : '' }}" data-current="likes" bindtap="handleCurrent">推荐</view>
+		<view class="{{ current=='time' ? 'action' : '' }}" data-current="time" bindtap="handleCurrent">最新</view>
 	</view>
 
 	<!-- list -->
@@ -21,11 +24,11 @@
 		<view class="index-list-item" wx:for="{{listData}}" wx:key="*this">
 			<image mode="aspectFill" src="{{item.userPhoto}}"></image>
 			<view class="index-list-text">
-				<text>{{item.nickName}}</text>
+				<text>{{m1.wordSplit(item.nickName)}}</text>
 				<text data-id="{{item._id}}" bindtap="handleLinks">
 						<!-- 把当前数据的id挂载到自定义属性 -->
 						<text class="iconfont icondianzan"></text>
-				<text>{{item.likes}}</text>
+				<text>{{m2.untilFormat(item.likes)}}</text>
 				</text>
 			</view>
 		</view>
