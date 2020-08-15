@@ -37,7 +37,7 @@ Page({
         _openid: res.result.openid
       }).get().then(res => {
         // console.log(res);
-        if (res.data.length > 0) {
+        if (res.data.length > 0) { // 登录成功
           // 拿到data，重新写入userInfo
           app.userInfo = Object.assign(app.userInfo, res.data[0])
           // 更新数据
@@ -46,7 +46,8 @@ Page({
             nickName: app.userInfo.nickName,
             logined: true
           })
-        } else {
+          this.getMessage();
+        } else { // 未登录
           this.setData({
             disabled: false
           })
@@ -143,5 +144,36 @@ Page({
         })
       });
     }
+  },
+  // 接收消息，在登录后才触发
+  getMessage() {
+    const watcher = db.collection('message')
+      .where({
+        userId: app.userInfo._id
+      })
+      .watch({
+        onChange: function (snapshot) {
+          console.log(snapshot)
+          if (snapshot.docChanges.length) { // 能拿更新事件数组的数据
+            let list = snapshot.docChanges[0].doc.list;
+            if (list.length) { // 有消息，在消息页面添加一个小红点
+              wx.showTabBarRedDot({
+                index: 2
+              })
+              // 消息是在我的页面中调用的，要在消息页面使用，需要在app.js中写一个全局的userMessage=[]，可能有多条消息，写成数组
+              // 然后把消息数据，共享到全局的userMessage
+              app.userMessage = list
+            } else { // 没有消息
+              wx.hideTabBarRedDot({
+                index: 2
+              })
+              app.userMessage = []
+            }
+          }
+        },
+        onError: function (err) {
+          console.error('the watch closed because of error', err)
+        }
+      })
   }
 })

@@ -1,1 +1,17 @@
 /* miniprogram/pages/detail/detail.wxss */
+.detail-item {
+  border-bottom: 1rpx dashed #b4b5b6;
+  padding: 40rpx 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.detail-item image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.detail-phoneNumber,
+.detail-wxNumber {
+  margin-right: 10rpx;
+}

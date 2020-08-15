@@ -1,7 +1,7 @@
 //app.js
 App({
   onLaunch: function () {
-    
+
     if (!wx.cloud) {
       console.error('请使用 2.2.3 或以上的基础库以使用云能力')
     } else {
@@ -19,5 +19,6 @@ App({
 
     this.globalData = {}
     this.userInfo = {}
+    this.userInfo = []// 可能有多条消息，写成数组
   }
 })

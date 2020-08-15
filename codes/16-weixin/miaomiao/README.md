@@ -450,3 +450,133 @@ onReady: function () {
 2. 排序：
   > 最新：最新注册的用户显示在最上面;
     推荐：点赞的次数最多的用户显示在最前面；
+  ``` js
+  getListData() {
+    console.log(this.data.current);
+    db.collection('users')
+      .field({
+        userPhoto: true,
+        nickName: true,
+        likes: true
+      })
+      .orderBy(this.data.current, 'desc')
+      .get()
+      .then(res => {
+        console.log(res);
+        this.setData({
+          listData: res.data
+        })
+      })
+  }
+  ```
+
+# 详情页开发
+1. index页面打开详情页，index页面传递参数到详情页，详情页可以在```onLoad: function (options)```的options参数中接收；
+  ```js
+  <!-- index.js -->
+  handleDetail(ev){
+    wx.navigateTo({
+      url: '/pages/detail/detail?userId='+ev.currentTarget.dataset.id,
+    })
+  }
+  <!-- detail.wxml -->
+  onLoad: function (options) {
+  let userId = options.userId;
+  db.collection("users").doc(userId).get().then(res => {
+    this.setData({
+      detail: res.data
+    })
+  })
+},
+  ```
+2. 页面布局；
+3. 拨打电话，把这个功能做成一个组件：
+  1. 在components文件加下右键新建文件，再选中"新建的文件"右键"新建Page".
+  2. 在detail.json中引入
+  ```js
+  "usingComponents": {
+    "call-phone":"/components/callPhone/callPhone"
+  }
+  ```
+  3. 在detail.wxml中使用
+  ```xml
+  <view class="detail-item">
+    ...
+    <call-phone />
+  </view>
+  ```
+  4. 编写布局文件：
+    ```js
+    <!-- callPhone.wxml -->
+    <text class="iconfont icondadianhua"></text>
+    <!-- callPhone.js -->
+    Component({
+      options: {
+        styleIsolation: 'apply-shared'
+      }
+    })
+
+    styleIsolation 支持以下取值：
+      isolated 表示启用样式隔离，在自定义组件内外，使用 class 指定的样式将不会相互影响（一般情况下的默认值）；
+      apply-shared 表示页面 wxss 样式将影响到自定义组件，但自定义组件 wxss 中指定的样式不会影响页面；
+    ```
+4. 父组件和子组件通信和拨打电话功能：
+  1. 把电话号码传递到子组件：
+  ```js
+  <!-- detial.wxml -->
+  <call-phone phoneNumber="{{detail.phoneNumber}}"/>
+  ```
+  2. 子组件接收电话号码：
+    ```js
+    <!-- callPhone.js -->
+    properties: {
+      phoneNumber: String
+    },
+    ```
+  3. 点击触发打电话的功能：
+    ```js
+    <!-- callPhone.wxml -->
+    <text ... bindtap="handleCallPhone"></text>
+    <!-- callPhone.js -->
+    methods: {
+      handleCallPhone() {
+        // 拨打电话,通过this.data接受到properties的数据
+        wx.makePhoneCall({
+          phoneNumber: this.data.phoneNumber
+        })
+      }
+    }
+    ```
+5. 复制文本同上，最后的方法不一样：
+  ```js
+  methods: {
+    handleCopyText(){
+      wx.setClipboardData({
+        data: this.data.wxNumber,
+        success (res) {
+          wx.showToast({
+            title: '复制成功',
+          })
+        }
+      })
+    }
+  }
+  ```
+
+# 添加好友功能
+1. 给添加好友按钮添加点击事件；
+2. 添加好友之前需要验证是否登录，如果没有登录需要跳转到首页-我的，跳转到tabBar
+  > navigateTo, redirectTo 只能打开非 tabBar 页面。
+    switchTab 只能打开 tabBar 页面。
+    reLaunch 可以打开任意页面。
+3. 在云函数中创建message表，保存好友请求、系统消息；
+  - 表的设计：
+    1. 每条数据包含userId，userId表示好友请求发送给哪一个人；
+    2. 谁发起请求，它的id要写入一个数组中。
+
+# 监听好友的消息
+1. 在登录后才触发
+2. 实时推送消息是用数据库的```watch```方法，使用发送添加好友的账号测试
+3. 有消息，在消息页面添加一个小红点
+4. 小红点：小程序自带这个功能
+

@@ -1,2 +1,25 @@
 <!--miniprogram/pages/detail/detail.wxml-->
-<text>miniprogram/pages/detail/detail.wxml</text>
+<button wx:if="{{isFriend}}">已是好友</button>
+<button wx:else bindtap="handleAddFriend">添加好友</button>
+<view class="detail-item">
+	<text>昵称：</text>
+	<text>{{detail.nickName}}</text>
+</view>
+<view class="detail-item">
+	<text>头像：</text>
+	<image src="{{ detail.userPhoto }}"></image>
+</view>
+<view class="detail-item">
+	<text>个性签名：</text>
+	<text>{{detail.signature}}</text>
+</view>
+<view class="detail-item">
+	<text>手机号：</text>
+	<text class="detail-phoneNumber">{{detail.phoneNumber}}</text>
+	<call-phone phoneNumber="{{detail.phoneNumber}}"/>
+</view>
+<view class="detail-item">
+	<text>微信号：</text>
+	<text class="detail-wxNumber">{{detail.wxNumber}}</text>
+	<copy-text wxNumber="{{detail.wxNumber}}"/>
+</view>

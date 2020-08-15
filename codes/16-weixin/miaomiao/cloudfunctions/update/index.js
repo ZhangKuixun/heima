@@ -24,13 +24,26 @@ exports.main = async (event, context) => {
     // 1.通过return返回异步的数据
     // event.collection：表的名称
     // event.doc：单条数据的id
-    return await db.collection(event.collection).doc(event.doc)
-      .update({
-        data: {
-          // 2.把传过来的数据展开到这里，利用es6的扩展运算符，展开到这里
-          ...event.data
-        },
-      })
+    if (event.doc) {
+      return await db.collection(event.collection)
+        .doc(event.doc)
+        .update({
+          data: {
+            // 2.把传过来的数据展开到这里，利用es6的扩展运算符，展开到这里
+            ...event.data
+          }
+        })
+    } else {
+      return await db.collection(event.collection)
+        .where({
+          ...event.where
+        })
+        .update({
+          data: {
+            ...event.data
+          }
+        })
+    }
   } catch (e) {
     console.error(e)
   }

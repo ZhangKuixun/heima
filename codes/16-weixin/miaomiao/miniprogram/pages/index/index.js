@@ -108,10 +108,11 @@ Page({
     //   console.log(res);
     // })
   },
+  // 切换列表
   handleCurrent(ev) {
     let current = ev.target.dataset.current;
     if (current == this.data.current) {
-      return
+      return false
     }
     this.setData({
       current
@@ -119,8 +120,9 @@ Page({
       this.getListData();
     })
   },
+  // 查询语句
   getListData() {
-    console.log(this.data.current);
+    // console.log(this.data.current);
     db.collection('users')
       .field({
         userPhoto: true,
@@ -130,10 +132,15 @@ Page({
       .orderBy(this.data.current, 'desc')
       .get()
       .then(res => {
-        console.log(res);
         this.setData({
           listData: res.data
         })
       })
+  },
+  // 点击图片，进入详情
+  handleDetail(ev){
+    wx.navigateTo({
+      url: '/pages/detail/detail?userId='+ev.currentTarget.dataset.id,
+    })
   }
 })
