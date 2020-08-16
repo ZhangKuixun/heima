@@ -21,7 +21,7 @@
 				<text class="iconfont iconyoujiantou"></text>
 			</view>
 		</navigator>
-		<navigator url="../detail/detail" open-type="navigate">
+		<navigator url="{{'../detail/detail?userId=' + id}}" open-type="navigate">
 			<view class="user-list-itme">
 				<text>个人主页</text>
 				<text class="iconfont iconyoujiantou"></text>

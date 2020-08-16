@@ -10,6 +10,7 @@ Page({
   data: {
     detail: {},
     isFriend: false,
+    isHead: false,
   },
 
   /**
@@ -17,10 +18,34 @@ Page({
    */
   onLoad: function (options) {
     let userId = options.userId;
+    // console.log(userId);
     db.collection("users").doc(userId).get().then(res => {
       this.setData({
         detail: res.data
       })
+      let friendList = res.data.friendList;
+      // console.log(res);
+      // console.log(friendList, app.userInfo._id);
+      if (friendList.includes(app.userInfo._id)) {// 判断根据传进来的userId查询到的用户，这个用户的friendList是否包含当前登录用户的id，如果包含，就是好友
+        // 是好友，把isFriend变为true
+        this.setData({
+          isFriend: true
+        })
+      } else {
+        // 不是好友，包括自己
+        this.setData({
+          isFriend: false
+        }, () => {// setData回调中重新配置数据
+          if (userId == app.userInfo._id) { // 把传进来的userId和当前登录用的id做比较，如果相等，就是自己
+            // 是自己，把isFriend改为true，并且把添加好友按钮隐藏
+            this.setData({
+              isFriend: true,
+              isHead: true
+            })
+          }
+        })
+
+      }
     })
   },
 

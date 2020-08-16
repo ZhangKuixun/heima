@@ -13,7 +13,8 @@ Page({
     userPhoto: "/images/user/head.png",
     nickName: "小喵喵",
     logined: false,
-    disabled: true
+    disabled: true,
+    id: ""
   },
 
   /**
@@ -42,13 +43,15 @@ Page({
           app.userInfo = Object.assign(app.userInfo, res.data[0])
           let {
             userPhoto,
-            nickName
+            nickName,
+            id
           } = this.data;
           // 更新数据
           this.setData({
             userPhoto: app.userInfo.userPhoto,
             nickName: app.userInfo.nickName,
-            logined: true
+            logined: true,
+            id: app.userInfo._id
           })
           this.getMessage();
         } else { // 未登录
@@ -68,11 +71,13 @@ Page({
     // console.log(app.userInfo.userPhoto);
     let {
       userPhoto,
-      nickName
+      nickName,
+      id
     } = this.data;
     this.setData({
       userPhoto: app.userInfo.userPhoto,
-      nickName: app.userInfo.nickName
+      nickName: app.userInfo.nickName,
+      id: app.userInfo._id
     })
   },
 
@@ -110,6 +115,7 @@ Page({
   onShareAppMessage: function () {
 
   },
+  // 授权微信登录
   bindGetUserInfo(ev) {
     // console.log(ev);
     let {
@@ -117,7 +123,7 @@ Page({
     } = this.data;
     let userInfo = ev.detail.userInfo;
     // 判断是否登录
-    if (!logined && userInfo) {
+    if (!logined && userInfo) {// 未登录
       // 插入数据库，collection("数据库名称")
       db.collection("users").add({
         data: {
@@ -141,7 +147,8 @@ Page({
           let {
             userInfo,
             userPhoto,
-            nickName
+            nickName,
+            id
           } = app.userInfo;
           // Object.assign() 拷贝对象，将参数2的参数拷贝到参数1
           userInfo = Object.assign(app.userInfo, res.data);
@@ -150,7 +157,8 @@ Page({
           this.setData({
             userPhoto: userInfo.userPhoto,
             nickName: userInfo.nickName,
-            logined: true
+            logined: true,
+            id:app.userInfo._id
           })
         })
       });

@@ -138,9 +138,9 @@ Page({
       })
   },
   // 点击图片，进入详情
-  handleDetail(ev){
+  handleDetail(ev) {
     wx.navigateTo({
-      url: '/pages/detail/detail?userId='+ev.currentTarget.dataset.id,
+      url: '/pages/detail/detail?userId=' + ev.currentTarget.dataset.id,
     })
   }
 })
