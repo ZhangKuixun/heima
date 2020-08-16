@@ -18,7 +18,7 @@ App({
     }
 
     this.globalData = {}
-    this.userInfo = {}
-    this.userInfo = []// 可能有多条消息，写成数组
+    this.userInfo = {}// 用户自己的信息
+    this.userMessage = []// 用户接收的消息，可能有多条消息，写成数组
   }
 })

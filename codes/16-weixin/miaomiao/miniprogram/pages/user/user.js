@@ -40,6 +40,10 @@ Page({
         if (res.data.length > 0) { // 登录成功
           // 拿到data，重新写入userInfo
           app.userInfo = Object.assign(app.userInfo, res.data[0])
+          let {
+            userPhoto,
+            nickName
+          } = this.data;
           // 更新数据
           this.setData({
             userPhoto: app.userInfo.userPhoto,
@@ -62,6 +66,10 @@ Page({
    */
   onShow: function () {
     // console.log(app.userInfo.userPhoto);
+    let {
+      userPhoto,
+      nickName
+    } = this.data;
     this.setData({
       userPhoto: app.userInfo.userPhoto,
       nickName: app.userInfo.nickName
@@ -120,7 +128,8 @@ Page({
           wxNumber: "",
           likes: 0,
           time: new Date(),
-          isLocation: true
+          isLocation: true,
+          friendList: [],
         }
       }).then((res) => {
         // es6的promise方式，作为添加是否成功的回调
@@ -130,7 +139,9 @@ Page({
         db.collection("users").doc(res._id).get().then((res) => {
           // console.log(res);
           let {
-            userInfo
+            userInfo,
+            userPhoto,
+            nickName
           } = app.userInfo;
           // Object.assign() 拷贝对象，将参数2的参数拷贝到参数1
           userInfo = Object.assign(app.userInfo, res.data);
@@ -151,9 +162,9 @@ Page({
       .where({
         userId: app.userInfo._id
       })
-      .watch({
+      .watch({ // watch 监听集合中符合查询条件的数据的更新事件
         onChange: function (snapshot) {
-          console.log(snapshot)
+          // console.log(snapshot)
           if (snapshot.docChanges.length) { // 能拿更新事件数组的数据
             let list = snapshot.docChanges[0].doc.list;
             if (list.length) { // 有消息，在消息页面添加一个小红点

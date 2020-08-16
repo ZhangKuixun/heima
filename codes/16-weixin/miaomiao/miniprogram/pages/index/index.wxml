@@ -5,7 +5,7 @@
 <!-- 轮播图 -->
 <view class="index">
 	<swiper class="index-swiper" indicator-dots="{{true}}" indicator-active-color="#937bf5" autoplay="{{false}}" interval="{{3000}}" duration="{{200}}" circular="{{true}}">
-		<block wx:for="{{imgUrls}}" wx:key="*this">
+		<block wx:for="{{imgUrls}}" wx:key="index">
 			<swiper-item>
 				<image src="{{item}}" class="slide-image" mode="aspectFill"></image>
 			</swiper-item>
@@ -20,8 +20,7 @@
 
 	<!-- list -->
 	<view class="index-list">
-		<!-- <block wx:for="{{listData}}" wx:key="*this"> -->
-		<view class="index-list-item" wx:for="{{listData}}" wx:key="*this">
+		<view class="index-list-item" wx:for="{{listData}}" wx:key="index">
 			<image mode="aspectFill" src="{{item.userPhoto}}" data-id="{{item._id}}" bindtap="handleDetail"></image>
 			<view class="index-list-text">
 				<text>{{m1.wordSplit(item.nickName)}}</text>
@@ -32,6 +31,5 @@
 				</text>
 			</view>
 		</view>
-		<!-- </block> -->
 	</view>
 </view>

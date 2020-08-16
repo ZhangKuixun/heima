@@ -488,7 +488,7 @@ onReady: function () {
     })
   })
 },
-  ```
+```
 2. 页面布局；
 3. 拨打电话，把这个功能做成一个组件：
   1. 在components文件加下右键新建文件，再选中"新建的文件"右键"新建Page".
@@ -517,7 +517,7 @@ onReady: function () {
     })
 
     styleIsolation 支持以下取值：
-      isolated 表示启用样式隔离，在自定义组件内外，使用 class 指定的样式将不会相互影响（一般情况下的默认值）；
+      isolated 表示启用样式隔离，在自定义组件内外，使用 ```class``` 指定的样式将不会相互影响（默认值）；
       apply-shared 表示页面 wxss 样式将影响到自定义组件，但自定义组件 wxss 中指定的样式不会影响页面；
     ```
 4. 父组件和子组件通信和拨打电话功能：
@@ -579,4 +579,123 @@ onReady: function () {
 2. 实时推送消息是用数据库的```watch```方法，使用发送添加好友的账号测试
 3. 有消息，在消息页面添加一个小红点
 4. 小红点：小程序自带这个功能
+
+# 消息页面开发
+> 注意：
+    在tabbar页面中，tabbar1第一次被打开会执行onShow--onReady；
+    如果切换，比如:tabbar1-->tabbar2-->tabbar1,tabbar1只会触发onShow；
+    如果是普通的页面，退出然后再次被打开会触发onShow--onReady；
+1. 在onshow中，进入消息页面，监听消息的不断变化，如果没有登录，进入我的页面去登录，如果已经登录，显示消息页面；
+  ```js
+  onShow: function () {
+    // 在onshow中，进入页面，监听消息的不断变化；
+    if (app.userInfo._id) {
+      // 进入消息页面，已经登录，显示消息页面
+      let {
+        userMessage,
+        logined
+      } = this.data;
+      this.setData({
+        logined: true,
+        userMessage: app.userMessage
+      })
+    } else {
+      // 进入消息页面，没有登录，去我的页面执行登录
+      wx.showToast({
+        title: '未登录',
+        icon: 'none',
+        duration: 2000,
+        success: () => {
+          setTimeout(() => {
+            wx.switchTab({
+              url: '/pages/user/user',
+            })
+          }, 2000)
+        }
+      })
+    }
+  },
+  ```
+2. 用一个列表展示发消息的用户，把单个消息item写成一个组件；
+3. 获取发送的请求添加好友数据，使用组件生命周期函数，在组件进入页面树时更新数据
+  ```js
+  lifetimes: {
+    attached: function () {
+      // 在组件实例进入页面节点树时执行
+      db.collection('users').doc(this.data.messageId).field({
+        userPhoto: true,
+        nickName: true
+      }).get().then(res => {
+        this.setData({
+          userMessage: res.data
+        })
+      })
+    }
+  }
+  ```
+4. 点击头像跳转到详情页
+5. 滑动item，删除单条消息
+  - 删除页面中的好友请求消息，思考：消息是怎么添加到页面中，在message.wxml中，通过userMessage这个数组来决定需要渲染多少条数据，所以删除的时候，是对message.wxml的userMessage进行修改；
+  - ```页面：message```和```组件：removeList```的关系：虽然一个是页面，一个是组件，其实都是组件，message看成父组件，removeList看成子组件，就是父组件向子组件通信；
+  - ```父组件向子组件通信：通过指定属性设置数据；子组件向父组件通信：事件；```
+
+  - ```组件：removeList```向```页面：message```传递数据的过程：
+    1. 父组件：message
+    ```js
+    <!-- message.wxml -->
+    <remove-list bindmyevent="onMyEvent"/>
+    <!-- message.js -->
+    onMyEvent(ev) {
+      console.log(ev.detail);
+    }
+    ```
+    2. 子组件：removeList，触发刚刚的事件bindmyevent
+    ```js
+    <!-- removeList.js -->
+    <!-- 我们的代码中是，把这个添加好友请求从数据库中删除成功后，触发父组件的bindmyevent事件 -->
+    this.triggerEvent('myevent', list)
+    ```
+
+  - 删除消息小结：
+    1. 点击删除，弹出提示信息
+    2. 如果点了删除，先查询到被点击的用户；
+    3. 再通过list.filter把点击的消息，从列表中过滤掉；
+    4. 然后用我们过滤的list重新更新数据库message表，通过云函数更新数据库；
+    5. 最后触发子父通信，把更新之后的list传给父组件，触发父组件```message.wxml```绑定的事件:```bindmyevent="onMyEvent"```,再执行到```message.js```的```onMyEvent(ev)```方法；
+    6. 父组件拿到传过来更新之后的list来更新整个列表
+
+  - 注意：lifetimes的attached方法，删除后不会再触发了
+    ```js
+    lifetimes: {
+      attached: function () {
+        // 在组件实例进入页面节点树时执行
+        db.collection('users').doc(this.data.messageId).field({
+          userPhoto: true,
+          nickName: true
+        }).get().then(res => {
+          this.setData({
+            userMessage: res.data
+          })
+        })
+      }
+    }
+    ```
+    解决：先让userMessage全部置为空，再重新重置userMessage，这样removeList会重新再走一步
+    ```js
+    onMyEvent(ev) {
+      console.log(ev.detail);
+      this.setData({
+        userMessage: []
+      }, () => {
+        this.setData({
+          userMessage: ev.detail
+        })
+      })
+    }
+    ```
+
+6. 点击item的非头像区域，添加好友，把当前应用的用户与发消息的用户产生一个好友关系，必须在user表中添加一个字段```friendList```；
+  1. 更新自己，把发送好友请求的id放入当前登录应用用户的friendList中；
+  2. 更新其他人，把当前登录应用用户的id放入发送好友请求的friendList中
+  3. 删除发送的好友请求
 
