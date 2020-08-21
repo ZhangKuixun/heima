@@ -704,3 +704,39 @@ onReady: function () {
 2. 把传进来的userId和当前登录用的id做比较，如果相等，就是自己，是自己，把isFriend改为true，并且把添加好友按钮隐藏
 
 # 好友列表开发
+
+# 附近开发
+  - 需求：地图上显示自己的位置，显示附近的用户，点击它的头像，看见他的详情页，详情页显示它的位置
+1. 画页面
+2. 授权
+```js
+{
+  "pages": ["pages/index/index"],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示" // 高速公路行驶持续后台定位
+    }
+  }
+}
+```
+3. 附近页面显示的时候，获取当前位置
+```js
+getLocation() {
+    let that = this;
+    wx.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        that.setData({
+          latitude,
+          longitude
+        })
+      }
+    })
+  }
+```
+4. 在我的页面渲染完成时，获取当前用户的经纬度，授权微信登录时，把经纬度度写入数据库
+
+
+

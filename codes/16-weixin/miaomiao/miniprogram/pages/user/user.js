@@ -28,6 +28,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.getLoaction(); // 获取经纬度
+
     wx.cloud.callFunction({
       name: 'login', // 云函数的名字
       data: {} // 要上传的数据 
@@ -123,7 +125,7 @@ Page({
     } = this.data;
     let userInfo = ev.detail.userInfo;
     // 判断是否登录
-    if (!logined && userInfo) {// 未登录
+    if (!logined && userInfo) { // 未登录
       // 插入数据库，collection("数据库名称")
       db.collection("users").add({
         data: {
@@ -135,6 +137,8 @@ Page({
           likes: 0,
           time: new Date(),
           isLocation: true,
+          longitude: this.longitude,
+          latitude: this.latitude,
           friendList: [],
         }
       }).then((res) => {
@@ -158,7 +162,7 @@ Page({
             userPhoto: userInfo.userPhoto,
             nickName: userInfo.nickName,
             logined: true,
-            id:app.userInfo._id
+            id: app.userInfo._id
           })
         })
       });
@@ -194,5 +198,14 @@ Page({
           console.error('the watch closed because of error', err)
         }
       })
+  },
+  getLoaction() {
+    wx.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        this.latitude = res.latitude
+        this.longitude = res.longitude
+      }
+    })
   }
 })

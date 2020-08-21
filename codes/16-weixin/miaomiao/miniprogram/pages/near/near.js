@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    longitude: "",
+    latitude: ""
   },
 
   /**
@@ -19,14 +20,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.getLocation();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getLocation();
   },
 
   /**
@@ -62,5 +63,18 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  getLocation() {
+    wx.getLocation({
+      type: 'gcj02',
+      success: (res) => {
+        let latitude = res.latitude
+        let longitude = res.longitude
+        this.setData({
+          latitude,
+          longitude
+        })
+      }
+    })
   }
 })
