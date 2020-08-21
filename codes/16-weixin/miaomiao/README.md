@@ -737,6 +737,50 @@ getLocation() {
   }
 ```
 4. 在我的页面渲染完成时，获取当前用户的经纬度，授权微信登录时，把经纬度度写入数据库
-
-
-
+5. 根据范围获取附近的人
+  - Command.geoNear,从近到远的顺序，找出附近的用户，需对查询字段建立地理位置索引；
+  - Geo.Point,创建一个地理位置，如存储地理位置信息的字段有被查询的需求，务必对字段建立地理位置索引，提升性能；
+  1. 往数据库保存location
+  ```js
+  db.collection("users").add({
+    data: {
+      ...
+      location: db.Geo.Point(this.longitude, this.latitude),// 往数据库保存location
+    }
+  })
+  ```
+  2. 创建索引：云开发--数据库--索引管理--添加索引
+  3. 读位置：
+  ```js
+  getNearUsers() {
+    db.collection('users').where({
+      location: _.geoNear({
+        geometry: db.Geo.Point(this.data.longitude, this.data.latitude),
+        minDistance: 1000,
+        maxDistance: 5000,
+      })
+    }).get()
+  }
+  ```
+  4. 在users表中，有一个isLocation（是否开启共享位置），需要查看这个人是否开启共享位置并且满足附近的人，才把用户读出来；
+  5. 搜索到的用户，给他们添加标记点
+  - makres:标记点
+  ```js
+  let data = res.data;
+  let result = [];
+  if (data.length) {
+    for (let i = 0; i < data.length; i++) {
+      result.push({
+        iconPath: data[i].userPhoto,
+        id: data[i]._id,
+        latitude: data[i].latitude,
+        longitude: data[i].longitude,
+        width: 30,
+        height: 30
+      })
+    }
+    this.setData({
+      markers: result
+    })
+  }
+  ```

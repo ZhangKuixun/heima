@@ -139,6 +139,7 @@ Page({
           isLocation: true,
           longitude: this.longitude,
           latitude: this.latitude,
+          location: db.Geo.Point(this.longitude, this.latitude),// 往数据库保存location
           friendList: [],
         }
       }).then((res) => {
