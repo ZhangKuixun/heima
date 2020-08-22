@@ -771,7 +771,7 @@ getLocation() {
   if (data.length) {
     for (let i = 0; i < data.length; i++) {
       result.push({
-        iconPath: data[i].userPhoto,
+        iconPath: data[i].userPhoto,// iconPath只支持图片的路径，不支持fileId
         id: data[i]._id,
         latitude: data[i].latitude,
         longitude: data[i].longitude,
@@ -784,3 +784,85 @@ getLocation() {
     })
   }
   ```
+  6. 当用户更换头像后，地图上的makers，无法渲染，说明fileId可以渲染到image标记上，但是makers的iconPath不支持fileId，只支持图片的路径，可以通过```换取临时链接```拿到临时的图片路径，把这个临时路径对应到iconPath中
+  - wx.cloud.getTempFileURL异步执行
+  7. 点击头像跳转到详情页
+    > 扩展：在头像上做一个语音功能，计算两个用户的路线
+
+# 主页上添加搜索功能
+1. 绘制页面：搜索框，历史记录，搜索的用户列表
+2. 页面初始化没有焦点，没有焦点不显示“取消”文字
+  ```js
+  <input class="input" type="text" confirm-type="search" focus="{{isFocus}}" inputVal="{{inputVal}}" placeholder="搜索喵咪"   bindfocus="inputfocus" bindinput='inputsearch' bindconfirm='goSearch'/>
+  bindfocus:input框聚焦
+  bindblur:input失去焦点
+  inputsearch:联想
+  bindconfirm:键盘搜索
+  ```
+3. 输入框上焦，修改isFocus，显示搜索框和输入框
+4. 搜索的内容存储到本地缓存--Storage
+  - wx.setStorage(Object object)将数据存储在本地缓存指定的 key 中。
+  1. 搜索框上焦时，获取本地缓存的历史记录
+    ```js
+    wx.getStorage({
+      key: 'searchHistory',
+      success: res => {
+        this.setData({
+          historyList: res.data
+        })
+      }
+    });
+    ```
+  2. 搜索内容，点击搜索后，把搜索的关键词保存到本地缓存
+    ```js
+    goSearch(ev) { // 键盘搜索
+      // 去重：第一次搜索1111，第二次搜索1111，搜索重复词的时候，只显示一个；
+      // 解决：找到进入页面获取到的记录数组，克隆一份，把第二次搜索的词添加到克隆的数组的第一位，然后再去重
+      let cloneHistoryList = [...this.data.historyList];
+      cloneHistoryList.unshift(ev.detail.value);
+      wx.setStorage({
+        key: "searchHistory",
+        data: [...new Set(cloneHistoryList)],
+      })
+    }
+    ```
+  3. 删除历史记录
+  - wx.removeStorage 从本地缓存中移除指定key
+  4. 搜索用户
+    ```js
+    // 点击搜索，调用搜索方法
+    // 搜索用户
+    changeSearchList(value) {
+      db.collection('users').where({
+          // 用正则模糊查询
+          nickName: db.RegExp({
+            regexp: value,
+            options: 'i',
+          })
+        })
+        .field({
+          userPhoto: true,
+          nickName: true
+        })
+        .get().then(res => {
+          this.setData({
+            searchList: res.data
+          })
+          console.log(this.data.searchList);
+        })
+    }
+
+    // 点击历史记录的item
+    handleHistoryBtn(ev) {
+      console.log(ev);
+      let value = ev.currentTarget.dataset.value;
+      this.setData({
+        inputVal: value
+      })
+      // 点击历史记录的item，调用搜索方法
+      this.changeSearchList(value);
+    },
+    ```
+
+
+

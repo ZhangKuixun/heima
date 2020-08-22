@@ -13,7 +13,6 @@
     "pages/editUserInfo/location/location",
     "pages/editUserInfo/phone/phone",
     "pages/editUserInfo/weixin/weixin",
-    "utils/untilFormat",
     "components/callPhone/callPhone"
   ],
   "window": {

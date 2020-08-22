@@ -25,7 +25,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getLocation();
+
   },
 
   /**
@@ -107,19 +107,45 @@ Page({
         let result = [];
         if (data.length) {
           for (let i = 0; i < data.length; i++) {
-            result.push({
-              iconPath: data[i].userPhoto,
-              id: data[i]._id,
-              latitude: data[i].latitude,
-              longitude: data[i].longitude,
-              width: 30,
-              height: 30
-            })
+            if (data[i].userPhoto.includes('cloud://')) {
+              wx.cloud.getTempFileURL({ // 获取临时图片是异步操作
+                fileList: [data[i].userPhoto],
+                success: res => {
+                  // console.log(res.fileList[0])
+                  result.push({
+                    iconPath: res.fileList[0].tempFileURL, // 把临时图片赋值到iconPath
+                    id: data[i]._id,
+                    latitude: data[i].latitude,
+                    longitude: data[i].longitude,
+                    width: 30,
+                    height: 30
+                  });
+                  this.setData({
+                    markers: result
+                  });
+                }
+              })
+            } else {
+              result.push({
+                iconPath: data[i].userPhoto, // iconPath只支持图片的路径，不支持fileId
+                id: data[i]._id,
+                latitude: data[i].latitude,
+                longitude: data[i].longitude,
+                width: 30,
+                height: 30
+              })
+            }
           }
           this.setData({
             markers: result
           })
         }
       })
+  },
+  markertap(ev) {
+    console.log(ev);
+    wx.navigateTo({
+      url: '/pages/detail/detail?userId=' + ev.markerId,
+    })
   }
 })

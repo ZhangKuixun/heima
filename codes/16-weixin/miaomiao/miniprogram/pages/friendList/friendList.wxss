@@ -5,7 +5,7 @@
   margin-right: 20rpx;
 }
 
-.friendList .friendList-item {
+.friendList-item {
   height: 120rpx;
   align-items: center;
   display: flex;
@@ -14,12 +14,12 @@
   padding: 10rpx;
 }
 
-.friendList .friendList-item view {
+.friendList-item view {
   display: flex;
   align-items: center;
 }
 
-.friendList .friendList-item image {
+.friendList-item image {
   width: 100rpx;
   height: 100rpx;
   border-radius: 50%;

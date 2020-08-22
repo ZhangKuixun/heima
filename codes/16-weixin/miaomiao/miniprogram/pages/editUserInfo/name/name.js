@@ -68,6 +68,8 @@ Page({
 
   },
   handleText(ev) {
+    console.log(ev);
+    
     // 更新页面
     let {
       nickName

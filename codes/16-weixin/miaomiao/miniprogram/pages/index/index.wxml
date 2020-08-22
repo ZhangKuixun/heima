@@ -2,6 +2,8 @@
 <wxs src="../../utils/wordSplit.wxs" module="m1" />
 <wxs src="../../utils/untilFormat.wxs" module="m2" />
 
+<search />
+
 <!-- 轮播图 -->
 <view class="index">
 	<swiper class="index-swiper" indicator-dots="{{true}}" indicator-active-color="#937bf5" autoplay="{{false}}" interval="{{3000}}" duration="{{200}}" circular="{{true}}">

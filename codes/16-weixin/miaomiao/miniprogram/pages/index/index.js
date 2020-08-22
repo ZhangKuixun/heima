@@ -7,13 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    imgUrls: [
+    imgUrls: [// 顶部切换的图片
       "https://pic1.zhimg.com/80/v2-f61cdc49eddd69e9bd2b06587d3e094e_720w.jpg?source=1940ef5c",
       "https://pic3.zhimg.com/80/v2-e1459355307e881617127f2d185cc3b2_720w.jpg?source=1940ef5c",
       "https://pic1.zhimg.com/80/v2-4417a6b4921f30316f73af60b57596cb_720w.jpg?source=1940ef5c"
     ],
-    listData: [],
-    current: 'likes',
+    listData: [],// 好友列表
+    current: 'likes',// 切换列表的标识
   },
 
   /**
@@ -27,14 +27,14 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    this.getListData();
+    // this.getListData();
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getListData();
   },
 
   /**
