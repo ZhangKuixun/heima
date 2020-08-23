@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>喵喵交友</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>喵喵交友-CMS管理系统</h1>
+    <label for="">
+    上传图片：<input type="file" id="uploadBtn">
+  </label>
+
+    <script>
+        var uploadBtn = document.getElementById('uploadBtn');
+        uploadBtn.onchange = function(ev) {
+            var file = ev.target.files[0];
+            var param = new FormData();
+            param.append('file', file);
+
+            var config = {
+                headers: { // 告诉后端，前台上传的是文件，并且是数据流
+                    'Content-Type': 'multipart/form-data'
+                }
+            };
+
+            // '/uploadBannerImg'：接口名
+            // param：参数
+            // config：http配置
+            axios.post('/uploadBannerImg', param, config)
+                .then((res) => {
+                    console.log(res.data);
+                });
+        };
+    </script>
+</body>
+
+</html>

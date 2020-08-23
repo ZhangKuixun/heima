@@ -146,7 +146,7 @@ Page({
         // es6的promise方式，作为添加是否成功的回调
         // console.log(res);
         // 将刚刚插入云平台的数据读出来，放入app.js的userInfo中
-        // doc("_id")：可以通过id读取到指定字段的数据，然后在读取，读完之后，再调用get()方法，能获取到这个"id"所对应的字段
+        // doc("_id")：可以通过id读取到指定字段的数据，读完之后，再调用get()方法，能获取到这个"id"所对应的字段
         db.collection("users").doc(res._id).get().then((res) => {
           // console.log(res);
           let {
