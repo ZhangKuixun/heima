@@ -84,31 +84,31 @@ bindGetUserInfo(ev) {
 3. 右键`login`云函数--上传并部署
 
 # 登录后，打开小程序，自动登录
-1. 在user.js的onReady，当页面初始渲染完毕时，可以调用云函数
-```js
-onReady: function () {
-  wx.cloud.callFunction({
-    name: 'login', // 云函数的名字
-    data: {} //要上传的数据 
-  }).then(res => { // res是登录相关的信息
-    // console.log(res);
-    // 查询数据库
-    db.collection('users').where({
-      _openid: res.result.openid
-    }).get().then(res => {
+1. 在`user.js`的`onReady`，当页面初始渲染完毕时，可以调用云函数
+  ```js
+  onReady: function () {
+    wx.cloud.callFunction({
+      name: 'login', // 云函数的名字
+      data: {} //要上传的数据 
+    }).then(res => { // res是登录相关的信息
       // console.log(res);
-      // 拿到data，重新写入userInfo
-      app.userInfo = Object.assign(app.userInfo, res.data[0])
-      // 更新数据
-      this.setData({
-        userPhoto: app.userInfo.userPhoto,
-        nickName: app.userInfo.nickName,
-        logined: true
+      // 查询数据库
+      db.collection('users').where({
+        _openid: res.result.openid
+      }).get().then(res => {
+        // console.log(res);
+        // 拿到data，重新写入userInfo
+        app.userInfo = Object.assign(app.userInfo, res.data[0])
+        // 更新数据
+        this.setData({
+          userPhoto: app.userInfo.userPhoto,
+          nickName: app.userInfo.nickName,
+          logined: true
+        })
       })
     })
-  })
-},
-```
+  },
+  ```
 
 # 编辑用户信息
 
@@ -208,7 +208,7 @@ onReady: function () {
 # 将userInfo变成全局数据
 1. 写入app.js：`this.userInfo = {}`
 2. 页面使用：`const app = getApp()`
-3. 将刚刚插入云平台的数据读出来，放入app.js的userInfo中
+3. 将刚刚插入云平台的数据读出来，放入`app.js`的`userInfo`中
 4. 将userInfo的数据更新到界面
 ```js
 bindGetUserInfo(ev) {
@@ -257,11 +257,11 @@ bindGetUserInfo(ev) {
 
 # 部署云函数
 1. 创建node.js云函数`login`
-2. 更换环境：右键cloudfunctions--更多设置--选择自己的云环境名称
+2. 更换环境：右键`cloudfunctions`--更多设置--选择自己的云环境名称
 3. 右键`login`云函数---上传并部署
 
 # 登录后，自动登录
-1. 在user.js的onReady，当页面初始渲染完毕时，可以调用云函数
+1. 在`user.js`的`onReady`，当页面初始渲染完毕时，可以调用云函数
 ```js
 onReady: function () {
   wx.cloud.callFunction({
@@ -291,8 +291,8 @@ onReady: function () {
 
 ## 修改个性签名
 1. 页面加载出来，将`app.userInfo.signature`，赋值到页面中
-1. 给input添加输入事件`bindinput='handleText'`，输入的时候更新页面的文字
-2. 给button添加按钮事件，点击按钮的时候，更新云函数、data、app.signature
+1. 给`input`添加输入事件`bindinput='handleText'`，输入的时候更新页面的文字
+2. 给`button`添加按钮事件，点击按钮的时候，更新云函数、`data`、`app.signature`
 
 ## 修改手机号、修改微信号，同上(个性签名)
 
@@ -353,7 +353,7 @@ onReady: function () {
   ```
 2. 添加多个数据：微信开发者工具--工具--多账号测试
     > 小程序读取云函数的数据，默认一次读取20条数据，如果要做下拉加载更多，需要使用数据库的`limit()`和`skip()`配合使用
-3. 点赞，通过用户的id值，增加点赞
+3. 点赞，通过用户的`id`值，增加点赞
 > 小程序限制：客户端的开发者不能修改别人的数据，需要在云平台做修改所有用户数据的功能
 4. 新建`updata`云函数
 ```js
@@ -483,47 +483,47 @@ onReady: function () {
       url: '/pages/detail/detail?userId='+ev.currentTarget.dataset.id,
     })
   }
-  <!-- detail.wxml -->
+  <!-- detail.js -->
   onLoad: function (options) {
-  let userId = options.userId;
-  db.collection("users").doc(userId).get().then(res => {
-    this.setData({
-      detail: res.data
+    let userId = options.userId;
+    db.collection("users").doc(userId).get().then(res => {
+      this.setData({
+        detail: res.data
+      })
     })
-  })
-},
+  },
 ```
 2. 页面布局；
-3. 拨打电话，把这个功能做成一个组件：
-  1. 在components文件加下右键新建文件，再选中"新建的文件"右键"新建Page".
+3. 拨打电话功能做成组件：
+  1. 在`components`文件加下右键新建文件，选中"新建的文件"右键"新建Page".
   2. 在detail.json中引入
-  ```js
-  "usingComponents": {
-    "call-phone":"/components/callPhone/callPhone"
-  }
+  ```
+    "usingComponents": {
+      "call-phone":"/components/callPhone/callPhone"
+    }
   ```
   3. 在detail.wxml中使用
-  ```xml
+  ```
   <view class="detail-item">
-    ...
-    <call-phone />
+        ...
+        <call-phone />
   </view>
   ```
   4. 编写布局文件：
-    ```js
-    <!-- callPhone.wxml -->
-    <text class="iconfont icondadianhua"></text>
-    <!-- callPhone.js -->
-    Component({
-      options: {
-        styleIsolation: 'apply-shared'
-      }
-    })
+  ```
+      <!-- callPhone.wxml -->
+      <text class="iconfont icondadianhua"></text>
+      <!-- callPhone.js -->
+      Component({
+        options: {
+          styleIsolation: 'apply-shared'
+        }
+      })
 
-    styleIsolation 支持以下取值：
-      isolated 表示启用样式隔离，在自定义组件内外，使用 `class` 指定的样式将不会相互影响（默认值）；
-      apply-shared 表示页面 wxss 样式将影响到自定义组件，但自定义组件 wxss 中指定的样式不会影响页面；
-    ```
+      styleIsolation 支持以下取值：
+        isolated 表示启用样式隔离，在自定义组件内外，使用 class 指定的样式将不会相互影响（默认值）；
+        apply-shared 表示页面 wxss 样式将影响到自定义组件，但自定义组件 wxss 中指定的样式不会影响页面；
+  ```
 4. 父组件和子组件通信和拨打电话功能：
   1. 把电话号码传递到子组件：
   ```js
@@ -717,18 +717,20 @@ onReady: function () {
   - 需求：地图上显示自己的位置，显示附近的用户，点击它的头像，看见他的详情页，详情页显示它的位置
 1. 画页面
 2. 授权
-```js
-    {
-      "pages": ["pages/index/index"],
-      "permission": {
-        "scope.userLocation": {
-          "desc": "你的位置信息将用于小程序位置接口的效果展示" // 高速公路行驶持续后台定位
+  ```js
+      <!-- app.json -->
+      {
+        "pages": ["pages/index/index"],
+        "permission": {
+          "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示" // 高速公路行驶持续后台定位
+          }
         }
       }
-    }
-```
+  ```
 3. 附近页面显示的时候，获取当前位置
 ```js
+    <!-- near.js -->
     getLocation() {
         let that = this;
         wx.getLocation({
@@ -883,17 +885,16 @@ onReady: function () {
             cd miaomiao-cms
         安装初始模块: cnpm i
         启动项目: npm start
-        打开浏览器输入: `localhost:3000`,显示`Hello Koa 2!`,搭建成功
+        打开浏览器输入: localhost:3000,显示Hello Koa 2!,搭建成功
         - 目录：
           public: 放置静态资源
           routes: 路由，访问后台的接口
           views: 前台页面展示
         - git忽略[node_modules](https://blog.csdn.net/jiandan1127/article/details/81205530)
         - 下载axios.min.js，[下载地址](https://github.com/axios/axios/releases)，放入`public\javascripts\axios.min.js`可以发起ajax，与后台接口交互；
-          ```js
           <!-- 引入：views/index.js -->
           <script src="/javascripts/axios.min.js"></script>
-          ```
+
 3. cms平台上传文件到后台
   ```js
   <!-- views/index.js -->
@@ -1029,36 +1030,36 @@ onReady: function () {
   - databaseAdd 数据库插入记录
   1. 把文件写入数据库
   ```js
-  // 后台的和前台头通信的'/uploadBannerImg'接口，并且访问云函数http接口
-  router.post('/uploadBannerImg', async(ctx, next) => {
-    ...
-    // 3.访问云函数，把文件的id写入数据库的banner表
-    let file_id = res.file_id;
-    options = {
-        method: 'POST',
-        uri: 'https://api.weixin.qq.com/tcb/databaseadd?access_token=' + access_token + '',
-        body: {
-            "env": 'dev-8it07',
-            "query": "db.collection(\"banner\").add({data:{fileId:\"" + file_id + "\"}})"
-        },
-        json: true
-    }
-    let res1 = await request(options)
-    console.log(res1);
-    ...
-  })
+    // 后台的和前台头通信的'/uploadBannerImg'接口，并且访问云函数http接口
+    router.post('/uploadBannerImg', async(ctx, next) => {
+      ...
+      // 3.访问云函数，把文件的id写入数据库的banner表
+      let file_id = res.file_id;
+      options = {
+          method: 'POST',
+          uri: 'https://api.weixin.qq.com/tcb/databaseadd?access_token=' + access_token + '',
+          body: {
+              "env": 'dev-8it07',
+              "query": "db.collection(\"banner\").add({data:{fileId:\"" + file_id + "\"}})"
+          },
+          json: true
+      }
+      let res1 = await request(options)
+      console.log(res1);
+      ...
+    })
   ```
   2. 小程序端读取数据库
   ```js
-  getBannerData() {
-    db.collection('banner').get().then(res => {
-      // 读不到数据库的数据，可能是权限的问题
-      // console.log(res);
-      this.setData({
-      imgUrls: res.data
+    getBannerData() {
+      db.collection('banner').get().then(res => {
+        // 读不到数据库的数据，可能是权限的问题
+        // console.log(res);
+        this.setData({
+        imgUrls: res.data
+        })
       })
-    })
-  }
+    }
   ```
   3. 扩展，在cms系统中查看用户的头像和昵称是否违规
 
