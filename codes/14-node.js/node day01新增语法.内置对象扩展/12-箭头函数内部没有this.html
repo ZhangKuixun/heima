@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 注意点：箭头函数内部没有this，在箭头函数内部使用this，使用的是外部函数this
+
+        // 检测this
+        // function say() {
+        //     console.log(this);// 指向window
+        // }
+        // say();
+
+        // let test = () => {
+        //     console.log(this);// 指向window
+        // };
+        // test();
+
+        var obj = {
+                name: '大春哥',
+                age: 18,
+                // say: function() {
+                //     console.log(this.name);
+                //     console.log(this);
+                //     var that = this;
+                //     setTimeout(function() {
+                //         console.log(this); // this指向window
+                //         console.log(that); // that指向say的this，say的this指向obj
+                //         // console.log(this.age);
+                //     }, 1000);
+                // },
+                hi: function() {
+                    setTimeout(() => {
+                        console.log(this); // this指向obj的this
+                    }, 1000);
+                }
+            }
+            // obj.say();
+        obj.hi();
+    </script>
+</body>
+
+</html>
