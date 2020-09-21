@@ -13,10 +13,14 @@
 */
 const fs = require('fs')
 
-fs.readFile('./data.txt', 'utf-8', (err, data) => {
+fs.readFile(__dirname + '\\data.txt', 'utf-8', (err, data) => {
     if (err) {
         console.log("读取失败:", err);
     } else {
         console.log(data);
     }
 })
+
+// 绝对路径
+// console.log(__dirname + '\\data.txt');
+// console.log(__filename);
