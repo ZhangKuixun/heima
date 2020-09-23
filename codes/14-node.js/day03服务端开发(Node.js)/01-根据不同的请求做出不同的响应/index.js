@@ -6,6 +6,13 @@ server.on('request', (req, res) => {
     res.setHeader('content-type', 'text/html;charset=utf-8');
     if (req.url.startsWith('/index')) {
         res.end('你访问首页');
+    } else if (req.url.startsWith('/list')) {
+        res.end('你访问了列表页');
+    } else if (req.url.startsWith('/cart')) {
+        res.end('你访问了服务器');
+    } else {
+        res.statusCode = 404;
+        res.end('')
     }
     res.end('ok');
 });
