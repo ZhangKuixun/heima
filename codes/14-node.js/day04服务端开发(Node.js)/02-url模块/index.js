@@ -7,5 +7,5 @@
 const url = require('url');
 
 let str = "http://localhost:9999/details?id=0&name=zs&age=18";
-const obj = url.parse(str, true);
+const obj = url.parse(str, true); // 输出：{ id: '1', name: 'zx', age: '18' }
 console.log(obj.query.name, obj.query.age);
