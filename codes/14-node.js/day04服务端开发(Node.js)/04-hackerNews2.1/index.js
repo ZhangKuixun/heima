@@ -4,6 +4,7 @@ const fs = require('fs');
 const path = require('path');
 const template = require('art-template');
 const url = require('url');
+const query = require('querystring');
 
 const server = http.createServer();
 server.on('request', (req, res) => { // 路由
@@ -68,15 +69,18 @@ server.on('request', (req, res) => { // 路由
                 return console.log("读取data.json错误：", err);
             }
             data = JSON.parse(data);
-            if (data.list > 0) { // 给from数据添加id
-                info.id = data.list[data.list.length - 1] + 1;
-            } else {
-                info.id = 1;
+
+            if (data.list != null) {
+                if (data.list > 0) { // 给from数据添加id
+                    info.id = data.list[data.list.length - 1].id + 1;
+                } else {
+                    info.id = 1;
+                }
+                data.list.push(info);
             }
-            data.list.push(info);
 
             // 写入data.json
-            data = JSON.stringify(data);
+            data = JSON.stringify(data, null, 4);
             fs.writeFile(path.join(__dirname, 'data', 'data.json'), data, 'utf-8', (err, data) => {
                 if (err) {
                     return console.log("添加from失败：", err);
@@ -88,7 +92,45 @@ server.on('request', (req, res) => { // 路由
             })
         });
     } else if (req.url.startsWith('/add') && req.method == "POST") { // 处理提交
-        res.end('post');
+        let str = '';
+        req.on('data', (chunk) => { // 监听post传递的数据，多次接收数据
+            str += chunk;
+        });
+        req.on('end', () => { // 数据传递完成事件
+            // 转成对象
+            let queryObj = query.parse(str);
+            let info = {
+                title: queryObj.title,
+                url: queryObj.url,
+                text: queryObj.text
+            };
+            fs.readFile(path.join(__dirname, 'data', 'data.json'), 'utf-8', (err, data) => { // 读出data.json
+                if (err) {
+                    return console.log('读取失败：', err);
+                }
+                data = JSON.parse(data);
+
+                if (data.list != null) {
+                    if (data.list.length > 0) {
+                        info.id = data.list[data.list.length - 1].id + 1; // 设置id
+                    } else {
+                        info.id = 1;
+                    }
+                    data.list.push(info); // 追加
+                }
+
+                data = JSON.stringify(data, null, 4); // 转json字符串，保持格式
+                fs.writeFile(path.join(__dirname, 'data', 'data.json'), data, 'utf-8', (err, data) => { // 存入data.json
+                    if (err) {
+                        return console.log('写入失败：', err);
+                    }
+
+                    res.statusCode = 302;
+                    res.setHeader('location', '/index'); // 跳转首页
+                    res.end();
+                })
+            })
+        });
     } else {
         res.end('404 页面未找到');
     }
