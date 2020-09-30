@@ -16,6 +16,9 @@ server.on('request', (req, res) => { // 路由
                 return console.log("首页读取失败：", err);
             }
             data = JSON.parse(data);
+
+            data.list.sort((a, b) => a.id - b.id); // 排序
+
             let str = template(path.join(__dirname, 'views', 'index.html'), data);
             res.end(str);
         });
