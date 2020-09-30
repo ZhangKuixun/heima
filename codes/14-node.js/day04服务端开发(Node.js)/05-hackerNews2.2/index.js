@@ -115,8 +115,8 @@ server.on('request', (req, res) => { // 路由
 server.listen(9999, () => { console.log("http://localhost:9999 服务器已启动") });
 
 // 读取文件
-function readFile(_path, callback) {
-    fs.readFile(_path ? _path : path.join(__dirname, 'data', 'data.json'), 'utf-8', (err, data) => {
+function readFile(callback) {
+    fs.readFile(path.join(__dirname, 'data', 'data.json'), 'utf-8', (err, data) => {
         if (err) {
             return console.log("读取失败：", err);
         }
