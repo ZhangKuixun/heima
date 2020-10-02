@@ -1,4 +1,4 @@
-// 模块化
+// 负责整个程序运行，服务器的启动监听请求
 
 const http = require('http');
 const router = require('./router')
