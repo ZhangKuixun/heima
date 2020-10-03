@@ -5,7 +5,14 @@ const fs = require('fs');
 // 创建服务器
 const app = express();
 
+// 配合重定向
+app.use('/index', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+//设置路由监听任意请求
 app.use((req, res) => {
+    console.log(req.url, req.method);
     // 之前res相关的属性：
     // res.statusCode = 404
     // res.setMessage = not found
@@ -28,8 +35,7 @@ app.use((req, res) => {
     // res.send('res的拓展');
 
 
-    // 重定向
-    // 方式一：
+    // 读取文件并返回
     // fs.readFile(path.join(__dirname, 'index.html'), (err, data) => {//以前读文件的写法
     //     if (err) {
     //         return console.log(err);
@@ -38,8 +44,12 @@ app.use((req, res) => {
     // })
     // res.sendFile(path.join(__dirname, 'index.html')); //文件路径必须是绝对路径
 
-    // 方式二：
-    res.redirect('./index')
+
+    // 重定向
+    // res.statusCode = 302;
+    // res.setHeader('location', '/index');
+    // res.end();
+    res.redirect('/index');
 });
 
 app.listen(9999, () => {
