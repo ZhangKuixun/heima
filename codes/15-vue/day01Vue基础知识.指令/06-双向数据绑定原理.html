@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    1.vue的数据双向绑定，是通过Object.defineProperty()来实现的‘数据劫持’，Object.defineProperty()，是es5提出来的，无法兼容ie8以下
+    2.Object.defineProperty()：添加/修改属性
+   -->
+    <script>
+        let obj = {};
+        let temp = '';
+        // 参数1：把属性添加到哪个对象上
+        // 参数2：添加的属性
+        // 参数3：属性描述符，对象形式
+        Object.defineProperty(obj, 'name', {
+            set(newVal) {
+                console.log("调用了set=" + newVal);
+                temp = newVal
+            },
+            get() {
+                console.log("调用了get");
+                return temp
+            }
+        })
+    </script>
+</body>
+
+</html>

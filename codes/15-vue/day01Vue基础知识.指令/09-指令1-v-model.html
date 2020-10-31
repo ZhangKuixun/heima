@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+      指令1：
+        v-model 双向绑定数据
+          把'input的value值'和'data里的msg'绑定到一起，一方改变，另一方也会改变
+          v-model 一般使用在表单元素上（单选框，多选框，文本输入框，下拉框...）
+          注意：v-model 使用在不同的表单元素上，绑定的值不一样
+    -->
+    <div id="app">
+        <input type="text" v-model="msg">
+        <input type="checkbox" v-model='isChecked'>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '测试信息',
+                isChecked: 'false'
+            }
+        })
+    </script>
+</body>
+
+</html>

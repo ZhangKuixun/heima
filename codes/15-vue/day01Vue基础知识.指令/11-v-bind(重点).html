@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    1.{{}} 不能用在属性的值上，用在标签内容上<xx>{{}}</xx>
+    2.v-bind 动态修改属性（m => v 单向）
+    3.v-bind的语法糖：属性='data里的一个值'
+    4.b-bind一般使用在属性上，任意标签
+   -->
+    <div id="app">
+        <!-- 静态 -->
+        <div title="msg">我是div</div>
+        <!-- 动态 -->
+        <div v-bind:title="msg">我是div</div>
+        <!-- v-bind的语法糖 -->
+        <div :title="msg">我是div</div>
+        <!-- {{}}不能修改属性 -->
+        <div title="{{msg}}">我是div</div>
+
+        <!-- src -->
+        <img src="./毫无下线.gif" alt="">
+        <img :src="src" alt="">
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: '哈哈',
+                src: './毫无下线.gif'
+            }
+        })
+    </script>
+</body>
+
+</html>

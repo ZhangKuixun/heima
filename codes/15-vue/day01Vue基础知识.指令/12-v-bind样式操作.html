@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .red {
+            color: red;
+        }
+        
+        .fz {
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+      v-bind操作样式
+      vue推荐：
+      键：类名
+      值：布尔值 true/false 
+   -->
+    <div id="app">
+        <h1 class="red">我是h1</h1>
+        <!-- 动态 -->
+        <h1 :class="dataRed">我是h1</h1>
+        <!-- 
+          推荐：
+            键：类名
+            值：布尔值 true/false 
+        -->
+        <h1 :class="{red:isRed, fz:isRed}">我也是h1</h1>
+        <!--
+          行内样式：
+            键：样式属性
+            值：属性值
+        -->
+        <h1 :style='{color:"blue", fontSize=fz}'>我肯定也是h1</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                dataRed: 'red',
+                isRed: true,
+                isFz: true,
+                fz: '50px',
+            }
+        })
+    </script>
+</body>
+
+</html>

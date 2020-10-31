@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    v-model:把input的值和data的msg绑定到一起，只要一方发生变化，另一方就会发生变化
+   -->
+    <div id="app">
+        <!-- V -->
+        <input type="text" v-model="msg">
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                // M
+                msg: "每一首歌"
+            }
+        })
+    </script>
+</body>
+
+</html>

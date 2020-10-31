@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    v-text 和 v-html指令
+    v-text 相当于之前 innerText（不能识别标签）
+    v-html 相当于之前 innerHTML（识别标签）
+   -->
+    <div id="app">
+        <div v-text='msg1'></div>
+        <div v-html='msg2'></div>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg1: '<h1>测试v-text</h1>',
+                msg2: '<h1>测试v-html</h1>'
+            }
+        })
+    </script>
+</body>
+
+</html>
