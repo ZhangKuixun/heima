@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        v-pre：只解析一次，一旦解析，不管数据怎么发生改变，不会再解析
+     -->
+    <div id="app">
+        <input type="text" v-model="msg">
+        <input type="text"  v-once v-model="msg">
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: 100
+            }
+        })
+    </script>
+</body>
+
+</html>

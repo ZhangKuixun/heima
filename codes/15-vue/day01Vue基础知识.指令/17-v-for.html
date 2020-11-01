@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        v-for遍历数据（数组），创建出对应的标签
+     -->
+    <div id="app">
+        <ul>
+            <!-- item 数组的元素 -->
+            <!-- index 元素的索引-->
+            <li v-for='(item, index) in list1'>{{item}}{{index}}</li>
+
+            <!-- 常用 -->
+            <li v-for='item in list2'>{{item.name}}{{item.id}}</li>
+
+            <!-- 遍历对象 -->
+            <li v-for='(value, key) in obj'>{{value}}{{key}}</li>
+
+            <!-- 遍历次数 -->
+            <li v-for='i in 100'>{{i}}</li>
+        </ul>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                list1: ['张三', '李四', '王五'],
+                list2: [
+                    { id: 1, name: '马哥' },
+                    { id: 2, name: '傻春' },
+                    { id: 3, name: '涛涛' }
+                ],
+                obj:{
+                    name:'傻春',
+                    sex:'不一定'
+                }
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

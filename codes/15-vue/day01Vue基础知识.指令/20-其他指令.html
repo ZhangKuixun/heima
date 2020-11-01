@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        使用{{}}的时候，偶尔会出现一个闪烁的过程，v-cloak能解决
+        v-cloak：使用：
+            1.给要遮盖的元素，添加这个指令
+            2.根据选择器，找到要遮盖的元素，设置 display:none
+            3.当数据解析完毕后，vue会自动删除v-cloak指令
+     -->
+    <div id="app">
+        <h1 v-cloak>{{num}}</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                num: 100
+            }
+        })
+    </script>
+</body>
+
+</html>
