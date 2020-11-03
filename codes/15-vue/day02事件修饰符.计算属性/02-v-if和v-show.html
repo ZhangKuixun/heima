@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        v-if和v-show切换元素的显示和隐藏
+        格式 v-if='布尔'  true=>'显示'，false=>'隐藏'
+        相同点：v-if和v-show都能切换元素的显示和隐藏
+        不同点：实现的方式不一样
+            v-if：显示=创建节点  隐藏=删除节点（性能不好）
+            v-show：显示=display:block  隐藏=display:none
+        切换的频繁：v-show
+        切换的不频繁：v-if
+     -->
+    <div id="app">
+        <h1 v-if='isShow'>测试 v-if</h1>
+        <h1 v-show='isShow'>测试 v-show</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                isShow: true
+            }
+        })
+    </script>
+</body>
+
+</html>

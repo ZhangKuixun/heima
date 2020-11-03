@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .fa{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        事件修饰符：
+        1. 事件.prevent 阻止默认行为（常用）
+        2. 事件.stop  阻止冒泡，只能用在当前控件上（常用）
+        3. 事件.capture  捕获，事件顺序变成从夫->子，默认是子->父
+        4. 事件.self  点击父控件自己点自己才会触发事件，默认事件冒泡会触发到父控件
+        5. 事件.once  点击只触发一次
+        6. 事件.passive  提高移动端的性能
+     -->
+    <div id="app">
+        <!-- 阻止默认行为 -->
+        阻止默认行为<a href="https://www.baidu.com" @click.prevent='fn'>点我啊</a><hr>
+
+        <!-- stop -->
+        stop<div @click='fn0'>
+            <button @click.stop='fn'>我是按钮</button>
+        </div><hr>
+
+        capture<div @click.capture='fn0'>
+            <button @click='fn'>我是按钮</button>
+        </div><hr>
+
+        self<div class="fa" @click.self='fn0'>
+            <button @click='fn'>我是按钮</button>
+        </div><hr>
+
+        once<button @click.once='fn'>我是按钮</button><hr>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {},
+            methods: {
+                fn0() {
+                    console.log('父容器被点击了');
+                },
+                fn() {
+                    console.log('我被点击到了');
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
