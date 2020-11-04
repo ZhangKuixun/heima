@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        key:
+        1.vue官网推荐，我们以后使用v-for时，加上key
+        2.如果我们不加key的话，vue会执行"就地复用"（了解），浏览器控制台输入：vm.list.unshift({"id":4,"name":"麻果"})
+        3.解决就地复用：添加一个key属性
+        4.给key赋值：
+            如果数组中的元素是一个对象，key赋值对象的唯一属性=> :key="item.id"
+            如果数组中的元素不是一个对象=> :key="index"（不要让数据的顺序发生改变）
+     -->
+    <div id="app">
+        <p v-for='(item, index) in list' :key="item.id">
+            {{item.id}}{{item.name}}<input type="text">
+        </p>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                list: [
+                    { id: 1, name: '匆匆' },
+                    { id: 2, name: '芒果' },
+                    { id: 3, name: '西柚' },
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>
