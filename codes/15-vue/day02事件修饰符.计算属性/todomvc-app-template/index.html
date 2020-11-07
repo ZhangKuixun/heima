@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Template • TodoMVC</title>
+    <link rel="stylesheet" href="node_modules/todomvc-common/base.css">
+    <link rel="stylesheet" href="node_modules/todomvc-app-css/index.css">
+    <!-- CSS overrides - remove if you don't need it -->
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+    <section class="todoapp" id="app">
+        <!-- 标题+输入框 -->
+        <header class="header">
+            <h1>todos</h1>
+            <input @keyup.enter='addTodo' v-model="todoName" class="new-todo" placeholder="What needs to be done?" autofocus>
+        </header>
+
+        <!-- 列表部分 -->
+        <section class="main">
+            <input id="toggle-all" class="toggle-all" type="checkbox">
+            <label for="toggle-all">Mark all as complete</label>
+            <ul class="todo-list">
+                <li :class="{completed:item.done, editing:item.id===editId}" v-for='item in list' :key='item.id'>
+                    <div class="view">
+                        <input class="toggle" type="checkbox" v-model="item.done">
+                        <label @dblclick="showEdit(item.id)">{{item.name}}</label>
+                        <button @click="delTodo(item.id)" class="destroy"></button>
+                    </div>
+                    <input @keyup.enter="hideEdit" class="edit" v-model='item.name'>
+                </li>
+            </ul>
+        </section>
+
+        <!-- 底部 -->
+        <!-- 方式1：表达式 -->
+        <!-- <footer class="footer" v-show="list.length>0"> -->
+        <!-- 方式2：方法 -->
+        <footer class="footer" v-show="isFooterShow1()">
+            <!-- 方式3：方法 -->
+            <!-- <footer class="footer" v-show="isFooterShow"> -->
+            <!-- This should be `0 items left` by default -->
+            <span class="todo-count"><strong>0</strong> item left</span>
+            <!-- Hidden if no completed items are left ↓ -->
+            <button class="clear-completed">Clear completed</button>
+        </footer>
+    </section>
+
+    <!-- 引入js -->
+    <script src="node_modules/todomvc-common/base.js"></script>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
