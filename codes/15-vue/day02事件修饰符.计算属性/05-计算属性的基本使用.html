@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+      计算属性 computed
+      1.说明：计算属性就是一种属性
+      2.如何使用？
+        写在computed里面
+        写起来像方法
+        用起来像属性
+      3.特点：
+        一定有返回值，返回值就是计算属性得到的值
+        可以使用data里面存在的值
+        计算属性，只会随着相关数据发生变化而变化，只要相关的数据发生了变化，计算属性会重新计算
+      4.注意点：
+        一定要有返回值
+        不能当方法用
+        不能和data里面的数据重名
+      5.以后何时使用计算属性？
+        根据已知值(data里的值)，想得到一个新值
+        想得到一个效果：新值只和相关的数据变化有关，相关的数据变化，新值会随着变化，其他值不受影响
+     -->
+    <div id="app">
+        <h1>{{totalNum}}</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                num1: 100,
+                num2: 200,
+            },
+            computed: {
+                totalNum() {
+                    return this.num1 + 20
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
