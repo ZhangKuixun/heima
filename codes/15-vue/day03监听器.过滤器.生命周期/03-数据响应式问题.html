@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    动态添加数据：
+    this.$set()=>this.$set(this.obj, 'name', 'zs')
+   -->
+    <div id="app">
+        <input type="text">
+        <button @click="fn">按钮</button>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                obj: {}
+            },
+            methods: {
+                fn() {
+                    // 不能直接添加，无法实现正常的数据劫持
+                    // this.obj.name = "zs";
+                    // this.$set
+                    this.$set(this.obj, 'name', 'zs')
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

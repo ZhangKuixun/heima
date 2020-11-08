@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    vue数据更新:
+      数据发生变化，不是一改变就立马执行的，二十当数据不再发生变化时，一次性统一更新的
+   -->
+    <div id="app">
+        <h1>{{num}}</h1>
+        <button @click="fn">+1</button>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                num: 1
+            },
+            methods: {
+                fn() {
+                    for (let i = 0; i < 100; i++) {
+                        this.num++; // 数据全部变完，再更新到控件
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
