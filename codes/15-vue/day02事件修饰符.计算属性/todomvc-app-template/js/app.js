@@ -46,14 +46,28 @@
                 console.log("底部隐藏1");
                 // data里的数据(todoName)一旦发生变化，当前页面的表达式(v-show="isFooterShow")会重新计算
                 return this.list.length > 0
+            },
+            // 清除已完成，过滤出未完成的
+            clearCompleted() {
+                this.list = this.list.filter(item => !item.done)
             }
         },
         // 计算属性
         computed: {
-            // 底部隐藏
+            // 底部的显示与隐藏
             isFooterShow() {
                 console.log("底部隐藏");
                 return this.list.length > 0
+            },
+            // 剩余未完成的个数
+            itemLeftCount() {
+                // filter 查找返回所有符合条件的元素（以数组形式返回）；
+                return this.list.filter(item => !item.done).length
+            },
+            // clearCompleted的显示与隐藏
+            isClearCompletedShow() {
+                // some 判断数组中是否有一个以上元素符合条件；
+                return this.list.some(item => item.done)
             }
         }
     })
