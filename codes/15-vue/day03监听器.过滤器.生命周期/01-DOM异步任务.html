@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{num}}</h1>
+        <button @click="fn">+1</button>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                num: 100,
+            },
+            methods: {
+                fn() {
+                    // 操作dom，获取dom里的内容数据
+                    console.log(document.querySelector('h1').innerText); // 输出：100
+                    this.num += 1;
+                    // 立即输出获取数据，控件的数据还没有被改变
+                    // console.log(document.querySelector('h1').innerText); // 输出：100
+
+                    // $nextTick() 数据改变，更新视图完毕后，能接收到数据改变后的回调，去获取h1里面的值
+                    this.$nextTick(() => {
+                        console.log(document.querySelector('h1').innerText); // 输出：101
+                    })
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
