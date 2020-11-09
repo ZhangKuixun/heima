@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+      过滤器：格式化文本工具
+      作用：处理不合适的数据，处理好后，返回给你合适的数据
+      怎么使用？
+      1.注册：
+          全局过滤器：所有的vue实例里都可以使用
+          局部过滤器：只能在当前注册的实例里使用
+      2.使用：'管道' |
+          格式：被处理的数据 | 过滤器
+    -->
+    <div id="app">
+        <h1>{{ date | dateFilter }}</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 注册全局过滤器
+        // 注意点：
+        //    1.一定要在vue实例之前注册
+        //    2.过滤器要有返回值，返回的值就是过滤处理好的值
+        // 参数1：过滤器的名字
+        // 参数2：回调函数，接收Date对象，返回处理好的值
+        Vue.filter('dateFilter', res => {
+            return `${res.getFullYear()} - ${res.getMonth()} - ${res.getDate()}`
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                date: new Date
+            }
+        })
+    </script>
+</body>
+
+</html>

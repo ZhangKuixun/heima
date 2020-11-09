@@ -31,22 +31,22 @@
                 //     console.log("新值：", newVal);
                 // }
 
-                // // 方式1：
-                // obj: {
-                //     // 深度监听，数据变化就执行handler
-                //     deep: true,
-                //     // 立即监听，加载页面就执行handler
-                //     immediate: true,
-                //     // 处理
-                //     handler(newVal) {
-                //         console.log(newVal.name);
-                //     }
-                // },
+                // 方式1：
+                obj: {
+                    // 深度监听，数据变化就执行handler
+                    deep: true,
+                    // 立即监听，加载页面就执行handler
+                    immediate: true,
+                    // 处理
+                    handler(newVal) {
+                        console.log(newVal.name);
+                    }
+                },
 
-                // 方式2：简单粗暴的监听对象里的属性
-                'obj.name' (newVal) {
-                    console.log(newVal);
-                }
+                // // 方式2：简单粗暴的监听对象里的属性
+                // 'obj.name' (newVal) {
+                //     console.log(newVal);
+                // }
             }
         })
     </script>

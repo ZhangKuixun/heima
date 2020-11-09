@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+      计算属性computed 监听器watch
+      
+      计算属性：
+          根据data里的已知值，得到一个新值
+          新值随着'相关的数据'发生变化而变化
+          我得到一个新值，不是data里的值
+      区别：
+          别人改变，影响到了我
+
+      监听器：
+          监听数据的变化
+          监听data中已经存在的值
+      区别：
+          我改变了，影响别人
+    -->
+    <div id="app">
+
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                num1: 100,
+                num2: 200,
+            },
+            computed: {
+                totalNum() {
+                    return this.num1 + 20
+                }
+            },
+            watch: {
+                num2(newVal) {
+                    console.log(newVal);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="msg"> <span v-show="isShow">格式不正确</span>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: "",
+                isShow: false,
+            },
+            watch: {
+                msg(newVal) {
+                    if (newVal.length >= 3 && newVal.length <= 6) {
+                        console.log("格式正确");
+                        this.isShow = false
+                    } else {
+                        console.log("格式不正确");
+                        this.isShow = true
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
