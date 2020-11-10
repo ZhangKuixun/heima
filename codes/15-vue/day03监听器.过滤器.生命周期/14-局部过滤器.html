@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    注册局部过滤器
+    -->
+    <div id="app">
+        <h1>{{date | dateFilter}}</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/moment/moment.js"></script>
+    <script>
+        // 全局
+        // Vue.filter('dateFilter', res => {
+        //     return '哈哈'
+        // })
+
+        // 局部过滤器是注册在vue实例里面
+        // filters
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                date: new Date()
+            },
+            filters: {
+                dateFilter(res) {
+                    return moment(res).format('YYYY-MM')
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

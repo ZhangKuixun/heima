@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    处理日期：moment
+        安装：npm i moment
+        引入
+        使用
+    -->
+    <div id="app">
+        <!-- 向过滤器传递两个参数:dete,"YYYY-MM-DD HH:mm:ss" -->
+        <h1>{{dete | dateFilter("YYYY-MM-DD HH:mm:ss")}}</h1>
+        <!-- 向过滤器传递一个参数:dete -->
+        <h1>{{dete1 | dateFilter}}</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/moment/moment.js"></script>
+    <script>
+        // 注册过滤器，fstr='YYYY-MM-DD'：fstr并且带有默认参数
+        Vue.filter('dateFilter', (res, fstr = 'YYYY-MM-DD') => {
+            return moment(res).format(fstr)
+        })
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                dete: new Date,
+                date1: +new Date
+            }
+        })
+    </script>
+</body>
+
+</html>
