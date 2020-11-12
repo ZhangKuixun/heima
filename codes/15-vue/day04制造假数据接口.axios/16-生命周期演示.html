@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                msg: "测试信息",
+            },
+            // 数据响应式之前调用
+            // 获取不到数据和方法
+            beforeCreate() {
+                console.warn("beforeCreate:", this.msg, " fn:", this.fn);
+
+            },
+            // 数据响应式之后调用
+            // 可以获取到数据和方法
+            // 场景：发送ajax；操作data
+            created() {
+                console.warn("created:", this.msg, " fn:", this.fn);
+            },
+            methods: {
+                fn() {}
+            }
+        })
+    </script>
+</body>
+
+</html>
