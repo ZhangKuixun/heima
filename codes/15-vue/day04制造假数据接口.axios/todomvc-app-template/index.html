@@ -26,11 +26,11 @@
             <ul class="todo-list">
                 <li :class="{completed:item.done, editing:item.id===editId}" v-for='item in list' :key='item.id'>
                     <div class="view">
-                        <input class="toggle" type="checkbox" v-model="item.done">
+                        <input @input="stateChange(item.id)" class="toggle" type="checkbox" v-model="item.done">
                         <label @dblclick="showEdit(item.id)">{{item.name}}</label>
                         <button @click="delTodo(item.id)" class="destroy"></button>
                     </div>
-                    <input @keyup.enter="hideEdit" class="edit" v-model='item.name'>
+                    <input @keyup.enter="hideEdit()" class="edit" v-model='item.name'>
                 </li>
             </ul>
         </section>
@@ -50,6 +50,7 @@
     <!-- 引入js -->
     <script src="node_modules/todomvc-common/base.js"></script>
     <script src="./node_modules/vue/dist/vue.js"></script>
+    <script src="../todomvc-app-template/node_modules/axios/dist/axios.js"></script>
     <script src="js/app.js"></script>
 </body>
 
