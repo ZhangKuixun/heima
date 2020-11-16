@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    组件时独立封闭的个体，组件之间不能直接访问数据，根据组件间的通信机制去访问
+    通信机制：
+      1.父组件把数据传递给子组件（父传子）
+      2.子组件把数据传递给父组件（子传父）
+      3.非父子之间传递数据（兄弟级）
+   -->
+    <div id="app">
+        <!-- 父组件不能访问子组件的信息 -->
+        <div>{{cmsg}}</div>
+        <child></child>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        // 子组件
+        Vue.component("child", {
+            template: `<div>子组件：{{pmsg}}</div>`, // 子组件不能访问父组件的信息
+            data() {
+                return {
+                    cmsg: '子组件的信息'
+                }
+            }
+        })
+
+        // 父组件
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: "父组件数据"
+            }
+        })
+    </script>
+</body>
+
+</html>
