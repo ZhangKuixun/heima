@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+      组件复用
+     -->
+    <script>
+        const Component = function() {};
+
+        // 组件复用，但是不想让数据复用
+        // Component.prototype.data = {
+        //     msg: '傻春'
+        // };
+
+        Component.prototype.data = function() {
+            return {
+                msg: "傻春"
+            }
+        }
+
+        const c1 = new Component();
+        const c2 = new Component();
+
+        c1.data.msg = '乖乖';
+
+        console.log(c2.data.msg);
+    </script>
+</body>
+
+</html>
