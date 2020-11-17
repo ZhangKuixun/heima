@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1. 通过属性，把数据传递给子组件 -->
+        <child :pmsg="pmsg"></child>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child', {
+            template: `<div>子组件：{{msg}}</div>`,
+            // 2. 子组件通过 props 指定要接收的数据
+            props: ["msg"]
+        })
+
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: '父组件的信息'
+            }
+        })
+    </script>
+</body>
+
+</html>

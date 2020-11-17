@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 第二步：通过自定义事件，把方法传递给子组件 -->
+        <child @fn="pfn"></child>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child', {
+            template: `<div>子组件：</div>`,
+            created() {
+                // 事件有两种触发方式：1.手动触发；2.代码触发点击事件：this.$emit
+                // 第三步：子组件里面触发这个事件，就调用了pfn
+                // $emit(参数1：事件,  参数2：传递的数据)
+                this.$emit('fn', '我是子组件');
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {},
+            // 第一步：父组件准备一个方法
+            methods: {
+                pfn(res) {
+                    console.log("pfn被调用了：", res);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
