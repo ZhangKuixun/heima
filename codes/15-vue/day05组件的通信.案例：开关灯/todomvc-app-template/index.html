@@ -14,11 +14,12 @@
 <body>
     <section class="todoapp" id="app">
         <!-- 头部 -->
-        <todo-header></todo-header>
+        <!-- 子传父，第二步：通过自定义事件，把方法传递给子组件 -->
+        <todo-header @add-todo="pAddTodo"></todo-header>
 
         <!-- 列表部分 -->
         <!-- 父传子，第一步，通过属性，把数据传递给子组件 -->
-        <todo-list :list='list'></todo-list>
+        <todo-list :list='list' @del-todo="pDelTodo"></todo-list>
 
         <!-- 底部部分 -->
         <todo-footer></todo-footer>

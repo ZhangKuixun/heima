@@ -10,6 +10,20 @@
                 { id: 3, name: '打豆豆', completed: false }
             ]
         },
+        methods: {
+            pAddTodo(todoName) {
+                // 子传父 第一步：父组件准备一个方法
+                const id = this.list.length == 0 ? 1 : this.list[this.list.length - 1].id + 1;
+                this.list.push({
+                    id,
+                    name: todoName,
+                    completed: false
+                })
+            },
+            pDelTodo(id) {
+                this.list = this.list.filter(v => v.id != id);
+            }
+        }
     })
 
 })(window);
