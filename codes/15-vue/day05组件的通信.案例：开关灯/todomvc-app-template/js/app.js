@@ -22,6 +22,10 @@
             },
             pDelTodo(id) {
                 this.list = this.list.filter(v => v.id != id);
+            },
+            pUpdateName(id, name) {
+                let todo = this.list.find(item => item.id == id);
+                todo.name = name
             }
         }
     })

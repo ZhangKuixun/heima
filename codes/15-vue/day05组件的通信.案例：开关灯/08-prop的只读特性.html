@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <child :msg="pmsg" :obj="pobj"></child>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child', {
+            // template: `<div>子组件：{{msg}}</div>`,
+            template: `<div>子组件：{{obj.name}}</div>`,
+            props: ['msg', 'obj'],
+            mounted() {
+                // 修改传过来的数据
+                // 1.基本类型（error: Avoid mutating a prop directly）
+                // this.msg = 999
+
+                // 2.改对象，只是改了对象里的内容，没有改地址
+                // this.obj.name = '春春'
+                // 改地址（error: Avoid mutating a prop directly）
+                // this.obj = {}
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                pmsg: '父的信息',
+                pobj: {
+                    name: '张三'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
