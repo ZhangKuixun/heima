@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <two></two>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('two', {
+                template: `
+                <div>
+                  <h1>我是h1</h1>
+                  <h1>我也是h1{{ msg }}</h1>
+                </div>
+                `,
+                data() {
+                    return {
+                        msg: '123'
+                    }
+                }
+            })
+            /* 
+            注意：
+              1.注册组件要在vm实例之前注册
+              2.组件的template只能有一个根节点
+              3.组件里的data是一个函数，不是一个对象
+            */
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
