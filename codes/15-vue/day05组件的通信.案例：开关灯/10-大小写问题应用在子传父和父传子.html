@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    大小写问题：
+     1.父传子（大消息问题，只存在在prop上）
+         <child :c-msg="pMsg"></child>
+         props: ['cMsg']
+     2.子传父（事件用“-”）
+         <child @add-todo="addTodo"></child>
+         created() {
+             this.$emit("add-todo");
+         }
+   -->
+    <div id="app">
+        <child :c-msg="pMsg" @add-todo="addTodo"></child>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child', {
+            template: `
+            <div>子组件：{{cMsg}}</div>
+            `,
+            props: ['cMsg'],
+            created() {
+                this.$emit("add-todo");
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                pMsg: '父组件信息',
+            },
+            methods: {
+                addTodo(res) {
+                    console.log("子传父调用");
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

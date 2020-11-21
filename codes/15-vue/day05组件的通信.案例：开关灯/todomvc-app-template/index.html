@@ -19,10 +19,10 @@
 
         <!-- 列表部分 -->
         <!-- 父传子，第一步，通过属性，把数据传递给子组件 -->
-        <todo-list @update-name="pUpdateName" :list='list' @del-todo="pDelTodo"></todo-list>
+        <todo-list :list='list' @del-todo="pDelTodo" @update-name="pUpdateName" @update-state="pUpdateState"></todo-list>
 
         <!-- 底部部分 -->
-        <todo-footer></todo-footer>
+        <todo-footer :is-footer-show="isFooterShow" :item-left-count="itemLeftCount" :is-clear-completed-show="isClearCompletedShow" @clear-completed="pClearCompleted"></todo-footer>
 
     </section>
 

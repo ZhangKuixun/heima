@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+      1.通过prop赋值的时候，
+      2.如果直接赋值一个静态值，读取的都是字符串类型
+          <child msg='abc'/'123'/'true'></child>  "string"
+      3.可以在属性前面加一个':',可以获取真实值
+          <child :msg="123"></child>  "number"
+      总结：
+        1. :msg="pmsg/动态值/data里的属性"  动态值
+        2. :msg="固定值/静态值"  读取固定值的真实类型，赋值给msg
+   -->
+    <div id="app">
+        <child :msg="123"></child>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child', {
+            template: `
+              <div>子组件：{{msg}}</div>
+              `,
+            props: ['msg'],
+            created() {
+                console.warn(this.msg, typeof this.msg);
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

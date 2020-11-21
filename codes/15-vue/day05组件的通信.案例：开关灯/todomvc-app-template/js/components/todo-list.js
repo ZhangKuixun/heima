@@ -6,7 +6,7 @@ Vue.component('todo-list', {
 			<ul class="todo-list">
 					<li :class="{completed:item.done, editing:item.id==editId}" v-for='item in list' :key>
 							<div class="view">
-									<input class="toggle" type="checkbox" v-model='item.done' >
+									<input class="toggle" type="checkbox"  @input="changeState(item.id)" :checked="item.done">
 									<label @dblclick="showEdit(item.id)">{{item.name}}</label>
 									<button class="destroy" @click="delTodo(item.id)"></button>
 							</div>
@@ -36,6 +36,10 @@ Vue.component('todo-list', {
             this.$emit('update-name', this.editId, e.target.value)
 
             this.editId = -1;
+        },
+        // 改变状态
+        changeState(id) {
+            this.$emit("update-state", id)
         }
     }
 })

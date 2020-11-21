@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    html里的标签和属性，大写都会被浏览器解析成小写，所以props名称不能用驼峰命名。
+
+    解决办法：
+      1.短横线分割符： 
+        <child :c-msg='pMsg'></child>
+        props: ["cMsg"]
+        vue内部会把"c-msg"的"-"删除，把"-"后面的首字母变成大写(c-msg => cMsg)
+   -->
+    <div id="app">
+        <!-- <DIV TITLE="哈哈">嘻嘻</DIV> -->
+        <child :c-msg='pMsg' :c-user-name='pUserName'></child>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child', {
+            template: `
+          <div>子组件：{{cMsg}} {{cUserName}}</div>
+          `,
+            props: ["cMsg", "cUserName"]
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+                pMsg: '父组件信息',
+                pUserName: '父组件用户名',
+            }
+        })
+    </script>
+</body>
+
+</html>
