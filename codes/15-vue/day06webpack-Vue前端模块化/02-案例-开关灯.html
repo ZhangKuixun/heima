@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .light {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 100px;
+            background-color: black;
+            color: white;
+        }
+        
+        .turn-on {
+            background-color: yellow;
+            color: black;
+        }
+        
+        .bottom {
+            width: 100px;
+            background-color: black;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <light></light>
+        <light-bottom></light-bottom>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const bus = new Vue();
+
+        Vue.component('light', {
+            template: `<div class="light" :class="{'turn-on':isLight}">我是一盏灯</div>`,
+            data() {
+                return {
+                    isLight: false
+                }
+            },
+            created() {
+                bus.$on("changeLight", res => {
+                    this.isLight = res
+                });
+            }
+        })
+
+        Vue.component('light-bottom', {
+            template: `
+            <div class="bottom">
+              <button @click="turnOn">开</button>
+              <button @click="turnOff">关</button>
+            </div>
+            `,
+            methods: {
+                turnOn() {
+                    bus.$emit("changeLight", true)
+                },
+                turnOff() {
+                    bus.$emit("changeLight", false)
+                }
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>
