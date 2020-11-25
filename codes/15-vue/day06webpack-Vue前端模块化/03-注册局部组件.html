@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <child></child>
+        <one></one>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        const child = {
+            template: `<div>我是局部组件child  {{msg}}</div>`,
+            data() {
+                return {
+                    msg: '哈哈'
+                }
+            }
+        };
+        const one = {
+            template: `<div>one</div>`
+        }
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            filters: {
+
+            },
+            // 注册局部组件
+            components: {
+                child,
+                one,
+            }
+        })
+    </script>
+</body>
+
+</html>

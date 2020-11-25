@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+      以后在一些第三方框架里，获取dom元素/获取组件，通过refs
+      1.refs对象格式是键值对，refs放的是注册过ref的元素/组件
+      2.只要注册过ref的元素/组件都会被refs收录起来
+        <div ref='d'>我是div</div>
+        内部存放形式：
+          refs{
+            d : <div ref='d'>我是div</div>
+            p : <p ref='p'>我是p</p>
+          }
+      3.使用：this.$refs
+        不能在created()方法中获取this.$refs，要在mounted()中获取this.$refs
+        通过this.$refs获取dom元素/组件
+          this.$refs => {d: div, p: p, c: VueComponent}
+          this.$refs.c => VueComponent {…}
+        获取组件里的数据
+          this.$refs.c.cmsg => "子组件里的数据"
+     -->
+    <div id="app">
+        <div ref='d'>我是div</div>
+        <p ref='p'>我是p</p>
+        <child ref='c'></child>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+        Vue.component('child', {
+            template: `
+            <div>子组件：</div>
+            `,
+            data() {
+                return {
+                    cmsg: '子组件里的数据'
+                }
+            }
+        })
+        const vm = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            mounted() {
+                // 通过this.$refs获取dom元素/组件
+                console.log(this.$refs); // {d: div, p: p, c: VueComponent}
+                console.log(this.$refs.c); // VueComponent {…}
+
+                // 获取组件里的数据
+                console.log(this.$refs.c.cmsg); // "子组件里的数据"
+            }
+        })
+    </script>
+</body>
+
+</html>
