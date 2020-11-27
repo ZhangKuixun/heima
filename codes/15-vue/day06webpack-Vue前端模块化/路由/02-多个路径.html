@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!--
+        router-link 声明式导航
+        router-link 会被渲染成一个<a>标签
+        to 会转化为href
+        作用：改变入口的哈希值路径
+         -->
+        <router-link to="/one">One</router-link>
+        <router-link to="/two">Two</router-link>
+        <!-- 第四步：出口，占位置 -->
+        <router-view></router-view>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 第三步：路由组件
+        const One = {
+            template: '<div>one组件</div>'
+        };
+        const Two = {
+            template: '<div>two组件</div>'
+        };
+
+        // 实例化路由
+        const router = new VueRouter({
+            // 第二步：路由的匹配规则，一个哈希值对应一个组件
+            routes: [{
+                path: '/one',
+                component: One
+            }, {
+                path: '/two',
+                component: Two
+            }]
+        });
+        const vm = new Vue({
+            router, // 挂载到vue上
+            el: '#app',
+            data: {}
+        })
+    </script>
+</body>
+
+</html>

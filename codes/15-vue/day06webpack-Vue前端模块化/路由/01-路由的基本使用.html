@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+    准备工作：
+      1.安装路由 npm i vue-router
+      2.引入路由
+      3.实例化路由 + 挂载到vue上
+
+    具体步骤：
+      1.入口（哈希值井号后面的值）
+      2.规则
+      3.组件
+      4.出口
+
+    手动在地址后面输入：one
+    -->
+    <div id="app">
+        <!-- 第四步：出口，占位置 -->
+        <router-view></router-view>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 第三步：路由组件
+        const One = {
+            template: '<div>one组件</div>'
+        };
+        // 实例化路由
+        const router = new VueRouter({
+            // 第二步：路由的匹配规则，一个哈希值对应一个组件
+            routes: [{
+                path: '/one',
+                component: One
+            }]
+        });
+        const vm = new Vue({
+            router, // 挂载到vue上
+            el: '#app',
+            data: {}
+        })
+    </script>
+</body>
+
+</html>

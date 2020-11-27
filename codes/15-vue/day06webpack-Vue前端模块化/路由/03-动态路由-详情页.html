@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        动态路由
+        1.使用参数接收不同的路由参数
+            path='/detail/:id'
+        2.参数可传可不传 path='/detail/:id?'
+     -->
+    <div id="app">
+        <!-- 1 -->
+        <router-link to="/detail/1">手机1</router-link>
+        <router-link to="/detail/2">手机2</router-link>
+        <router-link to="/detail/3">手机3</router-link>
+        <router-link to="/detail">手机4</router-link>
+        <!-- 4. -->
+        <router-view></router-view>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 3
+        const detail = {
+            template: `<div>详情页组件 {{$route.params.id}}</div>`
+        };
+        // 实例化
+        const router = new VueRouter({
+            // 2
+            routes: [{
+                path: '/detail/:id?',
+                component: detail
+            }]
+        });
+        const vm = new Vue({
+            router,
+            el: '#app',
+            data: {}
+        })
+    </script>
+</body>
+
+</html>
