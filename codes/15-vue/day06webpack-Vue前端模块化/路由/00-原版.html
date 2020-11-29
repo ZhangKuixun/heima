@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1.入口 -->
+        <router-link to="/one">one</router-link>
+        <!-- 4.出口 -->
+        <router-view></router-view>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 3.组件
+        const One = {
+            template: `<div>one组件</div>`
+        };
+        const router = new VueRouter({
+            // 2.规则
+            routes: [{
+                path: '/one',
+                component: One
+            }]
+        });
+        const vm = new Vue({
+            router,
+            el: '#app',
+            data: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

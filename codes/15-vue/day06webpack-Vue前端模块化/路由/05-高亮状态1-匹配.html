@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 如果路由是后面加的，之前已经也有一个类了，想要之前已经存在的类 */
+        
+        .red {
+            color: red;
+            font-size: 50px;
+        }
+        /* 激活控件的style */
+        
+        .router-link-exact-active,
+        .router-link-active {
+            color: red;
+            font-size: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        1.style精确匹配和模糊匹配
+        2.router-link-exact-active  精确匹配，url上的路径==href的值
+            http:....html#/two
+        3.router-link-active        模糊匹配，url上的路径包含href的值
+            http:....html#/
+        需要用某个style，模糊匹配style，用exact
+     -->
+    <div id="app">
+        <!-- 1.入口 -->
+        <router-link to="/" exact>one</router-link>
+        <router-link to="/two">two</router-link>
+        <!-- 4.出口 -->
+        <router-view></router-view>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 3.组件
+        const One = {
+            template: `<div>one组件</div>`
+        };
+        const Two = {
+            template: `<div>two组件</div>`
+        }
+        const router = new VueRouter({
+            // 2.规则
+            routes: [{
+                path: '/one',
+                component: One
+            }, {
+                path: '/two',
+                component: Two
+            }],
+            linkExactActiveClass: "red"
+        });
+        const vm = new Vue({
+            router,
+            el: '#app',
+        })
+    </script>
+</body>
+
+</html>

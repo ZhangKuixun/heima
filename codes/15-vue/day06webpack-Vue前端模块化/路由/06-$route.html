@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 1.入口 -->
+        <router-link to="/one/1">第一个</router-link>
+        <router-link to="/one/2">第二个</router-link>
+        <!-- 4.出口 -->
+        <router-view></router-view>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 3.组件
+        const One = {
+            template: `<div>one组件{{$route.params.id}}</div>`,
+            created() {
+                console.log(this.$route.params.id);
+            },
+            // 很重要的思想(★)
+            // 使用watch监听$route路由对象，获取路由对象的信息，不能要在created里获取
+            watch: {
+                $route(newVal) {
+                    console.warn(newVal.params.id);
+                }
+            }
+        };
+        const router = new VueRouter({
+            // 2.规则
+            routes: [{
+                path: '/one/:id',
+                component: One
+            }]
+        });
+        const vm = new Vue({
+            router,
+            el: '#app',
+            data: {}
+        })
+    </script>
+</body>
+
+</html>
