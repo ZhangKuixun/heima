@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+      需求：把child组件放到parent组件里面
+      办法：在路由规则加入children
+
+      小结：
+      1.出口在哪里，组件就显示在哪里；
+      2.哈希值
+      path:'/child'，哈希值=/child
+      path:'child'，哈希值=/parent/child
+      const router = new VueRouter({
+          // 2.规则
+          routes: [{
+              path: '/parent',
+              component: Parent,
+              children: [{
+                  // path: 'child',
+                  path: '/child',
+                  component: Child
+              }],
+          }]
+      });
+    -->
+    <div id="app">
+        <!-- 4.出口 -->
+        <router-view></router-view>
+
+        <hr/>
+        <hr/>
+
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script src="../../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        // 3.组件
+        const Parent = {
+            template: `<div>parent组件 <router-view></router-view> </div>`
+        };
+        const Child = {
+            template: `<div>child组件</div>`
+        }
+        const router = new VueRouter({
+            // 2.规则
+            routes: [{
+                path: '/parent',
+                component: Parent,
+                children: [{
+                    // path: 'child',
+                    path: '/child',
+                    component: Child
+                }],
+                // path:'/child'，哈希值=/child
+                // path:'child'，哈希值=/parent/child
+            }]
+        });
+        const vm = new Vue({
+            router,
+            el: '#app',
+        })
+    </script>
+</body>
+
+</html>
