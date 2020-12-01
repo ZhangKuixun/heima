@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+      入口
+        1.手动在url的#后面添加path：/one
+        2.声明式导航：<router-link to='/one'>one</router-link>
+        3.编程式导航：事件里面写
+          1.前进（跳转）
+            - this.$router.push('/two')    有跳转时的页面记录，能返回离开时的页面
+            - this.$router.replace('/two') 替换：把跳转时的页面清除，再跳转到'/two'，不能返回离开时的页面
+            比如支，在支付页面点击支付，跳到付款，付款后，不用再回到支付页
+          2.返回：this.$router.back()
+    -->
+    <div id="app">
+        <!-- 4.出口 -->
+        <router-view></router-view>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        //3.组件
+        const One = {
+            template: `<div>one组件
+                <button @click="handle('push')">跳转到two- push</button>
+                <button @click="handle('back')">返回到根节点"/"- back</button>
+                <button @click="handle('replace')">跳转到two- replace</button>
+              </div>`,
+            methods: {
+                handle(type) {
+                    if (type == 'push') {
+                        // $route 路由对象，负责解析url信息，里面都是属性(如：.path .name .meta .params)
+                        // $router 路由实例，负责编程式导航，里面都是方法（如：.push,跳这里跳那里）
+                        this.$router.push('/two');
+                    } else if (type == 'back') {
+                        this.$router.back();
+                    } else if (type == 'replace') {
+                        // 替换：把跳转时的页面清除，再跳转到'/two'，不能返回离开时的页面
+                        this.$router.replace('/two');
+                    }
+                }
+            }
+        };
+        const Two = {
+            template: `<div>two组件</div>`
+        };
+        const router = new VueRouter({
+            //2.规则
+            routes: [{
+                path: '/one',
+                name: 'one',
+                component: One
+            }, {
+                path: '/two',
+                name: 'two',
+                component: Two
+            }]
+        })
+        const vm = new Vue({
+            router,
+            el: '#app',
+        })
+    </script>
+</body>
+
+</html>

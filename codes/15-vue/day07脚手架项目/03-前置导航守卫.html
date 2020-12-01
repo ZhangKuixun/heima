@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        导航守卫：通过跳转或者取消的方式守卫导航 A=> 导航守卫 => B
+
+        需求：让所有的页面经过登录之后才准访问
+            1.直接访问login，可行
+            2.直接访问one页面，不行，需要经过登录
+
+        前置导航守卫 beforeEach
+        写法：router.beforeEach((to, from, next)=>{})
+                to:目标路由对象  
+                from:来源路由对象  
+                next:下一步
+        next(); 允许跳转
+        next(false); 不允许跳转，和不写next方法一样
+        next('/login'); 访问的不是/login，跳转到/login
+     -->
+    <div id="app">
+        <!-- 4.出口 -->
+        <router-view></router-view>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+        //3.组件
+        const One = {
+            template: `<div>one组件</div>`
+        };
+        const Login = {
+            template: `<div>login组件</div>`
+        };
+        const router = new VueRouter({
+            //2.规则
+            routes: [{
+                path: '/one',
+                name: 'one',
+                component: One
+            }, {
+                path: '/login',
+                name: 'login',
+                component: Login
+            }]
+        })
+
+        // 导航守卫
+        // 假如从 /one 跳转 /login
+        // to：目标路由对象(/login的$route)
+        // from：来源路由对象(/one的$route)
+        // next() 下一步
+        router.beforeEach((to, from, next) => {
+            console.log(to);
+            if (to.name == 'login') {
+                // 如果"to"是/login，就跳转
+                next();
+            } else {
+                // 不允许跳转，和不写next方法一样
+                // next(false);
+
+                // 访问的不是/login，跳转到/login
+                // next('/login');
+                next({
+                    name: 'login'
+                });
+            }
+        })
+        const vm = new Vue({
+            router,
+            el: '#app',
+        })
+    </script>
+</body>
+
+</html>
