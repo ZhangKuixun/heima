@@ -35,7 +35,7 @@ module.exports = {
     ],
     // webpack-dev-server的配置信息
     devServer: {
-        open: true,
-        port: 3002
+        open: true, // 是否打开服务器
+        port: 3002 // 端口：3002
     }
 };
