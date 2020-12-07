@@ -1,8 +1,6 @@
 // js引入path模块
 const path = require('path');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 // 引入html-webpack-plugin插件
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -17,19 +15,13 @@ module.exports = {
         // 出口目录
         path: path.resolve(__dirname, 'dist')
     },
-    module: {
-        rules: [{
-            test: /\.css$/i,
-            use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        }, ],
-    },
     // 模式
     mode: 'development',
     // 插件
-    plugin: [
+    plugins: [
         // 配置html-webpack-plugin插件
         new htmlWebpackPlugin({
-            template: './src/index.html', // 源模板文件
+            template: path.join(__dirname, './src/index.html'), // 源模板文件
             filename: 'index.html', // 输出文件
         })
     ],
