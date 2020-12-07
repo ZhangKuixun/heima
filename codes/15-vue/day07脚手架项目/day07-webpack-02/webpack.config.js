@@ -1,8 +1,6 @@
 // js引入path模块
 const path = require('path');
 
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
 // 引入html-webpack-plugin插件
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -20,7 +18,7 @@ module.exports = {
     // 模式
     mode: 'development',
     // 插件
-    plugin: [
+    plugins: [
         // 配置html-webpack-plugin插件
         new htmlWebpackPlugin({
             template: './src/index.html', // 源模板文件
@@ -35,18 +33,23 @@ module.exports = {
     // 配置loader加载器
     module: {
         rules: [{
-                // 处理css
-                test: /\.css$/i,
+                // 1.处理css
+                test: /\.css$/,
                 // 写的顺序不能错，使用的顺序是从后往前
-                // 使用：
-                //   css-loader读取demo.css内容，放到一个模块里；
-                //   style-loader创建style标签，把模块的内容加载进style标签，插入到页面中
+                // 使用顺序：（从后往前）
+                //   css-loader 读取demo.css内容，放到一个模块里；
+                //   style-loader 创建style标签，把模块的内容加载进style标签，插入到页面中
                 use: ['style-loader', 'css-loader'],
             },
-            // 处理less
+            // 2.处理less
             {
                 test: /\.less$/,
                 use: ['style-loader', 'css-loader', 'less-loader']
+            },
+            // 3.处理图片
+            {
+                test: /\.(png|gif|jpg)$/,
+                use: ['url-loader']
             }
         ],
     },

@@ -7,6 +7,7 @@ import $ from 'jquery'
 
 // 引入css
 import './assets/demo.css'
+// 引入less
 import './assets/demo.less'
 
 $('li:odd').css('background', 'red');
