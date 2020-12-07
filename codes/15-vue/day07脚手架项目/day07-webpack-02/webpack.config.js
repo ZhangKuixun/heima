@@ -49,6 +49,13 @@ module.exports = {
             // 3.处理图片
             {
                 test: /\.(png|gif|jpg)$/,
+                // 图片大小 < 10000，转化为base64，内部调用url-loader
+                // 图片大小 >= 10000，不转化为base64（路径转为md5格式），内部调用file-loader
+                use: ['url-loader?limit=10000']
+            },
+            // 4. 处理字体图标
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
                 use: ['url-loader']
             }
         ],

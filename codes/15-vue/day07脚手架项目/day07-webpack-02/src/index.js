@@ -10,5 +10,8 @@ import './assets/demo.css'
 // 引入less
 import './assets/demo.less'
 
+// 引入字体图标文件
+import './assets/iconfont/iconfont.css'
+
 $('li:odd').css('background', 'red');
 $('li:even').css('background', 'green');
