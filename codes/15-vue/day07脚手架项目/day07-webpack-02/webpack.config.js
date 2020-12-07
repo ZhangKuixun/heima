@@ -57,6 +57,12 @@ module.exports = {
             {
                 test: /\.(eot|svg|ttf|woff|woff2)$/,
                 use: ['url-loader']
+            },
+            // 5. 处理js
+            {
+                test: /\.js$/,
+                use: ['babel-loader'],
+                exclude: /node_modules/ // 排除node_modules的js
             }
         ],
     },

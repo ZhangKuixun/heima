@@ -15,3 +15,11 @@ import './assets/iconfont/iconfont.css'
 
 $('li:odd').css('background', 'red');
 $('li:even').css('background', 'green');
+
+let obj = {
+    name: '春春',
+    age: 5
+};
+
+let o = {...obj };
+console.log(o);
