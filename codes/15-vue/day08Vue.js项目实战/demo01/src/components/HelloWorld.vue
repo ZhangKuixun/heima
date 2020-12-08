@@ -94,7 +94,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+<!-- scoped限制只在当前组件使用 -->
 <style scoped>
 h1, h2 {
   font-weight: normal;
