@@ -11,6 +11,7 @@ import App from './App'
 // 引入的文件夹，文件夹里面一定有一个index
 import router from './router'
 
+// 显示发布的提示
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
@@ -23,3 +24,6 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+
+/* eslint-disable*/
+let obj = {}
