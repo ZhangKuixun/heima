@@ -12,6 +12,6 @@
   \**********************/
 /*! unknown exports (runtime-defined) */
 /*! runtime requirements:  */
-eval("function component() {\r\n    var element = document.createElement('div');\r\n\r\n    // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的\r\n    element.innerHTML = _.join(['Hello', 'webpack'], ' ');\r\n\r\n    return element;\r\n}\r\n\r\ndocument.body.appendChild(component());\n\n//# sourceURL=webpack://day07-webpack/./src/index.js?");
+eval("function component () {\r\n    var element = document.createElement('div');\r\n\r\n    // Lodash（目前通过一个 script 脚本引入）对于执行这一行是必需的\r\n    element.innerHTML = _.join(['Hello', 'webpack'], ' ');\r\n\r\n    return element;\r\n}\r\n\r\ndocument.body.appendChild(component());\n\n//# sourceURL=webpack://day07-webpack/./src/index.js?");
 /******/ })()
 ;
