@@ -22,9 +22,9 @@ if ($file['error'] === 0) {
     // 将图片再服务中的地址添加到$info中
     $info['photo'] = $photo;
 }
-// echo '<pre>';
-// print_r($info);
-// echo '</pre>';
+echo '<pre>';
+print_r($info);
+echo '</pre>';
 
 
 // 3.将学生的基本数据和头像保存到数据库 data.txt
@@ -54,7 +54,7 @@ $str = json_encode($arr);
 file_put_contents('./data.txt', $str);
 
 
-// 跳转到列表页
+// 4.跳转到列表页
 // 添加完成后，自动跳转列表，查看添加结果（一定保证两个页面功能都没问题）
 // header前面不能有输出，输出都是属于主题部分，header应该在主题前面
 header('location:./02-list.php');
