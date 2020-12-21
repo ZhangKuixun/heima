@@ -38,13 +38,13 @@ $link = mysqli_connect('127.0.0.1', 'root', 'root', 'z_test');
 // $sql = "select * from stu where id > 100";
 $sql = "select * from stu";
 // 3.执行
-$r = mysqli_query($link, $sql);// 失败=false 成功=结果集
+$r = mysqli_query($link, $sql); // 失败=false 成功=结果集
 // var_dump($r);
 $num = mysqli_num_rows($r);
 // echo $num;
 
 if (!$r || $num === 0) {
-    die('未获取到数据！');
+  die('未获取到数据！');
 }
 
 // echo '<pre>';
@@ -55,9 +55,9 @@ if (!$r || $num === 0) {
 // echo '</pre>';
 
 // 4.获取结果集中的全部数据
-$data=[];
-for ($i=0; $i < $num; $i++) {
-    $data[] = mysqli_fetch_assoc($r);
+$data = [];
+for ($i = 0; $i < $num; $i++) {
+  $data[] = mysqli_fetch_assoc($r);
 }
 // echo '<pre>';
 // print_r($data);

@@ -24,9 +24,9 @@ $arr = my_query($sql);
         <tr>
             <th>用户名</th>
             <th>昵称</th>
-            <th>性别</th>
             <th>年龄</th>
             <th>电话</th>
+            <th>性别</th>
             <th>班级</th>
             <th>头像</th>
             <!-- <th>班级id</th> -->
@@ -34,21 +34,21 @@ $arr = my_query($sql);
         </tr>
         <!-- 2.动态渲染列表 -->
         <?php foreach ($arr as $k => $v) { ?>
-          <tr>
-              <td><?php echo $v['name'] ?></td>
-              <td><?php echo $v['nickname'] ?></td>
-              <td><?php echo $v['age']?></td>
-              <td><?php echo $v['tel']?></td>
-              <td><?php echo $v['sex']?></td>
-              <td>黑马<?php echo $v['class'] ?></td>
-              <td><img src="<?php echo $v['photo']?>"></td>
-              <!-- <td><?php echo $v['id']?></td> -->
-              <td>
-                  <a href="./03-delete.php?id=<?php echo $v['id'] ?>">删除</a>
-                  <a href="./04-detail.php?id=<?php echo $v['id'] ?>">详情</a>
-                  <a href="#">编辑</a>
+            <tr>
+                <td><?php echo $v['name'] ?></td>
+                <td><?php echo $v['nickname'] ?></td>
+                <td><?php echo $v['age'] ?></td>
+                <td><?php echo $v['tel'] ?></td>
+                <td><?php echo $v['sex'] ?></td>
+                <td>黑马<?php echo $v['class'] ?></td>
+                <td><img src="<?php echo $v['photo'] ?>"></td>
+                <!-- <td><?php echo $v['id'] ?></td> -->
+                <td>
+                    <a href="./03-delete.php?id=<?php echo $v['id'] ?>">删除</a>
+                    <a href="./04-detail.php?id=<?php echo $v['id'] ?>">详情</a>
+                    <a href="./05-update.php?id=<?php echo $v['id'] ?>">编辑</a>
                 </td>
-          </tr>
+            </tr>
         <?php } ?>
     </table>
 </body>

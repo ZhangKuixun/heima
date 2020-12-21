@@ -43,14 +43,14 @@ function my_query($sql)
 
     $num = mysqli_num_rows($result);
     // 分析结果
-    if (!$result || $num===0) {
+    if (!$result || $num === 0) {
         return false;
     }
 
     // 获取数据
     $data = [];
     // 遍历数据库
-    for ($i=0; $i < $num; $i++) {
+    for ($i = 0; $i < $num; $i++) {
         $data[] = mysqli_fetch_assoc($result);
     }
 

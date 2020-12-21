@@ -11,10 +11,10 @@
 */
 setcookie('phpname', 'lisi');
 setcookie('phpage', 18);
-setcookie('phpsex', 'm', time()+7*24*3600);
+setcookie('phpsex', 'm', time() + 7 * 24 * 3600);
 
 // 删除
-setcookie('phpsex', 'm', time()-1000);
+setcookie('phpsex', 'm', time() - 1000);
 
 echo '<pre>';
 print_r($_COOKIE);

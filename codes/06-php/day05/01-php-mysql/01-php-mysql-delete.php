@@ -30,7 +30,7 @@ $link = mysqli_connect('127.0.0.1', 'root', 'root', 'z_test');
 
 // 2.准备sql语句
 // 建议使用双引号，可以解析字符串中的变量
-$sql = "delete from stu where id = $id";
+$sql = "delete from stu where id =  ";
 // echo $sql;
 
 // 3.将sql语句传递给数据库执行
@@ -39,9 +39,9 @@ $reslut = mysqli_query($link, $sql);
 
 // 4.分析执行结果
 if ($reslut) {
-    echo '操作成功';
+  echo '操作成功';
 } else {
-    echo '操作失败';
+  echo '操作失败';
 }
 
 // 5.关闭数据库的连接
