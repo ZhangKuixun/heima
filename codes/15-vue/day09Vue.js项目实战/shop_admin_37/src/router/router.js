@@ -18,5 +18,17 @@ const router = new VueRouter({
   ]
 })
 
+// 前置导航守卫
+router.beforeEach((to, from, next) => {
+  // 1.判断是否是登录页
+  if (to.path === 'login') { // 登录页面
+    next()
+  } else { // 非登录页面
+    // 2.判断是否登录过
+    const token = localStorage.getItem('token')
+    token ? next() : next('/login')
+  }
+})
+
 // 导出
 export default router
