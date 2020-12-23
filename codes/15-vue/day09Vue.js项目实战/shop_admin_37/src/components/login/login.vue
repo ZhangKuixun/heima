@@ -4,11 +4,11 @@
     - :model="ruleForm" 表单数据和表单绑定的数据对象（ruleForm对象）
     - :rules="rules" 表单验证规则
     - ref="ruleForm" 可以通过$refs获取当前这个组件
-    - label-width="80px" 是el-form-item标签的宽度
+    - label-width="80px" 是el-form-item标签的宽度，默认撑满全屏
 
   el-form-item：表单元素组件
     - label 标签名称
-    - prop="name" 校验/重置用的
+    - prop="name" 校验/重置用的，配合rules使用
  -->
   <el-row type="flex" justify="center" align="middle">
     <el-col :span="8">

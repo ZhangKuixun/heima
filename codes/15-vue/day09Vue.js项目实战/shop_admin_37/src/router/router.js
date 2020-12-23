@@ -11,15 +11,11 @@ Vue.use(VueRouter)
 // 实例化
 const router = new VueRouter({
   // 2.规则
-  routes: [{
-    path: '/login',
-    name: 'login',
-    component: login
-  }, {
-    path: '/home',
-    name: 'home',
-    component: home
-  }]
+  routes: [
+    { path: '/', redirect: '/login' },
+    { path: '/login', name: 'login', component: login },
+    { path: '/home', name: 'home', component: home }
+  ]
 })
 
 // 导出
