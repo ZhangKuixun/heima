@@ -69,26 +69,28 @@ export default {
     startLogin() {
       // 校验：
       this.$refs.ruleForm.validate(valid => {
-        axios.post("http://localhost:8080/#/login", this.ruleForm).then(res => {
-          if (res.data.meta.status === 200) {
-            // 0.把token保存到本地
-            localStorage.setItem("token", res.data.data.token);
-            // 1.提示成功
-            this.$message({
-              message: res.data.meta.msg,
-              type: "success",
-              duration: 800
-            });
-            //2. 跳到home页面
-            this.$router.push("/home");
-          } else {
-            this.$message({
-              message: res.data.meta.msg,
-              type: "error",
-              duration: 800
-            });
-          }
-        });
+        axios
+          .post("http://localhost:8888/api/private/v1/login", this.ruleForm)
+          .then(res => {
+            if (res.data.meta.status === 200) {
+              // 0.把token保存到本地
+              localStorage.setItem("token", res.data.data.token);
+              // 1.提示成功
+              this.$message({
+                message: res.data.meta.msg,
+                type: "success",
+                duration: 800
+              });
+              //2. 跳到home页面
+              this.$router.push("/home");
+            } else {
+              this.$message({
+                message: res.data.meta.msg,
+                type: "error",
+                duration: 800
+              });
+            }
+          });
       });
     },
     resetForm() {
