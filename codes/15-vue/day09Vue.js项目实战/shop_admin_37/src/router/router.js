@@ -2,8 +2,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 引入子组件
-import Login from '../components/login/login.vue'
-import Home from '../components/home/home.vue'
+import Login from '../components/login/Login.vue'
+import Home from '../components/home/Home.vue'
 import Users from '../components/users/Users.vue'
 import Roles from '../components/roles/Roles.vue'
 import Rights from '../components/rights/Rights.vue'

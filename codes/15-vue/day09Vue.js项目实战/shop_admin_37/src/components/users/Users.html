@@ -1,0 +1,80 @@
+<div>
+  <!--
+    面包屑
+    separator-class="el-icon-arrow-right"  分隔符是向右的箭头
+   -->
+  <el-breadcrumb separator-class="el-icon-arrow-right" class="bread">
+    <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+    <el-breadcrumb-item>用户管理</el-breadcrumb-item>
+    <el-breadcrumb-item>用户列表</el-breadcrumb-item>
+  </el-breadcrumb>
+  <!--
+    输入框部分
+      slot="append"  决定搜索框的位置，append后面，prepend前面
+   -->
+  <el-row :gutter="20">
+    <el-col :span="8">
+      <el-input placeholder="请输入内容" v-model="queryText">
+        <el-button slot="append" icon="el-icon-search"></el-button>
+      </el-input>
+    </el-col>
+    <el-col :span="8" class="addUser">
+      <el-button @click="startQuery">添加用户</el-button>
+    </el-col>
+  </el-row>
+
+  <!--
+    el-table  表格组件
+    el-table-column  列
+    行数 => 数据中的元素个数决定的
+    prop  标签数据
+    label  标签名称
+  -->
+  <el-table :data="userData" stripe style="width: 100%">
+    <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
+    <el-table-column prop="email" label="邮箱" width="180"> </el-table-column>
+    <el-table-column prop="phoneNumber" label="电话"> </el-table-column>
+    <el-table-column label="用户状态">
+      <template slot-scope="scope">
+        <el-switch v-model="state"></el-switch>
+      </template>
+    </el-table-column>
+    <el-table-column label="操作">
+      <template slot-scope="scope">
+        <!--
+          plain  镂空
+          size  mini
+          type  类型
+         -->
+        <el-button size="mini" plain type="primary" icon="el-icon-edit"></el-button>
+        <el-button size="mini" plain type="danger" icon="el-icon-delete"></el-button>
+        <el-button size="mini" plain type="success" icon="el-icon-check">分配角色</el-button>
+      </template>
+    </el-table-column>
+  </el-table>
+  <!--
+    分页部分
+      layout="prev, pager, next"  组件布局，各个组件用逗号隔开
+      :total  总个数
+      :page-size  每页显示几个
+      @prev-click="preClick"  点击上一页
+      @next-click="nextClick"  点击下一页
+      :current-page  当前是第几页
+      @current-change="clickCurrentPage"  点击页码
+      :page-sizes  一页显示的数据
+      @size-change="clickPageSize"  选择一页显示几个
+   -->
+  <el-pagination
+    background
+    layout=" total, sizes, prev, pager, next"
+    :total="total"
+    :page-size="pageSize"
+    @prev-click="preClick"
+    @next-click="nextClick"
+    :current-page="currentPage"
+    @current-change="clickCurrentPage"
+    :page-sizes="[2, 6]"
+    @size-change="clickPageSize"
+  >
+  </el-pagination>
+</div>

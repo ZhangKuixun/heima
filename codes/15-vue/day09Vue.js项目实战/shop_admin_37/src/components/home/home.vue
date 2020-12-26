@@ -102,31 +102,33 @@ export default {
 };
 </script>
 
-<style>
+<style lang="less">
 /* 外部容器 */
 .el-container {
   height: 100%;
   min-width: 800px;
-}
 
-/* 头部 */
-.el-header {
-  background: #b3c1cd;
-  padding: 0;
-}
-.el-header img {
-  width: 20%;
-  height: 3.75rem /* 60/16 */;
-}
-.el-header h1 {
-  color: #ffffff;
-  size: 26px;
-}
-.col_r {
-  padding-right: 20px;
-}
-.col_r el-button {
-  color: green;
+  /* 头部 */
+  .el-header {
+    background: #b3c1cd;
+    padding: 0;
+
+    img {
+      width: 20%;
+      height: 3.75rem /* 60/16 */;
+    }
+    h1 {
+      color: #ffffff;
+      size: 26px;
+    }
+
+    .col_r {
+      padding-right: 20px;
+    }
+    .col_r el-button {
+      color: green;
+    }
+  }
 }
 
 /* 侧栏 */
