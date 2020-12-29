@@ -64,31 +64,56 @@
 /* eslint-disable */
 export default {
   methods: {
-    logout() {
-      this.$confirm("此操作将退出该账户, 是否继续?", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning"
-      })
-        .then(() => {
-          // 点击确定
-          // 1. 清除token
-          localStorage.removeItem("token");
-          // 2. 提示
-          this.$message({
-            type: "success",
-            message: "退出成功"
-          });
-          // 3.退出到登录页面
-          this.$router.push("/login");
-        })
-        .catch(() => {
-          // 点击取消
-          this.$message({
-            type: "info",
-            message: "取消退出"
-          });
+    async logout() {
+      try {
+        let res = await this.$confirm("此操作将退出该账户, 是否继续?", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning"
         });
+        console.log(res);
+        // 点击确定
+        // 1. 清除token
+        localStorage.removeItem("token");
+        // 2. 提示
+        this.$message({
+          type: "success",
+          message: "退出成功"
+        });
+        // 3.退出到登录页面
+        this.$router.push("/login");
+      } catch (error) {
+        // 点击取消
+        this.$message({
+          type: "info",
+          message: "取消退出"
+        });
+      }
+
+      //  this.$confirm("此操作将退出该账户, 是否继续?", "提示", {
+      //     confirmButtonText: "确定",
+      //     cancelButtonText: "取消",
+      //     type: "warning"
+      //   })
+      //     .then(() => {
+      //       // 点击确定
+      //       // 1. 清除token
+      //       localStorage.removeItem("token");
+      //       // 2. 提示
+      //       this.$message({
+      //         type: "success",
+      //         message: "退出成功"
+      //       });
+      //       // 3.退出到登录页面
+      //       this.$router.push("/login");
+      //     })
+      //     .catch(() => {
+      //       // 点击取消
+      //       this.$message({
+      //         type: "info",
+      //         message: "取消退出"
+      //       });
+      //     });
     },
     // 导航-打开
     handleOpen(key, keyPath) {

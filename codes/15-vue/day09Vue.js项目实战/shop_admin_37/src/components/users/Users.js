@@ -101,27 +101,51 @@ export default {
       ++this.currentPage;
       this.loadUsersData();
     },
-    loadUsersData () {
-      axios
-        .get("http://localhost:8888/api/private/v1/user", {
-          // `headers` 是即将被发送的自定义请求头
-          headers: { Authorization: localStorage.getItem("token") },
-          params: {
-            query: this.queryText,
-            pagenum: this.currentPage,
-            pagesize: this.pageSize
-          }
-        })
-        .then(res => {
-          if (res && res.data && res.data.data && res.data.data.users) {
-            // 保存列表数据
-            this.userData = res.data.data.users;
-            // 保存总页数
-            this.total = res.data.total;
-            // 保存当前页码
-            this.currentPage = res.data.data.currentPage;
-          }
-        });
+    async loadUsersData () {
+
+      const url = "http://localhost:8888/api/private/v1/user";
+      const config = {
+        // `headers` 是即将被发送的自定义请求头
+        headers: { Authorization: localStorage.getItem("token") },
+        params: {
+          query: this.queryText,
+          pagenum: this.currentPage,
+          pagesize: this.pageSize
+        }
+      }
+      let res = await axios.get(url, config);
+      console.log(res);
+      if (res && res.data && res.data.data && res.data.data.users) {
+        // 保存列表数据
+        this.userData = res.data.data.users;
+        // 保存总页数
+        this.total = res.data.total;
+        // 保存当前页码
+        this.currentPage = res.data.data.currentPage;
+      }
+
+      // axios
+      //   .get("http://localhost:8888/api/private/v1/user", {
+      //     // `headers` 是即将被发送的自定义请求头
+      //     headers: { Authorization: localStorage.getItem("token") },
+      //     params: {
+      //       query: this.queryText,
+      //       pagenum: this.currentPage,
+      //       pagesize: this.pageSize
+      //     }
+      //   })
+      //   .then(res => {
+      //     if (res && res.data && res.data.data && res.data.data.users) {
+      //       // 保存列表数据
+      //       this.userData = res.data.data.users;
+      //       // 保存总页数
+      //       this.total = res.data.total;
+      //       // 保存当前页码
+      //       this.currentPage = res.data.data.currentPage;
+      //     }
+      //   });
+
+      // 没有网络，测试数据
       setTimeout(() => {
         // console.log("获取数据");
         this.total = 8;
