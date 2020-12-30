@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      三个状态：
+      pending  进行中
+      resolved  操作成功
+      rejected  操作失败
+    -->
+    <script src="../../node_modules/axios/dist/axios.js"></script>
+    <script>
+      const p = new Promise((resolve, reject) => {
+        setTimeout(() => {}, 0);
+      });
+      console.log(p);
+    </script>
+  </body>
+</html>

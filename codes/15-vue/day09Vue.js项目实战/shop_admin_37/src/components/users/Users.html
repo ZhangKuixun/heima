@@ -46,9 +46,21 @@
           size  mini
           type  类型
          -->
-        <el-button size="mini" plain type="primary" icon="el-icon-edit"></el-button>
-        <el-button size="mini" plain type="danger" icon="el-icon-delete"></el-button>
-        <el-button size="mini" plain type="success" icon="el-icon-check">分配角色</el-button>
+        <el-button
+          size="mini"
+          plain
+          type="primary"
+          icon="el-icon-edit"
+        ></el-button>
+        <el-button
+          size="mini"
+          plain
+          type="danger"
+          icon="el-icon-delete"
+        ></el-button>
+        <el-button size="mini" plain type="success" icon="el-icon-check"
+          >分配角色</el-button
+        >
       </template>
     </el-table-column>
   </el-table>
@@ -77,4 +89,33 @@
     @size-change="clickPageSize"
   >
   </el-pagination>
+
+  <!--
+    添加用户对话框
+    el-dialog  对话框
+    :visible.sync  是否需要显示对话框
+
+  -->
+  <el-dialog title="添加用户" :visible.sync="dialogAddUserFormVisible">
+    <el-form :model="addUserForm" label-width="100px">
+      <el-form-item label="用户名">
+        <el-input v-model="addUserForm.userName"></el-input>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input v-model="addUserForm.password"></el-input>
+      </el-form-item>
+      <el-form-item label="邮箱">
+        <el-input v-model="addUserForm.email"></el-input>
+      </el-form-item>
+      <el-form-item label="手机">
+        <el-input v-model="addUserForm.phoneNumber"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="dialogAddUserFormVisible = false">取 消</el-button>
+      <el-button type="primary" @click="dialogAddUserFormVisible = false"
+        >确 定</el-button
+      >
+    </div>
+  </el-dialog>
 </div>

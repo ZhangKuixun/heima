@@ -72,7 +72,16 @@ export default {
       // 搜索选择
       select: "",
       // 用户状态
-      state: true
+      state: true,
+      // 是否显示添加用户对话框
+      dialogAddUserFormVisible: true,
+      // 添加表单对象
+      addUserForm: {
+        userName: '',
+        password: '',
+        email: '',
+        phoneNumber: ''
+      },
     };
   },
   created () {

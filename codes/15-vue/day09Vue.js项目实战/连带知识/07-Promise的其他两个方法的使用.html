@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+    需求1：让三个异步请求都完成了，再执行我们的操作
+    Promise.all([n个异步请求])
+
+    需求1：想让其中的一个完成了，就可以执行我的操作
+    Promise.race([n个异步请求])
+   -->
+    <script src="../../node_modules/axios/dist/axios.js"></script>
+    <script>
+      Promise.race([
+        axios.get("http://localhost:3000/one"),
+        axios.get("http://localhost:3000/two"),
+        axios.get("http://localhost:3000/three"),
+      ]).then((res) => {
+        console.log("res=", res);
+        console.log("开始我们的操作了");
+      });
+    </script>
+  </body>
+</html>
