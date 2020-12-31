@@ -57,7 +57,7 @@ export default {
           { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" }
         ],
         password: [
-          { required: true, message: "请输入错误", trigger: "blur" },
+          { required: true, message: "输入错误", trigger: "blur" },
           // 判断输入格式是否正确
           { min: 5, max: 14, message: "长度在 5 到 14 个字符", trigger: "blur" }
         ]

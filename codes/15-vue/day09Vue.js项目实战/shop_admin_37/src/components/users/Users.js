@@ -74,7 +74,7 @@ export default {
       // 用户状态
       state: true,
       // 是否显示添加用户对话框
-      dialogAddUserFormVisible: true,
+      dialogAddUserFormVisible: false,
       // 添加表单对象
       addUserForm: {
         userName: '',
@@ -82,6 +82,30 @@ export default {
         email: '',
         phoneNumber: ''
       },
+      rules: {
+        // 用户名
+        userName: [
+          // 判断是否输入
+          // required: true 必填项，前面加星号
+          // trigger: 'blur' 触发方式，bulur失去焦点
+          { required: true, message: "请输入用户名", trigger: "blur" },
+          // 判断输入格式是否正确
+          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" }
+        ],
+        password: [
+          { required: true, message: "密码错误", trigger: "blur" },
+          // 判断输入格式是否正确
+          { min: 5, max: 14, message: "长度在 5 到 14 个字符", trigger: "blur" }
+        ],
+        email: [
+          { required: true, message: "邮箱错误", trigger: "blur" },
+          { pattern: /^\w+@\w+\.[a-z]+$/, message: '格式不正确', trigger: 'blur' }
+        ],
+        phoneNumber: [
+          { required: true, message: "手机号错误", trigger: "blur" },
+          { pattern: /^13[0-9]|147|15[0-9]|17[0178]|18[0-9]\d{8}$/, message: '格式不正确', trigger: 'blur' }
+        ]
+      }
     };
   },
   created () {
@@ -163,8 +187,29 @@ export default {
     },
     // 开始查询
     startQuery () {
+      this.dialogAddUserFormVisible = true;
       this.currentPage = 1;
       this.loadUsersData();
+    },
+    // 添加用户
+    async addUser () {
+      let res = await axios.post('http://localhost:8888/api/private/v1/user', this.addUserForm, {
+        headers: { Authorization: localStorage.getItem("token") },
+      })
+      if (res.data.meta.status === 201) {
+        // 1.关闭对话框
+        this.dialogAddUserFormVisible = false;
+        // 2.重新刷新页面
+        this.loadUsersData()
+        // 3.添加用户成功提示
+        this.$message({
+          message: "添加成功",
+          type: "success",
+          duration: 800
+        })
+        // 4.重置表单
+        this.$refs.addUserForm.resetFields();
+      }
     }
   }
 };

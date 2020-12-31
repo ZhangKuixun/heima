@@ -93,29 +93,32 @@
   <!--
     添加用户对话框
     el-dialog  对话框
-    :visible.sync  是否需要显示对话框
-
+    :visible.sync  是否显示对话框
   -->
   <el-dialog title="添加用户" :visible.sync="dialogAddUserFormVisible">
-    <el-form :model="addUserForm" label-width="100px">
-      <el-form-item label="用户名">
+    <!-- 属性加给表单，让item继承 -->
+    <el-form
+      :model="addUserForm"
+      :rules="rules"
+      label-width="80px"
+      ref="addUserForm"
+    >
+      <el-form-item label="用户名" prop="userName">
         <el-input v-model="addUserForm.userName"></el-input>
       </el-form-item>
-      <el-form-item label="密码">
+      <el-form-item label="密码" prop="password">
         <el-input v-model="addUserForm.password"></el-input>
       </el-form-item>
-      <el-form-item label="邮箱">
+      <el-form-item label="邮箱" prop="email">
         <el-input v-model="addUserForm.email"></el-input>
       </el-form-item>
-      <el-form-item label="手机">
+      <el-form-item label="手机" prop="phoneNumber">
         <el-input v-model="addUserForm.phoneNumber"></el-input>
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
       <el-button @click="dialogAddUserFormVisible = false">取 消</el-button>
-      <el-button type="primary" @click="dialogAddUserFormVisible = false"
-        >确 定</el-button
-      >
+      <el-button type="primary" @click="addUser">确 定</el-button>
     </div>
   </el-dialog>
 </div>
