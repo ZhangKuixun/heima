@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 
+    作用域插槽：获取值
+    > 子节点 p，想要访问组件内部的数据type，无法访问
+    > 组件是封闭独立的个体，里面的数据只能在组件自己内部使用
+
+    <slot :type="type" num='1234'></slot>
+    type作为属性type，slot里面的属性都会被slot-scope="scope"的scope引用;
+
+    <p slot-scope="scope">发动机样式：{{scope.type}}</p>  
+    slot里面的属性，都将做为scope属性存在；
+    slot-scope="scope"  "scope"名字可以随便改,如:"aaa"
+
+    这是vue2.5之前的写法：
+    <p slot-scope="scope">
+      发动机样式：{{scope.type}} {{scope.num}} {{scope.row.id}}
+    </p>
+    vue2.5之后，slot-scope写在template里面
+
+     -->
+    <div id="app">
+      <!-- <el-car>
+        <p slot-scope="scope">
+          发动机样式：{{scope.type}} {{scope.num}} {{scope.row.id}}
+        </p>
+      </el-car> -->
+
+      <template slot-scope="scope">
+        <p>发动机样式：{{scope.row.id}}</p>
+        <p>用户名：{{scope.row.name}}</p>
+      </template>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script>
+      Vue.component("el-car", {
+        template: `
+        <div>
+          <h3>提示</h3>
+          <slot :type="type" num='1234' :row='row'></slot>
+          <button>取消</button>
+          <button>确定</button>
+        </div>`,
+        data() {
+          return {
+            type: "EA888",
+            row: {
+              id: 100,
+              name: "ddd",
+            },
+          };
+        },
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

@@ -7,60 +7,76 @@ export default {
       // 用户列表
       userData: [
         {
+          id: "001",
           name: "王小虎",
           email: "qwe@163.com",
           phoneNumber: "110",
           userState: "登录",
-          set: "删除"
+          set: "删除",
+          mg_state: true
         },
         {
+          id: "002",
           name: "王小虎",
           email: "qwe@163.com",
           phoneNumber: "110",
           userState: "登录",
-          set: "删除"
+          set: "删除",
+          mg_state: true
         },
         {
+          id: "003",
           name: "王小虎",
           email: "qwe@163.com",
           phoneNumber: "110",
           userState: "登录",
-          set: "删除"
+          set: "删除",
+          mg_state: false
         },
         {
+          id: "004",
           name: "王虎",
           email: "qwe@163.com",
           phoneNumber: "110",
           userState: "登录",
-          set: "删除"
+          set: "删除",
+          mg_state: false
         },
         {
+          id: "005",
           name: "王虎",
           email: "qwe@163.com",
           phoneNumber: "110",
           userState: "登录",
-          set: "删除"
+          set: "删除",
+          mg_state: false
         },
         {
+          id: "006",
           name: "王虎",
           email: "qwe@163.com",
           phoneNumber: "110",
           userState: "登录",
-          set: "删除"
+          set: "删除",
+          mg_state: false
         },
         {
+          id: "007",
           name: "王虎",
           email: "qwe@163.com",
           phoneNumber: "110",
           userState: "登录",
-          set: "删除"
+          set: "删除",
+          mg_state: false
         },
         {
+          id: "008",
           name: "王虎",
           email: "qwe@163.com",
           phoneNumber: "110",
           userState: "登录",
-          set: "删除"
+          set: "删除",
+          mg_state: false
         }
       ],
       // 总个数
@@ -72,7 +88,7 @@ export default {
       // 搜索选择
       select: "",
       // 用户状态
-      state: true,
+      // state: true,
       // 是否显示添加用户对话框
       dialogAddUserFormVisible: false,
       // 添加表单对象
@@ -193,22 +209,65 @@ export default {
     },
     // 添加用户
     async addUser () {
-      let res = await axios.post('http://localhost:8888/api/private/v1/user', this.addUserForm, {
-        headers: { Authorization: localStorage.getItem("token") },
-      })
-      if (res.data.meta.status === 201) {
-        // 1.关闭对话框
-        this.dialogAddUserFormVisible = false;
-        // 2.重新刷新页面
-        this.loadUsersData()
-        // 3.添加用户成功提示
+      // let res = await axios.post('http://localhost:8888/api/private/v1/user', this.addUserForm, {
+      //   headers: { Authorization: localStorage.getItem("token") },
+      // })
+      // if (res.data.meta.status === 201) {
+      //   // 1.关闭对话框
+      //   this.dialogAddUserFormVisible = false;
+      //   // 2.重新刷新页面
+      //   this.loadUsersData()
+      //   // 3.添加用户成功提示
+      //   this.$message({
+      //     message: "添加成功",
+      //     type: "success",
+      //     duration: 800
+      //   })
+      //   // 4.重置表单
+      //   this.$refs.addUserForm.resetFields();
+      // }
+
+      this.dialogAddUserFormVisible = false;
+    },
+    // 对话框关闭
+    dialogCosed () {
+      this.$refs.addUserForm.resetFields();
+    },
+    // 显示删除对话框
+    async showDeleteUserDialog (id) {
+      try {
+        this.dialogDeleteUserVisible = true;
+        await this.$confirm('此操作将永久删除该用户, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        });
+        let res = await axios.delete(`http://localhost:8888/api/private/v1/users/${id}`, {
+          headers: { Authorization: localStorage.getItem("token") }
+        });
+        if (res.data.meta.staus === 200) {
+          // 刷新页面
+          this.loadUsersData();
+          this.$message({
+            message: '删除成功',
+            type: 'success',
+            duration: 800
+          })
+        }
+      } catch (error) {
         this.$message({
-          message: "添加成功",
-          type: "success",
-          duration: 800
-        })
-        // 4.重置表单
-        this.$refs.addUserForm.resetFields();
+          type: 'info',
+          message: '已取消删除'
+        });
+      }
+    },
+    async stateChange (row) {
+      let res = await axios.put(`http://localhost:8888/api/private/v1/user/${row.id}/state/${row.mg_state}`, null, {
+        headers: { Authorization: localStorage.getItem("token") }
+      });
+      if (res.data.meta.staus === 200) {
+        // 刷新页面
+        this.loadUsersData();
       }
     }
   }

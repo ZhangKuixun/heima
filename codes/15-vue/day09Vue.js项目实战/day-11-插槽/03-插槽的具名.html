@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 
+      替换多个子view
+     -->
+    <div id="app">
+      <el-car>
+        <h3 slot="n1">大众提示</h3>
+        <div slot="n2">大众发动机</div>
+      </el-car>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script>
+      Vue.component("el-car", {
+        template: `
+        <div>
+          <slot name='n1'></slot>
+          <slot name='n2'></slot>
+          <button>取消</button>
+          <button>确定</button>
+        </div>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

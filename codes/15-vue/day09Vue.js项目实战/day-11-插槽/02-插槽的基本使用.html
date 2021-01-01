@@ -1,0 +1,48 @@
+<!-- 
+  插槽：替换内容
+ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 第一次使用 -->
+      <el-car>
+        <div>大众发动机</div>
+      </el-car>
+      <!-- 第二次使用 -->
+      <el-car>
+        <p>奥迪发动机</p>
+      </el-car>
+      <!-- 第三次使用：没有子view，用默认的view：<slot>国产雅迪</slot> -->
+      <el-car></el-car>
+    </div>
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+    <script>
+      /* 
+      需求：<div>大众发动机</div> ==> <p>奥迪发动机</p>
+      <slot></slot> 占位置，给<el-car>里面的<div>用：<el-car><div>大众发动机</div></el-car>
+      */
+      Vue.component("el-car", {
+        template: `
+        <div>
+          <h3>提示</h3>
+          <slot>国产雅迪</slot>
+          <button>取消</button>
+          <button>确定</button>
+        <div>`,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          message: "大众发动机",
+        },
+      });
+    </script>
+  </body>
+</html>
