@@ -1,6 +1,4 @@
 /* eslint-disable */
-import axios from "axios";
-
 export default {
   data () {
     return {
@@ -93,14 +91,23 @@ export default {
       dialogAddUserFormVisible: false,
       // 添加表单对象
       addUserForm: {
-        userName: '',
+        name: '',
         password: '',
+        email: '',
+        phoneNumber: ''
+      },
+      // 是否显示编辑用户对话框
+      dialogEditUserFormVisible: false,
+      // 添加表单对象
+      editUserForm: {
+        id: '',
+        name: '',
         email: '',
         phoneNumber: ''
       },
       rules: {
         // 用户名
-        userName: [
+        name: [
           // 判断是否输入
           // required: true 必填项，前面加星号
           // trigger: 'blur' 触发方式，bulur失去焦点
@@ -152,7 +159,7 @@ export default {
     },
     async loadUsersData () {
 
-      const url = "http://localhost:8888/api/private/v1/user";
+      const url = "user";
       const config = {
         // `headers` 是即将被发送的自定义请求头
         headers: { Authorization: localStorage.getItem("token") },
@@ -162,7 +169,7 @@ export default {
           pagesize: this.pageSize
         }
       }
-      let res = await axios.get(url, config);
+      let res = await this.$axios.get(url, config);
       console.log(res);
       if (res && res.data && res.data.data && res.data.data.users) {
         // 保存列表数据
@@ -173,8 +180,8 @@ export default {
         this.currentPage = res.data.data.currentPage;
       }
 
-      // axios
-      //   .get("http://localhost:8888/api/private/v1/user", {
+      // this.$axios
+      //   .get("user", {
       //     // `headers` 是即将被发送的自定义请求头
       //     headers: { Authorization: localStorage.getItem("token") },
       //     params: {
@@ -209,7 +216,7 @@ export default {
     },
     // 添加用户
     async addUser () {
-      // let res = await axios.post('http://localhost:8888/api/private/v1/user', this.addUserForm, {
+      // let res = await this.$axios.post('user', this.addUserForm, {
       //   headers: { Authorization: localStorage.getItem("token") },
       // })
       // if (res.data.meta.status === 201) {
@@ -242,7 +249,7 @@ export default {
           cancelButtonText: '取消',
           type: 'warning'
         });
-        let res = await axios.delete(`http://localhost:8888/api/private/v1/users/${id}`, {
+        let res = await this.$axios.delete(`users/${id}`, {
           headers: { Authorization: localStorage.getItem("token") }
         });
         if (res.data.meta.staus === 200) {
@@ -261,14 +268,45 @@ export default {
         });
       }
     },
+    // 用户状态改变
     async stateChange (row) {
-      let res = await axios.put(`http://localhost:8888/api/private/v1/user/${row.id}/state/${row.mg_state}`, null, {
+      let res = await this.$axios.put(`user/${row.id}/state/${row.mg_state}`, null, {
         headers: { Authorization: localStorage.getItem("token") }
       });
       if (res.data.meta.staus === 200) {
         // 刷新页面
         this.loadUsersData();
       }
+    },
+    // 显示编辑对话框
+    showEditUserDialog (row) {
+      console.log(row);
+      const { id, name, email, phoneNumber } = row;
+      this.id = id;
+      this.editUserForm.name = name;
+      this.editUserForm.email = email;
+      this.editUserForm.phoneNumber = phoneNumber;
+
+      this.dialogEditUserFormVisible = true;
+    },
+    // 编辑用户
+    async editUser () {
+      // 1.从编辑用户对象里读取需要的数据
+      // const { id, email, phoneNumber, name } = this.editUserForm;
+      // let res = await this.$axios.put(`user/${id}`, {
+      //   name, email, phoneNumber
+      // });
+      // if (res.data.meta.staus === 200) {
+      //   this.dialogEditUserFormVisible = false;
+      //   this.loadUsersData();
+      //   this.$message({
+      //     message: '更新成功',
+      //     type: 'success',
+      //     duration: 800
+      //   })
+      // }
+
+      this.dialogEditUserFormVisible = false;
     }
   }
 };

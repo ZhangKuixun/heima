@@ -54,6 +54,7 @@
           plain
           type="primary"
           icon="el-icon-edit"
+          @click="showEditUserDialog(scope.row)"
         ></el-button>
         <el-button
           size="mini"
@@ -111,8 +112,8 @@
       label-width="80px"
       ref="addUserForm"
     >
-      <el-form-item label="用户名" prop="userName">
-        <el-input v-model="addUserForm.userName"></el-input>
+      <el-form-item label="用户名" prop="name">
+        <el-input v-model="addUserForm.name"></el-input>
       </el-form-item>
       <el-form-item label="密码" prop="password">
         <el-input v-model="addUserForm.password"></el-input>
@@ -126,7 +127,27 @@
     </el-form>
     <div slot="footer" class="dialog-footer">
       <el-button @click="dialogAddUserFormVisible = false">取 消</el-button>
-      <el-button type="primary" @click="addUser">确 定</el-button>
+      <el-button type="primary" @click="addUser()">确 定</el-button>
+    </div>
+  </el-dialog>
+
+  <!-- 编辑对话框 -->
+  <el-dialog title="编辑用户" :visible.sync="dialogEditUserFormVisible">
+    <!-- 属性加给表单，让item继承 -->
+    <el-form :model="editUserForm" label-width="80px" ref="editUserForm">
+      <el-form-item label="用户名" prop="name" class="nameInEditDialog">
+        <el-tag type="info">{{editUserForm.name}}</el-tag>
+      </el-form-item>
+      <el-form-item label="邮箱" prop="email">
+        <el-input v-model="editUserForm.email"></el-input>
+      </el-form-item>
+      <el-form-item label="手机" prop="phoneNumber">
+        <el-input v-model="editUserForm.phoneNumber"></el-input>
+      </el-form-item>
+    </el-form>
+    <div slot="footer" class="dialog-footer">
+      <el-button @click="dialogEditUserFormVisible = false">取 消</el-button>
+      <el-button type="primary" @click="editUser()">确 定</el-button>
     </div>
   </el-dialog>
 </div>

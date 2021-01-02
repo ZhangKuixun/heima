@@ -7,3 +7,6 @@
   line-height: 2.5rem; /* 40/16 */
   padding-left: 1.25rem; /* 20/16 */
 }
+.nameInEditDialog {
+  text-align: left;
+}
