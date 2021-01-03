@@ -1,10 +1,5 @@
-<template>
-  <div>roles</div>
-</template>
+<template src="./Roles.html"> </template>
 
-<script>
-/* eslint-disable */
-export default {};
-</script>
+<script src="./Roles.js"></script>
 
-<style></style>
+<style src="./Roles.less" lang="less" scoped></style>
