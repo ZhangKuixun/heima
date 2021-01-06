@@ -87,7 +87,7 @@ export default {
       select: "",
       // 用户状态
       // state: true,
-      // 是否显示添加用户对话框
+      // 第一个对话框 - 是否显示添加用户对话框
       dialogAddUserFormVisible: false,
       // 添加表单对象
       addUserForm: {
@@ -96,7 +96,7 @@ export default {
         email: '',
         phoneNumber: ''
       },
-      // 是否显示编辑用户对话框
+      // 第二个对话框 - 是否显示编辑用户对话框
       dialogEditUserFormVisible: false,
       // 添加表单对象
       editUserForm: {
@@ -105,6 +105,15 @@ export default {
         email: '',
         phoneNumber: ''
       },
+      // 第三个对话框 - 分配角色
+      dialogAssignRolesFormVisible: false,
+      assignRoleForm: {
+        username: '',
+        id: '',
+        rid: '',
+      },
+      // 角色列表
+      rolesData: [{ id: 1, roleName: "主管" }, { id: 2, roleName: "讲师" }, { id: 3, roleName: "助教" }, { id: 4, roleName: "学生" }, { id: 5, roleName: "班主任" }],
       rules: {
         // 用户名
         name: [
@@ -128,11 +137,12 @@ export default {
           { required: true, message: "手机号错误", trigger: "blur" },
           { pattern: /^13[0-9]|147|15[0-9]|17[0178]|18[0-9]\d{8}$/, message: '格式不正确', trigger: 'blur' }
         ]
-      }
+      },
     };
   },
   created () {
     this.loadUsersData();
+    this.loadRolesData();
   },
   methods: {
     // 点击一页显示多少条
@@ -307,6 +317,47 @@ export default {
       // }
 
       this.dialogEditUserFormVisible = false;
+    },
+    // 显示分配角色
+    async showAssignRoleDialog (row) {
+      this.dialogAssignRolesFormVisible = true;
+      let { id, username } = row;
+      // let res = await this.$axios.get(`users/${id}`);
+      // if (res.data.meta.staus === 200) {
+      //   this.assignRoleForm.id = id;
+      //   this.assignRoleForm.username = username;
+      this.assignRoleForm.rid = res.data.data.rid == -1 ? "" : res.data.data.rid;
+      // }
+
+      this.assignRoleForm.id = 1;
+      this.assignRoleForm.username = 'linken';
+      this.assignRoleForm.rid = "主管";
+    },
+    // 获取所有的角色列表
+    async loadRolesData () {
+      let res = await this.$axios.get("");
+      if (res.data.meta.staus === 200) {
+        this.rolesData = res.data.data;
+      }
+    },
+    // 分配角色
+    async assignRole () {
+      let { id, rid } = this.assignRoleForm
+      let res = await this.$axios.put(`users/${id}/role`, {
+        rid
+      })
+      if (res.data.meta.staus === 200) {
+        // 关闭对话框
+        this.dialogAssignRolesFormVisible = false
+        // 提示
+        this.$message({
+          message: '分配角色',
+          type: 'success',
+          duration: 800
+        })
+        // 刷新
+        this.loadUsersData()
+      }
     }
   }
 };

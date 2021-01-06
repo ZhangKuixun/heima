@@ -1,5 +1,49 @@
 <div>
   <el-table :data="rolesData" style="width: 100%">
+    <!-- 展开行开始 -->
+    <el-table-column type="expand">
+      <template slot-scope="scope">
+        <!-- 第一层 -->
+        <el-row
+          v-for="item1 in scope.row.children"
+          :key="item1.id"
+          class="row1"
+        >
+          <el-col :span="4">
+            <el-tag type="primary" closable>{{item1.authName}}</el-tag>
+            <i class="el-icon-arrow-right"></i>
+          </el-col>
+          <el-col :span="20">
+            <!-- 第二层 -->
+            <el-row
+              v-for="item2 in item1.children"
+              :key="item2.id"
+              class="row2"
+            >
+              <el-col :span="4">
+                <el-tag type="success" closable>{{item2.authName}}</el-tag>
+                <i class="el-icon-arrow-right"></i>
+              </el-col>
+              <el-col :span="20">
+                <!-- 第三层 -->
+                <el-row>
+                  <el-tag
+                    type="warning"
+                    closable
+                    v-for="item3 in item2.children"
+                    :key="item3.id"
+                    class="row3"
+                    >{{item3.authName}}</el-tag
+                  >
+                </el-row>
+              </el-col>
+            </el-row>
+          </el-col>
+        </el-row>
+      </template>
+    </el-table-column>
+    <!-- 展开行结束 -->
+
     <el-table-column type="index" width="50" :index="indexMethod">
     </el-table-column>
     <el-table-column prop="roleName" label="角色名称" width="120">
@@ -20,10 +64,44 @@
           plain
           icon="el-icon-delete"
         ></el-button>
-        <el-button type="success" size="mini" plain icon="el-icon-check"
+        <el-button
+          type="success"
+          size="mini"
+          plain
+          icon="el-icon-check"
+          @click="showAssignRightsDialog(scope.row)"
           >分配权限</el-button
         >
       </template>
     </el-table-column>
   </el-table>
+
+  <!-- 第一个对话框：分配权限 -->
+  <el-dialog :visible.sync="dialogAssignRightsVisible">
+    <!--
+      树
+      :data="data"  树需要的数据
+      show-checkbox  显示多选框
+      node-key="id"  拿到数据里的id作为key节点
+      :default-expanded-keys="[2, 3]"  默认展开id=2、3的数据
+      :default-expand-all="true"  默认展开全部数据
+      :default-checked-keys="[5]"  默认选中id=5的数据
+      :props="defaultProps" 配置的数据
+     -->
+    <el-tree
+      ref="tree"
+      :data="treeData"
+      show-checkbox
+      node-key="id"
+      :default-expand-all="true"
+      :props="defaultProps"
+    >
+    </el-tree>
+    <span slot="footer" class="dialog-footer">
+      <el-button @click="dialogAssignRightsVisible = false">取 消</el-button>
+      <el-button type="primary" @click="dialogAssignRightsVisible = false"
+        >确 定</el-button
+      >
+    </span></el-dialog
+  >
 </div>
