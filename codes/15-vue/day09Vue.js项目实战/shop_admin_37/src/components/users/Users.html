@@ -88,14 +88,13 @@
    -->
   <el-pagination
     background
-    layout=" total, sizes, prev, pager, next"
+    layout=" total, prev, pager, next"
     :total="total"
     :page-size="pageSize"
     @prev-click="preClick"
     @next-click="nextClick"
     :current-page="currentPage"
     @current-change="clickCurrentPage"
-    :page-sizes="[2, 6]"
     @size-change="clickPageSize"
   >
   </el-pagination>

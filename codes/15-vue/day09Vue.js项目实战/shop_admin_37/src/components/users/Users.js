@@ -141,6 +141,8 @@ export default {
     };
   },
   created () {
+    // 获取路由=>页码
+    this.currentPage = this.$route.params.page;
     this.loadUsersData();
     this.loadRolesData();
   },
@@ -155,6 +157,7 @@ export default {
     clickCurrentPage (val) {
       console.log("切换到第", val, "页");
       this.currentPage = val;
+      this.$router.push('/users/' + currentPage)
       this.loadUsersData();
     },
     preClick (val) {
