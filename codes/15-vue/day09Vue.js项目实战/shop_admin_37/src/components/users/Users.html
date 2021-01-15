@@ -18,7 +18,7 @@
         <el-button slot="append" icon="el-icon-search"></el-button>
       </el-input>
     </el-col>
-    <el-col :span="8" class="addUser">
+    <el-col :span="8">
       <el-button @click="startQuery">添加用户</el-button>
     </el-col>
   </el-row>
@@ -139,7 +139,7 @@
   <el-dialog title="编辑用户" :visible.sync="dialogEditUserFormVisible">
     <!-- 属性加给表单，让item继承 -->
     <el-form :model="editUserForm" label-width="80px" ref="editUserForm">
-      <el-form-item label="用户名" prop="name" class="nameInEditDialog">
+      <el-form-item label="用户名" prop="name">
         <el-tag type="info">{{editUserForm.name}}</el-tag>
       </el-form-item>
       <el-form-item label="邮箱" prop="email">
@@ -158,10 +158,10 @@
   <!--第三个对话框 - 分配角色对话框 -->
   <el-dialog title="分配角色" :visible.sync="dialogAssignRolesFormVisible">
     <el-form :model="assignRoleForm" label-width="80px">
-      <el-form-item label="用户名" class="assign-dialog-1">
+      <el-form-item label="用户名">
         <el-tag>{{assignRoleForm.username}}</el-tag>
       </el-form-item>
-      <el-form-item label="角色列表" class="assign-dialog-2">
+      <el-form-item label="角色列表">
         <el-select v-model="assignRoleForm.rid" placeholder="请选择角色">
           <!-- label负责展示数据，value负责收集数据的id -->
           <el-option

@@ -8,6 +8,8 @@ import Users from '../components/users/Users.vue'
 import Roles from '../components/roles/Roles.vue'
 import Rights from '../components/rights/Rights.vue'
 import Categories from '../components/categories/Categories.vue'
+import Goods from '../components/goods/Goods.vue'
+import GoodsAdd from '../components/goods/GoodsAdd.vue'
 
 // 在模块化工厂中实例化
 Vue.use(VueRouter)
@@ -26,7 +28,9 @@ const router = new VueRouter({
         { path: '/users/:page?', name: 'users', component: Users },
         { path: '/roles', name: 'roles', component: Roles },
         { path: '/rights', name: 'rights', component: Rights },
-        { path: '/categories', name: 'categories', component: Categories }
+        { path: '/categories', name: 'categories', component: Categories },
+        { path: '/goods', name: 'goods', component: Goods },
+        { path: '/Goods-add', name: 'Goods-add', component: GoodsAdd }
       ]
     }
   ]

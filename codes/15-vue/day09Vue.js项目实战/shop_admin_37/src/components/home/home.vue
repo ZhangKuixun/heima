@@ -25,7 +25,7 @@
       <el-aside width="200px">
         <el-menu
           :router="true"
-          :default-active="$route.path"
+          :default-active="onRoutes"
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
@@ -81,6 +81,9 @@ export default {
     this.loadMenusData();
   },
   methods: {
+    onRoutes() {
+      return this.$route.path.replace("/", "");
+    },
     async logout() {
       try {
         let res = await this.$confirm("此操作将退出该账户, 是否继续?", "提示", {
@@ -128,7 +131,6 @@ export default {
           authName: "用户管理",
           id: 125,
           order: 1,
-          path: "users",
           children: [
             {
               authName: "用户列表",
@@ -142,7 +144,6 @@ export default {
           authName: "权限管理",
           id: 103,
           order: 2,
-          path: "rights",
           children: [
             {
               authName: "角色列表",
@@ -162,13 +163,18 @@ export default {
           authName: "商品管理",
           id: 106,
           order: 2,
-          path: "categories",
           children: [
             {
               authName: "商品分类",
               id: 107,
               order: null,
               path: "categories"
+            },
+            {
+              authName: "商品列表",
+              id: 108,
+              order: null,
+              path: "goods"
             }
           ]
         }

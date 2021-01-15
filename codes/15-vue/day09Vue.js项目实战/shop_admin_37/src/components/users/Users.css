@@ -1,16 +1,6 @@
-.addUser {
-  text-align: left;
-}
 .bread {
   height: 2.5rem /* 40/16 */;
   background: #d4dae0;
   line-height: 2.5rem; /* 40/16 */
   padding-left: 1.25rem; /* 20/16 */
-}
-.nameInEditDialog {
-  text-align: left;
-}
-.assign-dialog-1,
-.assign-dialog-2 {
-  text-align: left;
 }

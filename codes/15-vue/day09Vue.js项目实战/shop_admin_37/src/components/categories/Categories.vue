@@ -1,5 +1,5 @@
 <template>
-  <div class="root">
+  <div>
     <el-button type="success" plain @click="showAddCatDialog"
       >添加分类</el-button
     >
@@ -166,8 +166,4 @@ export default {
 };
 </script>
 
-<style>
-.root {
-  text-align: left;
-}
-</style>
+<style></style>
