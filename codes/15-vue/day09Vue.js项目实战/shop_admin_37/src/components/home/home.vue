@@ -25,7 +25,7 @@
       <el-aside width="200px">
         <el-menu
           :router="true"
-          :default-active="onRoutes"
+          :default-active="onRoutes + ''"
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
@@ -180,7 +180,7 @@ export default {
         }
       ];
       this.menus = res.data.data;
-      console.log(this.menus);
+      // console.log(this.menus);
     }
   }
 };
