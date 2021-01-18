@@ -3,13 +3,15 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 // 引入子组件
 import Login from '../components/login/Login.vue'
-import Home from '../components/home/Home.vue'
-import Users from '../components/users/Users.vue'
-import Roles from '../components/roles/Roles.vue'
-import Rights from '../components/rights/Rights.vue'
-import Categories from '../components/categories/Categories.vue'
-import Goods from '../components/goods/Goods.vue'
-import GoodsAdd from '../components/goods/GoodsAdd.vue'
+
+// 懒加载
+const Users = () => import('../components/users/Users.vue')
+const Home = () => import('../components/home/Home.vue')
+const Roles = () => import('../components/roles/Roles.vue')
+const Rights = () => import('../components/rights/Rights.vue')
+const Categories = () => import('../components/categories/Categories.vue')
+const Goods = () => import('../components/goods/Goods.vue')
+const GoodsAdd = () => import('../components/goods/GoodsAdd.vue')
 
 // 在模块化工厂中实例化
 Vue.use(VueRouter)

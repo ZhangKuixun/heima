@@ -18,7 +18,6 @@ export default {
       },
       // 级联选择器
       options: [],
-
       // 级联选择器的配置对象
       defaultProps: {
         value: 'cat_id',
@@ -30,6 +29,10 @@ export default {
       headers: {
         Authorization: localStorage.getItem("token")
       },
+      //富文本编辑器设置
+      editorOption: {
+        placeholder: '请输入您的密码给我'
+      }
     };
   },
   created () {
@@ -46,9 +49,27 @@ export default {
       this.activeIndex = index;
       this.activeName = name;
     },
-    // 点击确定
-    handleOkClick () {
-      console.log();
+    // 点击确定，添加商品
+    async AddGoods () {
+      // 1.获取数据
+      const {
+        goods_name,
+        goods_cat,
+        goods_price,
+        goods_number,
+        goods_weight,
+        goods_introduce,
+        goods_pics } = this.addGoodsForm
+      // let res = await this.$axios.post('goods', {
+      //   goods_name,
+      //   goods_cat: goods_cat.join(','),
+      //   goods_price,
+      //   goods_number,
+      //   goods_weight,
+      //   goods_introduce,
+      //   goods_pics
+      // });
+      this.$router.push('/goods')
     },
     // 加载分类数据
     async loadCatName () {
@@ -94,6 +115,10 @@ export default {
       this.addGoodsForm.goods_pics.push({
         pic: res.data.tmp_path
       })
-    }
+    },
+    // 编辑器
+    onEditorChange ({ quill, html, text }) {
+      console.log('editor change!', quill, html, text)
+    },
   },
 };

@@ -92,5 +92,14 @@ module.exports = {
     net: 'empty',
     tls: 'empty',
     child_process: 'empty'
+  },
+  // 配置cdn
+  externals: {
+    /**
+     * 键：包名
+     * 值：全局变量
+     */
+    vue: 'Vue',
+    'vue-router': 'VueRouter'
   }
 }
