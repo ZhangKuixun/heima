@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 
+      1.安装 npm i vuex
+      2.引入，之前必须要要引入vue，vuex里面有vue的api
+      3.实例化
+     -->
+    <div id="app"></div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+    <script>
+      // 实例化
+      // store 仓库，管理数据（查询/修改数据都要经过vuex）
+      const store = new Vuex.Store({
+        // 严格模式
+        strict: true,
+        // 状态: 相当于data
+        state: {
+          name: "小春",
+        },
+        // mutation: 相当于methods
+        mutations: {
+          updateName(state) {
+            state.name = "大春";
+          },
+        },
+      });
+
+      // 2.修改数据
+      // store.state.name = "大春";
+      /* 
+      注意点：
+      1.修改数据成功了，但是Vuex严格模式
+      2.[vuex] do not mutate vuex store state outside（在mutation处理函数外面不能修改store>state里的数据）
+      */
+
+      store.commit("updateName");
+
+      // 1.读取数据
+      console.log(store.state.name);
+    </script>
+  </body>
+</html>

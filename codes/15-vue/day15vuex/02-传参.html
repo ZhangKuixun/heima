@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+    <script>
+      const store = new Vuex.Store({
+        scrict: true,
+        state: {
+          name: "小春春",
+        },
+        mutations: {
+          // 参数2：官网名称 payload 负载
+          updateName(state, payload) {
+            state.name += payload.num;
+          },
+        },
+      });
+      // 修改数据
+      // 参数1：方法名
+      // 参数2：参数数据
+      // store.commit("updateName", 777);
+
+      // 常用写法：传一个对象
+      store.commit("updateName", {
+        num: 888,
+      });
+
+      console.log(store.state.name);
+    </script>
+  </body>
+</html>

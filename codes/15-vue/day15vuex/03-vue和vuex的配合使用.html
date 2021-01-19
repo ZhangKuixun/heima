@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      需求：有一个h1显示数据，点击按钮，累加
+     -->
+    <div id="app">
+      <h1>{{ $store.state.num }}</h1>
+      <button @click="fn">按钮</button>
+    </div>
+
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vuex/dist/vuex.js"></script>
+    <script>
+      // 实例vuex的仓库
+      const store = new Vuex.Store({
+        // 严格模式
+        strict: true,
+        state: {
+          num: 200,
+        },
+        mutations: {
+          // 参数2：官网名称 payload 负载
+          updateName(state) {
+            state.num += 1;
+          },
+        },
+      });
+      // 实例vue
+      const vm = new Vue({
+        el: "#app",
+        store,
+        data: {},
+        methods: {
+          fn() {
+            this.$store.commit("updateName");
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
