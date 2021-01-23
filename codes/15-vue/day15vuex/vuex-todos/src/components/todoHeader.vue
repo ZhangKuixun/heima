@@ -12,7 +12,33 @@
 </template>
 
 <script>
-export default {};
+// 第一步 引入
+import { mapMutations } from "vuex";
+
+export default {
+  data() {
+    return {
+      todoName: "",
+    };
+  },
+  methods: {
+    // 第二步 映射
+    ...mapMutations(["addTodo"]),
+    ...mapMutations({
+      add_todo: "addTodo",
+    }),
+    // 添加任务
+    addTodo() {
+      this.add_todo({
+        name: this.todoName,
+      });
+      // this.$store.commit("addTodo", {
+      //   name: this.todoName,
+      // });
+      this.todoName = "";
+    },
+  },
+};
 </script>
 
 <style></style>
