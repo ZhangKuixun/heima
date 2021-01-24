@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 
+      需求：注册一个自定义指令，让input或者h1标签，使用找个指令配置颜色显示出效果 
+      <input v-color.bgcolor='r' v-color.fzcolor='b'>
+    -->
+    <div id="app">
+      <input type="text" v-color:bgcolor="r" v-color:fzcolor="b" />
+      <h1 v-color:bgcolor="b">我是大傻春</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+      // 注册自定义指令
+      Vue.directive("color", {
+        // bind
+        bind(el, binding) {
+          console.log(binding.arg);
+          if (binding.arg == "bgcolor") {
+            el.style.background = binding.value;
+          }
+          if (binding.arg == "fzcolor") {
+            el.style.color = binding.value;
+          }
+        },
+      });
+
+      // 实例vue
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          r: "red",
+          b: "blue",
+        },
+      });
+    </script>
+  </body>
+</html>

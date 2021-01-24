@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- 
+     混入 mixin => js => 混入式继承
+     作用：共享功能
+     混入对象（data,methods,,,）
+    -->
+    <div id="app">
+      <one></one>
+      <two></two>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+      // 混入一个对象
+      const hi = {
+        methods: {
+          sayHello() {
+            console.log("我叫系" + this.name);
+          },
+        },
+      };
+
+      Vue.component("one", {
+        mixins: [hi],
+        template: `
+          <div @click='sayHello'>子组件：one</div>
+          `,
+        data() {
+          return {
+            name: "春",
+          };
+        },
+      });
+
+      Vue.component("two", {
+        mixins: [hi],
+        template: `
+          <div @click='sayHello'>子组件：two</div>
+          `,
+        data() {
+          return {
+            name: "马",
+          };
+        },
+      });
+      // 实例vue
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          r: "red",
+          b: "blue",
+        },
+      });
+    </script>
+  </body>
+</html>

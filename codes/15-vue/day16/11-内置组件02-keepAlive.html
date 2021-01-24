@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <!-- keep-alive 缓存 -->
+    <div id="app">
+      <button @click="fn('one')">One</button>
+      <button @click="fn('two')">Two</button>
+
+      <!-- 1.全部缓存 -->
+      <!-- <keep-alive>
+        <component :is="componentName">
+          <one></one>
+          <two></two>
+        </component>
+      </keep-alive> -->
+
+      <!-- 2.只缓存其中的一个 include="one" -->
+      <keep-alive include="one">
+        <component :is="componentName">
+          <one></one>
+          <two></two>
+        </component>
+      </keep-alive>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+      Vue.component("one", {
+        name: "one",
+        template: `
+        <div>子组件:one <input></div>
+        `,
+      });
+      Vue.component("two", {
+        name: "two",
+        template: `
+        <div>子组件:two <input></div>
+        `,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          componentName: "one",
+        },
+        methods: {
+          fn(name) {
+            console.log(name);
+            this.componentName = name;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

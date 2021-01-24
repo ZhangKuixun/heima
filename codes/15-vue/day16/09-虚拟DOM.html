@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>{{msg}}</h1>
+    <script>
+      let h1 = document.querySelector("h1");
+      let str = "";
+      let count = 0;
+      for (const key in h1) {
+        str += key + " ";
+        count++;
+      }
+      console.log(str);
+      console.log(count);
+      /* 
+      msg:100 => 200
+      */
+    </script>
+  </body>
+</html>

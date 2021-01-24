@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1 v-test:foo.chun="1+2">哈哈</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+      // 自定义指令
+      Vue.directive("test", {
+        // bind 指令绑定到有v-test标识的h1元素上的时候执行
+        // 参数1： 指令绑定的dom元素
+        bind(el, binding) {
+          console.log(el); // <h1>哈哈</h1>  绑定元素对象
+          console.log(binding.name); // test  指令名称
+          console.log(binding.value); // 3  值
+          console.log(binding.expression); // 1+2  表达式
+          console.log(binding.arg); // foo  参数
+          console.log(binding.modifiers); // {chun: true}  对象，修饰符
+        },
+      });
+
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          num: 100,
+          isShow: true,
+        },
+      });
+    </script>
+  </body>
+</html>

@@ -18,7 +18,12 @@
           <label @dblclick="showEdit(item.id)">{{ item.name }}</label>
           <button @click="delTodo(item.id)" class="destroy"></button>
         </div>
-        <input @keyup.enter="hideEdit" class="edit" :value="item.name" />
+        <input
+          @keyup.enter="hideEdit"
+          class="edit"
+          :value="item.name"
+          v-focus="item.id == editId"
+        />
       </li>
     </ul>
   </section>

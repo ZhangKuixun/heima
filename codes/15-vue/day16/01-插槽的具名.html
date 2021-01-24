@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <el-car>
+        <!-- 2.6.0之前的写法 -->
+        <!-- <p slot="n1">大众发动机</p> -->
+
+        <!--
+          2.6.0之后的写法，v-slot
+          新版本的插槽具名：
+          1.需要一个template
+          2.写法: v-slot:名称
+        -->
+        <template v-slot:n1>
+          <p>大众发动机</p>
+        </template>
+      </el-car>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+      Vue.component("el-car", {
+        template: `
+          <div>
+            <h3>提示</h3>
+            <slot name='n1'></slot>
+            <button>取消</button>
+          </div>
+          `,
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

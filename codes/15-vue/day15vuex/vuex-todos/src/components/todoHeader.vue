@@ -7,6 +7,7 @@
       class="new-todo"
       placeholder="What needs to be done?"
       autofocus
+      v-focus
     />
   </header>
 </template>

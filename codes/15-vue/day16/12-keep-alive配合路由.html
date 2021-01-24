@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 方式1 -->
+      <!-- <keep-alive>
+        <router-view></router-view>
+      </keep-alive> -->
+
+      <!-- 方式2：判断元信息为true就使用缓存 -->
+      <!-- 需要缓存的 -->
+      <!-- <router-view v-if="$route.meta.keepAlive"> </router-view> -->
+      <!-- 不需要缓存的 -->
+      <router-view v-if="!$route.meta.keepAlive"> </router-view>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script src="../node_modules/vue-router/dist/vue-router.js"></script>
+    <script>
+      const One = {
+        template: `<div>子组件one <input></div>`,
+      };
+
+      const Two = {
+        template: `<div>子组件two <input></div>`,
+      };
+
+      // 实例路由
+      const router = new VueRouter({
+        routes: [
+          {
+            path: "/one",
+            name: "one",
+            component: One,
+            meta: {
+              keepAlive: true,
+            },
+          },
+          {
+            path: "/two",
+            name: "two",
+            component: Two,
+            meta: {
+              keepAlive: false,
+            },
+          },
+        ],
+      });
+      const vm = new Vue({
+        router,
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

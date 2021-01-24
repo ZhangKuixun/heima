@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <el-car>
+        <!-- 老版本 -->
+        <!-- <p slot="n1" slot-scope="scope">发动机样式 {{scope.row.name}}</p> -->
+
+        <!-- 新版本 -->
+        <template v-slot:n1="scope">
+          <p>发动机样式 {{scope.row.name}}</p>
+        </template>
+      </el-car>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+      Vue.component("el-car", {
+        template: `
+          <div>
+            <h3>提示</h3>
+            <slot name="n1" :row='row'></slot>
+            <button>取消</button>
+          </div>
+          `,
+        data() {
+          return {
+            type: "EA8888",
+            row: {
+              name: "zs",
+            },
+          };
+        },
+      });
+      const vm = new Vue({
+        el: "#app",
+        data: {},
+      });
+    </script>
+  </body>
+</html>

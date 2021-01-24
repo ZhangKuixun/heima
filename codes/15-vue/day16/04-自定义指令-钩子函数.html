@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1 v-test v-if="isShow">{{num}}</h1>
+    </div>
+    <script src="../node_modules/vue/dist/vue.js"></script>
+    <script>
+      // 自定义指令
+      // 参数1：指令名称
+      // 参数2：指令的配置项，有钩子函数
+      Vue.directive("test", {
+        // 下面的几个钩子函数
+        // bind 指令绑定到有v-test标识的h1元素上的时候执行
+        bind() {
+          console.warn("bind");
+        },
+        // inserted 指定绑定的元素插入到父元素的时候执行
+        inserted() {
+          console.warn("inserted");
+        },
+        // update 当数据发生变化会触发
+        update() {
+          console.warn("update");
+        },
+        // componentUpdated 数据变化之后触发
+        component() {
+          console.warn("component");
+        },
+        // unbind 指令与元素解绑
+        unbind() {
+          console.warn("unbind");
+        },
+      });
+
+      const vm = new Vue({
+        el: "#app",
+        data: {
+          num: 100,
+          isShow: true,
+        },
+      });
+    </script>
+  </body>
+</html>
