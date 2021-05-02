@@ -26,7 +26,7 @@ class Father extends React.Component {
     render() {
         return <div>
             父组件
-            <Sun msg={this.state.pmsg} fn={this.fn}></Sun>
+            <Sun msg={this.state.pmsg} fn={this.fn}/>
         </div>
     }
 

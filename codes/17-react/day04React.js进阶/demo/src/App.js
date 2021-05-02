@@ -19,7 +19,7 @@ class App extends React.Component {
         return (
             <div>
                 <CommentForm add={this.pAdd.bind(this)}/>
-                <CommentList list={this.state.list}/>
+                <CommentList list={this.state.list} del={this.pDel.bind(this)}/>
             </div>
         );
     }
@@ -30,14 +30,23 @@ class App extends React.Component {
             name: username,
             content,
         }
+        // 原来的代码
         // this.setState(state => {
         //     return {
         //         list: [newData, ...state.list]
         //     }
         // })
+        // 优化代码
         this.setState(state => ({
             list: [newData, ...state.list]
         }))
+    }
+
+    pDel(id) {
+        let newList = this.state.list.filter(item => item.id != id);
+        this.setState({
+            list:newList
+        })
     }
 }
 
