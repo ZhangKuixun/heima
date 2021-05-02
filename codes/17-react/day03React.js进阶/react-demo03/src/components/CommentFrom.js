@@ -1,5 +1,4 @@
 import React from "react";
-import CommentList from "./CommentList";
 
 class CommentForm extends React.Component {
 
