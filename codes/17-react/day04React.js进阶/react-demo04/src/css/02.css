@@ -1,0 +1,14 @@
+.father {
+    background: yellowgreen;
+    padding: 20px;
+}
+
+.son{
+    background: pink;
+    padding: 20px;
+}
+
+.sun{
+    background: skyblue;
+    padding: 20px;
+}
